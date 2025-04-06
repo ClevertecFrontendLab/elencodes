@@ -1,4 +1,4 @@
-import { Avatar, Card, CardBody, CardHeader, Flex, Heading, Text } from '@chakra-ui/react';
+import { Avatar, Box, Card, CardBody, CardHeader, Flex, Heading, Text } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 
 import avatar from '../../assets/images/avatar_header.png';
@@ -6,15 +6,18 @@ import avatar from '../../assets/images/avatar_header.png';
 function UserProfile(): ReactElement {
     return (
         <>
-            <Flex>
-                <Avatar
-                    height='48px'
-                    width='48px'
-                    name='Екатерина Константинопольская'
-                    src={avatar}
-                />
-                <Card bg='unset' shadow='unset' borderRadius='unset'>
-                    <CardHeader padding='0' height='28px'>
+            <Flex padding='16px 0' width='355px' justifyContent='space-between'>
+                <Box height='48px' width='48px'>
+                    <Avatar
+                        objectFit='cover'
+                        height='100%'
+                        width='100%'
+                        name='Екатерина Константинопольская'
+                        src={avatar}
+                    />
+                </Box>
+                <Card bg='unset' shadow='unset' borderRadius='unset' height='48px'>
+                    <CardHeader padding='0'>
                         <Heading
                             as='h3'
                             fontFamily='Inter'
@@ -26,7 +29,7 @@ function UserProfile(): ReactElement {
                             Екатерина Константинопольская
                         </Heading>
                     </CardHeader>
-                    <CardBody>
+                    <CardBody padding='0'>
                         <Text
                             fontFamily='Inter'
                             fontSize='14px'
