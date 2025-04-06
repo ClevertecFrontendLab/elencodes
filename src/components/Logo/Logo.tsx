@@ -2,7 +2,7 @@ import { Flex, Image } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 
 import logo from '../../../public/icons/logo.svg';
-import logoName from '../../../public/icons/logo_title.svg';
+import logoName from '../../../public/icons/logo_name.svg';
 
 function Logo(): ReactElement {
     return (
