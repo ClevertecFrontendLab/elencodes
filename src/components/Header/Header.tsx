@@ -17,8 +17,10 @@ function Header(): ReactElement {
             paddingRight='56px'
         >
             <Logo />
-            <BreadCrumb />
-            <UserProfile />
+            <Flex width='1105px' alignItems='center' justifyContent='space-between'>
+                <BreadCrumb />
+                <UserProfile />
+            </Flex>
         </Flex>
     );
 }

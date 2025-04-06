@@ -4,7 +4,7 @@ import { ReactElement } from 'react';
 function BreadCrumb(): ReactElement {
     return (
         <Breadcrumb>
-            <BreadcrumbItem isCurrentPage marginLeft='128px'>
+            <BreadcrumbItem isCurrentPage>
                 <BreadcrumbLink fontFamily='Inter' fontSize='16px' fontWeight='normal'>
                     Главная
                 </BreadcrumbLink>
