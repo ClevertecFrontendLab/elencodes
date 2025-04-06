@@ -7,7 +7,15 @@ import UserProfile from '../UserProfile/UserProfile';
 
 function Header(): ReactElement {
     return (
-        <Flex alignItems='center'>
+        <Flex
+            as='header'
+            alignItems='center'
+            justifyContent='space-between'
+            paddingLeft='16px'
+            bgColor='#FFFFD3'
+            data-test-id='header'
+            paddingRight='56px'
+        >
             <Logo />
             <BreadCrumb />
             <UserProfile />
