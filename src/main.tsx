@@ -1,4 +1,5 @@
 import './index.css';
+import './fonts.css';
 
 import { ChakraProvider } from '@chakra-ui/react';
 import { StrictMode } from 'react';
