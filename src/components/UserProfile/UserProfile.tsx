@@ -2,11 +2,12 @@ import { Avatar, Box, Card, CardBody, CardHeader, Flex, Heading, Text } from '@c
 import { ReactElement } from 'react';
 
 import avatar from '../../assets/images/avatar_header.svg';
+import { headingStyles, textStyles, userCard, userProfileWrapper } from './UserProfile.styles';
 
 function UserProfile(): ReactElement {
     return (
         <>
-            <Flex padding='16px 0' width='355px' justifyContent='space-between'>
+            <Flex sx={userProfileWrapper}>
                 <Box height='48px' width='48px'>
                     <Avatar
                         objectFit='cover'
@@ -16,29 +17,14 @@ function UserProfile(): ReactElement {
                         src={avatar}
                     />
                 </Box>
-                <Card bg='unset' shadow='unset' borderRadius='unset' height='48px'>
+                <Card sx={userCard}>
                     <CardHeader padding='0'>
-                        <Heading
-                            as='h3'
-                            fontFamily='Inter'
-                            fontSize='18px'
-                            fontWeight='medium'
-                            lineHeight='156%'
-                            color='#000000'
-                        >
+                        <Heading as='h3' sx={headingStyles}>
                             Екатерина Константинопольская
                         </Heading>
                     </CardHeader>
                     <CardBody padding='0'>
-                        <Text
-                            fontFamily='Inter'
-                            fontSize='14px'
-                            fontWeight='normal'
-                            lineHeight='143%'
-                            color='#000000a3'
-                        >
-                            @bake_and_pie
-                        </Text>
+                        <Text sx={textStyles}>@bake_and_pie</Text>
                     </CardBody>
                 </Card>
             </Flex>
