@@ -4,6 +4,7 @@ import { ReactElement } from 'react';
 import avatar from '../../assets/images/avatar_header.svg';
 import {
     avatarBoxStyles,
+    avatarStyles,
     cardBodyStyles,
     cardHeaderStyles,
     headingStyles,
@@ -17,13 +18,7 @@ function UserProfile(): ReactElement {
         <>
             <Flex sx={userProfileWrapper}>
                 <Box sx={avatarBoxStyles}>
-                    <Avatar
-                        objectFit='cover'
-                        height='100%'
-                        width='100%'
-                        name='Екатерина Константинопольская'
-                        src={avatar}
-                    />
+                    <Avatar sx={avatarStyles} name='Екатерина Константинопольская' src={avatar} />
                 </Box>
                 <Card sx={userCard}>
                     <CardHeader sx={cardHeaderStyles}>

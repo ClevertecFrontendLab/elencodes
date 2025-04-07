@@ -11,6 +11,12 @@ export const avatarBoxStyles: SystemStyleObject = {
     width: '48px',
 };
 
+export const avatarStyles: SystemStyleObject = {
+    objectFit: 'cover',
+    height: '100%',
+    width: '100%',
+};
+
 export const userCard: SystemStyleObject = {
     bg: 'unset',
     shadow: 'unset',
