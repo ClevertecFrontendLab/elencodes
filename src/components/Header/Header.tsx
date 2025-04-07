@@ -1,27 +1,22 @@
-import { Flex } from '@chakra-ui/react';
+import { chakra, ChakraComponent, Flex } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 
 import BreadCrumb from '../BreadCrumb/BreadCrumb';
 import Logo from '../Logo/Logo';
 import UserProfile from '../UserProfile/UserProfile';
+import headerStyles from './Header.styles';
+
+const HeaderChakra: ChakraComponent<'header', object> = chakra('header');
 
 function Header(): ReactElement {
     return (
-        <Flex
-            as='header'
-            alignItems='center'
-            justifyContent='space-between'
-            paddingLeft='16px'
-            bgColor='#FFFFD3'
-            data-test-id='header'
-            paddingRight='56px'
-        >
+        <HeaderChakra sx={headerStyles.wrapper} data-test-id='header'>
             <Logo />
-            <Flex width='1105px' alignItems='center' justifyContent='space-between'>
+            <Flex sx={headerStyles.inner}>
                 <BreadCrumb />
                 <UserProfile />
             </Flex>
-        </Flex>
+        </HeaderChakra>
     );
 }
 
