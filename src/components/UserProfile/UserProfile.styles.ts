@@ -22,6 +22,10 @@ export const cardHeaderStyles: SystemStyleObject = {
     padding: '0',
 };
 
+export const cardBodyStyles: SystemStyleObject = {
+    padding: '0',
+};
+
 export const headingStyles: SystemStyleObject = {
     fontFamily: 'Inter',
     fontSize: '18px',
