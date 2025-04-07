@@ -15,7 +15,7 @@ const headerStyles: Record<'wrapper' | 'inner', SystemStyleObject> = {
         backgroundColor: '#FFFFD3',
     },
     inner: {
-        width: '1105px',
+        width: '328px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',

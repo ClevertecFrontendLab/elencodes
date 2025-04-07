@@ -2,7 +2,7 @@ import { SystemStyleObject } from '@chakra-ui/react';
 
 export const breadcrumbWrapperStyles: SystemStyleObject = {
     display: { base: 'none', lg: 'block' },
-    marginLeft: { lg: '120px' },
+    marginLeft: '0',
 };
 
 export const breadcrumbItemStyles: SystemStyleObject = {

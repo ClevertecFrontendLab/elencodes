@@ -11,11 +11,11 @@ const HeaderChakra: ChakraComponent<'header', object> = chakra('header');
 function Header(): ReactElement {
     return (
         <HeaderChakra sx={headerStyles.wrapper} data-test-id='header'>
-            <Logo />
             <Flex sx={headerStyles.inner}>
+                <Logo />
                 <BreadCrumb />
-                <UserProfile />
             </Flex>
+            <UserProfile />
         </HeaderChakra>
     );
 }
