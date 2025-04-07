@@ -1,14 +1,20 @@
-import { Flex, Image } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 
-import logo from '../../assets/icons/logo.svg';
-import logoName from '../../assets/icons/logo_name.svg';
+import LogoIcon from '../CustomIcons/LogoIcon';
+import LogoTitle from '../CustomIcons/LogoTitle';
+import logoStyles from './Logo.styles';
 
 function Logo(): ReactElement {
     return (
-        <Flex alignItems='center' width='135px' justifyContent='space-between'>
-            <Image src={logo} width='32px' alt='logo' />
-            <Image src={logoName} width='96px' alt='logo-name' />
+        <Flex sx={logoStyles}>
+            <LogoIcon sx={{ transform: 'translateY(-2px)' }} />
+            <LogoTitle
+                display={{
+                    base: 'none',
+                    sm: 'inline-block',
+                }}
+            />
         </Flex>
     );
 }
