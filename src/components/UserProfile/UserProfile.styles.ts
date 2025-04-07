@@ -1,9 +1,9 @@
 import { SystemStyleObject } from '@chakra-ui/react';
 
 export const userProfileWrapper: SystemStyleObject = {
+    display: { base: 'none', lg: 'flex' },
     padding: '16px 0',
-    width: '355px',
-    justifyContent: 'space-between',
+    gap: '12px',
 };
 
 export const userCard: SystemStyleObject = {
