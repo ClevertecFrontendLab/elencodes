@@ -4,6 +4,7 @@ import { ReactElement } from 'react';
 import avatar from '../../assets/images/avatar_header.svg';
 import {
     avatarBoxStyles,
+    cardHeaderStyles,
     headingStyles,
     textStyles,
     userCard,
@@ -24,7 +25,7 @@ function UserProfile(): ReactElement {
                     />
                 </Box>
                 <Card sx={userCard}>
-                    <CardHeader padding='0'>
+                    <CardHeader sx={cardHeaderStyles}>
                         <Heading as='h3' sx={headingStyles}>
                             Екатерина Константинопольская
                         </Heading>
