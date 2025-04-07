@@ -1,13 +1,13 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 
+import { breadcrumbItemStyles, breadcrumbWrapperStyles } from './BreadCrumb.style';
+
 function BreadCrumb(): ReactElement {
     return (
-        <Breadcrumb>
-            <BreadcrumbItem isCurrentPage>
-                <BreadcrumbLink fontFamily='Inter' fontSize='16px' fontWeight='normal'>
-                    Главная
-                </BreadcrumbLink>
+        <Breadcrumb sx={breadcrumbWrapperStyles}>
+            <BreadcrumbItem isCurrentPage sx={breadcrumbItemStyles}>
+                <BreadcrumbLink>Главная</BreadcrumbLink>
             </BreadcrumbItem>
         </Breadcrumb>
     );
