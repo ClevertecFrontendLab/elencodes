@@ -2,13 +2,19 @@ import { Avatar, Box, Card, CardBody, CardHeader, Flex, Heading, Text } from '@c
 import { ReactElement } from 'react';
 
 import avatar from '../../assets/images/avatar_header.svg';
-import { headingStyles, textStyles, userCard, userProfileWrapper } from './UserProfile.styles';
+import {
+    avatarBoxStyles,
+    headingStyles,
+    textStyles,
+    userCard,
+    userProfileWrapper,
+} from './UserProfile.styles';
 
 function UserProfile(): ReactElement {
     return (
         <>
             <Flex sx={userProfileWrapper}>
-                <Box height='48px' width='48px'>
+                <Box sx={avatarBoxStyles}>
                     <Avatar
                         objectFit='cover'
                         height='100%'

@@ -6,11 +6,20 @@ export const userProfileWrapper: SystemStyleObject = {
     gap: '12px',
 };
 
+export const avatarBoxStyles: SystemStyleObject = {
+    height: '48px',
+    width: '48px',
+};
+
 export const userCard: SystemStyleObject = {
     bg: 'unset',
     shadow: 'unset',
     borderRadius: 'unset',
     height: '48px',
+};
+
+export const cardHeaderStyles: SystemStyleObject = {
+    padding: '0',
 };
 
 export const headingStyles: SystemStyleObject = {
