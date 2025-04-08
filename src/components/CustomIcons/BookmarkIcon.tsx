@@ -1,7 +1,7 @@
 import { ComponentWithAs, createIcon, IconProps } from '@chakra-ui/react';
 
 const BookmarkIcon: ComponentWithAs<'svg', IconProps> = createIcon({
-    displayName: 'BurgerIcon',
+    displayName: 'BookmarkIcon',
     path: (
         <svg
             width='12'
