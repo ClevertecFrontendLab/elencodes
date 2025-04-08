@@ -1,6 +1,6 @@
 import { ComponentWithAs, createIcon, IconProps } from '@chakra-ui/react';
 
-const LogoTitle: ComponentWithAs<'svg', IconProps> = createIcon({
+const LogoNameIcon: ComponentWithAs<'svg', IconProps> = createIcon({
     displayName: 'LogoTitle',
     path: (
         <svg
@@ -47,4 +47,4 @@ const LogoTitle: ComponentWithAs<'svg', IconProps> = createIcon({
     },
 });
 
-export default LogoTitle;
+export default LogoNameIcon;
