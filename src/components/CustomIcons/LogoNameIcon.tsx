@@ -1,7 +1,7 @@
 import { ComponentWithAs, createIcon, IconProps } from '@chakra-ui/react';
 
 const LogoNameIcon: ComponentWithAs<'svg', IconProps> = createIcon({
-    displayName: 'LogoTitle',
+    displayName: 'LogoNameIcon',
     path: (
         <svg
             width='97'
