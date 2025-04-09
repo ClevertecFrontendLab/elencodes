@@ -1,4 +1,4 @@
-import '~/fonts.css';
+import '/src/styles/fonts.css';
 
 import { ChakraProvider } from '@chakra-ui/react';
 
