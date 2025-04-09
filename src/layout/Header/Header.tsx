@@ -11,7 +11,8 @@ import BreadCrumb from '../../components/BreadCrumb/BreadCrumb';
 import BurgerButton from '../../components/Buttons/BurgerButton/BurgerButton';
 import Logo from '../../components/Logo/Logo';
 import UserProfile from '../../components/UserProfile/UserProfile';
-import headerStyles from './Header.styles';
+import { headerStyles } from './Header.styles';
+import { ActionCounterWrapperStyles } from './Header.styles';
 
 const HeaderChakra: ChakraComponent<'header', object> = chakra('header');
 
@@ -25,7 +26,7 @@ function Header(): ReactElement {
                 <BreadCrumb />
             </Flex>
             <UserProfile />
-            <HStack px={{ base: '8px', sm: '12px' }} spacing={0}>
+            <HStack sx={ActionCounterWrapperStyles} px={{ base: '8px', sm: '12px' }} spacing={0}>
                 <ActionCounter
                     icon={BookmarkIcon}
                     countClick={185}

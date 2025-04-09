@@ -1,6 +1,6 @@
 import { SystemStyleObject } from '@chakra-ui/react';
 
-const headerStyles: Record<'wrapper' | 'inner', SystemStyleObject> = {
+export const headerStyles: Record<'wrapper' | 'inner', SystemStyleObject> = {
     wrapper: {
         position: 'sticky',
         top: 0,
@@ -22,4 +22,6 @@ const headerStyles: Record<'wrapper' | 'inner', SystemStyleObject> = {
     },
 };
 
-export default headerStyles;
+export const ActionCounterWrapperStyles: SystemStyleObject = {
+    display: { base: 'flex', lg: 'none' },
+};
