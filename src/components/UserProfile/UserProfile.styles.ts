@@ -34,16 +34,13 @@ export const cardBodyStyles: SystemStyleObject = {
 
 export const headingStyles: SystemStyleObject = {
     fontFamily: 'Inter',
-    fontSize: '18px',
+    fontSize: '18',
     fontWeight: 'medium',
     lineHeight: '156%',
-    color: '#000000',
+    color: 'black',
 };
 
 export const textStyles: SystemStyleObject = {
-    fontFamily: 'Inter',
-    fontSize: '14px',
-    fontWeight: 'normal',
     lineHeight: '143%',
-    color: '#000000a3',
+    color: 'blackAlpha.700',
 };

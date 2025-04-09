@@ -6,9 +6,6 @@ export const breadcrumbWrapperStyles: SystemStyleObject = {
 };
 
 export const breadcrumbItemStyles: SystemStyleObject = {
-    fontFamily: 'Inter',
-    fontSize: '16px',
-    fontWeight: 'normal',
     lineHeight: '150%',
-    color: '#000',
+    color: 'black',
 };

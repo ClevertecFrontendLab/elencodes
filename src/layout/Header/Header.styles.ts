@@ -9,10 +9,10 @@ export const headerStyles: Record<'wrapper' | 'inner', SystemStyleObject> = {
         justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
-        height: { base: '64px', md: '80px' },
+        height: { base: '64px', lg: '80px' },
         paddingLeft: { base: '16px', md: '20px' },
         paddingRight: { base: '16px', md: '56px' },
-        backgroundColor: '#FFFFD3',
+        backgroundColor: 'lime.50',
     },
     inner: {
         width: '328px',

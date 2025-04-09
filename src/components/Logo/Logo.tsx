@@ -12,7 +12,7 @@ function Logo(): ReactElement {
             <LogoNameIcon
                 display={{
                     base: 'none',
-                    sm: 'inline-block',
+                    md: 'inline-block',
                 }}
             />
         </Flex>
