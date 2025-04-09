@@ -1,8 +1,8 @@
 import { Flex } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 
-import LogoIcon from '../CustomIcons/LogoIcon';
-import LogoNameIcon from '../CustomIcons/LogoNameIcon';
+import LogoIcon from '../../icons/LogoIcons/LogoIcon';
+import LogoNameIcon from '../../icons/LogoIcons/LogoNameIcon';
 import logoStyles from './Logo.styles';
 
 function Logo(): ReactElement {

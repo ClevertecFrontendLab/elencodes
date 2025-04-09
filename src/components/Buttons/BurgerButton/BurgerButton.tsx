@@ -1,7 +1,7 @@
 import { IconButton } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 
-import BurgerIcon from '~/components/CustomIcons/BurgerIcon';
+import BurgerIcon from '~/icons/BurgerIcon';
 
 import { burgerButtonStyles } from './BurgerButton.styles';
 

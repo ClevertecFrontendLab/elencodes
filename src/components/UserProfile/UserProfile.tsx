@@ -1,7 +1,7 @@
 import { Avatar, Box, Card, CardBody, CardHeader, Flex, Heading, Text } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 
-import avatar from '../../assets/images/avatar_header.svg';
+import avatar from '../../assets/images/avatars/avatar_header.svg';
 import {
     avatarBoxStyles,
     avatarStyles,
