@@ -11,7 +11,14 @@ import { accordionButtonStyles } from './NavMenuItem.styles';
 import { accordionButtonTextStyles } from './NavMenuItem.styles';
 import { accordionListItemStyles } from './NavMenuItem.styles';
 
-export const NavMenuItem = ({ icon, title, listItems, linkTo = '/' }: NavMenuItemPropsType) => {
+export const NavMenuItem = ({
+    icon,
+    title,
+    listItems,
+    linkTo = '/',
+    index,
+    expandedIndex,
+}: NavMenuItemPropsType) => {
     const [selected, setSelected] = useState<null | number>(null);
 
     const location = useLocation();
@@ -21,6 +28,12 @@ export const NavMenuItem = ({ icon, title, listItems, linkTo = '/' }: NavMenuIte
             setSelected(null);
         }
     }, [location.pathname]);
+
+    useEffect(() => {
+        if (expandedIndex === index) {
+            setSelected(0);
+        }
+    }, [expandedIndex, index]);
 
     return (
         <>
@@ -40,11 +53,11 @@ export const NavMenuItem = ({ icon, title, listItems, linkTo = '/' }: NavMenuIte
                         </h3>
                         <AccordionPanel p={0}>
                             <UnorderedList ml={0}>
-                                {listItems.map((item, index) => (
+                                {listItems.map((item, itemIndex) => (
                                     <ListItem
-                                        key={index}
-                                        onClick={() => setSelected(index)}
-                                        {...(selected === index && { 'data-selected': true })}
+                                        key={itemIndex}
+                                        onClick={() => setSelected(itemIndex)}
+                                        {...(selected === itemIndex && { 'data-selected': true })}
                                         sx={accordionListItemStyles}
                                     >
                                         {item}
