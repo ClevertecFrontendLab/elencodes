@@ -1,12 +1,14 @@
-import { Spacer, VStack } from '@chakra-ui/react';
+import { Center, IconButton, Spacer, Text, VStack } from '@chakra-ui/react';
 
 import { ActionCounter } from '~/components/ActionCounter/ActionCounter';
-import { ActionRoundButton } from '~/components/Buttons/ActionRoundButton/ActionRoundButton';
 import BookmarkIcon from '~/icons/CounterIcons/BookmarkIcon';
 import FriendsIcon from '~/icons/CounterIcons/FriendsIcon';
 import ReactionIcon from '~/icons/CounterIcons/ReactionIcon';
-import AddRecipeIcon from '~/icons/SidebarIcons/AddRecipeIcon';
+import AddRecipeIcon from '~/icons/SidebarIcons/AddRecipeIcon.tsx';
 
+import { actionRoundWrapperStyles } from './SideBar.styles';
+import { actionRoundButtonStyles } from './SideBar.styles';
+import { actionRoundButtonTextStyles } from './SideBar.styles';
 import { SideBarActionCounterWrapperStyles } from './SideBar.styles';
 import { SideBarWrapperStyles } from './SideBar.styles';
 
@@ -18,10 +20,16 @@ export const SideBar = () => (
             <ActionCounter icon={ReactionIcon} countClick={587} spacing='8px' padding='8px 16px' />
         </VStack>
         <Spacer />
-        <ActionRoundButton
-            text='Записать рецепт'
-            icon={AddRecipeIcon}
-            ariaLabel='Записать рецепт'
-        />
+        <Center sx={actionRoundWrapperStyles}>
+            <IconButton
+                sx={actionRoundButtonStyles}
+                aria-label='Записать рецепт'
+                isRound={true}
+                icon={<AddRecipeIcon />}
+            ></IconButton>
+            <Text as='span' sx={actionRoundButtonTextStyles}>
+                Записать рецепт
+            </Text>
+        </Center>
     </VStack>
 );
