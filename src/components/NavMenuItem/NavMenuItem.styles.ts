@@ -27,6 +27,7 @@ export const accordionListItemStyles: SystemStyleObject = {
         w: '1px',
         bg: 'lime.300',
     },
+    lineHeight: '150%',
     cursor: 'pointer',
     _selected: {
         fontWeight: 'bold',
