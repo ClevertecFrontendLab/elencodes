@@ -10,7 +10,7 @@ export const NavMenuSideBarBoxStyles: SystemStyleObject = {
 };
 
 export const accordionStyles: SystemStyleObject = {
-    m: '34px 10px',
+    m: '34px 10px 10px 10px',
     flexGrow: 1,
     overflowY: 'auto',
     '&::-webkit-scrollbar': {
