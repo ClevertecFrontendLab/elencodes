@@ -65,6 +65,7 @@ const mainTheme: ThemeApp = extendTheme({
                 fontFamily: 'inter',
                 fontSize: '14',
                 fontWeight: 'normal',
+                color: 'black',
             },
             ':root': {
                 fontSynthesis: 'none',
