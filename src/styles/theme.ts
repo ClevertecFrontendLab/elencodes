@@ -100,6 +100,18 @@ const mainTheme: ThemeApp = extendTheme({
             },
         },
     },
+    components: {
+        Switch: {
+            baseStyle: {
+                track: {
+                    bg: 'blackAlpha.300',
+                    _checked: {
+                        bg: 'lime.700',
+                    },
+                },
+            },
+        },
+    },
 });
 
 export default mainTheme;
