@@ -1,7 +1,7 @@
 import { Box, Icon } from '@chakra-ui/icons';
 import { Flex } from '@chakra-ui/react';
 
-import LogOutIcon from '~/icons/Footer/LogOutIcon';
+import LogOutIcon from '~/icons/FooterIcons/LogOutIcon';
 
 import { NavMenuFooterBoxStyles } from './NavMenuFooter.style';
 import { NavMenuFooterTextVersionStyles } from './NavMenuFooter.style';
