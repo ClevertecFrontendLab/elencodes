@@ -11,9 +11,9 @@ import SecondCoursesIcon from '~/icons/NavMenuIcons/SecondCoursesIcon';
 import SnacksIcon from '~/icons/NavMenuIcons/SnacksIcon';
 import TherapeuticNutritionIcon from '~/icons/NavMenuIcons/TherapeuticNutritionIcon';
 import VeganIcon from '~/icons/NavMenuIcons/VeganIcon';
-import { navMenuItem } from '~/types/navMenuItemType';
+import { NavMenuItemPropsType } from '~/types/NavMenuItemType';
 
-export const navMenuItemsData: navMenuItem[] = [
+export const navMenuItemsData: NavMenuItemPropsType[] = [
     {
         id: 1,
         title: 'Салаты',
