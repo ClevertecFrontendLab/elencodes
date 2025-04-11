@@ -4,7 +4,7 @@ export const HeaderPageContentStyles: SystemStyleObject = {
     flexDirection: 'column',
     alignItems: 'center',
     pt: { base: '16px', lg: '32px' },
-    mb: { base: '16px', lg: '32px' },
+    mb: { base: '32px', lg: '56px' },
 };
 
 export const PageTitleStyles: SystemStyleObject = {
@@ -46,7 +46,7 @@ export const SearchingInputBoxStyles: SystemStyleObject = {
 export const SearchingInputStyles: SystemStyleObject = {
     width: '100%',
     height: '100%',
-    fontSize: '18',
+    fontSize: { base: '14', lg: '18' },
     border: '1px solid rgba(0, 0, 0, 0.48)',
     _placeholder: { color: 'lime.800' },
 };
