@@ -184,7 +184,7 @@ export const navMenuItemsData: NavMenuItemDataType[] = [
     },
     {
         id: 13,
-        title: 'Домашние заготовки',
+        title: 'Заготовки',
         icon: PreparationsIcon,
         listItems: [
             'Мясные заготовки',
