@@ -3,11 +3,11 @@ import { Flex } from '@chakra-ui/react';
 
 import LogOutIcon from '~/icons/FooterIcons/LogOutIcon';
 
-import { NavMenuFooterBoxStyles } from './NavMenuFooter.style';
-import { NavMenuFooterTextVersionStyles } from './NavMenuFooter.style';
-import { NavMenuFooterTextStyles } from './NavMenuFooter.style';
-import { LogOutBoxStyles } from './NavMenuFooter.style';
-import { LogOutTextStyles } from './NavMenuFooter.style';
+import { NavMenuFooterBoxStyles } from './NavMenuFooter.styles';
+import { NavMenuFooterTextVersionStyles } from './NavMenuFooter.styles';
+import { NavMenuFooterTextStyles } from './NavMenuFooter.styles';
+import { LogOutBoxStyles } from './NavMenuFooter.styles';
+import { LogOutTextStyles } from './NavMenuFooter.styles';
 
 export const NavMenuFooter = () => (
     <Box as='footer' sx={NavMenuFooterBoxStyles}>
