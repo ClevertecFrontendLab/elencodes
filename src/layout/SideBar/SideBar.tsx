@@ -15,9 +15,27 @@ import { SideBarWrapperStyles } from './SideBar.styles';
 export const SideBar = () => (
     <VStack sx={SideBarWrapperStyles}>
         <VStack sx={SideBarActionCounterWrapperStyles}>
-            <ActionCounter icon={BookmarkIcon} countClick={185} spacing='8px' padding='8px 16px' />
-            <ActionCounter icon={FriendsIcon} countClick={589} spacing='8px' padding='8px 16px' />
-            <ActionCounter icon={ReactionIcon} countClick={587} spacing='8px' padding='8px 16px' />
+            <ActionCounter
+                icon={BookmarkIcon}
+                countClick={185}
+                spacing='8px'
+                padding='8px 16px'
+                fontSize='16'
+            />
+            <ActionCounter
+                icon={FriendsIcon}
+                countClick={589}
+                spacing='8px'
+                padding='8px 16px'
+                fontSize='16'
+            />
+            <ActionCounter
+                icon={ReactionIcon}
+                countClick={587}
+                spacing='8px'
+                padding='8px 16px'
+                fontSize='16'
+            />
         </VStack>
         <Spacer />
         <Center sx={actionRoundWrapperStyles}>
