@@ -15,8 +15,8 @@ const FriendsIcon: ComponentWithAs<'svg', IconProps> = createIcon({
                 fill='black'
             />
             <path
-                fill-rule='evenodd'
-                clip-rule='evenodd'
+                fillRule='evenodd'
+                clipRule='evenodd'
                 d='M5.216 12C5.06775 11.6878 4.99382 11.3455 5 11C5 9.645 5.68 8.25 6.936 7.28C6.30909 7.08684 5.65595 6.99237 5 7C1 7 0 10 0 11C0 12 1 12 1 12H5.216Z'
                 fill='black'
             />

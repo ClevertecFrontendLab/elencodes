@@ -11,8 +11,8 @@ const BookmarkIcon: ComponentWithAs<'svg', IconProps> = createIcon({
             xmlns='http://www.w3.org/2000/svg'
         >
             <path
-                fill-rule='evenodd'
-                clip-rule='evenodd'
+                fillRule='evenodd'
+                clipRule='evenodd'
                 d='M5.9998 4.41001C7.3868 2.98501 10.8538 5.48001 5.9998 8.68701C1.1458 5.48001 4.6128 2.98601 5.9998 4.41201V4.41001Z'
                 fill='black'
             />
