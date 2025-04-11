@@ -1,7 +1,7 @@
 import { SystemStyleObject } from '@chakra-ui/react';
 
 export const accordionButtonStyles: SystemStyleObject = {
-    p: '12px 8px',
+    p: '12px 4px',
     fontSize: '16',
     fontWeight: 'medium',
     lineHeight: '150%',
