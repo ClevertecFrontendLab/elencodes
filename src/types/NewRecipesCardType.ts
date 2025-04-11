@@ -3,8 +3,7 @@ import { ComponentWithAs } from '@chakra-ui/react';
 
 import { ActionCounterPropsType } from './ActionCounterType';
 
-export type NewRecipesCardDataType = {
-    id: number;
+export type NewRecipesCardType = {
     img: string;
     altImg: string;
     title: string;
@@ -13,4 +12,8 @@ export type NewRecipesCardDataType = {
     tagIcon: ComponentWithAs<'svg', IconProps>;
     tagTitle: string;
     bgColorTag: string;
+};
+
+export type NewRecipesCardDataType = NewRecipesCardType & {
+    id: number;
 };
