@@ -3,6 +3,7 @@ import '/src/styles/fonts.css';
 import { Show } from '@chakra-ui/react';
 import { ChakraProvider } from '@chakra-ui/react';
 
+import { Footer } from '~/layout/Footer/Footer';
 import Header from '~/layout/Header/Header';
 import { Main } from '~/layout/Main/Main';
 import { NavMenu } from '~/layout/NavMenu/NavMenu';
@@ -16,6 +17,9 @@ export const App: React.FC = () => (
         <Show above='lg'>
             <NavMenu />
             <SideBar />
+        </Show>
+        <Show below='lg'>
+            <Footer />
         </Show>
     </ChakraProvider>
 );
