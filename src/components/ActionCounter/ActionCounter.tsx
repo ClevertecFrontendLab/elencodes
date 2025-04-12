@@ -3,7 +3,7 @@ import { HStack, Text } from '@chakra-ui/react';
 
 import { ActionCounterPropsType } from '~/types/ActionCounterType';
 
-import { actionCounterTextStyles } from './ActionCounter.style';
+import { actionCounterTextStyles } from './ActionCounter.styles';
 
 export const ActionCounter = ({
     countClick,
