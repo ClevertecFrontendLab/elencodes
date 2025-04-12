@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import { TitleSectionWithButton } from '~/components/Buttons/TitleSectionWithButton/TitleSectionWithButton';
 import { SearchingContent } from '~/components/SearchingContent/SearchingContent';
 import { theJuciestCardsData } from '~/data/homePage/theJuciestCardsData';
+import { CulinaryBlogs } from '~/layout/Main/Sections/culinaryBlogs/CulinaryBlogs';
 import { NewRecipesSection } from '~/layout/Main/Sections/newRecipes/NewRecipesSection';
 import { MainSection } from '~/layout/Main/Sections/theJuciest/MainSection';
 
@@ -27,6 +28,7 @@ export const HomePage = () => {
                 onClick={showTheJuciest}
                 dataTestId='juiciest-link-mobile'
             />
+            <CulinaryBlogs />
         </>
     );
 };
