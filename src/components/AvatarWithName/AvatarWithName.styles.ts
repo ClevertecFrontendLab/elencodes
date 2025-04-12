@@ -10,13 +10,6 @@ export const avatarStyles: SystemStyleObject = {
     width: { base: '32px', lg: '48px' },
 };
 
-export const userCard: SystemStyleObject = {
-    bg: 'unset',
-    shadow: 'unset',
-    borderRadius: 'unset',
-    height: '48px',
-};
-
 export const headingStyles: SystemStyleObject = {
     fontFamily: 'Inter',
     fontSize: { base: '16', lg: '18' },
