@@ -11,7 +11,7 @@ export const headerStyles: Record<'wrapper' | 'inner', SystemStyleObject> = {
         width: '100%',
         height: { base: '64px', lg: '80px' },
         paddingLeft: { base: '16px', md: '20px' },
-        paddingRight: { base: '16px', md: '56px' },
+        paddingRight: { base: '16px', md: '56px', lg: '80px' },
         backgroundColor: 'lime.50',
     },
     inner: {
