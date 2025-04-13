@@ -1,4 +1,4 @@
-import BookmarkIcon from '~/icons/CounterIcons/BookmarkIcon';
+import { BookmarkIcon } from '~/icons/CounterIcons/BookmarkIcon';
 import ReactionIcon from '~/icons/CounterIcons/ReactionIcon';
 import GrilsIcon from '~/icons/NavMenuIcons/GrilsIcon';
 import KidsCoursesIcon from '~/icons/NavMenuIcons/KidsCoursesIcon';

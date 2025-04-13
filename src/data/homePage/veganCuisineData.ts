@@ -1,4 +1,4 @@
-import BookmarkIcon from '~/icons/CounterIcons/BookmarkIcon';
+import { BookmarkIcon } from '~/icons/CounterIcons/BookmarkIcon';
 import ReactionIcon from '~/icons/CounterIcons/ReactionIcon';
 import SecondCoursesIcon from '~/icons/NavMenuIcons/SecondCoursesIcon';
 import { FirstCardsDataType } from '~/types/FirstCardsDataType';

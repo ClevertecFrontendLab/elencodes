@@ -1,7 +1,7 @@
 import { Center, IconButton, Spacer, Text, VStack } from '@chakra-ui/react';
 
 import { ActionCounter } from '~/components/ActionCounter/ActionCounter';
-import BookmarkIcon from '~/icons/CounterIcons/BookmarkIcon';
+import { BookmarkIcon } from '~/icons/CounterIcons/BookmarkIcon';
 import FriendsIcon from '~/icons/CounterIcons/FriendsIcon';
 import ReactionIcon from '~/icons/CounterIcons/ReactionIcon';
 import AddRecipeIcon from '~/icons/SidebarIcons/AddRecipeIcon.tsx';
