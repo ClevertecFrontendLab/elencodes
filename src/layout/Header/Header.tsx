@@ -1,4 +1,4 @@
-import { chakra, ChakraComponent, Flex, HStack, Show, Spacer } from '@chakra-ui/react';
+import { Flex, HStack, Show, Spacer } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 import { NavLink } from 'react-router';
 
@@ -15,11 +15,9 @@ import Logo from '../../components/Logo/Logo';
 import { headerStyles } from './Header.styles';
 import { ActionCounterWrapperStyles } from './Header.styles';
 
-const HeaderChakra: ChakraComponent<'header', object> = chakra('header');
-
 function Header(): ReactElement {
     return (
-        <HeaderChakra sx={headerStyles.wrapper} data-test-id='header'>
+        <Flex sx={headerStyles.wrapper} data-test-id='header'>
             <Flex sx={headerStyles.inner}>
                 <NavLink to='/'>
                     <Logo />
@@ -57,7 +55,7 @@ function Header(): ReactElement {
                 />
             </HStack>
             <BurgerButton />
-        </HeaderChakra>
+        </Flex>
     );
 }
 
