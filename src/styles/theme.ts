@@ -4,11 +4,11 @@ type ThemeApp = ReturnType<typeof extendTheme>;
 
 const breakpoints = {
     base: '0px',
-    sm: '360px',
-    md: '768px',
-    lg: '1200px',
-    xl: '1440px',
-    xxl: '1920px',
+    sm: '359px',
+    md: '767px',
+    lg: '1199px',
+    xl: '1439px',
+    xxl: '1919px',
 };
 
 const fonts = {
