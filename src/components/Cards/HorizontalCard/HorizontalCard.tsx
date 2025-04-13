@@ -33,7 +33,7 @@ export const HorizontalCard = ({
             <Image src={img} alt={altImg} sx={horizontalCardImgStyles} />
         </Box>
         <CardBody sx={horizontalCardBodyStyles}>
-            <Stack spacing={{ base: 2, lg: 7, xxl: 8 }}>
+            <Stack spacing={{ base: 3, lg: 7, xxl: 8 }}>
                 <Flex sx={horizontalCardHeaderStyles}>
                     <MenuItemTag icon={tagIcon} title={tagTitle} bgColor={bgColorTag} />
                     <Flex sx={actionCounterBox}>
