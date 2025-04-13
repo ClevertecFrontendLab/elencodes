@@ -1,5 +1,5 @@
-import { BookmarkIcon } from '~/icons/CounterIcons/BookmarkIcon';
-import ReactionIcon from '~/icons/CounterIcons/ReactionIcon';
+import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
+import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
 import NationalIcon from '~/icons/NavMenuIcons/NationalIcon';
 import SecondCoursesIcon from '~/icons/NavMenuIcons/SecondCoursesIcon';
 import { MainSectionDataType } from '~/types/HorizontalCardType';

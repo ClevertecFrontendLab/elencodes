@@ -1,5 +1,5 @@
-import { BookmarkIcon } from '~/icons/CounterIcons/BookmarkIcon';
-import ReactionIcon from '~/icons/CounterIcons/ReactionIcon';
+import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
+import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
 import DessertsIcon from '~/icons/NavMenuIcons/DessertsIcon';
 import FirstCoursesIcon from '~/icons/NavMenuIcons/FirstCoursesIcon';
 import SaladsIcon from '~/icons/NavMenuIcons/SaladsIcon';

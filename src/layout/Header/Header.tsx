@@ -4,9 +4,9 @@ import { NavLink } from 'react-router';
 import { ActionCounter } from '~/components/ActionCounter/ActionCounter';
 import { AvatarWithName } from '~/components/AvatarWithName/AvatarWithName';
 import { BreadCrumbs } from '~/components/BreadCrumbs/BreadCrumbs';
-import { BookmarkIcon } from '~/icons/CounterIcons/BookmarkIcon';
-import FriendsIcon from '~/icons/CounterIcons/FriendsIcon';
-import ReactionIcon from '~/icons/CounterIcons/ReactionIcon';
+import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
+import FriendsIcon from '~/icons/counterIcons/FriendsIcon';
+import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
 
 import avatar from '../../assets/images/avatars/avatar_header.svg';
 import BurgerButton from '../../components/Buttons/BurgerButton/BurgerButton';
