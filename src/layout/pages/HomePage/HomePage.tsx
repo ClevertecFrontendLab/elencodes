@@ -7,8 +7,8 @@ import { veganCuisineData } from '~/data/homePage/veganCuisineData';
 import { veganCuisineDataShort } from '~/data/homePage/veganCuisineDataShort';
 import { CulinaryBlogs } from '~/layout/Main/Sections/culinaryBlogs/CulinaryBlogs';
 import { LastSection } from '~/layout/Main/Sections/lastSection/LastSection';
+import { MainSection } from '~/layout/Main/Sections/mainSection/MainSection';
 import { NewRecipesSection } from '~/layout/Main/Sections/newRecipes/NewRecipesSection';
-import { MainSection } from '~/layout/Main/Sections/theJuciest/MainSection';
 
 export const HomePage = () => {
     const navigate = useNavigate();

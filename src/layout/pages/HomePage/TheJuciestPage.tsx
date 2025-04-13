@@ -3,7 +3,7 @@ import { veganCuisineData } from '~/data/homePage/veganCuisineData.ts';
 import { veganCuisineDataShort } from '~/data/homePage/veganCuisineDataShort.ts';
 import { theJuciestPageMainCardsData } from '~/data/theJuciestPage/theJuciestPageMainCardsData.ts';
 import { LastSection } from '~/layout/Main/Sections/lastSection/LastSection';
-import { MainSection } from '~/layout/Main/Sections/theJuciest/MainSection';
+import { MainSection } from '~/layout/Main/Sections/mainSection/MainSection';
 
 export const TheJuciestPage = () => (
     <>
