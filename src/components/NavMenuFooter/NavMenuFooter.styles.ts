@@ -16,8 +16,13 @@ export const NavMenuFooterTextVersionStyles: SystemStyleObject = {
 
 export const NavMenuFooterTextStyles: SystemStyleObject = {
     display: 'block',
-    m: '16px 0',
+    margin: '16px 0 0 0',
     pr: '20px',
+    color: 'blackAlpha.700',
+};
+
+export const NavMenuFooterTextCopyStyles: SystemStyleObject = {
+    margin: '0 0 16px 0',
     color: 'blackAlpha.700',
 };
 

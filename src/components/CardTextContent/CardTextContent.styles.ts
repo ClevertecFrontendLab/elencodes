@@ -2,7 +2,7 @@ import { SystemStyleObject } from '@chakra-ui/react';
 
 export const cardContentTitleStyles: SystemStyleObject = {
     fontSize: { base: '16', lg: '18', xxl: '20' },
-    fontWeight: 'semibold',
+    fontWeight: 'medium',
     lineHeight: { base: '150%', lg: '156%', xxl: '140%' },
 };
 
