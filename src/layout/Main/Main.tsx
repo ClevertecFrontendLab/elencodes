@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router';
 
 import { HomePage } from '../pages/HomePage';
 import { TheJuciestPage } from '../pages/TheJuciestPage';
+import { VeganCuisinePage } from '../pages/VeganCuisinePage';
 import { mainContainerStyles } from './Main.style';
 
 export const Main = () => (
@@ -12,6 +13,7 @@ export const Main = () => (
             <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='juciest' element={<TheJuciestPage />} />
+                <Route path='vegan' element={<VeganCuisinePage />} />
             </Routes>
         </Container>
     </Box>
