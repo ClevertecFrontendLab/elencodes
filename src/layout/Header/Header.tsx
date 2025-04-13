@@ -11,8 +11,7 @@ import ReactionIcon from '~/icons/CounterIcons/ReactionIcon';
 import avatar from '../../assets/images/avatars/avatar_header.svg';
 import BurgerButton from '../../components/Buttons/BurgerButton/BurgerButton';
 import Logo from '../../components/Logo/Logo';
-import { headerStyles } from './Header.styles';
-import { ActionCounterWrapperStyles } from './Header.styles';
+import { ActionCounterWrapperStyles, headerStyles } from './Header.styles';
 
 export const Header = () => (
     <Flex sx={headerStyles.wrapper} data-test-id='header'>
