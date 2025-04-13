@@ -1,4 +1,4 @@
-import { chakra, ChakraComponent, Flex, HStack, Show } from '@chakra-ui/react';
+import { chakra, ChakraComponent, Flex, HStack, Show, Spacer } from '@chakra-ui/react';
 import { ReactElement } from 'react';
 import { NavLink } from 'react-router';
 
@@ -28,6 +28,7 @@ function Header(): ReactElement {
                     <BreadCrumbs />
                 </Show>
             </Flex>
+            <Spacer />
             <Show above='lg'>
                 <AvatarWithName
                     name='Екатерина Константинопольская'
