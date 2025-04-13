@@ -1,5 +1,4 @@
 import { Flex, HStack, Show, Spacer } from '@chakra-ui/react';
-import { ReactElement } from 'react';
 import { NavLink } from 'react-router';
 
 import { ActionCounter } from '~/components/ActionCounter/ActionCounter';
@@ -15,48 +14,29 @@ import Logo from '../../components/Logo/Logo';
 import { headerStyles } from './Header.styles';
 import { ActionCounterWrapperStyles } from './Header.styles';
 
-function Header(): ReactElement {
-    return (
-        <Flex sx={headerStyles.wrapper} data-test-id='header'>
-            <Flex sx={headerStyles.inner}>
-                <NavLink to='/'>
-                    <Logo />
-                </NavLink>
-                <Show above='lg'>
-                    <BreadCrumbs />
-                </Show>
-            </Flex>
-            <Spacer />
+export const Header = () => (
+    <Flex sx={headerStyles.wrapper} data-test-id='header'>
+        <Flex sx={headerStyles.inner}>
+            <NavLink to='/'>
+                <Logo />
+            </NavLink>
             <Show above='lg'>
-                <AvatarWithName
-                    name='Екатерина Константинопольская'
-                    login='@bake_and_pie'
-                    src={avatar}
-                />
+                <BreadCrumbs />
             </Show>
-            <HStack sx={ActionCounterWrapperStyles} px={{ base: '8px', sm: '12px' }} spacing={0}>
-                <ActionCounter
-                    icon={BookmarkIcon}
-                    countClick={185}
-                    spacing='6px'
-                    padding='4px 8px'
-                />
-                <ActionCounter
-                    icon={FriendsIcon}
-                    countClick={589}
-                    spacing='6px'
-                    padding='4px 8px'
-                />
-                <ActionCounter
-                    icon={ReactionIcon}
-                    countClick={587}
-                    spacing='6px'
-                    padding='4px 8px'
-                />
-            </HStack>
-            <BurgerButton />
         </Flex>
-    );
-}
-
-export default Header;
+        <Spacer />
+        <Show above='lg'>
+            <AvatarWithName
+                name='Екатерина Константинопольская'
+                login='@bake_and_pie'
+                src={avatar}
+            />
+        </Show>
+        <HStack sx={ActionCounterWrapperStyles} px={{ base: '8px', sm: '12px' }} spacing={0}>
+            <ActionCounter icon={BookmarkIcon} countClick={185} spacing='6px' padding='4px 8px' />
+            <ActionCounter icon={FriendsIcon} countClick={589} spacing='6px' padding='4px 8px' />
+            <ActionCounter icon={ReactionIcon} countClick={587} spacing='6px' padding='4px 8px' />
+        </HStack>
+        <BurgerButton />
+    </Flex>
+);
