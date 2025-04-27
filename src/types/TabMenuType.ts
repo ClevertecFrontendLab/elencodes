@@ -1,3 +1,5 @@
+import { SubcategoryType } from './recipeType';
+
 export type TabMenuPropsType = {
-    tabsList: string[];
+    subcategories: SubcategoryType[];
 };
