@@ -1,31 +1,51 @@
 import { Box, Show } from '@chakra-ui/icons';
 import { Heading, Text } from '@chakra-ui/react';
 
-import { CardTextContentType } from '~/types/CardTextContentType';
+import { selectFilters } from '~/model/selectors.ts';
+import { useAppSelector } from '~/store/hooks.ts';
 
-import { cardContentTitleStyles } from './CardTextContent.styles';
-import { cardContentTextStyles } from './CardTextContent.styles';
+import { highlightText } from '../utils/text';
+import { cardContentTextStyles, cardContentTitleStyles } from './CardTextContent.styles';
+
+type Props = {
+    title: string;
+    description: string;
+    showTextAbove?: string;
+    mobileH?: string;
+    linesTitleOnMobile?: number;
+    isMainCard?: boolean;
+};
 
 export const CardTextContent = ({
     title,
-    text,
+    description,
     showTextAbove = 'lg',
     mobileH = '48px',
     linesTitleOnMobile = 2,
-}: CardTextContentType) => (
-    <Box overflow='hidden' h={{ base: mobileH, lg: '100px' }}>
-        <Heading
-            as='h3'
-            noOfLines={{ base: linesTitleOnMobile, lg: 1 }}
-            wordBreak={{ base: 'normal', lg: 'break-all' }}
-            sx={cardContentTitleStyles}
-        >
-            {title}
-        </Heading>
-        <Show above={showTextAbove}>
-            <Text noOfLines={3} sx={cardContentTextStyles}>
-                {text}
-            </Text>
-        </Show>
-    </Box>
-);
+    isMainCard = true,
+}: Props) => {
+    const filter = useAppSelector(selectFilters);
+    const titleWithHighlightedText = highlightText(title, filter.searchQuery);
+
+    return (
+        <Box overflow='hidden' minH={{ base: mobileH, xl: '100px' }}>
+            <Heading
+                as='h3'
+                sx={cardContentTitleStyles}
+                noOfLines={{ base: linesTitleOnMobile, xl: 1 }}
+                wordBreak={{ base: 'normal', xl: 'break-all' }}
+            >
+                {isMainCard && filter.isSearchModeOnPage ? (
+                    <>{titleWithHighlightedText}</>
+                ) : (
+                    <>{title}</>
+                )}
+            </Heading>
+            <Show above={showTextAbove}>
+                <Text fontSize='sm' sx={cardContentTextStyles} noOfLines={3}>
+                    {description}
+                </Text>
+            </Show>
+        </Box>
+    );
+};
