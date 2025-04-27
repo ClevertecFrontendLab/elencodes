@@ -1,7 +1,8 @@
 export type CardTextContentType = {
     title: string;
-    text: string;
+    description: string;
     showTextAbove?: string;
     mobileH?: string;
     linesTitleOnMobile?: number;
+    isMainCard?: boolean;
 };

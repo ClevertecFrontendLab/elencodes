@@ -1,14 +1,11 @@
-import { IconProps } from '@chakra-ui/icons';
-import { ComponentWithAs } from '@chakra-ui/react';
-
 import { ActionCounterPropsType } from './ActionCounterType';
+import { CategoryType } from './recipeType';
 
 export type FirstCardsDataType = {
     id: number;
     title: string;
-    text: string;
+    description: string;
     iconCounters: ActionCounterPropsType[];
-    tagIcon: ComponentWithAs<'svg', IconProps>;
-    tagTitle: string;
+    category: CategoryType;
     bgColorTag: string;
 };
