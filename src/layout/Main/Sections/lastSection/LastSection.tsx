@@ -17,7 +17,7 @@ import {
 
 export const LastSection = ({
     title,
-    text,
+    description,
     firstCardsData,
     secondCardsData,
 }: LastSectionPropsType) => (
@@ -26,7 +26,7 @@ export const LastSection = ({
             <Box pr={2}>
                 <SectionTitle title={title} />
             </Box>
-            <Text sx={lastSectionSubtitleStyles}>{text}</Text>
+            <Text sx={lastSectionSubtitleStyles}>{description}</Text>
         </Grid>
         <Grid sx={lastSectionGridCardsStyles}>
             <Grid sx={lastSectionVeganCardBoxStyles}>
