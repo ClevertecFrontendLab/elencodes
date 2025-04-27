@@ -16,6 +16,7 @@ export const Footer = () => (
         right={0}
         zIndex={10}
         sx={footerGridContainerStyles}
+        display={{ base: 'flex', xl: 'none' }}
     >
         {footerItems.map((item) => (
             <FooterItem key={item.id} text={item.text} isActive={item.isActive}>
