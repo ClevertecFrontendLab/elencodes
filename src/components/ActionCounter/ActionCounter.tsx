@@ -11,9 +11,10 @@ export const ActionCounter = ({
     spacing,
     padding,
     fontSize = 'xs',
+    boxSize,
 }: ActionCounterPropsType) => (
     <HStack spacing={spacing} p={padding}>
-        <Icon as={icon} />
+        <Icon as={icon} boxSize={boxSize} />
         <Text as='span' fontSize={fontSize} sx={actionCounterTextStyles}>
             {countClick}
         </Text>
