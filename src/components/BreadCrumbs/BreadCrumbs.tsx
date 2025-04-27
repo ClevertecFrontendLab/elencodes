@@ -1,45 +1,97 @@
 import { BreadcrumbLink, ChevronRightIcon } from '@chakra-ui/icons';
-import { Breadcrumb, BreadcrumbItem } from '@chakra-ui/react';
+import { Box, Breadcrumb, BreadcrumbItem } from '@chakra-ui/react';
 import { Link, useLocation } from 'react-router';
 
-import { useTabContext } from '~/context/useTabContext';
+import { selectAllRecipes, selectCategories } from '~/model/selectors.ts';
+import { useAppSelector } from '~/store/hooks.ts';
 
-import { breadcrumbWrapperStyles } from './BreadCrumbs.style';
+type Props = {
+    onBreadcrumbItemClick?: () => void;
+};
 
-export const BreadCrumbs = () => {
-    const { tabTitle } = useTabContext();
+export const BreadCrumbs = ({ onBreadcrumbItemClick }: Props) => {
+    const categories = useAppSelector(selectCategories);
+    const recipes = useAppSelector(selectAllRecipes);
     const location = useLocation();
-    const pathnames = location.pathname.split('/').filter(Boolean);
-
+    const pathNames = location.pathname.split('/').filter(Boolean);
     const isHomePage = location.pathname === '/';
 
-    const PATH_TRANSLATIONS: Record<string, string> = {
-        vegan: 'Веганская кухня',
-        juciest: 'Самое сочное',
+    const getDisplayName = (pathSegment: string, index: number) => {
+        if (index === 0) {
+            if (pathSegment === 'the-juiciest') return 'Самое сочное';
+            const category = categories.find((cat) => cat.nameEn === pathSegment);
+            return category?.name || pathSegment.split('-').join(' ');
+        }
+
+        if (index === 1) {
+            const category = categories.find((cat) => cat.nameEn === pathNames[0]);
+            if (category) {
+                const subcategory = category.subcategories.find(
+                    (sub) => sub.nameEn === pathSegment,
+                );
+                return subcategory?.name || pathSegment.split('-').join(' ');
+            }
+        }
+
+        if (index === 2) {
+            const recipe = recipes.find((rec) => rec.id === pathSegment);
+            return recipe?.title || pathSegment.split('-').join(' ');
+        }
+
+        return pathSegment.split('-').join(' ');
     };
 
     return (
-        <Breadcrumb
-            spacing='2px'
-            separator={<ChevronRightIcon color='gray.800' />}
-            sx={breadcrumbWrapperStyles}
+        <Box
+            width='100%'
+            css={{
+                '& .chakra-breadcrumb__list': {
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    alignItems: 'center',
+                    rowGap: '4px',
+                },
+            }}
         >
-            <BreadcrumbItem>
-                <BreadcrumbLink as={Link} to='/' color={isHomePage ? 'black' : 'blackAlpha.700'}>
-                    Главная
-                </BreadcrumbLink>
-            </BreadcrumbItem>
+            <Breadcrumb
+                data-test-id='breadcrumbs'
+                spacing='0'
+                separator={<ChevronRightIcon color='gray.800' />}
+                fontSize='16px'
+                display='flex'
+                flexWrap='wrap'
+                alignItems='center'
+                ml={{ base: '0', lg: '128px' }}
+            >
+                <BreadcrumbItem onClick={onBreadcrumbItemClick}>
+                    <BreadcrumbLink
+                        as={Link}
+                        to='/'
+                        color={isHomePage ? 'black' : 'blackAlpha.700'}
+                        display='flex'
+                        flexShrink={0}
+                    >
+                        Главная
+                    </BreadcrumbLink>
+                </BreadcrumbItem>
 
-            {!isHomePage &&
-                pathnames.map((pathSegment, index) => {
-                    const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
-                    const isLast = index === pathnames.length - 1;
-                    const displayName =
-                        PATH_TRANSLATIONS[pathSegment] || pathSegment.split('-').join(' ');
+                {pathNames.map((pathSegment, index) => {
+                    const category = categories.find((cat) => cat.nameEn === pathSegment);
+                    const routeTo =
+                        index !== 0
+                            ? `/${pathNames.slice(0, index + 1).join('/')}`
+                            : `/${pathNames[0]}/${category?.subcategories[0].nameEn}`;
+                    const isLast = index === pathNames.length - 1;
+                    const displayName = getDisplayName(pathSegment, index);
 
                     return (
-                        <BreadcrumbItem key={pathSegment} isCurrentPage={isLast && !tabTitle}>
-                            {isLast && !tabTitle ? (
+                        <BreadcrumbItem
+                            onClick={onBreadcrumbItemClick}
+                            key={`${pathSegment}-${index}`}
+                            isCurrentPage={isLast}
+                            alignItems='center'
+                        >
+                            {isLast ? (
                                 <BreadcrumbLink as='span' color='black'>
                                     {displayName}
                                 </BreadcrumbLink>
@@ -51,17 +103,7 @@ export const BreadCrumbs = () => {
                         </BreadcrumbItem>
                     );
                 })}
-
-            {/* Добавляем таб только если он отличается от предыдущей крошки */}
-            {!isHomePage &&
-                tabTitle &&
-                tabTitle !== PATH_TRANSLATIONS[pathnames[pathnames.length - 1]] && (
-                    <BreadcrumbItem isCurrentPage>
-                        <BreadcrumbLink as='span' color='black'>
-                            {tabTitle}
-                        </BreadcrumbLink>
-                    </BreadcrumbItem>
-                )}
-        </Breadcrumb>
+            </Breadcrumb>
+        </Box>
     );
 };
