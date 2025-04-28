@@ -2,9 +2,10 @@ import { Box } from '@chakra-ui/icons';
 import { Container } from '@chakra-ui/react';
 import { Route, Routes } from 'react-router';
 
+import { CategoryPage } from '../pages/CategoryPage';
 import { HomePage } from '../pages/HomePage';
+import { RecipesPage } from '../pages/RecipesPage';
 import { TheJuciestPage } from '../pages/TheJuciestPage';
-import { VeganCuisinePage } from '../pages/VeganCuisinePage';
 import { mainContainerStyles } from './Main.style';
 
 export const Main = () => (
@@ -12,8 +13,11 @@ export const Main = () => (
         <Container sx={mainContainerStyles}>
             <Routes>
                 <Route path='/' element={<HomePage />} />
-                <Route path='juciest' element={<TheJuciestPage />} />
-                <Route path='vegan' element={<VeganCuisinePage />} />
+                <Route path=':category' element={<CategoryPage />}>
+                    <Route path=':subcategory' element={<CategoryPage />} />
+                </Route>
+                <Route path=':category/:subcategory/:id' element={<RecipesPage />} />
+                <Route path='the-juiciest' element={<TheJuciestPage />} />
             </Routes>
         </Container>
     </Box>

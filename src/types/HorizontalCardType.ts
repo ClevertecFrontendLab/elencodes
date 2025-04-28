@@ -7,7 +7,7 @@ export type HorizontalCardType = {
     img: string;
     altImg: string;
     title: string;
-    text: string;
+    description: string;
     iconCounters: ActionCounterPropsType[];
     tagIcon: ComponentWithAs<'svg', IconProps>;
     tagTitle: string;

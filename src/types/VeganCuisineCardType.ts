@@ -1,13 +1,10 @@
-import { IconProps } from '@chakra-ui/icons';
-import { ComponentWithAs } from '@chakra-ui/react';
-
 import { ActionCounterPropsType } from './ActionCounterType';
+import { MenuItemTagType } from './MenuItemTagType';
 
 export type VeganCuisineCardPropsType = {
     title: string;
-    text: string;
+    description: string;
     iconCounters: ActionCounterPropsType[];
-    tagIcon: ComponentWithAs<'svg', IconProps>;
-    tagTitle: string;
+    category: MenuItemTagType['category'];
     bgColorTag: string;
 };

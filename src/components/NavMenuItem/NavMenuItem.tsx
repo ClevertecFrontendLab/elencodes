@@ -3,22 +3,28 @@ import { AccordionButton, AccordionItem } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router';
 
+import { iconsMap } from '~/icons/iconsMapping';
 import NavMenuArrowCloseIcon from '~/icons/NavMenuIcons/NavMenuArrowCloseIcon';
 import NavMenuArrowOpenIcon from '~/icons/NavMenuIcons/NavMenuArrowOpenIcon';
+import { resetFilters } from '~/model/filterSlice';
+import { useAppDispatch } from '~/store/hooks';
 import { NavMenuItemPropsType } from '~/types/NavMenuItemType';
 
-import { accordionButtonStyles } from './NavMenuItem.styles';
-import { accordionButtonTextStyles } from './NavMenuItem.styles';
-import { accordionListItemStyles } from './NavMenuItem.styles';
+// import { accordionButtonStyles } from './NavMenuItem.styles';
 
 export const NavMenuItem = ({
     icon,
-    title,
-    listItems,
-    linkTo = '/',
-    index,
-    expandedIndex,
+    name,
+    nameEn,
+    subcategories,
+    closeBurgerMenu,
 }: NavMenuItemPropsType) => {
+    const dispatch = useAppDispatch();
+
+    const onCategoryClickHandler = () => {
+        setSelected(0);
+        dispatch(resetFilters());
+    };
     const [selected, setSelected] = useState<null | number>(null);
 
     const location = useLocation();
@@ -27,23 +33,54 @@ export const NavMenuItem = ({
         if (location.pathname === '/') {
             setSelected(null);
         }
-    }, [location.pathname]);
-
-    useEffect(() => {
-        if (expandedIndex === index) {
-            setSelected(0);
+        const pathNames = location.pathname.split('/').filter(Boolean);
+        const activeIndex = subcategories.findIndex(
+            (sub) => sub.id === pathNames[pathNames.length - 1],
+        );
+        if (activeIndex !== -1) {
+            setSelected(activeIndex);
         }
-    }, [expandedIndex, index]);
+    }, [location.pathname, subcategories]);
+
+    const markerStyles = {
+        content: '""',
+        position: 'absolute',
+        left: '40px',
+        h: '24px',
+        w: '1px',
+        bg: 'lime.300',
+    };
+
+    const onClickItemHandle = (index: number) => {
+        setSelected(index);
+        if (closeBurgerMenu) closeBurgerMenu();
+    };
+
+    const IconComponent = iconsMap[icon];
 
     return (
         <>
             <AccordionItem border='none'>
                 {({ isExpanded }) => (
                     <>
-                        <h3 onClick={() => setSelected(null)}>
-                            <AccordionButton as={Link} to={linkTo} sx={accordionButtonStyles}>
-                                <Icon as={icon} boxSize='24px' />
-                                <Box sx={accordionButtonTextStyles}>{title}</Box>
+                        <h3>
+                            <AccordionButton
+                                data-test-id={nameEn === 'vegan' ? 'vegan-cuisine' : `${nameEn}`}
+                                onClick={onCategoryClickHandler}
+                                as={Link}
+                                to={`/${nameEn}/${subcategories[0].nameEn}`}
+                                fontWeight='500'
+                                fontSize='16px'
+                                _expanded={{ bg: 'lime.100', fontWeight: '700' }}
+                                _hover={{
+                                    bg: 'lime.50',
+                                }}
+                                p='12px 8px'
+                            >
+                                <Icon as={IconComponent} boxSize='24px' />
+                                <Box flex='1' textAlign='left' ml='12px'>
+                                    {name}
+                                </Box>
                                 {isExpanded ? (
                                     <Icon as={NavMenuArrowOpenIcon} />
                                 ) : (
@@ -53,14 +90,36 @@ export const NavMenuItem = ({
                         </h3>
                         <AccordionPanel p={0}>
                             <UnorderedList ml={0}>
-                                {listItems.map((item, itemIndex) => (
+                                {subcategories.map((item, index) => (
                                     <ListItem
-                                        key={itemIndex}
-                                        onClick={() => setSelected(itemIndex)}
-                                        {...(selected === itemIndex && { 'data-selected': true })}
-                                        sx={accordionListItemStyles}
+                                        data-test-id={
+                                            selected === index ? `${item.nameEn}-active` : 'none'
+                                        }
+                                        as={Link}
+                                        display='block'
+                                        to={`/${nameEn}/${subcategories[index].nameEn}`}
+                                        key={index}
+                                        p='6px 8px 6px 52px'
+                                        listStyleType='none'
+                                        position='relative'
+                                        _before={markerStyles}
+                                        cursor='pointer'
+                                        onClick={() => onClickItemHandle(index)}
+                                        _selected={{
+                                            _before: {
+                                                w: '8px',
+                                                left: '33px',
+                                            },
+                                        }}
+                                        _hover={{
+                                            bg: 'lime.50',
+                                            _before: {
+                                                w: '0',
+                                            },
+                                        }}
+                                        {...(selected === index && { 'data-selected': true })}
                                     >
-                                        {item}
+                                        {item.name}
                                     </ListItem>
                                 ))}
                             </UnorderedList>

@@ -22,7 +22,7 @@ export const HorizontalCard = ({
     img,
     altImg,
     title,
-    text,
+    description,
     iconCounters,
     tagTitle,
     tagIcon,
@@ -41,7 +41,7 @@ export const HorizontalCard = ({
                             iconCounters.map((i, index) => <ActionCounter key={index} {...i} />)}
                     </Flex>
                 </Flex>
-                <CardTextContent title={title} text={text} />
+                <CardTextContent title={title} description={description} />
                 <Flex sx={horizontalCardBoxButtonStyles}>
                     <SaveButton />
                     <StartCookButton />

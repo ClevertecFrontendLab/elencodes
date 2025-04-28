@@ -1,48 +1,24 @@
-import { Tab, TabList, Tabs } from '@chakra-ui/react';
-import { useEffect, useRef, useState } from 'react';
+import { Box, Tab, TabList, Tabs, useBreakpointValue } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router';
 
-import { useTabContext } from '~/context/useTabContext';
+import { SubcategoryType } from '~/types/recipeType';
 import { TabMenuPropsType } from '~/types/TabMenuType';
 
-import { tabListBoxStyles } from './TabMenu.styles';
+export const TabMenu = ({ subcategories }: TabMenuPropsType) => {
+    const { category, subcategory } = useParams<{ category: string; subcategory: string }>();
+    const navigate = useNavigate();
 
-export const TabMenu = ({ tabsList }: TabMenuPropsType) => {
-    const { tabTitle, setTabTitle } = useTabContext();
-    const initialIndex = tabsList.findIndex((item) => item === tabTitle);
-    const [activeIndex, setActiveIndex] = useState(initialIndex >= 0 ? initialIndex : 0);
+    const [activeTabIndex, setActiveTabIndex] = useState(0);
+    const isMobile = useBreakpointValue({ base: true, md: true, lg: false });
 
-    const tabListRef = useRef<HTMLDivElement>(null);
-    const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-
-    // Прокрутка активного таба в центр
     useEffect(() => {
-        const activeTab = tabRefs.current[activeIndex];
-        const container = tabListRef.current;
+        setActiveTabIndex(subcategories.findIndex((sub) => sub.id === subcategory));
+    }, [category, subcategory, subcategories]);
 
-        if (activeTab && container) {
-            const offsetLeft = activeTab.offsetLeft;
-            const offsetWidth = activeTab.offsetWidth;
-            const containerWidth = container.offsetWidth;
-
-            const scrollLeft = offsetLeft - containerWidth / 2 + offsetWidth / 2;
-
-            container.scrollTo({
-                left: scrollLeft,
-                behavior: 'smooth',
-            });
-        }
-    }, [activeIndex]);
-
-    // Устанавливаем дефолтный tabTitle, если он не задан
-    useEffect(() => {
-        if (!tabTitle && tabsList.length) {
-            setTabTitle(tabsList[0]);
-        }
-    }, [tabTitle, tabsList, setTabTitle]);
-
-    const handleTabChange = (index: number) => {
-        setActiveIndex(index);
-        setTabTitle(tabsList[index]);
+    const onItemClickHandler = (index: number, item: SubcategoryType) => {
+        setActiveTabIndex(index);
+        navigate(`/${category}/${item.nameEn}`);
     };
 
     return (
@@ -52,22 +28,52 @@ export const TabMenu = ({ tabsList }: TabMenuPropsType) => {
             colorScheme='lime'
             size={{ base: 'sm', md: 'md' }}
             variant='unstyled'
-            index={activeIndex}
-            onChange={handleTabChange}
+            index={activeTabIndex}
         >
-            <TabList ref={tabListRef} sx={tabListBoxStyles}>
-                {tabsList.map((item, index) => (
-                    <Tab
-                        key={index}
-                        ref={(el) => {
-                            tabRefs.current[index] = el;
-                        }}
-                        _selected={{ color: 'lime.600' }}
-                    >
-                        {item}
-                    </Tab>
-                ))}
-            </TabList>
+            <Box
+                width='100%'
+                overflowX={isMobile ? 'auto' : 'hidden'}
+                position='relative'
+                css={{
+                    '&::-webkit-scrollbar': {
+                        display: 'none',
+                    },
+                    scrollbarWidth: 'none',
+                    msOverflowStyle: 'none',
+                }}
+            >
+                <TabList
+                    display='flex'
+                    flexWrap={isMobile ? 'nowrap' : 'wrap'}
+                    justifyContent='center'
+                    minWidth={isMobile ? 'max-content' : undefined}
+                    whiteSpace='nowrap'
+                    color='lime.800'
+                    sx={{
+                        '& > button:not([aria-selected=true])': {
+                            borderBottom: '1px solid',
+                            borderColor: 'blackAlpha.200',
+                        },
+                        '& > [aria-selected=true]': {
+                            borderBottom: '2px solid',
+                            borderColor: 'lime.600',
+                        },
+                    }}
+                >
+                    {subcategories.map((item, index) => (
+                        <Tab
+                            data-test-id={`tab-${item.nameEn}-${index}`}
+                            key={index}
+                            _selected={{ color: 'lime.600' }}
+                            flexShrink={0}
+                            px={4}
+                            onClick={() => onItemClickHandler(index, item)}
+                        >
+                            {item.name}
+                        </Tab>
+                    ))}
+                </TabList>
+            </Box>
         </Tabs>
     );
 };

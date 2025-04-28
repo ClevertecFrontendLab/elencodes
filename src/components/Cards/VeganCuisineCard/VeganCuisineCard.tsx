@@ -15,10 +15,9 @@ import {
 
 export const VeganCuisineCard = ({
     title,
-    text,
+    description,
     iconCounters,
-    tagTitle,
-    tagIcon,
+    category,
     bgColorTag,
 }: VeganCuisineCardPropsType) => (
     <Card sx={lastSectionCardStyles}>
@@ -26,18 +25,14 @@ export const VeganCuisineCard = ({
             <Stack spacing={{ base: 2, xl: 6 }}>
                 <CardTextContent
                     title={title}
-                    text={text}
+                    description={description}
                     showTextAbove='base'
                     mobileH='100px'
                     linesTitleOnMobile={1}
+                    isMainCard={false}
                 />
                 <Flex sx={menuItemTagBoxStyles}>
-                    <MenuItemTag
-                        icon={tagIcon}
-                        title={tagTitle}
-                        bgColor={bgColorTag}
-                        mobilePos='static'
-                    />
+                    <MenuItemTag category={category} bgColor={bgColorTag} mobilePos='static' />
                     <Flex sx={actionCounterBox}>
                         {!!iconCounters.length &&
                             iconCounters.map((i, index) => <ActionCounter key={index} {...i} />)}

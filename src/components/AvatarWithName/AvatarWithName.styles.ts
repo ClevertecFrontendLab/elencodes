@@ -1,6 +1,7 @@
 import { SystemStyleObject } from '@chakra-ui/react';
 
 export const avatarBoxWrapperStyles: SystemStyleObject = {
+    marginRight: '80px',
     alignItems: 'center',
 };
 

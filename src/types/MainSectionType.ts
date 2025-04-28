@@ -1,14 +1,11 @@
-import { ReactNode } from 'react';
-
-import { MainSectionDataType } from '~/types/HorizontalCardType';
+import { RecipeType } from './recipeType';
 
 export type MainSectionPropsType = {
-    mainSectionData: MainSectionDataType[];
-    children?: ReactNode;
     buttonTitle: string;
     sizeButton: string;
     displayButton: string | { base: string; lg: string };
     showRightIcon?: boolean;
     onClick: () => void;
     dataTestId?: string | undefined;
+    recipes: RecipeType[];
 };
