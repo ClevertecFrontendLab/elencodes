@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { ChangeEvent, KeyboardEvent, ReactNode, useCallback, useState } from 'react';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
 import FilterIcon from '~/icons/FilterIcon';
 import SearchIcon from '~/icons/SearchIcon';
 import { resetFilters, setSearchQuery, toggleSearchModeOnPage } from '~/model/filterSlice.ts';
@@ -99,7 +100,7 @@ export const SearchingContent = ({ title, children, isNothingFound, setIsNothing
             {children && <Text sx={PageSubTitleStyles}>{children}</Text>}
             <Flex sx={SearchingBoxStyles}>
                 <IconButton
-                    data-test-id='filter-button'
+                    data-test-id={DATA_TEST_ID.filterButton}
                     aria-label='Filter'
                     variant='outline'
                     icon={<FilterIcon boxSize={{ base: '14px', xl: '24px' }} />}
@@ -125,7 +126,7 @@ export const SearchingContent = ({ title, children, isNothingFound, setIsNothing
                         }}
                         onKeyDown={searchOnEnterHandler}
                         isInvalid={isNothingFound}
-                        data-test-id='search-input'
+                        data-test-id={DATA_TEST_ID.searchInput}
                     />
                     <InputRightElement
                         aria-label='search'
@@ -139,7 +140,7 @@ export const SearchingContent = ({ title, children, isNothingFound, setIsNothing
                         w={{ base: '32px', xl: '48px' }}
                         h={{ base: '32px', xl: '48px' }}
                         onClick={searchHandler}
-                        data-test-id='search-button'
+                        data-test-id={DATA_TEST_ID.searchButton}
                     >
                         <Icon
                             as={SearchIcon}

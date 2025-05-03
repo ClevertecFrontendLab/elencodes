@@ -2,6 +2,7 @@ import { Box, FormControl } from '@chakra-ui/icons';
 import { FormLabel, Switch } from '@chakra-ui/react';
 import { ChangeEvent } from 'react';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
 import {
     addDrawerCustomAllergen,
     addPageCustomAllergen,
@@ -81,7 +82,9 @@ export const AllergensFilter = ({
                 </FormLabel>
                 <Switch
                     data-test-id={
-                        type === 'drawer' ? 'allergens-switcher-filter' : 'allergens-switcher'
+                        type === 'drawer'
+                            ? DATA_TEST_ID.allergenSwitcherFilter
+                            : DATA_TEST_ID.allergenSwitcher
                     }
                     id={switchId}
                     isChecked={allergenFilter.isActive}

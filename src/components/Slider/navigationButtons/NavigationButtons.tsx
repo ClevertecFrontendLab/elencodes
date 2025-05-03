@@ -1,6 +1,7 @@
 import { IconButton } from '@chakra-ui/react';
 import { RefObject } from 'react';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
 import ArrowLeftIcon from '~/icons/SwipeSectionIcons/ArrowLeftIcon';
 import ArrowRightIcon from '~/icons/SwipeSectionIcons/ArrowRightIcon';
 
@@ -23,7 +24,7 @@ export const NavigationButtons = ({ swiper }: NavigationButtonsProps) => (
             zIndex={9}
             onClick={() => swiper.current?.slidePrev()}
             display={{ base: 'none', xl: 'flex' }}
-            data-test-id='carousel-back'
+            data-test-id={DATA_TEST_ID.carouselBack}
         />
         <IconButton
             bg='black'
@@ -38,7 +39,7 @@ export const NavigationButtons = ({ swiper }: NavigationButtonsProps) => (
             zIndex={9}
             onClick={() => swiper.current?.slideNext()}
             display={{ base: 'none', xl: 'flex' }}
-            data-test-id='carousel-forward'
+            data-test-id={DATA_TEST_ID.carouselForward}
         />
     </>
 );

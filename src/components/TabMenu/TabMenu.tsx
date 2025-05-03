@@ -2,6 +2,7 @@ import { Box, Tab, TabList, Tabs, useBreakpointValue } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
 import { SubcategoryType } from '~/types/recipeType';
 import { TabMenuPropsType } from '~/types/TabMenuType';
 
@@ -62,7 +63,7 @@ export const TabMenu = ({ subcategories }: TabMenuPropsType) => {
                 >
                     {subcategories.map((item, index) => (
                         <Tab
-                            data-test-id={`tab-${item.nameEn}-${index}`}
+                            data-test-id={`${DATA_TEST_ID.tab}-${item.nameEn}-${index}`}
                             key={index}
                             _selected={{ color: 'lime.600' }}
                             flexShrink={0}

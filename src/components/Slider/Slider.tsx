@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
 import { selectAllRecipes } from '~/model/selectors.ts';
 import { useAppSelector } from '~/store/hooks.ts';
 import { RecipeType } from '~/types/recipeType';
@@ -42,7 +43,7 @@ export const Slider = () => {
                 }}
             >
                 <Swiper
-                    data-test-id='carousel'
+                    data-test-id={DATA_TEST_ID.carousel}
                     modules={[Navigation]}
                     navigation={false}
                     style={{
@@ -91,7 +92,7 @@ export const Slider = () => {
                             <SwiperSlide
                                 key={id}
                                 style={{ width: 'auto' }}
-                                data-test-id={`carousel-card-${index}`}
+                                data-test-id={`${DATA_TEST_ID.carouselCard}-${index}`}
                             >
                                 <SliderCard
                                     id={id}

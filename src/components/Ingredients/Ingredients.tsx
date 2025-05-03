@@ -11,6 +11,8 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
+
 type Props = {
     ingredients: { title: string; count: string; measureUnit: string }[];
     portions: number;
@@ -59,8 +61,12 @@ export const Ingredients = ({ ingredients, portions }: Props) => {
                             >
                                 <NumberInputField />
                                 <NumberInputStepper>
-                                    <NumberIncrementStepper data-test-id='increment-stepper' />
-                                    <NumberDecrementStepper data-test-id='decrement-stepper' />
+                                    <NumberIncrementStepper
+                                        data-test-id={DATA_TEST_ID.incrementStepper}
+                                    />
+                                    <NumberDecrementStepper
+                                        data-test-id={DATA_TEST_ID.decrementStepper}
+                                    />
                                 </NumberInputStepper>
                             </NumberInput>
                         </Th>
@@ -73,7 +79,10 @@ export const Ingredients = ({ ingredients, portions }: Props) => {
                         return (
                             <Tr key={index} bg={index % 2 === 0 ? 'blackAlpha.100' : 'white'}>
                                 <Td>{i.title}</Td>
-                                <Td isNumeric data-test-id={`ingredient-quantity-${index}`}>
+                                <Td
+                                    isNumeric
+                                    data-test-id={`${DATA_TEST_ID.ingredientsQuantity}-${index}`}
+                                >
                                     {i.measureUnit !== 'по вкусу'
                                         ? `${ingredientCount} ${i.measureUnit}`
                                         : i.measureUnit}

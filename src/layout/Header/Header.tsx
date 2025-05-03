@@ -5,6 +5,7 @@ import { ActionCounter } from '~/components/ActionCounter/ActionCounter';
 import { AvatarWithName } from '~/components/AvatarWithName/AvatarWithName';
 import { BreadCrumbs } from '~/components/BreadCrumbs/BreadCrumbs';
 import { BurgerMenu } from '~/components/BurgerMenu/BurgerMenu';
+import { DATA_TEST_ID } from '~/constants/test-id';
 import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
 import FriendsIcon from '~/icons/counterIcons/FriendsIcon';
 import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
@@ -37,7 +38,7 @@ export const Header = ({ isBurgerMenu = false }: Props) => {
             top='0'
             right='0'
             left='0'
-            data-test-id='header'
+            data-test-id={DATA_TEST_ID.header}
             zIndex={isBurgerMenu ? 100 : 10}
         >
             <NavLink to='/' onClick={resetFiltersHandler}>

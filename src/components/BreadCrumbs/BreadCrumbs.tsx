@@ -2,6 +2,7 @@ import { BreadcrumbLink, ChevronRightIcon } from '@chakra-ui/icons';
 import { Box, Breadcrumb, BreadcrumbItem } from '@chakra-ui/react';
 import { Link, useLocation } from 'react-router';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
 import { selectAllRecipes, selectCategories } from '~/model/selectors.ts';
 import { useAppSelector } from '~/store/hooks.ts';
 
@@ -54,7 +55,7 @@ export const BreadCrumbs = ({ onBreadcrumbItemClick }: Props) => {
             }}
         >
             <Breadcrumb
-                data-test-id='breadcrumbs'
+                data-test-id={DATA_TEST_ID.breadcrumbs}
                 spacing='0'
                 separator={<ChevronRightIcon color='gray.800' />}
                 fontSize='16px'

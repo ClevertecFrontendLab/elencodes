@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
 import { AddAllergen } from '~/icons/AddAllergen';
 import { selectFilters } from '~/model/selectors';
 import { useAppSelector } from '~/store/hooks';
@@ -44,12 +45,12 @@ export const CustomMultiSelect = ({
     const [customValue, setCustomValue] = useState<string>('');
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-    let dataTestIdInputValue = 'add-other-allergen';
+    let dataTestIdInputValue = DATA_TEST_ID.addOtherAllergen;
     if (filters.drawerAllergenFilter.isActive && allergenFilterType === 'page') {
         dataTestIdInputValue = 'none';
     }
 
-    let dataTestIdButtonValue = 'add-allergen-button';
+    let dataTestIdButtonValue = DATA_TEST_ID.addAllergenButton;
     if (filters.drawerAllergenFilter.isActive && allergenFilterType === 'page') {
         dataTestIdButtonValue = 'none';
     }
@@ -64,8 +65,8 @@ export const CustomMultiSelect = ({
     if (isAllergenFilter) {
         dataTestIdMenuButtonValue =
             allergenFilterType === 'page'
-                ? 'allergens-menu-button'
-                : 'allergens-menu-button-filter';
+                ? DATA_TEST_ID.allergensMenuButton
+                : DATA_TEST_ID.allergensMenuButtonFilter;
     } else if (dataTestId) {
         dataTestIdMenuButtonValue = dataTestId;
     } else {
@@ -174,7 +175,7 @@ export const CustomMultiSelect = ({
             </MenuButton>
 
             <MenuList
-                data-test-id={allergenFilterType === 'page' ? 'allergens-menu' : 'none'}
+                data-test-id={allergenFilterType === 'page' ? DATA_TEST_ID.allergensMenu : 'none'}
                 zIndex={9}
                 p={0}
                 transformOrigin='top center'
@@ -186,9 +187,9 @@ export const CustomMultiSelect = ({
                         let dataTestValue;
 
                         if (isAllergenFilter) {
-                            dataTestValue = `allergen-${index}`;
+                            dataTestValue = `${DATA_TEST_ID.allergen}-${index}`;
                         } else if (isVegan) {
-                            dataTestValue = 'checkbox-веганская кухня';
+                            dataTestValue = DATA_TEST_ID.checkboxVeganCuisine;
                         } else {
                             dataTestValue = 'none';
                         }

@@ -3,6 +3,7 @@ import { AccordionButton, AccordionItem } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
 import { iconsMap } from '~/icons/iconsMapping';
 import NavMenuArrowCloseIcon from '~/icons/NavMenuIcons/NavMenuArrowCloseIcon';
 import NavMenuArrowOpenIcon from '~/icons/NavMenuIcons/NavMenuArrowOpenIcon';
@@ -65,7 +66,9 @@ export const NavMenuItem = ({
                     <>
                         <h3>
                             <AccordionButton
-                                data-test-id={nameEn === 'vegan' ? 'vegan-cuisine' : `${nameEn}`}
+                                data-test-id={
+                                    nameEn === 'vegan' ? DATA_TEST_ID.veganCuisine : `${nameEn}`
+                                }
                                 onClick={onCategoryClickHandler}
                                 as={Link}
                                 to={`/${nameEn}/${subcategories[0].nameEn}`}

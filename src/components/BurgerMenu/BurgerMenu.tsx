@@ -2,6 +2,7 @@ import { Box, CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { IconButton, useDisclosure } from '@chakra-ui/react';
 import { useEffect } from 'react';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
 import { Header } from '~/layout/Header/Header';
 import { NavMenu } from '~/layout/NavMenu/NavMenu';
 
@@ -31,7 +32,7 @@ export const BurgerMenu = () => {
             )}
             {!isOpen && (
                 <IconButton
-                    data-test-id='hamburger-icon'
+                    data-test-id={DATA_TEST_ID.hamburgerIcon}
                     aria-label='Open menu'
                     icon={<HamburgerIcon />}
                     onClick={onOpen}
@@ -46,7 +47,7 @@ export const BurgerMenu = () => {
                 <>
                     <Box w='344px' pos='relative'>
                         <IconButton
-                            data-test-id='close-icon'
+                            data-test-id={DATA_TEST_ID.closeIcon}
                             pos='fixed'
                             top='8px'
                             right='16px'

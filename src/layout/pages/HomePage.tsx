@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 
 import { TitleSectionWithButton } from '~/components/Buttons/TitleSectionWithButton/TitleSectionWithButton';
 import { SearchingContent } from '~/components/SearchingContent/SearchingContent';
+import { DATA_TEST_ID } from '~/constants/test-id';
 import { veganCuisineData } from '~/data/homePage/veganCuisineData';
 import { veganCuisineDataShort } from '~/data/homePage/veganCuisineDataShort.ts';
 import { selectAllRecipes, selectCategories, selectFilters } from '~/model/selectors.ts';
@@ -113,7 +114,7 @@ export const HomePage = () => {
                         displayButton={{ base: 'block', xl: 'none' }}
                         showRightIcon={true}
                         onClick={showTheJuciest}
-                        dataTestId='juiciest-link-mobile'
+                        dataTestId={DATA_TEST_ID.juiciestLinkMobile}
                         recipes={sortedRecipesByLikes.slice(0, 4)}
                     />
                 </>

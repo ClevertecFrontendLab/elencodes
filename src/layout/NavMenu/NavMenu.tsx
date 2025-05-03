@@ -5,6 +5,7 @@ import { useLocation } from 'react-router';
 
 import { NavMenuFooter } from '~/components/NavMenuFooter/NavMenuFooter';
 import { NavMenuItem } from '~/components/NavMenuItem/NavMenuItem';
+import { DATA_TEST_ID } from '~/constants/test-id';
 import { selectCategories } from '~/model/selectors';
 import { useAppSelector } from '~/store/hooks';
 
@@ -28,7 +29,7 @@ export const NavMenu = ({ isBurgerMenu = false, children, closeBurgerMenu }: Pro
 
     return (
         <Flex
-            data-test-id='nav'
+            data-test-id={DATA_TEST_ID.nav}
             direction='column'
             pos='fixed'
             left={isBurgerMenu ? 'auto' : 0}

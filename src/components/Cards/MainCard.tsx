@@ -2,6 +2,7 @@ import { Box, CardBody, Show } from '@chakra-ui/icons';
 import { Button, Card, Flex, Image, Stack } from '@chakra-ui/react';
 import { Link } from 'react-router';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
 import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
 import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
 import { resetFilters } from '~/model/filterSlice.ts';
@@ -37,7 +38,7 @@ export const MainCard = ({
 
     return (
         <Card
-            data-test-id={`food-card-${index}`}
+            data-test-id={`${DATA_TEST_ID.foodCard}-${index}`}
             shadow='none'
             borderRadius='8px'
             border='1px solid'
@@ -132,7 +133,7 @@ export const MainCard = ({
                             <Show above='xl'>Сохранить</Show>
                         </Button>
                         <Button
-                            data-test-id={`card-link-${index}`}
+                            data-test-id={`${DATA_TEST_ID.cardLink}-${index}`}
                             as={Link}
                             onClick={() => dispatch(resetFilters())}
                             bg='black'

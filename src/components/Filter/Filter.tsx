@@ -19,6 +19,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
+import { DATA_TEST_ID } from '~/constants/test-id';
 import { meatTypes } from '~/data/filter/meatTypes.ts';
 import { sideDishTypes } from '~/data/filter/sideDishTypes.ts';
 import { CloseFilterIcon } from '~/icons/CloseFilterIcon';
@@ -119,7 +120,7 @@ export const Filter = ({ open, handleClose }: Props) => {
         <Drawer key={key} isOpen={open} placement='right' onClose={handleClose} size='full'>
             <DrawerOverlay />
             <DrawerContent
-                data-test-id='filter-drawer'
+                data-test-id={DATA_TEST_ID.filterDrawer}
                 maxW={{ base: '344px', lg: '463px' }}
                 w={{ base: '344px', lg: '463px' }}
             >
@@ -134,7 +135,7 @@ export const Filter = ({ open, handleClose }: Props) => {
                             Фильтр
                         </Heading>
                         <CloseFilterIcon
-                            data-test-id='close-filter-drawer'
+                            data-test-id={DATA_TEST_ID.closeFilterDrawer}
                             boxSize='24px'
                             cursor='pointer'
                             onClick={handleClose}
@@ -172,7 +173,7 @@ export const Filter = ({ open, handleClose }: Props) => {
                 >
                     <Flex direction='column' gap={{ base: 4, xl: 6 }} flex='1'>
                         <CustomMultiSelect
-                            dataTestId='filter-menu-button-категория'
+                            dataTestId={DATA_TEST_ID.filterMenuButtonCategory}
                             options={categoriesNameArr}
                             placeholder='Категория'
                             isActive={true}
@@ -227,7 +228,7 @@ export const Filter = ({ open, handleClose }: Props) => {
                                     {sideDishTypes.map((side) => {
                                         const isPotato = side.label === 'Картошка';
                                         const dataTestValue = isPotato
-                                            ? 'checkbox-картошка'
+                                            ? DATA_TEST_ID.checkboxPotato
                                             : 'none';
 
                                         return (
@@ -259,7 +260,7 @@ export const Filter = ({ open, handleClose }: Props) => {
                         <Flex gap={4} flexWrap='wrap' flexGrow={1} alignContent='flex-end'>
                             {allSelectedFilters.map((item, index) => (
                                 <Tag
-                                    data-test-id='filter-tag'
+                                    data-test-id={DATA_TEST_ID.filterTag}
                                     size='md'
                                     key={`${item}-${index}`}
                                     borderRadius='6px'
@@ -277,7 +278,7 @@ export const Filter = ({ open, handleClose }: Props) => {
                         <Box mt='auto' pt={4}>
                             <HStack justifyContent='flex-end' spacing={2}>
                                 <Button
-                                    data-test-id='clear-filter-button'
+                                    data-test-id={DATA_TEST_ID.clearFilterButton}
                                     variant='outline'
                                     colorScheme='black'
                                     size={{ base: 'sm', lg: 'lg' }}
@@ -286,7 +287,7 @@ export const Filter = ({ open, handleClose }: Props) => {
                                     Очистить фильтр
                                 </Button>
                                 <Button
-                                    data-test-id='find-recipe-button'
+                                    data-test-id={DATA_TEST_ID.findRecipeButton}
                                     bg='black'
                                     _hover={{ bg: 'black' }}
                                     color='white'
