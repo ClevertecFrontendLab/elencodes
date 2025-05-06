@@ -41,7 +41,7 @@ export const VeganCuisineCard = ({
                     isMainCard={false}
                 />
                 <Flex sx={menuItemTagBoxStyles}>
-                    <MenuItemTag category={category} bgColor={bgColorTag} mobilePos='static' />
+                    <MenuItemTag category={category} bgColor={bgColorTag} />
                     <Flex sx={actionCounterBox}>
                         {!!iconCounters.length &&
                             iconCounters.map((i, index) => <ActionCounter key={index} {...i} />)}
