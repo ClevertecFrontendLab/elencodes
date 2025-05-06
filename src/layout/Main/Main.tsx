@@ -2,11 +2,11 @@ import { Box } from '@chakra-ui/icons';
 import { Container } from '@chakra-ui/react';
 import { Route, Routes } from 'react-router';
 
-import { CategoryPage } from '../pages/CategoryPage';
-import { HomePage } from '../pages/HomePage';
-import { RecipesPage } from '../pages/RecipesPage';
-import { TheJuciestPage } from '../pages/TheJuciestPage';
-import { mainContainerStyles } from './Main.style';
+import { CategoryPage } from '../../pages/categoryPage';
+import { HomePage } from '../../pages/homePage';
+import { RecipesPage } from '../../pages/recipesPage';
+import { TheJuciestPage } from '../../pages/theJuciestPage';
+import { mainContainerStyles } from './main.style';
 
 export const Main = () => (
     <Box as='main'>

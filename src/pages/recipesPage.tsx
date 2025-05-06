@@ -10,7 +10,7 @@ import { Slider } from '~/components/Slider/Slider';
 import { selectAllRecipes } from '~/model/selectors.ts';
 import { useAppSelector } from '~/store/hooks.ts';
 
-import author from '../../assets/images//avatars/recipe_author.svg';
+import author from '../assets/images/avatars/recipe_author.svg';
 
 export const RecipesPage = () => {
     const { id } = useParams<{ id: string }>();

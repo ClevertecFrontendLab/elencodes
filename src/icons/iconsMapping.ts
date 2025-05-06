@@ -1,18 +1,18 @@
 import { ComponentWithAs, IconProps } from '@chakra-ui/react';
 
-import DessertsIcon from './NavMenuIcons/DessertsIcon.tsx';
-import DrinksIcon from './NavMenuIcons/DrinksIcon.tsx';
-import FirstCoursesIcon from './NavMenuIcons/FirstCoursesIcon.tsx';
-import GrilsIcon from './NavMenuIcons/GrilsIcon.tsx';
-import KidsCoursesIcon from './NavMenuIcons/KidsCoursesIcon.tsx';
-import NationalIcon from './NavMenuIcons/NationalIcon.tsx';
-import PreparationsIcon from './NavMenuIcons/PreparationsIcon.tsx';
-import SaladsIcon from './NavMenuIcons/SaladsIcon.tsx';
-import SaucesIcon from './NavMenuIcons/SaucesIcon.tsx';
-import SecondCoursesIcon from './NavMenuIcons/SecondCoursesIcon.tsx';
-import SnacksIcon from './NavMenuIcons/SnacksIcon.tsx';
-import TherapeuticNutritionIcon from './NavMenuIcons/TherapeuticNutritionIcon.tsx';
-import VeganIcon from './NavMenuIcons/VeganIcon.tsx';
+import DessertsIcon from './navMenuIcons/dessertsIcon.js';
+import DrinksIcon from './navMenuIcons/drinksIcon.js';
+import FirstCoursesIcon from './navMenuIcons/firstCoursesIcon.js';
+import GrilsIcon from './navMenuIcons/grilsIcon.js';
+import KidsCoursesIcon from './navMenuIcons/kidsCoursesIcon.js';
+import NationalIcon from './navMenuIcons/nationalIcon.js';
+import PreparationsIcon from './navMenuIcons/preparationsIcon.js';
+import SaladsIcon from './navMenuIcons/saladsIcon.js';
+import SaucesIcon from './navMenuIcons/saucesIcon.js';
+import SecondCoursesIcon from './navMenuIcons/secondCoursesIcon.js';
+import SnacksIcon from './navMenuIcons/snacksIcon.js';
+import TherapeuticNutritionIcon from './navMenuIcons/therapeuticNutritionIcon.js';
+import VeganIcon from './navMenuIcons/veganIcon.js';
 
 export const iconsMap: Record<string, ComponentWithAs<'svg', IconProps>> = {
     desserts: DessertsIcon,

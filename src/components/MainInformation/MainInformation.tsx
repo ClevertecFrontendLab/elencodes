@@ -1,9 +1,9 @@
 import { Box } from '@chakra-ui/icons';
 import { Button, Flex, Heading, Image, Text } from '@chakra-ui/react';
 
-import { ClockIcon } from '~/icons/ClockIcon';
-import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
-import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
+import { BookmarkIcon } from '~/icons/counterIcons/bookmarkIcon';
+import ReactionIcon from '~/icons/counterIcons/reactionIcon';
+import { ClockIcon } from '~/icons/recipePageIcons/clockIcon';
 
 import { ActionCounter } from '../ActionCounter/ActionCounter';
 import { MenuItemTag } from '../MenuItemTag/MenuItemTag';

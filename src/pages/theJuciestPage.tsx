@@ -6,8 +6,8 @@ import { veganCuisineDataShort } from '~/data/homePage/veganCuisineDataShort.ts'
 import { selectAllRecipes, selectFilters } from '~/model/selectors.ts';
 import { useAppSelector } from '~/store/hooks.ts';
 
-import { LastSection } from '../Main/Sections/lastSection/LastSection';
-import { MainSection } from '../Main/Sections/mainSection/MainSection';
+import { LastSection } from '../layout/main/sections/lastSection/lastSection';
+import { MainSection } from '../layout/main/sections/mainSection/mainSection';
 
 export const TheJuciestPage = () => {
     const recipes = useAppSelector(selectAllRecipes);

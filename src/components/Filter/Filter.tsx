@@ -22,7 +22,7 @@ import { useNavigate } from 'react-router';
 import { DATA_TEST_ID } from '~/constants/test-id';
 import { meatTypes } from '~/data/filter/meatTypes.ts';
 import { sideDishTypes } from '~/data/filter/sideDishTypes.ts';
-import { CloseFilterIcon } from '~/icons/CloseFilterIcon';
+import { CloseFilterIcon } from '~/icons/filterIcons/closeFilterIcon';
 import {
     removeAllergen,
     removeAuthor,

@@ -1,7 +1,7 @@
 import { Show } from '@chakra-ui/icons';
 import { Button } from '@chakra-ui/react';
 
-import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
+import { BookmarkIcon } from '~/icons/counterIcons/bookmarkIcon';
 
 import { saveButtonStyles } from './SaveButton.styles';
 

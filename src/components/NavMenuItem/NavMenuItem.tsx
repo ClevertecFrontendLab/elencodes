@@ -5,8 +5,8 @@ import { Link, useLocation } from 'react-router';
 
 import { DATA_TEST_ID } from '~/constants/test-id';
 import { iconsMap } from '~/icons/iconsMapping';
-import NavMenuArrowCloseIcon from '~/icons/NavMenuIcons/NavMenuArrowCloseIcon';
-import NavMenuArrowOpenIcon from '~/icons/NavMenuIcons/NavMenuArrowOpenIcon';
+import NavMenuArrowCloseIcon from '~/icons/navMenuIcons/navMenuArrowCloseIcon';
+import NavMenuArrowOpenIcon from '~/icons/navMenuIcons/navMenuArrowOpenIcon';
 import { resetFilters } from '~/model/filterSlice';
 import { useAppDispatch } from '~/store/hooks';
 import { SubcategoryType } from '~/types/recipeType';

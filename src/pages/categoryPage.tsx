@@ -9,8 +9,8 @@ import { selectAllRecipes, selectCategories, selectFilters } from '~/model/selec
 import { useAppSelector } from '~/store/hooks';
 import { RecipeType } from '~/types/recipeType';
 
-import { LastSection } from '../Main/Sections/lastSection/LastSection';
-import { MainSection } from '../Main/Sections/mainSection/MainSection';
+import { LastSection } from '../layout/main/sections/lastSection/lastSection';
+import { MainSection } from '../layout/main/sections/mainSection/mainSection';
 
 export const CategoryPage = () => {
     const categories = useAppSelector(selectCategories);

@@ -5,8 +5,8 @@ import { Link } from 'react-router';
 import { ActionCounter } from '~/components/ActionCounter/ActionCounter';
 import { CardTextContent } from '~/components/CardTextContent/CardTextContent';
 import { MenuItemTag } from '~/components/MenuItemTag/MenuItemTag';
-import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
-import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
+import { BookmarkIcon } from '~/icons/counterIcons/bookmarkIcon';
+import ReactionIcon from '~/icons/counterIcons/reactionIcon';
 
 type SliderCardPropsType = {
     id: string;

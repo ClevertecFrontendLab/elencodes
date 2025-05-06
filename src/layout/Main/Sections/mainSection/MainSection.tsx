@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/icons';
 import { Button, Flex } from '@chakra-ui/react';
 
 import { MainCard } from '~/components/Cards/MainCard';
-import ButtonArrowRightIcon from '~/icons/ButtonIcons/ButtonArrowRightIcon';
+import ButtonArrowRightIcon from '~/icons/buttonIcons/buttonArrowRightIcon';
 import { RecipeType } from '~/types/recipeType';
 
 type MainSectionPropsType = {

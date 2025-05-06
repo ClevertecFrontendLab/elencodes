@@ -7,14 +7,14 @@ import { BreadCrumbs } from '~/components/BreadCrumbs/BreadCrumbs';
 import { BurgerMenu } from '~/components/BurgerMenu/BurgerMenu';
 import { Logo } from '~/components/Logo/Logo';
 import { DATA_TEST_ID } from '~/constants/test-id';
-import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
-import FriendsIcon from '~/icons/counterIcons/FriendsIcon';
-import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
+import { BookmarkIcon } from '~/icons/counterIcons/bookmarkIcon';
+import FriendsIcon from '~/icons/counterIcons/friendsIcon';
+import ReactionIcon from '~/icons/counterIcons/reactionIcon';
 import { resetFilters } from '~/model/filterSlice';
 import { useAppDispatch } from '~/store/hooks';
 
 import avatar from '../../assets/images/avatars/avatar_header.svg';
-import { ActionCounterWrapperStyles } from './Header.styles';
+import { ActionCounterWrapperStyles } from './header.styles';
 
 type HeaderPropsType = {
     isBurgerMenu?: boolean;

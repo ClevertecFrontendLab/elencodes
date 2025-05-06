@@ -1,16 +1,16 @@
 import { Center, IconButton, Spacer, Text, VStack } from '@chakra-ui/react';
 
 import { ActionCounter } from '~/components/ActionCounter/ActionCounter';
-import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
-import FriendsIcon from '~/icons/counterIcons/FriendsIcon';
-import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
-import AddRecipeIcon from '~/icons/SidebarIcons/AddRecipeIcon.tsx';
+import { BookmarkIcon } from '~/icons/counterIcons/bookmarkIcon';
+import FriendsIcon from '~/icons/counterIcons/friendsIcon';
+import ReactionIcon from '~/icons/counterIcons/reactionIcon';
+import AddRecipeIcon from '~/icons/sidebarIcons/addRecipeIcon';
 
-import { actionRoundWrapperStyles } from './SideBar.styles';
-import { actionRoundButtonStyles } from './SideBar.styles';
-import { actionRoundButtonTextStyles } from './SideBar.styles';
-import { SideBarActionCounterWrapperStyles } from './SideBar.styles';
-import { SideBarWrapperStyles } from './SideBar.styles';
+import { actionRoundWrapperStyles } from './sideBar.styles';
+import { actionRoundButtonStyles } from './sideBar.styles';
+import { actionRoundButtonTextStyles } from './sideBar.styles';
+import { SideBarActionCounterWrapperStyles } from './sideBar.styles';
+import { SideBarWrapperStyles } from './sideBar.styles';
 
 export const SideBar = () => (
     <VStack sx={SideBarWrapperStyles}>

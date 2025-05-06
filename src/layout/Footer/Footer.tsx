@@ -4,7 +4,7 @@ import { FooterItem } from '~/components/FooterItem/FooterItem';
 import { DATA_TEST_ID } from '~/constants/test-id';
 import { footerItems } from '~/data/footerItemsData.tsx';
 
-import { footerGridContainerStyles } from './Footer.styles';
+import { footerGridContainerStyles } from './footer.styles';
 
 export const Footer = () => (
     <Grid

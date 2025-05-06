@@ -14,7 +14,7 @@ import {
     lastSectionRecipeCardBoxStyles,
     lastSectionSubtitleStyles,
     lastSectionVeganCardBoxStyles,
-} from './LastSection.styles';
+} from './lastSection.styles';
 
 type LastSectionPropsType = {
     title: string;

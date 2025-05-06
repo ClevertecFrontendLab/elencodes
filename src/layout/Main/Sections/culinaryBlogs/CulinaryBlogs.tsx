@@ -3,7 +3,7 @@ import { Button, Flex, Heading } from '@chakra-ui/react';
 
 import { CulinaryBlogItem } from '~/components/CulinaryBlogItem/CulinaryBlogItem';
 import { culinaryBlogsData } from '~/data/homePage/culinaryBlogsData.ts';
-import ButtonArrowRightIcon from '~/icons/ButtonIcons/ButtonArrowRightIcon';
+import ButtonArrowRightIcon from '~/icons/buttonIcons/buttonArrowRightIcon';
 
 import {
     culinaryBlogsButtonStyles,
@@ -11,7 +11,7 @@ import {
     culinaryBlogsSectionStyles,
     culinaryBlogsTitleStyles,
     culinaryBlogsWrapperStyles,
-} from './CulinaryBlogs.styles';
+} from './culinaryBlogs.styles';
 
 export const CulinaryBlogs = () => (
     <Box as='article' sx={culinaryBlogsWrapperStyles}>

@@ -4,7 +4,7 @@ import { Heading, Text } from '@chakra-ui/react';
 import { selectFilters } from '~/model/selectors.ts';
 import { useAppSelector } from '~/store/hooks.ts';
 
-import { highlightText } from '../utils/text';
+import { highlightText } from '../../utils/text';
 import { cardContentTextStyles, cardContentTitleStyles } from './CardTextContent.styles';
 
 type CardTextContentPropsType = {

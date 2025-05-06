@@ -14,7 +14,7 @@ import {
 import { useEffect, useRef, useState } from 'react';
 
 import { DATA_TEST_ID } from '~/constants/test-id';
-import { AddAllergen } from '~/icons/AddAllergen';
+import { AddAllergen } from '~/icons/filterIcons/addAllergen';
 import { selectFilters } from '~/model/selectors';
 import { useAppSelector } from '~/store/hooks';
 

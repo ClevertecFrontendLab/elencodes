@@ -1,7 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 
-import LogoIcon from '../../icons/LogoIcons/LogoIcon';
-import LogoNameIcon from '../../icons/LogoIcons/LogoNameIcon';
+import LogoIcon from '../../icons/logoIcons/logoIcon';
+import LogoNameIcon from '../../icons/logoIcons/logoNameIcon';
 import logoStyles from './Logo.styles';
 
 export const Logo = () => (

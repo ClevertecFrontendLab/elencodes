@@ -2,8 +2,8 @@ import { IconButton } from '@chakra-ui/react';
 import { RefObject } from 'react';
 
 import { DATA_TEST_ID } from '~/constants/test-id';
-import ArrowLeftIcon from '~/icons/SwipeSectionIcons/ArrowLeftIcon';
-import ArrowRightIcon from '~/icons/SwipeSectionIcons/ArrowRightIcon';
+import ArrowLeftIcon from '~/icons/swipeSectionIcons/arrowLeftIcon';
+import ArrowRightIcon from '~/icons/swipeSectionIcons/arrowRightIcon';
 
 type NavigationButtonsProps = {
     swiper: RefObject<null>;

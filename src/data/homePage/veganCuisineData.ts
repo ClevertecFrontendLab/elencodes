@@ -1,5 +1,5 @@
-import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
-import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
+import { BookmarkIcon } from '~/icons/counterIcons/bookmarkIcon';
+import ReactionIcon from '~/icons/counterIcons/reactionIcon';
 import { FirstCardsDataType } from '~/types/firstCardsDataType';
 
 export const veganCuisineData: FirstCardsDataType[] = [

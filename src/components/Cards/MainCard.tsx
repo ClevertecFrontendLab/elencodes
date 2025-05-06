@@ -3,8 +3,8 @@ import { Button, Card, Flex, Image, Stack } from '@chakra-ui/react';
 import { Link } from 'react-router';
 
 import { DATA_TEST_ID } from '~/constants/test-id';
-import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
-import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
+import { BookmarkIcon } from '~/icons/counterIcons/bookmarkIcon';
+import ReactionIcon from '~/icons/counterIcons/reactionIcon';
 import { resetFilters } from '~/model/filterSlice.ts';
 import { useAppDispatch } from '~/store/hooks.ts';
 

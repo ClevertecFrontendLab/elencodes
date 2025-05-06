@@ -3,7 +3,7 @@ import { Button, HStack } from '@chakra-ui/react';
 
 import { SectionTitle } from '~/components/SectionTitle/SectionTitle';
 import { DATA_TEST_ID } from '~/constants/test-id';
-import ButtonArrowRightIcon from '~/icons/ButtonIcons/ButtonArrowRightIcon';
+import ButtonArrowRightIcon from '~/icons/buttonIcons/buttonArrowRightIcon';
 
 import { sectionButtonStyles, titleSectionBoxStyles } from './TitleSectionWithButton.styles';
 

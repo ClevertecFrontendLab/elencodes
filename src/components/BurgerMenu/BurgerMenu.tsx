@@ -3,8 +3,8 @@ import { IconButton, useDisclosure } from '@chakra-ui/react';
 import { useEffect } from 'react';
 
 import { DATA_TEST_ID } from '~/constants/test-id';
-import { Header } from '~/layout/Header/Header';
-import { NavMenu } from '~/layout/NavMenu/NavMenu';
+import { Header } from '~/layout/header/header';
+import { NavMenu } from '~/layout/navMenu/navMenu';
 
 import { BreadCrumbs } from '../BreadCrumbs/BreadCrumbs';
 

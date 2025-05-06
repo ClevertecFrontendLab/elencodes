@@ -2,9 +2,9 @@ import { Icon } from '@chakra-ui/icons';
 import { Avatar, IconButton } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
-import AddRecipeFooterIcon from '~/icons/FooterIcons/AddRecipeFooterIcon';
-import HomeIcon from '~/icons/FooterIcons/HomeIcon';
-import SearchIcon from '~/icons/SearchIcon';
+import AddRecipeFooterIcon from '~/icons/footerIcons/addRecipeFooterIcon';
+import HomeIcon from '~/icons/footerIcons/homeIcon';
+import SearchIcon from '~/icons/inputIcons/searchIcon';
 
 import avatar from '../assets/images/avatars/avatar_header.svg';
 

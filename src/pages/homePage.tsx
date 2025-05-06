@@ -10,10 +10,10 @@ import { selectAllRecipes, selectCategories, selectFilters } from '~/model/selec
 import { useAppSelector } from '~/store/hooks.ts';
 import { RecipeType } from '~/types/recipeType';
 
-import { CulinaryBlogs } from '../Main/Sections/culinaryBlogs/CulinaryBlogs';
-import { LastSection } from '../Main/Sections/lastSection/LastSection';
-import { MainSection } from '../Main/Sections/mainSection/MainSection';
-import { NewRecipesSection } from '../Main/Sections/newRecipes/NewRecipesSection';
+import { CulinaryBlogs } from '../layout/main/sections/culinaryBlogs/culinaryBlogs';
+import { LastSection } from '../layout/main/sections/lastSection/lastSection';
+import { MainSection } from '../layout/main/sections/mainSection/mainSection';
+import { NewRecipesSection } from '../layout/main/sections/newRecipes/newRecipesSection';
 
 export const HomePage = () => {
     const navigate = useNavigate();
