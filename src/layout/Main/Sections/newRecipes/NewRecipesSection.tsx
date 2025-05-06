@@ -1,5 +1,4 @@
-import 'swiper/css';
-import 'swiper/css/navigation';
+import 'swiper/swiper-bundle.css';
 
 import { Box } from '@chakra-ui/icons';
 
