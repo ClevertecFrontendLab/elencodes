@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 type PrimitiveItem = string | number;
 interface ValueItem {
     value: string;
+    label: string;
 }
 type ToggleableItem = PrimitiveItem | ValueItem;
 
