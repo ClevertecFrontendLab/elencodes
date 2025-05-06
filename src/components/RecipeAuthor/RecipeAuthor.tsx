@@ -1,8 +1,8 @@
 import { Box } from '@chakra-ui/icons';
 import { Avatar, Button, Flex, Heading, Text } from '@chakra-ui/react';
 
-import FriendsIcon from '~/icons/counterIcons/FriendsIcon';
-import { SubscribeIcon } from '~/icons/SubscribeIcon';
+import { SubscribeIcon } from '~/icons/buttonIcons/subscribeIcon';
+import FriendsIcon from '~/icons/counterIcons/friendsIcon';
 
 import { ActionCounter } from '../ActionCounter/ActionCounter';
 

@@ -11,8 +11,8 @@ import {
 import { ChangeEvent, KeyboardEvent, ReactNode, useCallback, useState } from 'react';
 
 import { DATA_TEST_ID } from '~/constants/test-id';
-import FilterIcon from '~/icons/FilterIcon';
-import SearchIcon from '~/icons/SearchIcon';
+import FilterIcon from '~/icons/filterIcons/filterIcon';
+import SearchIcon from '~/icons/inputIcons/searchIcon';
 import { resetFilters, setSearchQuery, toggleSearchModeOnPage } from '~/model/filterSlice.ts';
 import { selectFilters } from '~/model/selectors.ts';
 import { useAppDispatch, useAppSelector } from '~/store/hooks.ts';
