@@ -1,5 +1,6 @@
 import { Box } from '@chakra-ui/icons';
 import { useRef } from 'react';
+import { Swiper as SwiperClass } from 'swiper';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -19,7 +20,7 @@ export const Slider = () => {
     }
 
     const allRecipes = useAppSelector(selectAllRecipes);
-    const swiperRef = useRef(null);
+    const swiperRef = useRef<SwiperClass | null>(null);
 
     const latestRecipes = getLatestRecipes(allRecipes);
 
@@ -40,15 +41,13 @@ export const Slider = () => {
                     '.swiper-slide': {
                         width: 'auto !important',
                     },
+                    '--swiper-slide-width': 'auto',
                 }}
             >
                 <Swiper
                     data-test-id={DATA_TEST_ID.carousel}
                     modules={[Navigation]}
                     navigation={false}
-                    style={{
-                        '--swiper-slide-width': 'auto',
-                    }}
                     onSwiper={(swiper) => {
                         swiperRef.current = swiper;
                     }}
