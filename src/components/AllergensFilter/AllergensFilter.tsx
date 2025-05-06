@@ -2,6 +2,11 @@ import { Box, FormControl } from '@chakra-ui/icons';
 import { FormLabel, Switch } from '@chakra-ui/react';
 import { ChangeEvent } from 'react';
 
+import {
+    BUTTON_EXCLUDE_ALLERGENS,
+    PLACEHOLDER_SELECT,
+    PLACEHOLDER_SELECT_DRAWER,
+} from '~/constants/placeholders';
 import { DATA_TEST_ID } from '~/constants/test-id';
 import {
     addDrawerCustomAllergen,
@@ -33,6 +38,8 @@ export const AllergensFilter = ({
 }: AllergensFilterPropsType) => {
     const dispatch = useAppDispatch();
     const filter = useAppSelector(selectFilters);
+
+    const placeholderText = type === 'drawer' ? PLACEHOLDER_SELECT_DRAWER : PLACEHOLDER_SELECT;
 
     const allergenFilter =
         type === 'page' ? filter.pageAllergenFilter : filter.drawerAllergenFilter;
@@ -78,7 +85,7 @@ export const AllergensFilter = ({
         <>
             <FormControl display='flex' alignItems='center' flexGrow={flexGrow} mt={2} gap={0}>
                 <FormLabel htmlFor={switchId} mb='0' fontWeight={500}>
-                    Исключить мои аллергены
+                    {BUTTON_EXCLUDE_ALLERGENS}
                 </FormLabel>
                 <Switch
                     data-test-id={
@@ -95,7 +102,7 @@ export const AllergensFilter = ({
                 <Box w={selectWidth}>
                     <CustomMultiSelect
                         options={options}
-                        placeholder='Выберите из списка'
+                        placeholder={placeholderText}
                         isActive={allergenFilter.isActive}
                         isAllergenFilter={true}
                         allergenFilterType={type}

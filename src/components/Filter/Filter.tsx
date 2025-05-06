@@ -19,6 +19,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 
+import { FILTER_TITLES } from '~/constants/filters';
 import { DATA_TEST_ID } from '~/constants/test-id';
 import { meatTypes } from '~/data/filter/meatTypes.ts';
 import { sideDishTypes } from '~/data/filter/sideDishTypes.ts';
@@ -175,7 +176,7 @@ export const Filter = ({ open, handleClose }: FilterPropsType) => {
                         <CustomMultiSelect
                             dataTestId={DATA_TEST_ID.filterMenuButtonCategory}
                             options={categoriesNameArr}
-                            placeholder='Категория'
+                            placeholder={FILTER_TITLES.CATEGORY}
                             isActive={true}
                             selectedItems={filters.selectedCategories}
                             toggleItem={setCategories}
@@ -183,14 +184,14 @@ export const Filter = ({ open, handleClose }: FilterPropsType) => {
 
                         <CustomMultiSelect
                             options={['автор1', 'автор2']}
-                            placeholder='Поиск по автору'
+                            placeholder={FILTER_TITLES.AUTHOR_SEARCH}
                             isActive={true}
                             selectedItems={filters.selectedAuthors}
                             toggleItem={setAuthors}
                         />
 
                         <FormControl>
-                            <FormLabel>Тип мяса:</FormLabel>
+                            <FormLabel>{FILTER_TITLES.MEAT}</FormLabel>
                             <CheckboxGroup
                                 colorScheme='gray'
                                 value={filters.selectedMeatType.map((m) => m.value)}
@@ -216,7 +217,7 @@ export const Filter = ({ open, handleClose }: FilterPropsType) => {
                         </FormControl>
 
                         <FormControl>
-                            <FormLabel>Тип гарнира:</FormLabel>
+                            <FormLabel>{FILTER_TITLES.SIDE}</FormLabel>
                             <CheckboxGroup
                                 colorScheme='gray'
                                 value={filters.selectedSideType.map((s) => s.value)}

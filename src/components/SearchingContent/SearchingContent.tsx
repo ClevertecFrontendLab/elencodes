@@ -10,6 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { ChangeEvent, KeyboardEvent, ReactNode, useCallback, useState } from 'react';
 
+import { PLACEHOLDER_SEARCH_INPUT } from '~/constants/placeholders';
 import { DATA_TEST_ID } from '~/constants/test-id';
 import FilterIcon from '~/icons/filterIcons/filterIcon';
 import SearchIcon from '~/icons/inputIcons/searchIcon';
@@ -59,7 +60,7 @@ export const SearchingContent = ({
     }, [dispatch]);
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setIsNothingFound(false);
+        setIsNothingFound?.(false);
         setsSearchQuery(e.currentTarget.value);
         if (e.currentTarget.value === '') {
             dispatch(setSearchQuery(''));
@@ -116,7 +117,7 @@ export const SearchingContent = ({
                 />
                 <InputGroup sx={SearchingInputBoxStyles}>
                     <Input
-                        placeholder='Название или ингредиент...'
+                        placeholder={PLACEHOLDER_SEARCH_INPUT}
                         width='100%'
                         size={{ base: 'sm', xl: 'lg' }}
                         border={

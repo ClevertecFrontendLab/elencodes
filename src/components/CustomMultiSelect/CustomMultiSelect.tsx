@@ -13,6 +13,7 @@ import {
 } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
 
+import { BUTTON_ADD_OTHER_ALLERGEN } from '~/constants/placeholders';
 import { DATA_TEST_ID } from '~/constants/test-id';
 import { AddAllergen } from '~/icons/filterIcons/addAllergen';
 import { selectFilters } from '~/model/selectors';
@@ -79,7 +80,8 @@ export const CustomMultiSelect = ({
             setCustomValue('');
         }
     };
-    const addCustomItemOnEnterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+
+    const addCustomItemOnEnterHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter' && customValue.trim()) {
             addCustomItem?.(customValue);
             setCustomValue('');
@@ -222,7 +224,7 @@ export const CustomMultiSelect = ({
                                 data-test-id={dataTestIdInputValue}
                                 value={customValue}
                                 onChange={(e) => setCustomValue(e.currentTarget.value)}
-                                placeholder='Другой аллерген'
+                                placeholder={BUTTON_ADD_OTHER_ALLERGEN}
                                 size='sm'
                                 borderRadius='4px'
                                 borderColor='blackAlpha.200'
