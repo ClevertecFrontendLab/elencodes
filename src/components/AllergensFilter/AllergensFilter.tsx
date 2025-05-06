@@ -16,7 +16,7 @@ import { useAppDispatch, useAppSelector } from '~/store/hooks.ts';
 
 import { CustomMultiSelect } from '../CustomMultiSelect/CustomMultiSelect';
 
-type Props = {
+type AllergensFilterPropsType = {
     flexGrow?: number;
     flexShrink?: number;
     selectWidth: string;
@@ -30,7 +30,7 @@ export const AllergensFilter = ({
     selectWidth,
     switchId,
     type,
-}: Props) => {
+}: AllergensFilterPropsType) => {
     const dispatch = useAppDispatch();
     const filter = useAppSelector(selectFilters);
 

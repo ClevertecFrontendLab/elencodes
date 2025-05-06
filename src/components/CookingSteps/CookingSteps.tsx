@@ -4,10 +4,11 @@ import { Step } from '~/types/recipeType';
 
 import { CookingStep } from './CookingStep/CookingStep';
 
-type Props = {
+type CookingStepsPropsType = {
     steps: Step[];
 };
-export const CookingSteps = ({ steps }: Props) => (
+
+export const CookingSteps = ({ steps }: CookingStepsPropsType) => (
     <Flex direction='column' gap={5}>
         <Heading fontSize={{ base: '2xl', lg: '5xl' }}>Шаги приготовления</Heading>
         {steps.map((s, i) => {

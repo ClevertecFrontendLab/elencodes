@@ -8,7 +8,7 @@ import { MenuItemTag } from '~/components/MenuItemTag/MenuItemTag';
 import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
 import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
 
-type Props = {
+type SliderCardPropsType = {
     id: string;
     image: string;
     title: string;
@@ -18,6 +18,7 @@ type Props = {
     category: string[];
     subcategory: string[];
 };
+
 export const SliderCard = ({
     id,
     image,
@@ -27,7 +28,7 @@ export const SliderCard = ({
     likes,
     category,
     subcategory,
-}: Props) => (
+}: SliderCardPropsType) => (
     <Box
         as={Link}
         display='flex'

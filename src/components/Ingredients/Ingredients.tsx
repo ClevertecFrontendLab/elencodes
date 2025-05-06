@@ -13,11 +13,12 @@ import { useState } from 'react';
 
 import { DATA_TEST_ID } from '~/constants/test-id';
 
-type Props = {
+type IngredientsPropsType = {
     ingredients: { title: string; count: string; measureUnit: string }[];
     portions: number;
 };
-export const Ingredients = ({ ingredients, portions }: Props) => {
+
+export const Ingredients = ({ ingredients, portions }: IngredientsPropsType) => {
     const [portionsCount, setPortionsCount] = useState<number>(portions);
 
     return (

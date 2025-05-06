@@ -4,7 +4,10 @@ import { useNavigate, useParams } from 'react-router';
 
 import { DATA_TEST_ID } from '~/constants/test-id';
 import { SubcategoryType } from '~/types/recipeType';
-import { TabMenuPropsType } from '~/types/TabMenuType';
+
+type TabMenuPropsType = {
+    subcategories: SubcategoryType[];
+};
 
 export const TabMenu = ({ subcategories }: TabMenuPropsType) => {
     const { category, subcategory } = useParams<{ category: string; subcategory: string }>();

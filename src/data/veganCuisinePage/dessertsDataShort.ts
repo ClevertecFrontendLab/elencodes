@@ -1,7 +1,7 @@
 import KidsCoursesIcon from '~/icons/NavMenuIcons/KidsCoursesIcon';
 import NationalIcon from '~/icons/NavMenuIcons/NationalIcon';
 import VeganIcon from '~/icons/NavMenuIcons/VeganIcon';
-import { SecondCardsDataType } from '~/types/SecondCardsDataType';
+import { SecondCardsDataType } from '~/types/secondCardsDataType';
 
 export const dessertsDataShort: SecondCardsDataType[] = [
     {

@@ -37,4 +37,10 @@ export const DATA_TEST_ID = {
     filterMenuButtonCategory: 'filter-menu-button-категория', //done
     juiciestLink: 'juiciest-link', //done
     juiciestLinkMobile: 'juiciest-link-mobile', //done
+    appLoader: 'app-loader',
+    errorNotification: 'error-notification',
+    closeAlertButton: 'close-alert-button',
+    loadMoreButton: 'load-more-button',
+    loaderSearchBlock: 'loader-search-block',
+    errorPageGoHome: 'error-page-go-home',
 };

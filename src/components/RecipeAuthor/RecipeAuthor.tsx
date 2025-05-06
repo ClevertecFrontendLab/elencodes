@@ -6,12 +6,13 @@ import { SubscribeIcon } from '~/icons/SubscribeIcon';
 
 import { ActionCounter } from '../ActionCounter/ActionCounter';
 
-type Props = {
+type RecipeAuthorPropsType = {
     src: string;
     name: string;
     login: string;
 };
-export const RecipeAuthor = ({ src, name, login }: Props) => (
+
+export const RecipeAuthor = ({ src, name, login }: RecipeAuthorPropsType) => (
     <Flex
         gap={{ base: 2, md: 4 }}
         p={{ base: 3, md: 6 }}

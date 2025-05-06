@@ -43,12 +43,12 @@ import { MeatTypeItem, SideDishTypes } from '~/types/recipeType';
 import { AllergensFilter } from '../AllergensFilter/AllergensFilter';
 import { CustomMultiSelect } from '../CustomMultiSelect/CustomMultiSelect';
 
-type Props = {
+type FilterPropsType = {
     open: boolean;
     handleClose: () => void;
 };
 
-export const Filter = ({ open, handleClose }: Props) => {
+export const Filter = ({ open, handleClose }: FilterPropsType) => {
     const filters = useAppSelector(selectFilters);
     const categories = useAppSelector(selectCategories);
     const dispatch = useAppDispatch();

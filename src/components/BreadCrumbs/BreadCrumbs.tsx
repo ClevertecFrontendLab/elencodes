@@ -6,11 +6,11 @@ import { DATA_TEST_ID } from '~/constants/test-id';
 import { selectAllRecipes, selectCategories } from '~/model/selectors.ts';
 import { useAppSelector } from '~/store/hooks.ts';
 
-type Props = {
+type BreadCrumbsPropsType = {
     onBreadcrumbItemClick?: () => void;
 };
 
-export const BreadCrumbs = ({ onBreadcrumbItemClick }: Props) => {
+export const BreadCrumbs = ({ onBreadcrumbItemClick }: BreadCrumbsPropsType) => {
     const categories = useAppSelector(selectCategories);
     const recipes = useAppSelector(selectAllRecipes);
     const location = useLocation();

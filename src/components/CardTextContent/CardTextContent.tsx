@@ -7,7 +7,7 @@ import { useAppSelector } from '~/store/hooks.ts';
 import { highlightText } from '../utils/text';
 import { cardContentTextStyles, cardContentTitleStyles } from './CardTextContent.styles';
 
-type Props = {
+type CardTextContentPropsType = {
     title: string;
     description: string;
     showTextAbove?: string;
@@ -23,7 +23,7 @@ export const CardTextContent = ({
     mobileH = '48px',
     linesTitleOnMobile = 2,
     isMainCard = true,
-}: Props) => {
+}: CardTextContentPropsType) => {
     const filter = useAppSelector(selectFilters);
     const titleWithHighlightedText = highlightText(title, filter.searchQuery);
 

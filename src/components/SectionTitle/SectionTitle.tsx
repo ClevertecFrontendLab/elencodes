@@ -1,8 +1,10 @@
 import { Heading } from '@chakra-ui/react';
 
-import { SectionTitlePropsType } from '~/types/SectionTitleType';
-
 import { sectionTitleStyles } from './SectionTitle.styles';
+
+type SectionTitlePropsType = {
+    title: string;
+};
 
 export const SectionTitle = ({ title }: SectionTitlePropsType) => (
     <Heading as='h2' sx={sectionTitleStyles}>

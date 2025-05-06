@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/icons';
 import { Text } from '@chakra-ui/react';
 
-import { CulinaryBlogItemPropsType } from '~/types/CulinaryBlogType';
+import { CulinaryBlogItemPropsType } from '~/types/culinaryBlogType';
 
 import { AvatarWithName } from '../AvatarWithName/AvatarWithName';
 import { culinaryBlogItemBoxStyles, culinaryBlogItemTextStyles } from './CulinaryBlogItem.styles';

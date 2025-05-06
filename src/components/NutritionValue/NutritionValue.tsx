@@ -3,7 +3,7 @@ import { Flex, Text } from '@chakra-ui/react';
 
 import { NutritionValueItem } from './NutritionValueItem/NutritionValueItem';
 
-type Props = {
+type NutritionValuePropsType = {
     nutritionValue: {
         calories: number;
         proteins: number;
@@ -11,7 +11,8 @@ type Props = {
         carbohydrates: number;
     };
 };
-export const NutritionValue = ({ nutritionValue }: Props) => {
+
+export const NutritionValue = ({ nutritionValue }: NutritionValuePropsType) => {
     const { calories, proteins, fats, carbohydrates } = nutritionValue;
     const nutritionValueArr = [
         {

@@ -3,10 +3,9 @@ import { Button, Flex } from '@chakra-ui/react';
 
 import { MainCard } from '~/components/Cards/MainCard';
 import ButtonArrowRightIcon from '~/icons/ButtonIcons/ButtonArrowRightIcon';
-// import { MainSectionPropsType } from '~/types/MainSectionType';
 import { RecipeType } from '~/types/recipeType';
 
-type Props = {
+type MainSectionPropsType = {
     buttonTitle: string;
     sizeButton: string;
     displayButton: string | { base: string; xl: string };
@@ -24,7 +23,7 @@ export const MainSection = ({
     onClick,
     dataTestId = undefined,
     recipes,
-}: Props) => (
+}: MainSectionPropsType) => (
     <Box as='section'>
         <Flex
             data-test-id='filters-applied'

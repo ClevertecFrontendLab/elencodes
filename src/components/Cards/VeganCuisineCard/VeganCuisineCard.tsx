@@ -4,7 +4,8 @@ import { Card, Flex, Stack } from '@chakra-ui/react';
 import { ActionCounter } from '~/components/ActionCounter/ActionCounter';
 import { CardTextContent } from '~/components/CardTextContent/CardTextContent';
 import { MenuItemTag } from '~/components/MenuItemTag/MenuItemTag';
-import { VeganCuisineCardPropsType } from '~/types/VeganCuisineCardType';
+import { ActionCounterPropsType } from '~/types/actionCounterType';
+import { MenuItemTagPropsType } from '~/types/menuItemTagType';
 
 import {
     actionCounterBox,
@@ -12,6 +13,14 @@ import {
     lastSectionCardStyles,
     menuItemTagBoxStyles,
 } from './VeganCuisineCard.styles';
+
+type VeganCuisineCardPropsType = {
+    title: string;
+    description: string;
+    iconCounters: ActionCounterPropsType[];
+    category: MenuItemTagPropsType['category'];
+    bgColorTag: string;
+};
 
 export const VeganCuisineCard = ({
     title,

@@ -1,9 +1,14 @@
 import { CardBody, Icon } from '@chakra-ui/icons';
+import { IconProps } from '@chakra-ui/icons';
 import { Button, Card, Heading, HStack } from '@chakra-ui/react';
-
-import { RecipeCardPropsType } from '~/types/RecipeCardType';
+import { ComponentWithAs } from '@chakra-ui/react';
 
 import { recipeCardBodyStyles, recipeCardStyles, recipeCardTitleStyles } from './RecipeCard.styles';
+
+type RecipeCardPropsType = {
+    title: string;
+    icon: ComponentWithAs<'svg', IconProps>;
+};
 
 export const RecipeCard = ({ title, icon }: RecipeCardPropsType) => (
     <Card sx={recipeCardStyles}>

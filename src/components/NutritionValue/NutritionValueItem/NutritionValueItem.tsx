@@ -1,11 +1,11 @@
 import { Flex, Heading, Text } from '@chakra-ui/react';
 
-type Props = {
+type NutritionValueItemPropsType = {
     title: string;
     value: number;
     measureUnit: string;
 };
-export const NutritionValueItem = ({ title, value, measureUnit }: Props) => (
+export const NutritionValueItem = ({ title, value, measureUnit }: NutritionValueItemPropsType) => (
     <Flex
         direction={{ base: 'row', md: 'column' }}
         justify='space-between'

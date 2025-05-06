@@ -1,14 +1,21 @@
 import { Icon } from '@chakra-ui/icons';
 import { Avatar, IconButton } from '@chakra-ui/react';
+import { ReactNode } from 'react';
 
 import AddRecipeFooterIcon from '~/icons/FooterIcons/AddRecipeFooterIcon';
 import HomeIcon from '~/icons/FooterIcons/HomeIcon';
 import SearchIcon from '~/icons/SearchIcon';
-import { FooterItemDataType } from '~/types/FooterItemDataType';
 
 import avatar from '../assets/images/avatars/avatar_header.svg';
 
-export const footerItems: FooterItemDataType[] = [
+type FooterItemDataPropsType = {
+    id: number;
+    text: string;
+    isActive: boolean;
+    icon: ReactNode;
+};
+
+export const footerItems: FooterItemDataPropsType[] = [
     {
         id: 1,
         text: 'Главная',

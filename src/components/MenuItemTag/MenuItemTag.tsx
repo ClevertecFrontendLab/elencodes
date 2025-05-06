@@ -3,7 +3,7 @@ import { Flex, Icon, Text } from '@chakra-ui/react';
 import { iconsMap } from '~/icons/iconsMapping';
 import { selectCategories } from '~/model/selectors';
 import { useAppSelector } from '~/store/hooks';
-import { MenuItemTagType } from '~/types/MenuItemTagType';
+import { MenuItemTagPropsType } from '~/types/menuItemTagType';
 
 import {
     menuItemTagBoxStyles,
@@ -11,7 +11,7 @@ import {
     menuItemTagTextStyles,
 } from './MenuItemTag.styles';
 
-export const MenuItemTag = ({ category, bgColor }: MenuItemTagType) => {
+export const MenuItemTag = ({ category, bgColor }: MenuItemTagPropsType) => {
     const categories = useAppSelector(selectCategories);
     const currentCategory = categories.find((item) => item.id === category);
 

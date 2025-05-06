@@ -4,7 +4,8 @@ import { Flex, Text } from '@chakra-ui/react';
 import { RecipeCard } from '~/components/Cards/RecipeCard/RecipeCard';
 import { VeganCuisineCard } from '~/components/Cards/VeganCuisineCard/VeganCuisineCard';
 import { SectionTitle } from '~/components/SectionTitle/SectionTitle';
-import { LastSectionPropsType } from '~/types/LastSectionType';
+import { FirstCardsDataType } from '~/types/firstCardsDataType';
+import { SecondCardsDataType } from '~/types/secondCardsDataType';
 
 import {
     lastSectionBoxStyles,
@@ -14,6 +15,13 @@ import {
     lastSectionSubtitleStyles,
     lastSectionVeganCardBoxStyles,
 } from './LastSection.styles';
+
+type LastSectionPropsType = {
+    title: string;
+    description: string;
+    firstCardsData: FirstCardsDataType[];
+    secondCardsData: SecondCardsDataType[];
+};
 
 export const LastSection = ({
     title,

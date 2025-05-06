@@ -18,7 +18,7 @@ import { AddAllergen } from '~/icons/AddAllergen';
 import { selectFilters } from '~/model/selectors';
 import { useAppSelector } from '~/store/hooks';
 
-type Props = {
+type CustomMultiSelectPropsType = {
     options: string[];
     placeholder: string;
     isActive: boolean;
@@ -40,7 +40,7 @@ export const CustomMultiSelect = ({
     addCustomItem,
     selectedItems,
     dataTestId,
-}: Props) => {
+}: CustomMultiSelectPropsType) => {
     const filters = useAppSelector(selectFilters);
     const [customValue, setCustomValue] = useState<string>('');
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);

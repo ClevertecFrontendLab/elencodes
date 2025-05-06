@@ -5,6 +5,7 @@ import { ActionCounter } from '~/components/ActionCounter/ActionCounter';
 import { AvatarWithName } from '~/components/AvatarWithName/AvatarWithName';
 import { BreadCrumbs } from '~/components/BreadCrumbs/BreadCrumbs';
 import { BurgerMenu } from '~/components/BurgerMenu/BurgerMenu';
+import { Logo } from '~/components/Logo/Logo';
 import { DATA_TEST_ID } from '~/constants/test-id';
 import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
 import FriendsIcon from '~/icons/counterIcons/FriendsIcon';
@@ -13,14 +14,13 @@ import { resetFilters } from '~/model/filterSlice';
 import { useAppDispatch } from '~/store/hooks';
 
 import avatar from '../../assets/images/avatars/avatar_header.svg';
-import Logo from '../../components/Logo/Logo';
 import { ActionCounterWrapperStyles } from './Header.styles';
 
-type Props = {
+type HeaderPropsType = {
     isBurgerMenu?: boolean;
 };
 
-export const Header = ({ isBurgerMenu = false }: Props) => {
+export const Header = ({ isBurgerMenu = false }: HeaderPropsType) => {
     const dispatch = useAppDispatch();
 
     const resetFiltersHandler = () => {

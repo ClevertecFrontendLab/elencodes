@@ -1,6 +1,6 @@
 import { BookmarkIcon } from '~/icons/counterIcons/BookmarkIcon';
 import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
-import { FirstCardsDataType } from '~/types/FirstCardsDataType';
+import { FirstCardsDataType } from '~/types/firstCardsDataType';
 
 export const dessertsData: FirstCardsDataType[] = [
     {

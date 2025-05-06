@@ -1,4 +1,4 @@
-import { CulinaryBlogsDataType } from '~/types/CulinaryBlogType';
+import { CulinaryBlogsDataType } from '~/types/culinaryBlogType';
 
 import blogAlexImg from '../../assets/images/avatars/avatar_blog_cook.svg';
 import blogEkaterinaImg from '../../assets/images/avatars/avatar_blog_konstantinopolskaya.svg';

@@ -1,12 +1,14 @@
 import { Box, CardBody } from '@chakra-ui/icons';
+import { IconProps } from '@chakra-ui/icons';
 import { Card, Flex, Image, Stack } from '@chakra-ui/react';
+import { ComponentWithAs } from '@chakra-ui/react';
 
 import { ActionCounter } from '~/components/ActionCounter/ActionCounter';
 import { SaveButton } from '~/components/Buttons/SaveButton/SaveButton';
 import { StartCookButton } from '~/components/Buttons/StartCookButton/StartCookButton';
 import { CardTextContent } from '~/components/CardTextContent/CardTextContent';
 import { MenuItemTag } from '~/components/MenuItemTag/MenuItemTag';
-import { HorizontalCardType } from '~/types/HorizontalCardType';
+import { ActionCounterPropsType } from '~/types/actionCounterType';
 
 import {
     actionCounterBox,
@@ -18,6 +20,17 @@ import {
     horizontalCardStyles,
 } from './HorizontalCard.styles';
 
+type HorizontalCardPropsType = {
+    img: string;
+    altImg: string;
+    title: string;
+    description: string;
+    iconCounters: ActionCounterPropsType[];
+    tagIcon: ComponentWithAs<'svg', IconProps>;
+    tagTitle: string;
+    bgColorTag: string;
+};
+
 export const HorizontalCard = ({
     img,
     altImg,
@@ -27,7 +40,7 @@ export const HorizontalCard = ({
     tagTitle,
     tagIcon,
     bgColorTag,
-}: HorizontalCardType) => (
+}: HorizontalCardPropsType) => (
     <Card sx={horizontalCardStyles}>
         <Box sx={horizontalCardBoxImgStyles}>
             <Image src={img} alt={altImg} sx={horizontalCardImgStyles} />

@@ -9,9 +9,18 @@ import NavMenuArrowCloseIcon from '~/icons/NavMenuIcons/NavMenuArrowCloseIcon';
 import NavMenuArrowOpenIcon from '~/icons/NavMenuIcons/NavMenuArrowOpenIcon';
 import { resetFilters } from '~/model/filterSlice';
 import { useAppDispatch } from '~/store/hooks';
-import { NavMenuItemPropsType } from '~/types/NavMenuItemType';
+import { SubcategoryType } from '~/types/recipeType';
 
 // import { accordionButtonStyles } from './NavMenuItem.styles';
+
+type NavMenuItemPropsType = {
+    id: string;
+    icon: string;
+    name: string;
+    nameEn: string;
+    subcategories: SubcategoryType[];
+    closeBurgerMenu?: () => void;
+};
 
 export const NavMenuItem = ({
     icon,

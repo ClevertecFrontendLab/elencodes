@@ -4,9 +4,12 @@ import { Button, HStack } from '@chakra-ui/react';
 import { SectionTitle } from '~/components/SectionTitle/SectionTitle';
 import { DATA_TEST_ID } from '~/constants/test-id';
 import ButtonArrowRightIcon from '~/icons/ButtonIcons/ButtonArrowRightIcon';
-import { SectionButtonPropsType } from '~/types/SectionButtonType';
 
 import { sectionButtonStyles, titleSectionBoxStyles } from './TitleSectionWithButton.styles';
+
+type SectionButtonPropsType = {
+    onClick: () => void;
+};
 
 export const TitleSectionWithButton = ({ onClick }: SectionButtonPropsType) => (
     <HStack sx={titleSectionBoxStyles}>

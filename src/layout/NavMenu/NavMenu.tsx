@@ -9,13 +9,13 @@ import { DATA_TEST_ID } from '~/constants/test-id';
 import { selectCategories } from '~/model/selectors';
 import { useAppSelector } from '~/store/hooks';
 
-type Props = {
+type NavMenuPropsType = {
     isBurgerMenu?: boolean;
     children?: ReactNode;
     closeBurgerMenu?: () => void;
 };
 
-export const NavMenu = ({ isBurgerMenu = false, children, closeBurgerMenu }: Props) => {
+export const NavMenu = ({ isBurgerMenu = false, children, closeBurgerMenu }: NavMenuPropsType) => {
     const categories = useAppSelector(selectCategories);
     const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
     const location = useLocation();

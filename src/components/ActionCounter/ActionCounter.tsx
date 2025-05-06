@@ -1,7 +1,7 @@
 import { Icon } from '@chakra-ui/icons';
 import { HStack, Text } from '@chakra-ui/react';
 
-import { ActionCounterPropsType } from '~/types/ActionCounterType';
+import { ActionCounterPropsType } from '~/types/actionCounterType';
 
 import { actionCounterTextStyles } from './ActionCounter.styles';
 

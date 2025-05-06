@@ -1,11 +1,10 @@
-import { ActionCounterPropsType } from './ActionCounterType';
-import { CategoryType } from './recipeType';
+import { ActionCounterPropsType } from './actionCounterType';
 
 export type FirstCardsDataType = {
     id: number;
     title: string;
     description: string;
     iconCounters: ActionCounterPropsType[];
-    category: CategoryType;
+    category: string | string[];
     bgColorTag: string;
 };

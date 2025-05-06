@@ -1,6 +1,6 @@
 import FirstCoursesIcon from '~/icons/NavMenuIcons/FirstCoursesIcon';
 import SecondCoursesIcon from '~/icons/NavMenuIcons/SecondCoursesIcon';
-import { SecondCardsDataType } from '~/types/SecondCardsDataType';
+import { SecondCardsDataType } from '~/types/secondCardsDataType';
 
 export const veganCuisineDataShort: SecondCardsDataType[] = [
     {

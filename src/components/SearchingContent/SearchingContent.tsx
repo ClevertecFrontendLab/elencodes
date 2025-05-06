@@ -26,13 +26,19 @@ import {
     SearchingInputBoxStyles,
 } from './SearchingContent.styles';
 
-type Props = {
+type SearchingContentPropsType = {
     title: string;
     children?: ReactNode;
     isNothingFound?: boolean;
     setIsNothingFound?: (value: boolean) => void;
 };
-export const SearchingContent = ({ title, children, isNothingFound, setIsNothingFound }: Props) => {
+
+export const SearchingContent = ({
+    title,
+    children,
+    isNothingFound,
+    setIsNothingFound,
+}: SearchingContentPropsType) => {
     const filter = useAppSelector(selectFilters);
     const dispatch = useAppDispatch();
 

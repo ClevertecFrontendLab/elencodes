@@ -1,12 +1,13 @@
 import { Box } from '@chakra-ui/icons';
 import { Avatar, Flex, Heading, Text } from '@chakra-ui/react';
 
-type Props = {
+type AvatarWithNamePropsType = {
     src: string;
     name: string;
     login: string;
 };
-export const AvatarWithName = ({ src, name, login }: Props) => (
+
+export const AvatarWithName = ({ src, name, login }: AvatarWithNamePropsType) => (
     <Flex>
         <Avatar name={name} src={src} size={{ base: 'sm', lg: 'md' }} mr={{ base: 2, xl: 3 }} />
         <Box>

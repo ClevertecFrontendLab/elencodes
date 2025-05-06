@@ -8,7 +8,7 @@ import ReactionIcon from '~/icons/counterIcons/ReactionIcon';
 import { ActionCounter } from '../ActionCounter/ActionCounter';
 import { MenuItemTag } from '../MenuItemTag/MenuItemTag';
 
-type Props = {
+type MainInformationPropsType = {
     title: string;
     description: string;
     category: string[];
@@ -17,7 +17,8 @@ type Props = {
     likes: number;
     time: string;
 };
-export const MainInformation = (props: Props) => {
+
+export const MainInformation = (props: MainInformationPropsType) => {
     const { title, description, category, image, bookmarks, likes, time } = props;
     return (
         <Flex

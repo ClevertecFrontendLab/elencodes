@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/icons';
 import { Flex, Text, VStack } from '@chakra-ui/react';
-
-import { FooterItemPropsType } from '~/types/FooterItemPropsType';
+import { ReactNode } from 'react';
 
 import {
     footerIconsBoxStyles,
@@ -9,6 +8,12 @@ import {
     footerTextStyles,
     footerWrapperStyles,
 } from './FooterItem.styles';
+
+type FooterItemPropsType = {
+    children: ReactNode;
+    text: string;
+    isActive: boolean;
+};
 
 export const FooterItem = ({ children, text, isActive }: FooterItemPropsType) => {
     const textColor = isActive ? 'black' : 'blackAlpha.700';
