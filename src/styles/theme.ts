@@ -3,17 +3,14 @@ import { extendTheme } from '@chakra-ui/react';
 type ThemeApp = ReturnType<typeof extendTheme>;
 
 const breakpoints = {
-    base: '0px',
-    sm: '359px',
-    md: '767px',
-    lg: '1199px',
-    xl: '1439px',
-    xxl: '1919px',
+    base: '0em', // 0px
+    sm: '48em', // 768px
+    md: '89.94em', // 1440px
+    xl: '120em', // 1920px
 };
 
 const fonts = {
     inter: `'Inter', sans-serif`,
-    roboto: `'Roboto', sans-serif`,
 };
 
 const fontSizes = {
@@ -63,10 +60,7 @@ const mainTheme: ThemeApp = extendTheme({
     styles: {
         global: {
             'html, body': {
-                lineHeight: 'base',
                 fontFamily: 'inter',
-                fontSize: '14',
-                fontWeight: 'normal',
                 color: 'black',
             },
             ':root': {
