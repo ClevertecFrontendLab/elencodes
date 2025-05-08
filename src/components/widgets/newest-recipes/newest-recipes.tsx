@@ -14,7 +14,7 @@ export const NewestRecipes = () => {
 
     return (
         <SectionWrapper title='Новые рецепты'>
-            <Box maxW='100%' overflow='hidden' minH={{ base: '220px', sm: 'unset' }}>
+            <Box maxW='100%' minH={{ base: '220px', sm: 'unset' }}>
                 <Carousel>
                     {carouselRecipes.map((recipe) => (
                         <RecipeCardVertical key={recipe._id} recipe={recipe} />
