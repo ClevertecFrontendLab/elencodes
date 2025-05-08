@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { AllergenInputGroup, CheckboxItem } from '~/components';
 import { ALLERGEN, ALLERGENS_MENU, CHECKBOX } from '~/constants/data-test-ids';
+import { PLACEHOLDER_SELECT } from '~/constants/placeholders';
 
 type Option = {
     label: string;
@@ -29,7 +30,7 @@ export const MultiSelect = ({
     options,
     isDisabled = false,
     isCustomInputEnabled = false,
-    placeholder = 'Выберите из списка...',
+    placeholder = `${PLACEHOLDER_SELECT}`,
     minWidth = '269px',
     dataTestId = '',
     isAllergens = false,

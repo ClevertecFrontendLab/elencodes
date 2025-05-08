@@ -27,6 +27,8 @@ import {
     FILTER_TAG,
     FIND_RECIPE_BUTTON,
 } from '~/constants/data-test-ids';
+import { FILTER_TITLES } from '~/constants/filter-titles';
+import { BUTTON_EXCLUDE_ALLERGENS, PLACEHOLDER_SELECT_DRAWER } from '~/constants/placeholders';
 import { useFilterQueryParams } from '~/hooks/use-filter-query-params.tsx';
 import { INITIAL_PAGE_NUM } from '~/query/constants/recipe-consts.ts';
 import { useLazyGetRecipesWithFiltersQuery } from '~/query/services/recipes/recipes-api.ts';
@@ -207,7 +209,7 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                             selected={selectedCategories}
                             onChange={handleCategoriesChange}
                             options={categoriesOptions}
-                            placeholder='Категория'
+                            placeholder={FILTER_TITLES.CATEGORY}
                             minWidth={{ base: '309px', md: '365px' }}
                             dataTestId={FILTER_MENU_BUTTON_CATEGORY}
                             tagDataTestId={FILTER_TAG}
@@ -216,12 +218,12 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                             selected={selectedAuthors}
                             onChange={handleAuthorsChange}
                             options={authorsOptions}
-                            placeholder='Поиск по автору'
+                            placeholder={FILTER_TITLES.AUTHOR_SEARCH}
                             minWidth={{ base: '309px', md: '365px' }}
                             tagDataTestId={FILTER_TAG}
                         />
                         <FilterCheckboxList
-                            title='Тип мяса:'
+                            title={FILTER_TITLES.MEAT}
                             options={meatOptions}
                             selected={selectedMeats}
                             onToggle={(value) =>
@@ -229,7 +231,7 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                             }
                         />
                         <FilterCheckboxList
-                            title='Тип гарнира:'
+                            title={FILTER_TITLES.SIDE}
                             options={sidesOptions}
                             selected={selectedSides}
                             onToggle={(value) =>
@@ -238,7 +240,7 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                         />
                         <FormControl display='flex' alignItems='center' pt={2}>
                             <FormLabel htmlFor='exclude-allergens' mb='0'>
-                                Исключить аллергены
+                                {BUTTON_EXCLUDE_ALLERGENS}
                             </FormLabel>
                             <Switch
                                 data-test-id={ALLERGENS_SWITCHER_FILTER}
@@ -254,7 +256,7 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                             options={allergensOptions}
                             isCustomInputEnabled
                             isDisabled={!isExcludeEnabled}
-                            placeholder='Выберите из списка аллергенов...'
+                            placeholder={PLACEHOLDER_SELECT_DRAWER}
                             minWidth={{ base: '309px', md: '365px' }}
                             dataTestId={ALLERGEN_MENU_BUTTON_FILTER}
                             isAllergens

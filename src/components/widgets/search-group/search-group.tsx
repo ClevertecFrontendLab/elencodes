@@ -8,6 +8,7 @@ import {
     ALLERGENS_SWITCHER,
     LOADER_SEARCH_BLOCK,
 } from '~/constants/data-test-ids';
+import { BUTTON_EXCLUDE_ALLERGENS } from '~/constants/placeholders';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
 import { useAppSelector } from '~/redux/hooks.ts';
 import {
@@ -45,7 +46,7 @@ export const SearchGroup = () => {
                 <HStack align='center' w='100%' maxW={{ base: '448px', md: '518px' }}>
                     <FormControl display='flex' alignItems='center'>
                         <FormLabel htmlFor='exclude-allergens' mb='0'>
-                            Исключить аллергены
+                            {BUTTON_EXCLUDE_ALLERGENS}
                         </FormLabel>
                         <Switch
                             data-test-id={ALLERGENS_SWITCHER}

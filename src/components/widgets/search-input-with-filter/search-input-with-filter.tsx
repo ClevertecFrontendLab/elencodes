@@ -10,6 +10,7 @@ import { ChangeEvent, useState } from 'react';
 
 import { FilterDrawer } from '~/components';
 import { FILTER_BUTTON, SEARCH_BUTTON, SEARCH_INPUT } from '~/constants/data-test-ids';
+import { PLACEHOLDER_SEARCH_INPUT } from '~/constants/placeholders';
 import { useFilterQueryParams } from '~/hooks/use-filter-query-params.tsx';
 import { FilterIcon } from '~/icons/filter-icons/filter-icon';
 import { SearchIcon } from '~/icons/input-icons/search-icon';
@@ -106,7 +107,7 @@ export const SearchInputWithFilter = () => {
                         onChange={handleInputChange}
                         onKeyDown={handleSearch}
                         borderColor={getInputBorderColor()}
-                        placeholder='Название или ингредиент...'
+                        placeholder={PLACEHOLDER_SEARCH_INPUT}
                         _placeholder={{ color: 'lime.800', opacity: 1 }}
                     />
                     <InputRightElement>
