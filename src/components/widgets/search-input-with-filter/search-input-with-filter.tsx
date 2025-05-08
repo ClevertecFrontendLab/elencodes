@@ -28,6 +28,8 @@ import {
 } from '~/redux/slices/recipes-slice.ts';
 import { selectInputValue, setInputValue, setSearchValue } from '~/redux/slices/search-slice.ts';
 
+const MIN_SEARCH_LENGTH = 3;
+
 export const SearchInputWithFilter = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [trigger] = useLazyGetRecipesWithFiltersQuery();
@@ -39,7 +41,8 @@ export const SearchInputWithFilter = () => {
     const [input, setInput] = useState(searchQuery);
     const params = useFilterQueryParams();
 
-    const isSearchEnabled = input.trim().length >= 3 || selectedAllergens.length > 0;
+    const isSearchEnabled =
+        input.trim().length >= MIN_SEARCH_LENGTH || selectedAllergens.length > 0;
 
     const getInputBorderColor = () => {
         if (showEmptyText) return 'red.500';
@@ -52,7 +55,7 @@ export const SearchInputWithFilter = () => {
         setInput(newValue);
         dispatch(setSearchValue(newValue));
 
-        if (newValue.length >= 3) {
+        if (newValue.length >= MIN_SEARCH_LENGTH) {
             dispatch(setInputValue(newValue));
         }
     };

@@ -37,9 +37,11 @@ export const SearchGroup = () => {
         dispatch(toggleExcludeAllergens(checked));
     };
 
-    return isFiltering ? (
-        <Loader dataTestId={LOADER_SEARCH_BLOCK} isSmall />
-    ) : (
+    if (isFiltering) {
+        return <Loader dataTestId={LOADER_SEARCH_BLOCK} isSmall />;
+    }
+
+    return (
         <VStack spacing={4} w='100%' p={2}>
             <SearchInputWithFilter />
             {!isTablet && !isFiltering && (

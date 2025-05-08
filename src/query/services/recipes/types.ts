@@ -37,6 +37,12 @@ export type Recipe = {
     garnish?: string;
 };
 
+export type Recipes = Recipe[];
+
+export type RecipesGrid = {
+    recipes: Recipes;
+};
+
 export type RecipeMeta = {
     total: number;
     page: number;
@@ -45,7 +51,7 @@ export type RecipeMeta = {
 };
 
 export type RecipeResponse = {
-    data: Recipe[];
+    data: Recipes;
     meta: RecipeMeta;
 };
 

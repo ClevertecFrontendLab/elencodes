@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Recipe } from '~/query/services/recipes/types.ts';
+import { Recipes } from '~/query/services/recipes/types.ts';
 
 type RecipesState = {
-    filteredRecipes: Recipe[];
+    filteredRecipes: Recipes;
     filteredPage: number;
     hasMore: boolean;
     showEmptyText: boolean;
@@ -22,11 +22,11 @@ export const recipesSlice = createSlice({
     name: 'recipes',
     initialState,
     reducers: {
-        setFilteredRecipes(state, action: PayloadAction<Recipe[]>) {
+        setFilteredRecipes(state, action: PayloadAction<Recipes>) {
             state.filteredRecipes = action.payload;
             state.filteredPage = 1;
         },
-        appendFilteredRecipes(state, action: PayloadAction<Recipe[]>) {
+        appendFilteredRecipes(state, action: PayloadAction<Recipes>) {
             state.filteredRecipes.push(...action.payload);
         },
         incrementPage(state) {

@@ -26,10 +26,9 @@ type IngredientsTableProps = {
 export const IngredientsTable = ({ ingredients, portions }: IngredientsTableProps) => {
     const [currentPortions, setCurrentPortions] = useState(portions);
 
-    const handlePortionsChange = (value: string) => {
-        const parsed = parseInt(value, 10);
-        if (!isNaN(parsed) && parsed > 0) {
-            setCurrentPortions(parsed);
+    const handlePortionsChange = (_valueAsString: string, valueAsNumber: number) => {
+        if (valueAsNumber > 0) {
+            setCurrentPortions(valueAsNumber);
         }
     };
 

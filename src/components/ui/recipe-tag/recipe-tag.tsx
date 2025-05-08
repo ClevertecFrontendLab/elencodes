@@ -2,14 +2,12 @@ import { Image, Tag, TagLabel } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
 type RecipeTagBaseProps = {
-    category: string | number;
-    iconSrc: string;
-    bgColor: string;
-    isIconRound: boolean;
-    icon: ReactNode;
+    category?: string | number;
+    iconSrc?: string;
+    bgColor?: string;
+    isIconRound?: boolean;
+    icon?: ReactNode;
 };
-
-type RecipeTagProps = Partial<RecipeTagBaseProps>;
 
 export const RecipeTag = ({
     category,
@@ -17,13 +15,13 @@ export const RecipeTag = ({
     bgColor = 'lime.150',
     isIconRound = false,
     icon,
-}: RecipeTagProps) => (
+}: RecipeTagBaseProps) => (
     <Tag w='max-content' bgColor={bgColor} px={2} py={1} gap={1}>
         {icon}
         {iconSrc && (
             <Image
                 src={iconSrc}
-                alt={'' + category}
+                alt={category != null ? String(category) : ''}
                 w='17px'
                 h='17px'
                 rounded={isIconRound ? '50%' : '0'}

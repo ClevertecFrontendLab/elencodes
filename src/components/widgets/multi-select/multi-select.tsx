@@ -5,11 +5,7 @@ import { useState } from 'react';
 import { AllergenInputGroup, CheckboxItem } from '~/components';
 import { ALLERGEN, ALLERGENS_MENU, CHECKBOX } from '~/constants/data-test-ids';
 import { PLACEHOLDER_SELECT } from '~/constants/placeholders';
-
-type Option = {
-    label: string;
-    value: string;
-};
+import { Option } from '~/types/option-type';
 
 type MultiSelectProps = {
     selected: string[];
@@ -48,7 +44,7 @@ export const MultiSelect = ({
 
     const handleAddCustom = () => {
         const trimmed = newValue.trim();
-        if (trimmed !== '' && !selected.includes(trimmed)) {
+        if (trimmed && !selected.includes(trimmed)) {
             onChange([...selected, trimmed]);
             setNewValue('');
         }

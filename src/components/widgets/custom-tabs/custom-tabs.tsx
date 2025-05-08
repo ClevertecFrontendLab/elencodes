@@ -4,19 +4,16 @@ import { useLocation, useNavigate, useParams } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths.ts';
 import { ResponsiveRecipeGrid } from '~/components';
-import { Recipe } from '~/query/services/recipes/types.ts';
+import { RecipesGrid } from '~/query/services/recipes/types';
 
 type TabItem = {
     label: string;
     slug: string;
 };
 
-type CustomTabsProps = {
+type CustomTabsProps = RecipesGrid & {
     tabs: TabItem[];
-    recipes: Recipe[];
 };
-
-const NOT_FOUND_INDEX = -1;
 
 export const CustomTabs = ({ tabs, recipes }: CustomTabsProps) => {
     const { subcategory, category } = useParams();
@@ -27,7 +24,7 @@ export const CustomTabs = ({ tabs, recipes }: CustomTabsProps) => {
 
     useEffect(() => {
         const foundIndex = tabs.findIndex((tab) => tab.slug === subcategory);
-        if (foundIndex !== NOT_FOUND_INDEX) {
+        if (foundIndex !== -1) {
             setTabIndex(foundIndex);
         }
     }, [subcategory, location.pathname, tabs]);

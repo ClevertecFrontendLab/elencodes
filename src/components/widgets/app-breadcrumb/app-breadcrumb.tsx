@@ -8,6 +8,7 @@ import { useScreenSize } from '~/hooks/use-screen-size';
 import { useGetRecipeByIdQuery } from '~/query/services/recipes/recipes-api';
 import { useAppSelector } from '~/redux/hooks';
 import { selectCategories, selectSubCategories } from '~/redux/slices/category-slice';
+import { getFirstSubcategoryPath } from '~/utils/get-first-subcategory-path';
 
 export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
     const { isTablet } = useScreenSize();
@@ -21,14 +22,6 @@ export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
     const { data: recipe } = useGetRecipeByIdQuery(recipeId || '', {
         skip: !recipeId,
     });
-
-    const getFirstSubcategoryPath = (categorySlug: string) => {
-        const category = categories.find((cat) => cat.category === categorySlug);
-        const firstSub = category?.subCategories?.[0]?.category;
-        return firstSub
-            ? `${PATHS.ROOT}${categorySlug}${PATHS.ROOT}${firstSub}`
-            : `${PATHS.ROOT}${categorySlug}`;
-    };
 
     const breadcrumbs = pathParts.map((_, index) => {
         const isLast = index === pathParts.length - 1;
@@ -51,7 +44,7 @@ export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
 
         const matchedCategory = categories.find((cat) => `${PATHS.ROOT}${cat.category}` === path);
         if (matchedCategory) {
-            const redirectPath = getFirstSubcategoryPath(matchedCategory.category);
+            const redirectPath = getFirstSubcategoryPath(matchedCategory.category, categories);
             return (
                 <BreadcrumbItem key={path} isCurrentPage={isLast}>
                     <BreadcrumbLink

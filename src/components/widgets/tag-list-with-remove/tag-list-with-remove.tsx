@@ -1,11 +1,7 @@
 import { HStack, Tag, TagCloseButton, TagLabel } from '@chakra-ui/react';
 
 import { FILTER_TAG } from '~/constants/data-test-ids';
-
-type Option = {
-    label: string;
-    value: string;
-};
+import { Option } from '~/types/option-type';
 
 type TagListWithRemoveProps = {
     selected: string[];

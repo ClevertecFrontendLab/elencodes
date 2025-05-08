@@ -24,10 +24,11 @@ type RecipeCardVerticalProps = {
     isWithoutImage?: boolean;
 };
 
+const CARD_PADDING = { base: '10px', md: '18px' };
+
 export const RecipeCardVertical = memo(
     ({ recipe, isWithoutImage = false }: RecipeCardVerticalProps) => {
         const { isTablet } = useScreenSize();
-        const padding = { base: '10px', md: '18px' };
         const navigate = useNavigate();
         const path = useGetRecipePath(recipe);
         const tags = useMapCategoriesToTags(
@@ -76,7 +77,7 @@ export const RecipeCardVertical = memo(
                             borderTopRadius='lg'
                         />
                     )}
-                    <Stack p={padding} spacing='3'>
+                    <Stack p={CARD_PADDING} spacing='3'>
                         <Heading
                             noOfLines={{ base: isWithoutImage ? 1 : 2, md: 1 }}
                             wordBreak={{ base: isWithoutImage ? 'break-all' : 'break-word' }}
@@ -92,7 +93,7 @@ export const RecipeCardVertical = memo(
                         )}
                     </Stack>
                     <Spacer />
-                    <Flex p={padding} justifyContent='space-between' alignItems='flex-end'>
+                    <Flex p={CARD_PADDING} justifyContent='space-between' alignItems='flex-end'>
                         {!isWithoutImage && isTablet && (
                             <Box position='absolute' top='5px' left='5px'>
                                 <VStack align='start' spacing={1}>

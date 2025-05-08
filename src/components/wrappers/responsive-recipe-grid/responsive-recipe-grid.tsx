@@ -2,13 +2,9 @@ import { Grid } from '@chakra-ui/react';
 
 import { RecipeCardHorizontal } from '~/components';
 import { FOOD_CARD } from '~/constants/data-test-ids';
-import { Recipe } from '~/query/services/recipes/types.ts';
+import { RecipesGrid } from '~/query/services/recipes/types.ts';
 
-type ResponsiveRecipeGridProps = {
-    recipes: Recipe[];
-};
-
-export const ResponsiveRecipeGrid = ({ recipes }: ResponsiveRecipeGridProps) => (
+export const ResponsiveRecipeGrid = ({ recipes }: RecipesGrid) => (
     <Grid
         templateColumns={{
             base: '1fr',

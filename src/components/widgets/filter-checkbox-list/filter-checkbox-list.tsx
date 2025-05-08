@@ -2,11 +2,7 @@ import { Text, VStack } from '@chakra-ui/react';
 
 import { CheckboxItem } from '~/components';
 import { CHECKBOX } from '~/constants/data-test-ids';
-
-type Option = {
-    label: string;
-    value: string;
-};
+import { Option } from '~/types/option-type';
 
 type FilterCheckboxListProps = {
     title: string;
