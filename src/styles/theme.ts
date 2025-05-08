@@ -5,7 +5,7 @@ type ThemeApp = ReturnType<typeof extendTheme>;
 const breakpoints = {
     base: '0em', // 0px
     sm: '48em', // 768px
-    md: '90em', // 1440px
+    md: '89.94em', // 1440px
     xl: '120em', // 1920px
 };
 
