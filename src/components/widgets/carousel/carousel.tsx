@@ -47,7 +47,7 @@ export const Carousel = ({ children }: CarouselProps) => {
                 modules={[Navigation]}
                 loop={true}
                 navigation={false}
-                speed={100}
+                speed={0}
                 breakpoints={{
                     350: {
                         spaceBetween: 12,
@@ -58,8 +58,8 @@ export const Carousel = ({ children }: CarouselProps) => {
                         slidesPerView: 'auto',
                     },
                     1915: {
-                        spaceBetween: 16,
-                        slidesPerView: 'auto',
+                        spaceBetween: 15,
+                        slidesPerView: 4,
                     },
                 }}
             >
