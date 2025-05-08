@@ -24,7 +24,7 @@ export const Carousel = ({ children }: CarouselProps) => {
     const cardWidth = useBreakpointValue({
         base: '158px',
         md: '277px',
-        xl: '322px',
+        xl: '318px',
     });
 
     const scrollLeft = () => {

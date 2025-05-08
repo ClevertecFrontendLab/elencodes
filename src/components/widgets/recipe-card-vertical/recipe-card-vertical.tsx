@@ -45,7 +45,7 @@ export const RecipeCardVertical = memo(
                     base: isWithoutImage ? '100%' : '158px',
                     sm: isWithoutImage ? '232px' : '158px',
                     md: isWithoutImage ? '282px' : '277px',
-                    xl: '322px',
+                    xl: '318px',
                 }}
                 height='100%'
                 minH={isWithoutImage ? 'unset' : '220px'}
