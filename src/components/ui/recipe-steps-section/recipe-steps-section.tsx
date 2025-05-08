@@ -38,6 +38,9 @@ export const RecipeStepsSection = ({ steps }: RecipeStepsSectionProps) => (
                     flexDirection='column'
                     gap={{ base: 1, sm: 2, md: 5 }}
                     p={{ base: 2, md: 6 }}
+                    border='1px solid rgba(0, 0, 0, 0.08)'
+                    borderRadius='8px'
+                    boxShadow='none'
                 >
                     <Tag w='max-content' bgColor={index === steps.length - 1 ? 'lime.50' : ''}>
                         <TagLabel>Шаг {step.stepNumber}</TagLabel>
