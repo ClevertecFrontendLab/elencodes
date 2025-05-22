@@ -1,11 +1,10 @@
 import { Flex } from '@chakra-ui/icons';
 import { Box, Button, Card, CardBody, HStack, Image, Text } from '@chakra-ui/react';
+import author from '@public/images/avatars/recipe_author.svg';
 
 import { StatItem } from '~/components';
 import { SubscribeIcon } from '~/icons/button-icons/subscribe-icon';
 import { FriendsIcon } from '~/icons/counter-icons/friends-icon';
-
-import author from '../../../assets/images/avatars/recipe_author.svg';
 
 export const RecipeAuthorCard = () => (
     <Box w={{ base: '100%', sm: '604px', md: '680px' }}>

@@ -1,7 +1,6 @@
 import { VStack } from '@chakra-ui/icons';
 import { Avatar, HStack, Text } from '@chakra-ui/react';
-
-import userAvatar from '../../../assets/images/avatars/avatar_header.svg';
+import userAvatar from '@public/images/avatars/avatar_header.svg';
 
 export const UserInfo = () => (
     <HStack spacing={2} align='center' mr='40px'>

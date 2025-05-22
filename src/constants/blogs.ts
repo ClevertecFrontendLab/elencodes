@@ -1,8 +1,8 @@
-import { Blog } from '~/types/blog-type';
+import alex from '@public/images/avatars/avatar_blog_cook.svg';
+import elena from '@public/images/avatars/avatar_blog_konstantinopolskaya.svg';
+import ekaterina from '@public/images/avatars/avatar_blog_konstantinopolskaya.svg';
 
-import alex from '../assets/images/avatars/avatar_blog_cook.svg';
-import elena from '../assets/images/avatars/avatar_blog_konstantinopolskaya.svg';
-import ekaterina from '../assets/images/avatars/avatar_blog_konstantinopolskaya.svg';
+import { Blog } from '~/types/blog-type';
 
 export const BLOGS: Blog[] = [
     {

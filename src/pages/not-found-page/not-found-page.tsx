@@ -1,11 +1,10 @@
 import { Box, Center, Heading, Image, Link, Text } from '@chakra-ui/react';
+import notFound from '@public/images/not-found-page/not-found.png';
+import notFoundTablet from '@public/images/not-found-page/not-found-tablet.png';
 import { NavLink } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths.ts';
 import { ERROR_PAGE_GO_HOME } from '~/constants/data-test-ids';
-
-import notFound from '../../assets/images/not-found-page/not-found.png';
-import notFoundTablet from '../../assets/images/not-found-page/not-found-tablet.png';
 
 export const NotFoundPage = () => (
     <Center
