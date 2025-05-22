@@ -4,10 +4,11 @@ import { ReactNode } from 'react';
 type StatItemProps = {
     icon: ReactNode;
     value: number | string;
-    fontSize?: string;
-    lineHeight?: number | string;
-    color?: string;
-};
+} & Partial<{
+    fontSize: string;
+    lineHeight: number | string;
+    color: string;
+}>;
 
 export const StatItem = ({
     icon,

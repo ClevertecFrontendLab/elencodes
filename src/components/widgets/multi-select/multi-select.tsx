@@ -11,14 +11,15 @@ type MultiSelectProps = {
     selected: string[];
     onChange: (values: string[]) => void;
     options: Option[];
-    isDisabled?: boolean;
-    isCustomInputEnabled?: boolean;
-    placeholder?: string;
-    minWidth?: { base: string; md: string } | string;
-    dataTestId?: string;
-    isAllergens?: boolean;
-    tagDataTestId?: string;
-};
+} & Partial<{
+    isDisabled: boolean;
+    isCustomInputEnabled: boolean;
+    placeholder: string;
+    minWidth: { base: string; md: string } | string;
+    dataTestId: string;
+    isAllergens: boolean;
+    tagDataTestId: string;
+}>;
 
 export const MultiSelect = ({
     selected,

@@ -6,9 +6,11 @@ type CheckboxItemProps = {
     label: string;
     isChecked: boolean;
     onCustomToggle: (value: string) => void;
-    bgColor?: string;
-    dataTestId?: string;
-} & BoxProps;
+} & Partial<{
+    bgColor: string;
+    dataTestId: string;
+}> &
+    BoxProps;
 
 export const CheckboxItem = ({
     value,
