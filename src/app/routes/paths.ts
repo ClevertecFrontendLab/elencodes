@@ -6,6 +6,10 @@ export const PATHS = {
     RECIPE_DETAILS: ':category/:subcategory/:id',
     NOT_FOUND: '/not-found',
     ERROR: '*',
+    SIGN_IN: '/sign-in',
+    SIGN_UP: '/sign-up',
+    RECOVERY: '/sign-in/recovery',
+    VERIFICATION: '/verification',
 };
 
 export const staticRoutes = {

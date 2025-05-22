@@ -15,6 +15,7 @@ export const appSlice = createSlice({
     initialState,
     reducers: {
         setAppError(state, { payload }: PayloadAction<AppError>) {
+            state.isLoading = false;
             state.error = payload;
         },
         setAppLoader(state, { payload: isLoading }: PayloadAction<boolean>) {

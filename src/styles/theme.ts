@@ -4,7 +4,7 @@ type ThemeApp = ReturnType<typeof extendTheme>;
 
 const breakpoints = {
     base: '0em', // 0px
-    sm: '48em', // 768px
+    sm: '47.5em', // 768px
     md: '89.94em', // 1440px
     xl: '120em', // 1920px
 };
@@ -37,26 +37,28 @@ const lineHeights = {
     base: '143%',
 };
 
-const colors = {
-    lime: {
-        50: '#FFFFD3',
-        100: '#EAFFC7',
-        150: '#D7FF94',
-        300: '#C4FF61',
-        400: '#B1FF2E',
-        600: '#2DB100',
-        700: '#207E00',
-        800: '#134B00',
-    },
-};
-
 const mainTheme: ThemeApp = extendTheme({
+    colors: {
+        lime: {
+            50: '#FFFFD3',
+            100: '#EAFFC7',
+            150: '#D7FF94',
+            300: '#C4FF61',
+            400: '#B1FF2E',
+            500: '#B1FF2E',
+            600: '#2DB100',
+            700: '#207E00',
+            800: '#134B00',
+        },
+        progress: {
+            500: '#C4FF61',
+        },
+    },
     breakpoints,
     fonts,
     fontSizes,
     fontWeights,
     lineHeights,
-    colors,
     styles: {
         global: {
             'html, body': {
@@ -135,6 +137,45 @@ const mainTheme: ThemeApp = extendTheme({
                     },
                     _invalid: {
                         borderColor: 'red.500',
+                    },
+                },
+            },
+            variants: {
+                auth: {
+                    field: {
+                        bgColor: 'white',
+                        border: '1px solid',
+                        borderColor: 'lime.150',
+                        color: 'lime.800',
+                        _focus: {
+                            borderColor: 'lime.700',
+                        },
+                        _placeholder: {
+                            color: 'lime.800',
+                        },
+                        _invalid: {
+                            borderColor: 'red.500',
+                            boxShadow: '0 0 0 1px red.500',
+                        },
+                    },
+                },
+            },
+        },
+        Button: {
+            variants: {
+                dark: {
+                    bgColor: 'blackAlpha.900',
+                    color: 'white',
+                    _hover: {
+                        bgColor: 'blackAlpha.800',
+                        _disabled: {
+                            opacity: 0.8,
+                            bgColor: 'blackAlpha.800',
+                        },
+                    },
+                    _disabled: {
+                        opacity: 0.8,
+                        bgColor: 'blackAlpha.800',
                     },
                 },
             },
