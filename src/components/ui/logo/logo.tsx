@@ -1,20 +1,25 @@
 import { Flex } from '@chakra-ui/icons';
-import { Link as ChakraLink } from '@chakra-ui/react';
+import { Image, Link as ChakraLink } from '@chakra-ui/react';
 import { NavLink } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths.ts';
-import { LogoIcon } from '~/icons/logo-icons/logo-icon';
-import { LogoNameIcon } from '~/icons/logo-icons/logoname-icon';
+import logoIcon from '~/assets/icons/logo-icon-72.svg';
+import logoText from '~/assets/icons/logo-text-72.svg';
 
-export const Logo = () => (
+type LogoProps = Partial<{
+    size: 'base' | 'md';
+    isHideText: boolean;
+}>;
+
+export const Logo = ({ size = 'base', isHideText = true }: LogoProps) => (
     <ChakraLink as={NavLink} to={PATHS.ROOT}>
-        <Flex alignItems='start' gap={{ base: '7px' }}>
-            <LogoIcon sx={{ transform: 'translateY(-2px)' }} />
-            <LogoNameIcon
-                display={{
-                    base: 'none',
-                    md: 'inline-block',
-                }}
+        <Flex alignItems='start' gap={2}>
+            <Image src={logoIcon} alt='Logo' boxSize={size === 'md' ? '64px' : '32px'} />
+            <Image
+                src={logoText}
+                alt='Logo text'
+                maxWidth={size === 'md' ? '192px' : '96px'}
+                display={{ sm: 'block', base: isHideText ? 'none' : 'block' }}
             />
         </Flex>
     </ChakraLink>

@@ -9,9 +9,10 @@ import { selectSearchValue } from '~/redux/slices/search-slice.ts';
 
 type CategoryPageLayoutProps = {
     children: ReactNode;
-    title?: string;
-    description?: string;
-};
+} & Partial<{
+    title: string;
+    description: string;
+}>;
 
 export const CategoryPageLayout = ({ title, description, children }: CategoryPageLayoutProps) => {
     const inputValue = useAppSelector(selectSearchValue);

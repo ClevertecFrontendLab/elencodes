@@ -5,14 +5,15 @@ import { ButtonArrowRightIcon } from '~/icons/button-icons/button-arrow-right-ic
 
 type SectionWrapperProps = {
     title: string;
-    description?: string;
-    buttonLabel?: string;
-    onButtonClick?: () => void;
-    theme?: 'light' | 'lime';
     children: ReactNode;
-    dataTestId?: string;
-    dataTestIdMob?: string;
-};
+} & Partial<{
+    description: string;
+    buttonLabel: string;
+    onButtonClick: () => void;
+    theme: 'light' | 'lime';
+    dataTestId: string;
+    dataTestIdMob: string;
+}>;
 
 export const SectionWrapper = ({
     title,
@@ -63,7 +64,7 @@ export const SectionWrapper = ({
                     bg={theme === 'lime' ? 'lime.300' : 'lime.400'}
                     onClick={onButtonClick}
                     rightIcon={<ButtonArrowRightIcon boxSize='16px' color='black' />}
-                    display={{ base: 'none', sm: 'block' }}
+                    display={{ base: 'none', md: 'block' }}
                     _hover={{ bg: 'lime.50' }}
                     data-test-id={dataTestId}
                 >
@@ -80,7 +81,7 @@ export const SectionWrapper = ({
                     onClick={onButtonClick}
                     rightIcon={<ButtonArrowRightIcon boxSize='16px' color='black' />}
                     data-test-id={dataTestIdMob}
-                    display={{ base: 'flex', sm: 'none' }}
+                    display={{ base: 'flex', md: 'none' }}
                     alignItems='center'
                 >
                     {buttonLabel}

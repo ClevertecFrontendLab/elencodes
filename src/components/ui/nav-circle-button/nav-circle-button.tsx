@@ -4,9 +4,10 @@ import { ReactElement } from 'react';
 type NavCircleButtonProps = {
     icon: ReactElement;
     label: string;
-    isPrimary?: boolean;
-    onClick?: () => void;
-};
+} & Partial<{
+    isPrimary: boolean;
+    onClick: () => void;
+}>;
 
 export const NavCircleButton = ({
     icon,

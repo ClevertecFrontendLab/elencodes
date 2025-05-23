@@ -11,6 +11,7 @@ export const Header = () => {
 
     return (
         <Box
+            w='100%'
             as='header'
             bg={isOpen ? 'white' : 'lime.50'}
             pl={4}

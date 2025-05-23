@@ -1,4 +1,4 @@
-import { Grid as ChakraGrid, GridItem } from '@chakra-ui/react';
+import { Box, Grid as ChakraGrid, GridItem } from '@chakra-ui/react';
 import { Outlet } from 'react-router';
 
 import { Aside, Footer, Header, Sidebar } from '~/components';
@@ -20,8 +20,11 @@ const Layout = () => (
             `,
         }}
         minH='100vh'
+        maxW='1920px'
+        m='0 auto'
         overflowY={{ base: 'hidden', md: 'auto' }}
         overflowX='hidden'
+        position='relative'
     >
         <GridItem
             data-test-id={HEADER}
@@ -32,8 +35,12 @@ const Layout = () => (
             right={0}
             zIndex={1000}
             bg='white'
+            w='100%'
+            textAlign='center'
         >
-            <Header />
+            <Box maxW='1920px' m='0 auto'>
+                <Header />
+            </Box>
         </GridItem>
 
         <GridItem
@@ -41,7 +48,7 @@ const Layout = () => (
             display={{ base: 'none', md: 'block' }}
             position='fixed'
             top={{ base: '74px', md: '80px' }}
-            left={0}
+            alignSelf='start'
             borderRight='1px solid rgba(0, 0, 0, 0.12)'
             w='256px'
             h='calc(100vh - 64px)'

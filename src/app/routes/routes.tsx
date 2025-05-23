@@ -1,29 +1,45 @@
-import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router';
+import { createBrowserRouter, createRoutesFromElements, Navigate, Route } from 'react-router';
 
 import { clearStateLoader } from '~/app/routes/utils/clear-state-loader.ts';
-import Layout from '~/components/layout/layout/layout.tsx';
+import { AuthLayout } from '~/layouts/auth-layout/auth-layout.tsx';
 import { MainLayout } from '~/layouts/main-layout/main-layout.tsx';
+import { ProtectedLayout } from '~/layouts/protected-layout/protected-layout.tsx';
 import { JuiciestPage, MainPage, NotFoundPage, RecipeDetailsPage } from '~/pages';
 import { CategoryPage } from '~/pages/category-page/category-page.tsx';
+import { RecoveryPage } from '~/pages/recovery-page/recovery-page.tsx';
+import { SignInPage } from '~/pages/sign-in-page/sign-in-page.tsx';
+import { SignUpPage } from '~/pages/sign-up-page/sign-up-page.tsx';
+import { VerifyEmailPage } from '~/pages/verify-email-page/verify-email-page.tsx';
 
 import { PATHS } from './paths';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <>
-            <Route element={<MainLayout />}>
-                <Route path={PATHS.ROOT} element={<MainPage />} loader={clearStateLoader} />
-                <Route path={PATHS.JUICIEST} element={<JuiciestPage />} loader={clearStateLoader} />
-                <Route
-                    path={PATHS.CATEGORY_SUBCATEGORY}
-                    element={<CategoryPage />}
-                    loader={clearStateLoader}
-                />
-                <Route path={PATHS.RECIPE_DETAILS} element={<RecipeDetailsPage />} />
+            <Route element={<ProtectedLayout />}>
+                <Route element={<MainLayout />}>
+                    <Route path={PATHS.ROOT} element={<MainPage />} loader={clearStateLoader} />
+                    <Route
+                        path={PATHS.JUICIEST}
+                        element={<JuiciestPage />}
+                        loader={clearStateLoader}
+                    />
+                    <Route
+                        path={PATHS.CATEGORY_SUBCATEGORY}
+                        element={<CategoryPage />}
+                        loader={clearStateLoader}
+                    />
+                    <Route path={PATHS.RECIPE_DETAILS} element={<RecipeDetailsPage />} />
+                    <Route path={PATHS.NOT_FOUND} element={<NotFoundPage />} />
+                    <Route path={PATHS.ERROR} element={<Navigate to={PATHS.NOT_FOUND} replace />} />
+                </Route>
             </Route>
-            <Route element={<Layout />}>
-                <Route path={PATHS.NOT_FOUND} element={<NotFoundPage />} />
-                <Route path={PATHS.ERROR} element={<NotFoundPage />} />
+            <Route element={<AuthLayout />}>
+                <Route path={PATHS.SIGN_IN} element={<SignInPage />}>
+                    <Route path={PATHS.RECOVERY} element={<RecoveryPage />} />
+                </Route>
+                <Route path={PATHS.SIGN_UP} element={<SignUpPage />} />
+                <Route path={PATHS.VERIFICATION} element={<VerifyEmailPage />} />
             </Route>
         </>,
     ),

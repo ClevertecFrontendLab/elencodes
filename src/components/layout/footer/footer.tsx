@@ -1,11 +1,10 @@
 import { Flex, SearchIcon } from '@chakra-ui/icons';
 import { Box, Image } from '@chakra-ui/react';
+import avatar from '@public/images/avatars/avatar_header.svg';
 
 import { NavCircleButton } from '~/components/ui';
 import { AddRecipeFooterIcon } from '~/icons/footer-icons/add-recipe-footer-icon';
 import { HomeIcon } from '~/icons/footer-icons/home-icon';
-
-import avatar from '../../../assets/images/avatars/avatar_header.svg';
 
 export const Footer = () => (
     <Box as='footer' bg='lime.50' height='84px'>

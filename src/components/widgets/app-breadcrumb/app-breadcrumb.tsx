@@ -19,9 +19,15 @@ export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
     const subCategories = useAppSelector(selectSubCategories);
     const { recipeId } = useCategoryParams();
 
+    const hiddenPaths = [PATHS.NOT_FOUND, PATHS.ERROR];
+
     const { data: recipe } = useGetRecipeByIdQuery(recipeId || '', {
         skip: !recipeId,
     });
+
+    if (hiddenPaths.includes(location.pathname)) {
+        return null;
+    }
 
     const breadcrumbs = pathParts.map((_, index) => {
         const isLast = index === pathParts.length - 1;
