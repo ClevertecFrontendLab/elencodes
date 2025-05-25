@@ -34,7 +34,12 @@ export const ResultModal = ({
 }: ResultModalProps) => (
     <Modal isCentered {...{ onClose }} {...props}>
         <ModalOverlay />
-        <ModalContent data-test-id={dataTestId} maxW={{ base: '316px', md: '400px' }} py={4}>
+        <ModalContent
+            data-test-id={dataTestId}
+            maxW={{ base: '316px', md: '400px' }}
+            py={4}
+            borderRadius='16px'
+        >
             <ModalHeader>
                 {isClosable && (
                     <IconButton
