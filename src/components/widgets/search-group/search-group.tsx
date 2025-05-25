@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { MultiSelect, SearchInputWithFilter } from '~/components';
 import { Loader } from '~/components/ui/loader/loader.tsx';
 import { DATA_TEST_ID } from '~/constants/data-test-ids';
-import { BUTTON_EXCLUDE_ALLERGENS } from '~/constants/placeholders';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
 import { useAppSelector } from '~/redux/hooks.ts';
 import {
@@ -44,7 +44,7 @@ export const SearchGroup = () => {
                 <HStack align='center' w='100%' maxW={{ base: '448px', md: '518px' }}>
                     <FormControl display='flex' alignItems='center'>
                         <FormLabel htmlFor='exclude-allergens' mb='0'>
-                            {BUTTON_EXCLUDE_ALLERGENS}
+                            {PLACEHOLDERS.BUTTON_EXCLUDE_ALLERGENS}
                         </FormLabel>
                         <Switch
                             data-test-id={DATA_TEST_ID.ALLERGENS_SWITCHER}

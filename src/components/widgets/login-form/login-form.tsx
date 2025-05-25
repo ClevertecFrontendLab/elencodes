@@ -14,6 +14,7 @@ import { NavLink } from 'react-router';
 import { PATHS } from '~/app/routes/paths';
 import { PasswordInput } from '~/components/ui/password-input/password-input';
 import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { LoginSchemaType } from '~/schemas/sign-in.schema.ts';
 
 type Props = {
@@ -42,7 +43,7 @@ export const LoginForm = ({ formMethods, onSubmit }: Props) => {
                         size='lg'
                         variant='auth'
                         {...register('login')}
-                        placeholder='Введите логин'
+                        placeholder={PLACEHOLDERS.SIGN_IN_LOGIN}
                         onBlur={(e) => handleBlur('login', e.target.value)}
                     />
                     <FormErrorMessage>{String(errors.login?.message)}</FormErrorMessage>
@@ -54,7 +55,7 @@ export const LoginForm = ({ formMethods, onSubmit }: Props) => {
                         input={{
                             ...register('password'),
                             variant: 'auth',
-                            placeholder: 'Пароль для сайта',
+                            placeholder: PLACEHOLDERS.PASSWORD,
                         }}
                         dataTestId={DATA_TEST_ID.FORM_PASSWORD_INPUT}
                     />

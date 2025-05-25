@@ -13,6 +13,7 @@ import { useForm } from 'react-hook-form';
 
 import { ResultModal, ResultModalProps } from '~/components/wrappers/result-modal/result-modal';
 import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { TOAST_MESSAGES } from '~/constants/toast-messages';
 import { useCustomToast } from '~/hooks/use-custom-toast';
 import { StatusCodes } from '~/query/constants/status-codes';
@@ -88,7 +89,7 @@ export const EmailRecoveryModal = ({
                             variant='auth'
                             {...register('email')}
                             onBlur={(e) => handleEmailBlur('email', e.target.value)}
-                            placeholder='e-mail'
+                            placeholder={PLACEHOLDERS.EMAIL}
                             data-test-id={DATA_TEST_ID.SIGN_UP_EMAIL}
                         />
                         <FormErrorMessage>{String(errors.email?.message)}</FormErrorMessage>

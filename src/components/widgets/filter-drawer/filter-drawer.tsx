@@ -19,7 +19,7 @@ import { ChangeEvent } from 'react';
 import { FilterCheckboxList, MultiSelect, TagListWithRemove } from '~/components';
 import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { FILTER_TITLES } from '~/constants/filter-titles';
-import { BUTTON_EXCLUDE_ALLERGENS, PLACEHOLDER_SELECT_DRAWER } from '~/constants/placeholders';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { useFilterQueryParams } from '~/hooks/use-filter-query-params.tsx';
 import { INITIAL_PAGE_NUM } from '~/query/constants/recipe-consts.ts';
 import { useLazyGetRecipesWithFiltersQuery } from '~/query/services/recipes/recipes-api.ts';
@@ -234,7 +234,7 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                         />
                         <FormControl display='flex' alignItems='center' pt={2}>
                             <FormLabel htmlFor='exclude-allergens' mb='0'>
-                                {BUTTON_EXCLUDE_ALLERGENS}
+                                {PLACEHOLDERS.BUTTON_EXCLUDE_ALLERGENS}
                             </FormLabel>
                             <Switch
                                 data-test-id={DATA_TEST_ID.ALLERGENS_SWITCHER_FILTER}
@@ -250,7 +250,7 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                             options={allergensOptions}
                             isCustomInputEnabled
                             isDisabled={!isExcludeEnabled}
-                            placeholder={PLACEHOLDER_SELECT_DRAWER}
+                            placeholder={PLACEHOLDERS.SELECT_DRAWER}
                             minWidth={{ base: '309px', md: '365px' }}
                             dataTestId={DATA_TEST_ID.ALLERGEN_MENU_BUTTON_FILTER}
                             isAllergens

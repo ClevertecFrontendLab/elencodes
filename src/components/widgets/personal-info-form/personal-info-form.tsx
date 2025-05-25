@@ -2,6 +2,7 @@ import { Button, FormControl, FormErrorMessage, FormLabel, Input, VStack } from 
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { PersonalInfoSchemaType, SignUpSchemaType } from '~/schemas/sign-up.schema.ts';
 
 type PersonalInfoFormProps = {
@@ -26,7 +27,7 @@ export const PersonalInfoForm = ({
                     variant='auth'
                     {...register('firstName')}
                     onBlur={(e) => onBlur('firstName', e.target.value)}
-                    placeholder='Имя'
+                    placeholder={PLACEHOLDERS.NAME}
                     data-test-id={DATA_TEST_ID.SIGN_UP_FIRST_NAME}
                 />
                 <FormErrorMessage>{String(errors.firstName?.message)}</FormErrorMessage>
@@ -39,7 +40,7 @@ export const PersonalInfoForm = ({
                     variant='auth'
                     {...register('lastName')}
                     onBlur={(e) => onBlur('lastName', e.target.value)}
-                    placeholder='Фамилия'
+                    placeholder={PLACEHOLDERS.SURNAME}
                     data-test-id={DATA_TEST_ID.SIGN_UP_LAST_NAME}
                 />
                 <FormErrorMessage>{String(errors.lastName?.message)}</FormErrorMessage>
@@ -52,7 +53,7 @@ export const PersonalInfoForm = ({
                     variant='auth'
                     {...register('email')}
                     onBlur={(e) => onBlur('email', e.target.value)}
-                    placeholder='e-mail'
+                    placeholder={PLACEHOLDERS.EMAIL}
                     data-test-id={DATA_TEST_ID.SIGN_UP_EMAIL}
                 />
                 <FormErrorMessage>{String(errors.email?.message)}</FormErrorMessage>

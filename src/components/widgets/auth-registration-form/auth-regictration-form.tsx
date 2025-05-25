@@ -4,6 +4,7 @@ import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 import { PasswordInput } from '~/components/ui/password-input/password-input.tsx';
 import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { AuthInfoSchemaType, SignUpSchemaType } from '~/schemas/sign-up.schema.ts';
 
 type AuthRegistrationFormProps = {
@@ -27,7 +28,7 @@ export const AuthRegistrationForm = ({
                     size='lg'
                     variant='auth'
                     {...register('login')}
-                    placeholder='Логин'
+                    placeholder={PLACEHOLDERS.SIGN_UP_LOGIN}
                     onBlur={(e) => onBlur('login', e.target.value)}
                     data-test-id={DATA_TEST_ID.FORM_LOGIN_INPUT}
                 />
@@ -43,7 +44,7 @@ export const AuthRegistrationForm = ({
                     input={{
                         ...register('password'),
                         variant: 'auth',
-                        placeholder: 'Пароль для сайта',
+                        placeholder: PLACEHOLDERS.PASSWORD,
                     }}
                     dataTestId={DATA_TEST_ID.FORM_PASSWORD_INPUT}
                 />
@@ -59,7 +60,7 @@ export const AuthRegistrationForm = ({
                     input={{
                         ...register('passwordConfirm'),
                         variant: 'auth',
-                        placeholder: 'Повторите пароль',
+                        placeholder: PLACEHOLDERS.REPEAT_PASSWORD,
                     }}
                     dataTestId={DATA_TEST_ID.SIGN_UP_CONFIRM_PASSWORD}
                 />
