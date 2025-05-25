@@ -8,7 +8,7 @@ export const PLACEHOLDERS = {
     SIGN_IN_LOGIN: 'Введите логин',
     PASSWORD: 'Пароль для сайта',
     REPEAT_PASSWORD: 'Повторите пароль',
-    EMAIL: 'Имя',
-    NAME: 'Фамилия',
-    SURNAME: 'e-mail',
+    EMAIL: 'e-mail',
+    NAME: 'Имя',
+    SURNAME: 'Фамилия',
 };
