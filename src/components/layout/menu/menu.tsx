@@ -2,7 +2,7 @@ import { CloseIcon, Flex, HamburgerIcon } from '@chakra-ui/icons';
 import { Box, IconButton, Menu, MenuButton, MenuList } from '@chakra-ui/react';
 
 import { AppBreadcrumb, SidebarAccordion, SidebarFooter } from '~/components';
-import { BURGER_CLOSE_ICON, BURGER_ICON, BURGER_NAV } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
 
 type BurgerMenuProps = {
@@ -43,9 +43,12 @@ export const BurgerMenu = ({ isOpen, onOpen, onClose }: BurgerMenuProps) => {
                             size='sm'
                             icon={
                                 isOpen ? (
-                                    <CloseIcon w='12px' data-test-id={BURGER_CLOSE_ICON} />
+                                    <CloseIcon
+                                        w='12px'
+                                        data-test-id={DATA_TEST_ID.BURGER_CLOSE_ICON}
+                                    />
                                 ) : (
-                                    <HamburgerIcon data-test-id={BURGER_ICON} />
+                                    <HamburgerIcon data-test-id={DATA_TEST_ID.BURGER_ICON} />
                                 )
                             }
                             variant='unstyled'
@@ -56,7 +59,7 @@ export const BurgerMenu = ({ isOpen, onOpen, onClose }: BurgerMenuProps) => {
                         />
                         {isTablet && isOpen && (
                             <MenuList
-                                data-test-id={BURGER_NAV}
+                                data-test-id={DATA_TEST_ID.BURGER_NAV}
                                 px={2}
                                 pt={4}
                                 pb={0}

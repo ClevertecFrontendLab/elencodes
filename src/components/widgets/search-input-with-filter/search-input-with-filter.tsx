@@ -9,7 +9,7 @@ import {
 import { ChangeEvent, useState } from 'react';
 
 import { FilterDrawer } from '~/components';
-import { FILTER_BUTTON, SEARCH_BUTTON, SEARCH_INPUT } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { PLACEHOLDER_SEARCH_INPUT } from '~/constants/placeholders';
 import { useFilterQueryParams } from '~/hooks/use-filter-query-params.tsx';
 import { FilterIcon } from '~/icons/filter-icons/filter-icon';
@@ -94,7 +94,7 @@ export const SearchInputWithFilter = () => {
                 <IconButton
                     variant='outline'
                     aria-label='Filter'
-                    data-test-id={FILTER_BUTTON}
+                    data-test-id={DATA_TEST_ID.FILTER_BUTTON}
                     fontSize='24px'
                     colorScheme='blackAlpha'
                     size={{ base: 'sm', md: 'lg' }}
@@ -105,7 +105,7 @@ export const SearchInputWithFilter = () => {
                 />
                 <InputGroup size={{ base: 'sm', md: 'lg' }} borderColor='blackAlpha.600'>
                     <Input
-                        data-test-id={SEARCH_INPUT}
+                        data-test-id={DATA_TEST_ID.SEARCH_INPUT}
                         value={input}
                         onChange={handleInputChange}
                         onKeyDown={handleSearch}
@@ -115,7 +115,7 @@ export const SearchInputWithFilter = () => {
                     />
                     <InputRightElement>
                         <IconButton
-                            data-test-id={SEARCH_BUTTON}
+                            data-test-id={DATA_TEST_ID.SEARCH_BUTTON}
                             variant='ghost'
                             aria-label='Поиск'
                             size='sm'

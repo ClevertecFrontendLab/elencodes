@@ -1,63 +1,65 @@
-export const HEADER = 'header';
-export const FOOTER = 'footer';
-export const CAROUSEL = 'carousel';
-export const CAROUSEL_CARD = 'carousel-card-';
-export const CAROUSEL_BACK = 'carousel-back';
-export const CAROUSEL_FORWARD = 'carousel-forward';
-export const ACTIVE_LINK = '-active';
-export const JUICIEST_LINK = 'juiciest-link';
-export const JUICIEST_LINK_MOB = 'juiciest-link-mobile';
-export const CHECKBOX = 'checkbox-';
-export const FOOD_CARD = 'food-card-';
-export const BURGER_NAV = 'nav';
-export const BURGER_ICON = 'hamburger-icon';
-export const BURGER_CLOSE_ICON = 'close-icon';
-export const ALLERGENS_SWITCHER = 'allergens-switcher';
-export const ADD_OTHER_ALLERGEN = 'add-other-allergen';
-export const ADD_ALLERGEN_BUTTON = 'add-allergen-button';
-export const ALLERGENS_MENU = 'allergens-menu';
-export const ALLERGEN = 'allergen-';
-export const VEGAN = 'vegan';
-export const VEGAN_CUISINE = 'vegan-cuisine';
-export const BREADCRUMBS = 'breadcrumbs';
-export const LOAD_MORE_BUTTON = 'load-more-button';
-export const ERROR_PAGE_GO_HOME = 'error-page-go-home';
-export const CLOSE_FILTER_DRAWER = 'close-filter-drawer';
-export const ALLERGENS_SWITCHER_FILTER = 'allergens-switcher-filter';
-export const ALLERGENS_MENU_BUTTON = 'allergens-menu-button';
-export const ALLERGEN_MENU_BUTTON_FILTER = 'allergens-menu-button-filter';
-export const CLEAR_FILTER_BUTTON = 'clear-filter-button';
-export const FILTER_DRAWER = 'filter-drawer';
-export const FIND_RECIPE_BUTTON = 'find-recipe-button';
-export const INCREMENT_STEPPER = 'increment-stepper';
-export const DECREMENT_STEPPER = 'decrement-stepper';
-export const FILTER_TAG = 'filter-tag';
-export const SEARCH_BUTTON = 'search-button';
-export const SEARCH_INPUT = 'search-input';
-export const FILTER_BUTTON = 'filter-button';
-export const FILTER_MENU_BUTTON_CATEGORY = 'filter-menu-button-категория';
-export const ERROR_NOTIFICATION = 'error-notification';
-export const CLOSE_ALERT_BUTTON = 'close-alert-button';
-export const APP_LOADER = 'app-loader';
-export const LOADER_SEARCH_BLOCK = 'loader-search-block';
-export const FORM_SIGN_IN = 'sign-in-form';
-export const FORM_LOGIN_INPUT = 'login-input';
-export const FORM_PASSWORD_INPUT = 'password-input';
-export const FORM_PASSWORD_VISIBILITY = 'password-visibility-button';
-export const FORM_SUBMIT_BUTTON = 'submit-button';
-export const FORM_FORGOT_PASSWORD = 'forgot-password';
-export const MODAL_ERROR_SIGN_IN = 'sign-in-error-modal';
-export const MODAL_CLOSE_BUTTON = 'close-button';
-export const MODAL_REPEAT_BUTTON = 'repeat-button';
-export const SIGN_UP_PROGRESS = 'sign-up-progress';
-export const SIGN_UP_FORM = 'sign-up-form';
-export const SIGN_UP_FIRST_NAME = 'first-name-input';
-export const SIGN_UP_LAST_NAME = 'last-name-input';
-export const SIGN_UP_EMAIL = 'email-input';
-export const SIGN_UP_CONFIRM_PASSWORD = 'confirm-password-input';
-export const MODAL_SIGN_UP_SUCCESS = 'sign-up-success-modal';
-export const MODAL_SIGN_UP_ERROR = 'email-verification-failed-modal';
-export const MODAL_SEND_EMAIL = 'send-email-modal';
-export const MODAL_VERIFICATION_CODE = 'verification-code-modal';
-export const VERIFICATION_CODE_INPUT = 'verification-code-input';
-export const MODAL_RESET_CREDS = 'reset-credentials-modal';
+export const DATA_TEST_ID = {
+    HEADER: 'header',
+    FOOTER: 'footer',
+    CAROUSEL: 'carousel',
+    CAROUSEL_CARD: 'carousel-card-',
+    CAROUSEL_BACK: 'carousel-back',
+    CAROUSEL_FORWARD: 'carousel-forward',
+    ACTIVE_LINK: '-active',
+    JUICIEST_LINK: 'juiciest-link',
+    JUICIEST_LINK_MOB: 'juiciest-link-mobile',
+    CHECKBOX: 'checkbox-',
+    FOOD_CARD: 'food-card-',
+    BURGER_NAV: 'nav',
+    BURGER_ICON: 'hamburger-icon',
+    BURGER_CLOSE_ICON: 'close-icon',
+    ALLERGENS_SWITCHER: 'allergens-switcher',
+    ADD_OTHER_ALLERGEN: 'add-other-allergen',
+    ADD_ALLERGEN_BUTTON: 'add-allergen-button',
+    ALLERGENS_MENU: 'allergens-menu',
+    ALLERGEN: 'allergen-',
+    VEGAN: 'vegan',
+    VEGAN_CUISINE: 'vegan-cuisine',
+    BREADCRUMBS: 'breadcrumbs',
+    LOAD_MORE_BUTTON: 'load-more-button',
+    ERROR_PAGE_GO_HOME: 'error-page-go-home',
+    CLOSE_FILTER_DRAWER: 'close-filter-drawer',
+    ALLERGENS_SWITCHER_FILTER: 'allergens-switcher-filter',
+    ALLERGENS_MENU_BUTTON: 'allergens-menu-button',
+    ALLERGEN_MENU_BUTTON_FILTER: 'allergens-menu-button-filter',
+    CLEAR_FILTER_BUTTON: 'clear-filter-button',
+    FILTER_DRAWER: 'filter-drawer',
+    FIND_RECIPE_BUTTON: 'find-recipe-button',
+    INCREMENT_STEPPER: 'increment-stepper',
+    DECREMENT_STEPPER: 'decrement-stepper',
+    FILTER_TAG: 'filter-tag',
+    SEARCH_BUTTON: 'search-button',
+    SEARCH_INPUT: 'search-input',
+    FILTER_BUTTON: 'filter-button',
+    FILTER_MENU_BUTTON_CATEGORY: 'filter-menu-button-категория',
+    ERROR_NOTIFICATION: 'error-notification',
+    CLOSE_ALERT_BUTTON: 'close-alert-button',
+    APP_LOADER: 'app-loader',
+    LOADER_SEARCH_BLOCK: 'loader-search-block',
+    FORM_SIGN_IN: 'sign-in-form',
+    FORM_LOGIN_INPUT: 'login-input',
+    FORM_PASSWORD_INPUT: 'password-input',
+    FORM_PASSWORD_VISIBILITY: 'password-visibility-button',
+    FORM_SUBMIT_BUTTON: 'submit-button',
+    FORM_FORGOT_PASSWORD: 'forgot-password',
+    MODAL_ERROR_SIGN_IN: 'sign-in-error-modal',
+    MODAL_CLOSE_BUTTON: 'close-button',
+    MODAL_REPEAT_BUTTON: 'repeat-button',
+    SIGN_UP_PROGRESS: 'sign-up-progress',
+    SIGN_UP_FORM: 'sign-up-form',
+    SIGN_UP_FIRST_NAME: 'first-name-input',
+    SIGN_UP_LAST_NAME: 'last-name-input',
+    SIGN_UP_EMAIL: 'email-input',
+    SIGN_UP_CONFIRM_PASSWORD: 'confirm-password-input',
+    MODAL_SIGN_UP_SUCCESS: 'sign-up-success-modal',
+    MODAL_SIGN_UP_ERROR: 'email-verification-failed-modal',
+    MODAL_SEND_EMAIL: 'send-email-modal',
+    MODAL_VERIFICATION_CODE: 'verification-code-modal',
+    VERIFICATION_CODE_INPUT: 'verification-code-input',
+    MODAL_RESET_CREDS: 'reset-credentials-modal',
+};

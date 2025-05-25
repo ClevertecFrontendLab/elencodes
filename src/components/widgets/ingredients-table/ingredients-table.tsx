@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 
-import { DECREMENT_STEPPER, INCREMENT_STEPPER } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { Ingredient } from '~/types/recipe-type';
 import { formatNumber } from '~/utils/format-number.ts';
 
@@ -60,8 +60,8 @@ export const IngredientsTable = ({ ingredients, portions }: IngredientsTableProp
                     >
                         <NumberInputField />
                         <NumberInputStepper>
-                            <NumberIncrementStepper data-test-id={INCREMENT_STEPPER} />
-                            <NumberDecrementStepper data-test-id={DECREMENT_STEPPER} />
+                            <NumberIncrementStepper data-test-id={DATA_TEST_ID.INCREMENT_STEPPER} />
+                            <NumberDecrementStepper data-test-id={DATA_TEST_ID.DECREMENT_STEPPER} />
                         </NumberInputStepper>
                     </NumberInput>
                 </HStack>

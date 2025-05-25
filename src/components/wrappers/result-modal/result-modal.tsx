@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { PropsWithChildren } from 'react';
 
-import { MODAL_CLOSE_BUTTON } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { CloseIcon } from '~/icons/auth-icons/close-icon';
 
 export type ResultModalProps = PropsWithChildren &
@@ -51,7 +51,7 @@ export const ResultModal = ({
                         _hover={{
                             color: 'blackAlpha.700',
                         }}
-                        data-test-id={MODAL_CLOSE_BUTTON}
+                        data-test-id={DATA_TEST_ID.MODAL_CLOSE_BUTTON}
                     />
                 )}
 

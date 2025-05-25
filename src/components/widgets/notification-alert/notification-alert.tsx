@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { useEffect } from 'react';
 
-import { CLOSE_ALERT_BUTTON, ERROR_NOTIFICATION } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { useAppDispatch, useAppSelector } from '~/redux/hooks';
 import { selectAppError, setAppError } from '~/redux/slices/app-slice.ts';
 
@@ -44,7 +44,7 @@ export const NotificationAlert = () => {
             width={{ base: '328px', md: '328px', lg: '400px' }}
         >
             <Alert
-                data-test-id={ERROR_NOTIFICATION}
+                data-test-id={DATA_TEST_ID.ERROR_NOTIFICATION}
                 color='white'
                 backgroundColor='red.500'
                 p='12px 16px'
@@ -64,7 +64,7 @@ export const NotificationAlert = () => {
                     </AlertDescription>
                 </Box>
                 <CloseButton
-                    data-test-id={CLOSE_ALERT_BUTTON}
+                    data-test-id={DATA_TEST_ID.CLOSE_ALERT_BUTTON}
                     alignSelf='flex-start'
                     position='relative'
                     right={-1}

@@ -2,7 +2,7 @@ import { AddIcon } from '@chakra-ui/icons';
 import { IconButton, Input, InputGroup } from '@chakra-ui/react';
 import React, { useCallback } from 'react';
 
-import { ADD_ALLERGEN_BUTTON, ADD_OTHER_ALLERGEN } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { BUTTON_ADD_OTHER_ALLERGEN } from '~/constants/placeholders';
 
 type AllergenInputGroupProps = {
@@ -32,7 +32,7 @@ export const AllergenInputGroup = ({ value, onChange, onAdd }: AllergenInputGrou
     return (
         <InputGroup size='sm' pl={4} pb={2} w='97%' alignItems='center'>
             <Input
-                data-test-id={ADD_OTHER_ALLERGEN}
+                data-test-id={DATA_TEST_ID.ADD_OTHER_ALLERGEN}
                 placeholder={BUTTON_ADD_OTHER_ALLERGEN}
                 value={value}
                 onChange={handleChange}
@@ -52,7 +52,7 @@ export const AllergenInputGroup = ({ value, onChange, onAdd }: AllergenInputGrou
                 aria-label='Добавить аллерген'
                 bgColor='lime.600'
                 color='white'
-                data-test-id={ADD_ALLERGEN_BUTTON}
+                data-test-id={DATA_TEST_ID.ADD_ALLERGEN_BUTTON}
                 icon={<AddIcon h='7px' w='7px' />}
             />
         </InputGroup>

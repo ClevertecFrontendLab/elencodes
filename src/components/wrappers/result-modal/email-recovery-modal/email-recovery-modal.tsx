@@ -12,7 +12,7 @@ import breakfast from '@public/images/auth/breakfast.png';
 import { useForm } from 'react-hook-form';
 
 import { ResultModal, ResultModalProps } from '~/components/wrappers/result-modal/result-modal';
-import { FORM_SUBMIT_BUTTON, MODAL_SEND_EMAIL, SIGN_UP_EMAIL } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { TOAST_MESSAGES } from '~/constants/toast-messages';
 import { useCustomToast } from '~/hooks/use-custom-toast';
 import { StatusCodes } from '~/query/constants/status-codes';
@@ -75,7 +75,7 @@ export const EmailRecoveryModal = ({
     };
 
     return (
-        <ResultModal {...restProps} dataTestId={MODAL_SEND_EMAIL} imageUrl={breakfast}>
+        <ResultModal {...restProps} dataTestId={DATA_TEST_ID.MODAL_SEND_EMAIL} imageUrl={breakfast}>
             <ModalBody alignSelf='center'>
                 <Text maxW='315px' color='blackAlpha.900' textAlign='center' fontSize='md' mb={4}>
                     Для восстановления входа введите ваш e-mail, куда можно отправить уникальный код
@@ -89,7 +89,7 @@ export const EmailRecoveryModal = ({
                             {...register('email')}
                             onBlur={(e) => handleEmailBlur('email', e.target.value)}
                             placeholder='e-mail'
-                            data-test-id={SIGN_UP_EMAIL}
+                            data-test-id={DATA_TEST_ID.SIGN_UP_EMAIL}
                         />
                         <FormErrorMessage>{String(errors.email?.message)}</FormErrorMessage>
                     </FormControl>
@@ -99,7 +99,7 @@ export const EmailRecoveryModal = ({
                         variant='dark'
                         size='lg'
                         type='submit'
-                        data-test-id={FORM_SUBMIT_BUTTON}
+                        data-test-id={DATA_TEST_ID.FORM_SUBMIT_BUTTON}
                     >
                         Получить код
                     </Button>

@@ -3,7 +3,7 @@ import { Button, HStack, Menu, MenuButton, MenuList, Tag, Text, VStack } from '@
 import { useState } from 'react';
 
 import { AllergenInputGroup, CheckboxItem } from '~/components';
-import { ALLERGEN, ALLERGENS_MENU, CHECKBOX } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { PLACEHOLDER_SELECT } from '~/constants/placeholders';
 import { Option } from '~/types/option-type';
 
@@ -102,7 +102,7 @@ export const MultiSelect = ({
                         )}
                     </MenuButton>
                     <MenuList
-                        data-test-id={ALLERGENS_MENU}
+                        data-test-id={DATA_TEST_ID.ALLERGENS_MENU}
                         borderTopRadius={0}
                         minWidth={minWidth}
                         zIndex={3}
@@ -121,8 +121,8 @@ export const MultiSelect = ({
                                     py={1}
                                     dataTestId={
                                         isAllergens
-                                            ? `${ALLERGEN}${index}`
-                                            : `${CHECKBOX}${label.toLowerCase()}`
+                                            ? `${DATA_TEST_ID.ALLERGEN}${index}`
+                                            : `${DATA_TEST_ID.CHECKBOX}${label.toLowerCase()}`
                                     }
                                 />
                             ))}

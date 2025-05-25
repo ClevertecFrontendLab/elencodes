@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths.ts';
 import { ResponsiveRecipeGrid, SectionWrapper } from '~/components';
-import { JUICIEST_LINK, JUICIEST_LINK_MOB } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { JUICIEST_PARAMS } from '~/query/constants/recipe-consts.ts';
 import { useGetRecipesQuery } from '~/query/services/recipes/recipes-api.ts';
 
@@ -20,8 +20,8 @@ export const JuiciestSection = () => {
             title='Самое сочное'
             buttonLabel='Вся подборка'
             onButtonClick={handleNavigate}
-            dataTestId={JUICIEST_LINK}
-            dataTestIdMob={JUICIEST_LINK_MOB}
+            dataTestId={DATA_TEST_ID.JUICIEST_LINK}
+            dataTestIdMob={DATA_TEST_ID.JUICIEST_LINK_MOB}
         >
             <ResponsiveRecipeGrid recipes={juiciestItems} />
         </SectionWrapper>

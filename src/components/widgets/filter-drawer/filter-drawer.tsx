@@ -17,16 +17,7 @@ import { UnknownAction } from '@reduxjs/toolkit';
 import { ChangeEvent } from 'react';
 
 import { FilterCheckboxList, MultiSelect, TagListWithRemove } from '~/components';
-import {
-    ALLERGEN_MENU_BUTTON_FILTER,
-    ALLERGENS_SWITCHER_FILTER,
-    CLEAR_FILTER_BUTTON,
-    CLOSE_FILTER_DRAWER,
-    FILTER_DRAWER,
-    FILTER_MENU_BUTTON_CATEGORY,
-    FILTER_TAG,
-    FIND_RECIPE_BUTTON,
-} from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { FILTER_TITLES } from '~/constants/filter-titles';
 import { BUTTON_EXCLUDE_ALLERGENS, PLACEHOLDER_SELECT_DRAWER } from '~/constants/placeholders';
 import { useFilterQueryParams } from '~/hooks/use-filter-query-params.tsx';
@@ -177,7 +168,10 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
     return (
         <Drawer placement='right' onClose={onClose} isOpen={isOpen}>
             <DrawerOverlay />
-            <DrawerContent maxW={{ base: '344px', md: '424px' }} data-test-id={FILTER_DRAWER}>
+            <DrawerContent
+                maxW={{ base: '344px', md: '424px' }}
+                data-test-id={DATA_TEST_ID.FILTER_DRAWER}
+            >
                 <DrawerCloseButton
                     top={{ base: 4, md: 8 }}
                     right={{ base: 4, md: 8 }}
@@ -185,7 +179,7 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                     bg='black'
                     size='sm'
                     color='white'
-                    data-test-id={CLOSE_FILTER_DRAWER}
+                    data-test-id={DATA_TEST_ID.CLOSE_FILTER_DRAWER}
                 />
                 <DrawerHeader pt={{ base: 4, md: 8 }} px={{ base: 4, md: 8 }}>
                     Фильтр
@@ -211,8 +205,8 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                             options={categoriesOptions}
                             placeholder={FILTER_TITLES.CATEGORY}
                             minWidth={{ base: '309px', md: '365px' }}
-                            dataTestId={FILTER_MENU_BUTTON_CATEGORY}
-                            tagDataTestId={FILTER_TAG}
+                            dataTestId={DATA_TEST_ID.FILTER_MENU_BUTTON_CATEGORY}
+                            tagDataTestId={DATA_TEST_ID.FILTER_TAG}
                         />
                         <MultiSelect
                             selected={selectedAuthors}
@@ -220,7 +214,7 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                             options={authorsOptions}
                             placeholder={FILTER_TITLES.AUTHOR_SEARCH}
                             minWidth={{ base: '309px', md: '365px' }}
-                            tagDataTestId={FILTER_TAG}
+                            tagDataTestId={DATA_TEST_ID.FILTER_TAG}
                         />
                         <FilterCheckboxList
                             title={FILTER_TITLES.MEAT}
@@ -243,7 +237,7 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                                 {BUTTON_EXCLUDE_ALLERGENS}
                             </FormLabel>
                             <Switch
-                                data-test-id={ALLERGENS_SWITCHER_FILTER}
+                                data-test-id={DATA_TEST_ID.ALLERGENS_SWITCHER_FILTER}
                                 colorScheme='lime'
                                 id='exclude-allergens'
                                 isChecked={isExcludeEnabled}
@@ -258,9 +252,9 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                             isDisabled={!isExcludeEnabled}
                             placeholder={PLACEHOLDER_SELECT_DRAWER}
                             minWidth={{ base: '309px', md: '365px' }}
-                            dataTestId={ALLERGEN_MENU_BUTTON_FILTER}
+                            dataTestId={DATA_TEST_ID.ALLERGEN_MENU_BUTTON_FILTER}
                             isAllergens
-                            tagDataTestId={FILTER_TAG}
+                            tagDataTestId={DATA_TEST_ID.FILTER_TAG}
                         />
                     </VStack>
                 </DrawerBody>
@@ -278,7 +272,7 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                             variant='outline'
                             colorScheme='black'
                             onClick={handleClear}
-                            data-test-id={CLEAR_FILTER_BUTTON}
+                            data-test-id={DATA_TEST_ID.CLEAR_FILTER_BUTTON}
                         >
                             Очистить фильтр
                         </Button>
@@ -290,7 +284,7 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
                             onClick={handleApplyFilters}
                             isDisabled={isButtonDisabled}
                             pointerEvents={isButtonDisabled ? 'none' : 'auto'}
-                            data-test-id={FIND_RECIPE_BUTTON}
+                            data-test-id={DATA_TEST_ID.FIND_RECIPE_BUTTON}
                         >
                             Найти рецепт
                         </Button>

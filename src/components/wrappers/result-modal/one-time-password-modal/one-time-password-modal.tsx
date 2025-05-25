@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { GlobalSpinner } from '~/components';
 import { ResultModal, ResultModalProps } from '~/components/wrappers/result-modal/result-modal';
-import { MODAL_VERIFICATION_CODE, VERIFICATION_CODE_INPUT } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { TOAST_MESSAGES } from '~/constants/toast-messages';
 import { useCustomToast } from '~/hooks/use-custom-toast';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
@@ -59,7 +59,7 @@ export const OneTimePasswordModal = ({
         <>
             <ResultModal
                 {...restProps}
-                dataTestId={MODAL_VERIFICATION_CODE}
+                dataTestId={DATA_TEST_ID.MODAL_VERIFICATION_CODE}
                 imageUrl={rest}
                 title={isInvalid ? 'Неверный код' : undefined}
             >
@@ -87,7 +87,7 @@ export const OneTimePasswordModal = ({
                         >
                             {VERIFICATION_CODE_PIN_ID.map((item) => (
                                 <PinInputField
-                                    data-test-id={`${VERIFICATION_CODE_INPUT}-${item}`}
+                                    data-test-id={`${DATA_TEST_ID.VERIFICATION_CODE_INPUT}-${item}`}
                                     _placeholder={{ color: 'lime.800' }}
                                     color='lime.800'
                                     key={item}

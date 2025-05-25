@@ -1,7 +1,7 @@
 import { Text } from '@chakra-ui/react';
 import { NavLink, useMatch } from 'react-router';
 
-import { ACTIVE_LINK } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 
 import styles from './sidebar-sub-item.module.css';
 
@@ -19,7 +19,7 @@ const SidebarSubItem = ({ label, to, slug }: SidebarSubItemProps) => {
         <NavLink
             to={to}
             end
-            data-test-id={isActive ? `${slug}${ACTIVE_LINK}` : undefined}
+            data-test-id={isActive ? `${slug}${DATA_TEST_ID.ACTIVE_LINK}` : undefined}
             className={`${styles.subItem} ${isActive ? styles.active : ''}`}
         >
             <Text fontSize='md'>{label}</Text>

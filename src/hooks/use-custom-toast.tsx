@@ -1,6 +1,6 @@
 import { Box, CloseButton, Flex, Text, useToast, UseToastOptions } from '@chakra-ui/react';
 
-import { CLOSE_ALERT_BUTTON, ERROR_NOTIFICATION } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { Statuses } from '~/query/constants/status-codes';
 import { getToastBackgroundColor } from '~/utils/get-toast-background-color.ts';
 import { getToastIcon } from '~/utils/get-toast-icon.tsx';
@@ -24,7 +24,7 @@ export const useCustomToast = () => {
                 },
                 render: ({ title, status = Statuses.ERROR, description, onClose }) => (
                     <Box
-                        data-test-id={ERROR_NOTIFICATION}
+                        data-test-id={DATA_TEST_ID.ERROR_NOTIFICATION}
                         bg={getToastBackgroundColor(status as Statuses)}
                         color='white'
                         p={3}
@@ -40,7 +40,7 @@ export const useCustomToast = () => {
                                 </Box>
                             </Flex>
                             <CloseButton
-                                data-test-id={CLOSE_ALERT_BUTTON}
+                                data-test-id={DATA_TEST_ID.CLOSE_ALERT_BUTTON}
                                 size='sm'
                                 onClick={onClose}
                             />

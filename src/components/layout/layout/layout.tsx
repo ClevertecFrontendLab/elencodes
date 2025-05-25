@@ -2,7 +2,7 @@ import { Box, Grid as ChakraGrid, GridItem } from '@chakra-ui/react';
 import { Outlet } from 'react-router';
 
 import { Aside, Footer, Header, Sidebar } from '~/components';
-import { FOOTER, HEADER } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 
 const Layout = () => (
     <ChakraGrid
@@ -27,7 +27,7 @@ const Layout = () => (
         position='relative'
     >
         <GridItem
-            data-test-id={HEADER}
+            data-test-id={DATA_TEST_ID.HEADER}
             area='header'
             position='fixed'
             top={0}
@@ -85,7 +85,7 @@ const Layout = () => (
         </GridItem>
 
         <GridItem
-            data-test-id={FOOTER}
+            data-test-id={DATA_TEST_ID.FOOTER}
             area='footer'
             display={{ base: 'block', md: 'none' }}
             position='fixed'

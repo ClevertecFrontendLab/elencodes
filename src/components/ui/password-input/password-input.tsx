@@ -2,7 +2,7 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { IconButton, Input, InputGroup, InputProps, InputRightElement } from '@chakra-ui/react';
 import { useState } from 'react';
 
-import { FORM_PASSWORD_VISIBILITY } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 
 type PasswordInputProps = {
     input: InputProps;
@@ -25,7 +25,7 @@ export const PasswordInput = ({ input: { ...restInput }, dataTestId }: PasswordI
                     variant='unstyled'
                     height='100%'
                     aria-label='password-visibility'
-                    data-test-id={FORM_PASSWORD_VISIBILITY}
+                    data-test-id={DATA_TEST_ID.FORM_PASSWORD_VISIBILITY}
                 >
                     {passwordVisible ? <ViewIcon /> : <ViewOffIcon />}
                 </IconButton>
