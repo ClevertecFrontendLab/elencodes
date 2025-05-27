@@ -13,7 +13,7 @@ const initialState: AuthorsState = {
     selectedAuthors: [],
 };
 
-const authorsSlice = createSlice({
+export const authorsSlice = createSlice({
     name: 'authors',
     initialState,
     reducers: {

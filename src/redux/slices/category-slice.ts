@@ -28,7 +28,7 @@ const initialState: CategoryState = {
     selectedCategories: [],
 };
 
-const categorySlice = createSlice({
+export const categorySlice = createSlice({
     name: 'category',
     initialState,
     reducers: {

@@ -15,7 +15,7 @@ const initialState: AllergensState = {
     isExcludeEnabled: false,
 };
 
-const allergensSlice = createSlice({
+export const allergensSlice = createSlice({
     name: 'allergens',
     initialState,
     reducers: {

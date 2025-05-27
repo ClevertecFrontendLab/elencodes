@@ -13,7 +13,7 @@ const initialState: MeatState = {
     selectedMeats: [],
 };
 
-const meatSlice = createSlice({
+export const meatSlice = createSlice({
     name: 'meat',
     initialState,
     reducers: {
