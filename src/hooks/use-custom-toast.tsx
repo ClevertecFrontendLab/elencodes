@@ -8,11 +8,11 @@ import { getToastIcon } from '~/utils/get-toast-icon.tsx';
 export const useCustomToast = () => {
     const toast = useToast();
 
-    const baseToast = (options: UseToastOptions, centered = true) => {
+    const baseToast = (options: UseToastOptions, centered = true, toastDuration = 15000) => {
         if (options.id && !toast.isActive(options.id)) {
             toast({
                 status: Statuses.ERROR,
-                duration: 15000,
+                duration: toastDuration,
                 isClosable: true,
                 position: 'bottom',
                 containerStyle: {

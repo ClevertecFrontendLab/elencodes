@@ -11,6 +11,8 @@ import { ChangeEvent, useState } from 'react';
 import { FilterDrawer } from '~/components';
 import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { PLACEHOLDERS } from '~/constants/placeholders';
+import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
+import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import { useFilterQueryParams } from '~/hooks/use-filter-query-params.tsx';
 import { FilterIcon } from '~/icons/filter-icons/filter-icon';
 import { SearchIcon } from '~/icons/input-icons/search-icon';
@@ -27,12 +29,15 @@ import {
     setShowedEmptyText,
 } from '~/redux/slices/recipes-slice.ts';
 import { selectInputValue, setInputValue, setSearchValue } from '~/redux/slices/search-slice.ts';
+import { isRTKQueryError } from '~/utils/is-rtk-error.ts';
 
+const { SearchErrorToast } = TOAST_MESSAGES;
 const MIN_SEARCH_LENGTH = 3;
 
 export const SearchInputWithFilter = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [trigger] = useLazyGetRecipesWithFiltersQuery();
+    const { toast } = useCustomToast();
     const searchQuery = useAppSelector(selectInputValue);
     const selectedAllergens = useAppSelector(selectSelectedAllergens);
     const filteredRecipes = useAppSelector(selectFilteredRecipes);
@@ -78,6 +83,10 @@ export const SearchInputWithFilter = () => {
             } else {
                 dispatch(setFilteredRecipes([]));
                 dispatch(setShowedEmptyText(true));
+            }
+        } catch (error: unknown) {
+            if (isRTKQueryError(error)) {
+                toast(SearchErrorToast);
             }
         } finally {
             dispatch(setIsFiltering(false));

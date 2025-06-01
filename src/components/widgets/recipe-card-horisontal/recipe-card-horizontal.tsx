@@ -19,6 +19,7 @@ import { useScreenSize } from '~/hooks/use-screen-size.tsx';
 import { Recipe } from '~/query/services/recipes/types.ts';
 import { useAppSelector } from '~/redux/hooks.ts';
 import { selectSearchValue } from '~/redux/slices/search-slice.ts';
+import { buildImageUrl } from '~/utils/build-image-url';
 
 type RecipeCardHorizontalProps = {
     recipe: Recipe;
@@ -38,6 +39,7 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
     };
 
     const getHighlightedTitle = (title: string) => {
+        if (!title) return;
         if (!searchQuery.trim()) return title;
 
         const lowerTitle = title.toLowerCase();
@@ -76,8 +78,8 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
         >
             <Box position='relative' maxW='48%' width='346px'>
                 <Image
-                    src={recipe.image}
-                    alt={recipe.title}
+                    src={buildImageUrl(recipe?.image)}
+                    alt={recipe?.title}
                     borderBottomRadius='none'
                     borderLeftRadius='lg'
                     w='100%'
@@ -117,16 +119,16 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
                         fontWeight='500'
                         wordBreak={{ base: 'normal', xl: 'break-all' }}
                     >
-                        {getHighlightedTitle(recipe.title)}
+                        {getHighlightedTitle(recipe?.title)}
                     </Heading>
                     {!isTablet && (
                         <Text noOfLines={3} fontSize='sm'>
-                            {recipe.description}
+                            {recipe?.description}
                         </Text>
                     )}
                 </VStack>
                 <HStack justifyContent='end' mt='auto'>
-                    <SaveButton />
+                    <SaveButton recipeId={recipe?._id} />
                     <Button
                         size={isTablet ? 'xs' : 'sm'}
                         variant='solid'

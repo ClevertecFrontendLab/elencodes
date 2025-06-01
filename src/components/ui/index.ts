@@ -7,5 +7,7 @@ export { RecipeStepsSection } from './recipe-steps-section/recipe-steps-section.
 export { RecipeTag } from './recipe-tag/recipe-tag.tsx';
 export { SaveButton } from './save-button/save-button.tsx';
 export { SidebarFooter } from './sidebar-footer/sidebar-footer.tsx';
+export { StatItem } from './stats-item/stats-item.tsx';
 export { WriteRecipeBtn } from './write-recipe-btn/write-recipe-btn.tsx';
 export { GlobalSpinner } from '~/components/ui/global-spinner/global-spinner.tsx';
+export { Loader } from '~/components/ui/loader/loader.tsx';

@@ -20,6 +20,8 @@ import { FilterCheckboxList, MultiSelect, TagListWithRemove } from '~/components
 import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { FILTER_TITLES } from '~/constants/filter-titles';
 import { PLACEHOLDERS } from '~/constants/placeholders';
+import { TOAST_MESSAGES } from '~/constants/toast-messages';
+import { useCustomToast } from '~/hooks/use-custom-toast';
 import { useFilterQueryParams } from '~/hooks/use-filter-query-params.tsx';
 import { INITIAL_PAGE_NUM } from '~/query/constants/recipe-consts.ts';
 import { useLazyGetRecipesWithFiltersQuery } from '~/query/services/recipes/recipes-api.ts';
@@ -64,14 +66,18 @@ import {
     setShowedEmptyText,
 } from '~/redux/slices/recipes-slice.ts';
 import { clearInputValue } from '~/redux/slices/search-slice.ts';
+import { isRTKQueryError } from '~/utils/is-rtk-error';
 
 type FilterDrawerProps = {
     isOpen: boolean;
     onClose: () => void;
 };
 
+const { SearchErrorToast } = TOAST_MESSAGES;
+
 export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
     const dispatch = useAppDispatch();
+    const { toast } = useCustomToast();
     const [trigger] = useLazyGetRecipesWithFiltersQuery();
 
     const allergensOptions = useAppSelector(selectAllergens);
@@ -131,6 +137,10 @@ export const FilterDrawer = ({ isOpen, onClose }: FilterDrawerProps) => {
             } else {
                 dispatch(setFilteredRecipes([]));
                 dispatch(setShowedEmptyText(true));
+            }
+        } catch (error: unknown) {
+            if (isRTKQueryError(error)) {
+                toast(SearchErrorToast);
             }
         } finally {
             dispatch(setIsFiltering(false));

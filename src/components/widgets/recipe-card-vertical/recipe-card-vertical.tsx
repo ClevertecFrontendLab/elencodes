@@ -18,6 +18,7 @@ import { useGetRecipePath } from '~/hooks/use-get-recipe-path.tsx';
 import { useMapCategoriesToTags } from '~/hooks/use-map-categories-to-tags.tsx';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
 import { Recipe } from '~/query/services/recipes/types.ts';
+import { buildImageUrl } from '~/utils/build-image-url';
 
 type RecipeCardVerticalProps = {
     recipe: Recipe;
@@ -70,7 +71,7 @@ export const RecipeCardVertical = memo(
                 >
                     {!isWithoutImage && (
                         <Image
-                            src={recipe.image}
+                            src={buildImageUrl(recipe.image)}
                             alt={recipe.title}
                             h={{ base: '128px', lg: '230px', xxl: '244px' }}
                             borderBottomRadius='none'

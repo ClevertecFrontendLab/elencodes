@@ -37,6 +37,70 @@ export const TOAST_MESSAGES = {
             id: 'restore-credentials-success',
         },
     },
+    FileUploadErrorToast: {
+        title: 'Ошибка сервера',
+        description: 'Попробуйте сохранить фото позже.',
+        id: 'file-upload-error',
+    },
+    SearchErrorToast: {
+        title: 'Ошибка сервера',
+        description: 'Попробуйте поискать снова попозже',
+        id: 'search-error',
+    },
+    CreateRecipeToast: {
+        [StatusCodes.CREATED]: {
+            title: 'Рецепт успешно опубликован',
+            id: 'create-recipe-success',
+        },
+        [StatusCodes.CONFLICT]: {
+            title: 'Ошибка',
+            description: 'Рецепт с таким названием уже существует',
+            id: 'create-recipe-conflict',
+        },
+        [StatusCodes.INTERNAL_SERVER_ERROR]: {
+            title: 'Ошибка сервера',
+            description: 'Попробуйте пока сохранить в черновик',
+            id: 'create-recipe-server-error',
+        },
+    },
+    EditRecipeToast: {
+        [StatusCodes.OK]: {
+            title: 'Рецепт успешно опубликован',
+            id: 'edit-recipe-success',
+        },
+        [StatusCodes.INTERNAL_SERVER_ERROR]: {
+            title: 'Ошибка сервера',
+            description: 'Попробуйте пока сохранить в черновик',
+            id: 'create-recipe-server-error',
+        },
+    },
+    CreateDraftToast: {
+        [StatusCodes.CREATED]: {
+            title: 'Черновик успешно сохранен',
+            id: 'create-draft-success',
+        },
+        [StatusCodes.CONFLICT]: {
+            title: 'Ошибка',
+            description: 'Рецепт с таким названием уже существует',
+            id: 'create-draft-conflict',
+        },
+        [StatusCodes.INTERNAL_SERVER_ERROR]: {
+            title: 'Ошибка сервера',
+            description: 'Не удалось сохранить черновик рецепта',
+            id: 'create-draft-server-error',
+        },
+    },
+    DeleteRecipeToast: {
+        [StatusCodes.OK]: {
+            title: 'Рецепт успешно удален',
+            id: 'delete-recipe-conflict',
+        },
+        [StatusCodes.INTERNAL_SERVER_ERROR]: {
+            title: 'Ошибка сервера',
+            description: 'Не удалось удалить рецепт',
+            id: 'delete-recipe-server-error',
+        },
+    },
     ServerErrorToast: {
         title: 'Ошибка сервера',
         description: 'Попробуйте немного позже',

@@ -19,8 +19,6 @@ import { GlobalSpinner, Logo } from '~/components';
 import { TEXT_LABELS } from '~/constants/text-labels.ts';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
 import { useCheckAuthQuery } from '~/query/services/auth/auth-api';
-import { useAppSelector } from '~/redux/hooks.ts';
-import { selectAppError } from '~/redux/slices/app-slice.ts';
 import { selectAccessToken } from '~/redux/slices/auth-slice';
 
 const TABS = [
@@ -30,7 +28,6 @@ const TABS = [
 
 export const AuthLayout = () => {
     const { isTablet } = useScreenSize();
-    const isAppError = useAppSelector(selectAppError);
     const navigate = useNavigate();
     const activeIndex = useMatch(PATHS.SIGN_IN) ? 0 : 1;
     const { isLoading, isSuccess } = useCheckAuthQuery();
@@ -107,7 +104,7 @@ export const AuthLayout = () => {
                     <Wrap spacing={4} justify='space-between'>
                         <WrapItem>
                             <Heading as='h6' fontSize='xs' fontWeight='semibold'>
-                                {TEXT_LABELS.Rigths}
+                                {TEXT_LABELS.Rights}
                             </Heading>
                         </WrapItem>
                         <WrapItem display={{ base: 'none', lg: 'block' }}>
@@ -118,7 +115,7 @@ export const AuthLayout = () => {
                     </Wrap>
                 </Box>
             </Box>
-            <GlobalSpinner isOpen={isLoading && !isAppError} />
+            <GlobalSpinner isOpen={isLoading} />
         </>
     );
 };

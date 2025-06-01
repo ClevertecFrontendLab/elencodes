@@ -6,6 +6,8 @@ import { MainLayout } from '~/layouts/main-layout/main-layout.tsx';
 import { ProtectedLayout } from '~/layouts/protected-layout/protected-layout.tsx';
 import { JuiciestPage, MainPage, NotFoundPage, RecipeDetailsPage } from '~/pages';
 import { CategoryPage } from '~/pages/category-page/category-page.tsx';
+import { EditRecipePage } from '~/pages/edit-recipe-page/edit-recipe-page.tsx';
+import { NewRecipePage } from '~/pages/new-recipe-page/new-recipe-page.tsx';
 import { RecoveryPage } from '~/pages/recovery-page/recovery-page.tsx';
 import { SignInPage } from '~/pages/sign-in-page/sign-in-page.tsx';
 import { SignUpPage } from '~/pages/sign-up-page/sign-up-page.tsx';
@@ -30,6 +32,8 @@ const router = createBrowserRouter(
                         loader={clearStateLoader}
                     />
                     <Route path={PATHS.RECIPE_DETAILS} element={<RecipeDetailsPage />} />
+                    <Route path={PATHS.NEW_RECIPE} element={<NewRecipePage />} />
+                    <Route path={PATHS.EDIT_RECIPE} element={<EditRecipePage />} />
                     <Route path={PATHS.NOT_FOUND} element={<NotFoundPage />} />
                     <Route path={PATHS.ERROR} element={<Navigate to={PATHS.NOT_FOUND} replace />} />
                 </Route>
@@ -43,6 +47,9 @@ const router = createBrowserRouter(
             </Route>
         </>,
     ),
+    {
+        basename: import.meta.env.BASE_URL,
+    },
 );
 
 export default router;

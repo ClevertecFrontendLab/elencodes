@@ -2,15 +2,12 @@ import { baseApi } from '~/query/base-api.ts';
 import { ENDPOINTS } from '~/query/constants/endpoints.ts';
 import { clearState, setCategories, setSubCategories } from '~/redux/slices/category-slice';
 import { Category, CombinedCategoriesAndSubCategories, SubCategory } from '~/types/category-type';
-import { formatEntityWithImages } from '~/utils/format-entity-with-images.ts';
 import { LOCALSTORAGE_KEYS, setDataToLocalStorage } from '~/utils/manage-local-storage';
 
 export const categoriesApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         getCategories: builder.query<Category[], void>({
             query: () => ENDPOINTS.category,
-            transformResponse: (response: Category[]) =>
-                response.map((category) => formatEntityWithImages(category)),
             async onQueryStarted(_args, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;

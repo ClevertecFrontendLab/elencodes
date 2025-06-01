@@ -13,7 +13,8 @@ import { getFirstSubcategoryPath } from '~/utils/get-first-subcategory-path';
 export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
     const { isTablet } = useScreenSize();
     const location = useLocation();
-    const pathParts = location.pathname.split(PATHS.ROOT).filter(Boolean);
+    const normalizedPath = location.pathname.replace(/^\/edit-recipe/, '');
+    const pathParts = normalizedPath.split(PATHS.ROOT).filter(Boolean);
 
     const categories = useAppSelector(selectCategories);
     const subCategories = useAppSelector(selectSubCategories);

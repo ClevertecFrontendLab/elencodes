@@ -11,6 +11,7 @@ import { garnishReducer, garnishSlice } from './slices/garnish-slice.ts';
 import { meatReducer, meatSlice } from './slices/meat-slice.ts';
 import { recipesReducer, recipesSlice } from './slices/recipes-slice.ts';
 import { searchReducer, searchSlice } from './slices/search-slice.ts';
+
 const isProduction = false;
 
 const rootReducer = combineReducers({

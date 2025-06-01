@@ -1,13 +1,19 @@
 import { baseApi } from '~/query/base-api.ts';
 import { ENDPOINTS } from '~/query/constants/endpoints.ts';
-import { formatEntityWithImages } from '~/utils/format-entity-with-images.ts';
+import { METHODS } from '~/query/constants/methods.ts';
 
 import {
+    BookmarkRecipeResponse,
+    CreateRecipeBody,
+    CreateRecipeResponse,
+    LikeRecipeResponse,
     PageParam,
     Recipe,
     RecipeByCategoryQueryParams,
     RecipeQueryParams,
     RecipeResponse,
+    SaveDraftBody,
+    SaveDraftResponse,
 } from './types.ts';
 
 export const recipesApi = baseApi.injectEndpoints({
@@ -15,27 +21,21 @@ export const recipesApi = baseApi.injectEndpoints({
         getRecipes: builder.query<RecipeResponse, RecipeQueryParams>({
             query: (params) => ({
                 url: ENDPOINTS.recipes,
-                method: 'GET',
+                method: METHODS.get,
                 params,
             }),
-            transformResponse: (response: RecipeResponse): RecipeResponse => ({
-                ...response,
-                data: response.data.map((recipe) => formatEntityWithImages(recipe)),
-            }),
+            providesTags: ['Recipe'],
         }),
         getRecipeByCategory: builder.query<RecipeResponse, RecipeByCategoryQueryParams>({
             query: ({ id, ...params }) => ({
                 url: `${ENDPOINTS.recipesByCategory}/${id}`,
                 params: params,
             }),
-            transformResponse: (response: RecipeResponse): RecipeResponse => ({
-                ...response,
-                data: response.data.map((recipe) => formatEntityWithImages(recipe)),
-            }),
+            providesTags: ['Recipe'],
         }),
         getRecipeById: builder.query<Recipe, string>({
             query: (id) => ({ url: `${ENDPOINTS.recipes}/${id}` }),
-            transformResponse: (response: Recipe): Recipe => formatEntityWithImages(response),
+            providesTags: ['Recipe'],
         }),
         getRecipeByCategoryId: builder.infiniteQuery<
             RecipeResponse,
@@ -45,6 +45,7 @@ export const recipesApi = baseApi.injectEndpoints({
             infiniteQueryOptions: {
                 initialPageParam: { page: 1 },
                 getNextPageParam(lastPage) {
+                    if (!lastPage?.meta) return undefined;
                     const nextPage = lastPage.meta.page + 1;
                     return nextPage > lastPage.meta.totalPages ? undefined : { page: nextPage };
                 },
@@ -57,10 +58,7 @@ export const recipesApi = baseApi.injectEndpoints({
                     params: { ...restParams, page },
                 };
             },
-            transformResponse: (response: RecipeResponse): RecipeResponse => ({
-                data: response.data.map(formatEntityWithImages),
-                meta: response.meta,
-            }),
+            providesTags: ['Recipe'],
         }),
         getRecipesInfinite: builder.infiniteQuery<
             RecipeResponse,
@@ -78,25 +76,64 @@ export const recipesApi = baseApi.injectEndpoints({
                 const page = pageParam?.page || 1;
                 return {
                     url: ENDPOINTS.recipes,
-                    method: 'GET',
+                    method: METHODS.get,
                     params: { ...queryArg, page },
                 };
             },
-            transformResponse: (response: RecipeResponse): RecipeResponse => ({
-                ...response,
-                data: response.data.map((recipe) => formatEntityWithImages(recipe)),
-            }),
+            providesTags: ['Recipe'],
         }),
         getRecipesWithFilters: builder.query<RecipeResponse, RecipeQueryParams>({
             query: (params) => ({
                 url: ENDPOINTS.recipes,
-                method: 'GET',
+                method: METHODS.get,
                 params,
             }),
-            transformResponse: (response: RecipeResponse): RecipeResponse => ({
-                ...response,
-                data: response.data.map((recipe) => formatEntityWithImages(recipe)),
+            providesTags: ['Recipe'],
+        }),
+        createRecipe: builder.mutation<CreateRecipeResponse, CreateRecipeBody>({
+            query: (body) => ({
+                url: ENDPOINTS.recipes,
+                method: METHODS.post,
+                body,
             }),
+            invalidatesTags: ['Recipe'],
+        }),
+        editRecipe: builder.mutation<CreateRecipeResponse, { id: string; body: CreateRecipeBody }>({
+            query: ({ id, body }) => ({
+                url: `${ENDPOINTS.recipes}/${id}`,
+                method: METHODS.patch,
+                body,
+            }),
+            invalidatesTags: ['Recipe'],
+        }),
+        saveDraft: builder.mutation<SaveDraftResponse, SaveDraftBody>({
+            query: (body) => ({
+                url: ENDPOINTS.saveDraft,
+                method: METHODS.post,
+                body,
+            }),
+            invalidatesTags: ['Recipe'],
+        }),
+        likeRecipe: builder.mutation<LikeRecipeResponse, string>({
+            query: (id) => ({
+                url: `${ENDPOINTS.recipes}/${id}${ENDPOINTS.like}`,
+                method: METHODS.post,
+            }),
+            invalidatesTags: ['Recipe'],
+        }),
+        bookmarkRecipe: builder.mutation<BookmarkRecipeResponse, string>({
+            query: (id) => ({
+                url: `${ENDPOINTS.recipes}/${id}${ENDPOINTS.bookmark}`,
+                method: METHODS.post,
+            }),
+            invalidatesTags: ['Recipe'],
+        }),
+        deleteRecipe: builder.mutation<void, string>({
+            query: (id) => ({
+                url: `${ENDPOINTS.recipes}/${id}`,
+                method: METHODS.delete,
+            }),
+            invalidatesTags: ['Recipe'],
         }),
     }),
 });
@@ -108,4 +145,10 @@ export const {
     useGetRecipeByCategoryIdInfiniteQuery,
     useGetRecipesInfiniteInfiniteQuery,
     useLazyGetRecipesWithFiltersQuery,
+    useCreateRecipeMutation,
+    useEditRecipeMutation,
+    useSaveDraftMutation,
+    useLikeRecipeMutation,
+    useBookmarkRecipeMutation,
+    useDeleteRecipeMutation,
 } = recipesApi;

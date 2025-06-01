@@ -5,13 +5,11 @@ import { PATHS } from '~/app/routes/paths.ts';
 import { GlobalSpinner } from '~/components';
 import { useRefreshTokenMutation } from '~/query/services/auth/auth-api';
 import { useAppSelector } from '~/redux/hooks.ts';
-import { selectAppError } from '~/redux/slices/app-slice.ts';
 import { selectAccessToken } from '~/redux/slices/auth-slice';
 
 export const ProtectedLayout = () => {
     const isFirstRender = useRef(true);
     const [isAppLoading, setIsAppLoading] = useState(true);
-    const isAppError = useAppSelector(selectAppError);
     const accessToken = useAppSelector(selectAccessToken);
     const [refreshToken, { isLoading, error }] = useRefreshTokenMutation();
 
@@ -33,7 +31,7 @@ export const ProtectedLayout = () => {
         }
     }, [accessToken, refreshToken]);
 
-    if ((isAppLoading || isLoading) && !isAppError) {
+    if (isAppLoading || isLoading) {
         return <GlobalSpinner isOpen={true} />;
     }
 

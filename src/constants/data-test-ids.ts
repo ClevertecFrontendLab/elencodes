@@ -63,3 +63,42 @@ export const DATA_TEST_ID = {
     VERIFICATION_CODE_INPUT: 'verification-code-input',
     MODAL_RESET_CREDS: 'reset-credentials-modal',
 };
+
+//Форма рецепта
+export const RECIPE_FORM = 'recipe-form';
+export const RECIPE_IMAGE_BLOCK = 'recipe-image-block';
+export const RECIPE_IMAGE_BLOCK_INPUT = 'recipe-image-block-input-file';
+export const RECIPE_CATEGORIES = 'recipe-categories';
+export const RECIPE_TITLE = 'recipe-title';
+export const RECIPE_DESCRIPTION = 'recipe-description';
+export const RECIPE_PORTIONS = 'recipe-portions';
+export const RECIPE_TIME = 'recipe-time';
+export const RECIPE_INGREDIENTS_TITLE = (index: number) => `recipe-ingredients-title-${index}`;
+export const RECIPE_INGREDIENTS_COUNT = (index: number) => `recipe-ingredients-count-${index}`;
+export const RECIPE_INGREDIENTS_MEASURE = (index: number) =>
+    `recipe-ingredients-measureUnit-${index}`;
+export const RECIPE_STEP_IMAGE = (index: number) => `recipe-steps-image-block-${index}`;
+export const RECIPE_STEP_IMAGE_INPUT = (index: number) =>
+    `recipe-steps-image-block-${index}-input-file`;
+export const RECIPE_STEP_DESCRIPTION = (index: number) => `recipe-steps-description-${index}`;
+export const RECIPE_SAVE_DRAFT = 'recipe-save-draft-button';
+export const RECIPE_PUBLISH = 'recipe-publish-recipe-button';
+
+//Удаление и добавление ингредиентов
+export const RECIPE_REMOVE_INGREDIENT = (index: number) =>
+    `recipe-ingredients-remove-ingredients-${index}`;
+export const RECIPE_ADD_INGREDIENT = 'recipe-ingredients-add-ingredients';
+
+//Превью картинки и иконка удаления в шаге рецепта
+export const RECIPE_STEP_IMAGE_BLOCK = (index: number) =>
+    `recipe-steps-image-block-${index}-preview-image`;
+export const RECIPE_STEP_REMOVE = (index: number) => `recipe-steps-remove-button-${index}`;
+
+export const RECIPE_PREVIEW_IMAGE = 'recipe-image-block-preview-image';
+export const RECIPE_IMAGE_MODAL = 'recipe-image-modal';
+export const RECIPE_IMAGE_MODAL_BLOCK = 'recipe-image-modal-image-block';
+export const RECIPE_IMAGE_MODAL_PREVIEW = 'recipe-image-modal-preview-image';
+export const RECIPE_PREVENTIVE_MODAL = 'recipe-preventive-modal';
+export const RECIPE_DELETE_BUTTON = 'recipe-delete-button';
+export const HEADER_LOGO = 'header-logo';
+export const ADD_RECIPE_BTN = 'add-recipe-button';

@@ -59,7 +59,7 @@ export const SignInPage = () => {
         if (isEmailVerified) {
             toast({ ...EmailVerifiedToast[StatusCodes.OK], status: Statuses.SUCCESS }, false);
         }
-    }, []);
+    }, [isEmailVerified, toast]);
 
     return (
         <>

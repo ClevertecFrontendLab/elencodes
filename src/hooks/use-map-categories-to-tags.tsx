@@ -1,6 +1,7 @@
 import { RecipeTag } from '~/components';
 import { useAppSelector } from '~/redux/hooks';
 import { selectCategories, selectSubCategories } from '~/redux/slices/category-slice';
+import { buildImageUrl } from '~/utils/build-image-url';
 
 export const useMapCategoriesToTags = (subCategoryIds: string[], bgColor = 'lime.50') => {
     const categories = useAppSelector(selectCategories);
@@ -20,7 +21,7 @@ export const useMapCategoriesToTags = (subCategoryIds: string[], bgColor = 'lime
         if (!uniqueCategoryMap.has(parentCategory._id)) {
             uniqueCategoryMap.set(parentCategory._id, {
                 title: parentCategory.title,
-                icon: parentCategory.icon,
+                icon: buildImageUrl(parentCategory.icon),
             });
         }
     });

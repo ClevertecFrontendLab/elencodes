@@ -7,6 +7,7 @@ export const baseUrl = import.meta.env.VITE_API_BASE_URL;
 export const baseApi = createApi({
     reducerPath: 'api',
     baseQuery: baseQueryWithErrorAndLoader,
+    tagTypes: ['Recipe'],
     endpoints: () => ({}),
 });
 

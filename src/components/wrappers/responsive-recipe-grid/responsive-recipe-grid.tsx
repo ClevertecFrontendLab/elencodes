@@ -20,7 +20,7 @@ export const ResponsiveRecipeGrid = ({ recipes }: RecipesGrid) => (
         {recipes.map((recipe, index) => (
             <RecipeCardHorizontal
                 dataTestId={`${DATA_TEST_ID.FOOD_CARD}${index}`}
-                key={recipe._id + index}
+                key={recipe?._id + index}
                 recipe={recipe}
                 index={index}
             />

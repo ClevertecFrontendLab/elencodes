@@ -4,13 +4,15 @@ import { RecipeActionButtons, RecipeStats, RecipeTag } from '~/components';
 import { useMapCategoriesToTags } from '~/hooks/use-map-categories-to-tags.tsx';
 import { ClockIcon } from '~/icons/recipe-page-icons/clock-icon';
 import { Recipe } from '~/query/services/recipes/types.ts';
+import { buildImageUrl } from '~/utils/build-image-url.ts';
 
 type RecipeImageBlockProps = {
     recipe: Recipe;
     isTablet: boolean;
+    isAuthor: boolean;
 };
 
-export const RecipeImageBlock = ({ recipe, isTablet }: RecipeImageBlockProps) => {
+export const RecipeImageBlock = ({ recipe, isTablet, isAuthor }: RecipeImageBlockProps) => {
     const tags = useMapCategoriesToTags(recipe.categoriesIds);
     return (
         <Flex w='100%' gap={6} flexDirection={{ base: 'column', sm: 'row' }}>
@@ -19,7 +21,7 @@ export const RecipeImageBlock = ({ recipe, isTablet }: RecipeImageBlockProps) =>
                 minW={{ base: 238, sm: 232, md: 353, xl: 535 }}
                 minH={{ base: 224, md: 410 }}
                 objectFit='cover'
-                src={recipe.image}
+                src={buildImageUrl(recipe.image)}
                 alt={recipe.title}
             />
             <Flex w='100%' flexDirection='column' gap={6}>
@@ -47,7 +49,7 @@ export const RecipeImageBlock = ({ recipe, isTablet }: RecipeImageBlockProps) =>
                         icon={<ClockIcon />}
                     />
                     <Spacer />
-                    <RecipeActionButtons />
+                    <RecipeActionButtons isAuthor={isAuthor} recipeId={recipe._id} />
                 </Flex>
             </Flex>
         </Flex>

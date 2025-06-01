@@ -1,0 +1,100 @@
+import { AddIcon } from '@chakra-ui/icons';
+import {
+    Flex,
+    FormControl,
+    IconButton,
+    Input,
+    NumberInput,
+    NumberInputField,
+    Select,
+} from '@chakra-ui/react';
+import { Control, Controller, FieldErrors, UseFormRegister } from 'react-hook-form';
+
+import {
+    RECIPE_ADD_INGREDIENT,
+    RECIPE_INGREDIENTS_COUNT,
+    RECIPE_INGREDIENTS_MEASURE,
+    RECIPE_INGREDIENTS_TITLE,
+    RECIPE_REMOVE_INGREDIENT,
+} from '~/constants/data-test-ids.ts';
+import { TrashIcon } from '~/icons/recipe-page-icons/trash-icon';
+import { MeasureUnitsResponse } from '~/query/services/user/types.ts';
+import { CreateRecipeSchemaType } from '~/schemas/create-recipe.schema.ts';
+
+type RecipeIngredientRowProps = {
+    index: number;
+    register: UseFormRegister<CreateRecipeSchemaType>;
+    control: Control<CreateRecipeSchemaType>;
+    errors: FieldErrors<CreateRecipeSchemaType>;
+    onRemove: () => void;
+    onAdd: () => void;
+    isLast: boolean;
+    measureUnits?: MeasureUnitsResponse;
+};
+
+export const RecipeIngredientRow = ({
+    index,
+    register,
+    control,
+    errors,
+    onRemove,
+    onAdd,
+    isLast,
+    measureUnits,
+}: RecipeIngredientRowProps) => (
+    <Flex w='100%' gap={4} mb={2} flexWrap='wrap'>
+        <FormControl
+            w={{ base: '100%', sm: undefined }}
+            flex={{ base: undefined, sm: '3' }}
+            isInvalid={!!errors.ingredients?.[index]?.title}
+        >
+            <Input
+                data-test-id={RECIPE_INGREDIENTS_TITLE(index)}
+                placeholder='Ингредиент'
+                {...register(`ingredients.${index}.title` as const)}
+            />
+        </FormControl>
+
+        <FormControl flex='1' isInvalid={!!errors.ingredients?.[index]?.count}>
+            <Controller
+                control={control}
+                name={`ingredients.${index}.count`}
+                render={({ field: { onChange, value } }) => (
+                    <NumberInput value={value} onChange={onChange}>
+                        <NumberInputField
+                            placeholder='100'
+                            data-test-id={RECIPE_INGREDIENTS_COUNT(index)}
+                        />
+                    </NumberInput>
+                )}
+            />
+        </FormControl>
+
+        <FormControl flex='2' isInvalid={!!errors.ingredients?.[index]?.measureUnit}>
+            <Select
+                {...register(`ingredients.${index}.measureUnit` as const)}
+                placeholder='Единица измерения'
+                _placeholder={{ color: 'blackAlpha.700' }}
+                isTruncated={true}
+                data-test-id={RECIPE_INGREDIENTS_MEASURE(index)}
+            >
+                {measureUnits?.map((unit) => (
+                    <option key={unit.name} value={unit.name}>
+                        {unit.name}
+                    </option>
+                ))}
+            </Select>
+        </FormControl>
+        <IconButton
+            aria-label={isLast ? 'Добавить' : 'Удалить'}
+            isRound={isLast}
+            variant={isLast ? 'dark' : 'ghost'}
+            colorScheme={isLast ? undefined : 'lime'}
+            icon={isLast ? <AddIcon /> : <TrashIcon />}
+            data-test-id={isLast ? RECIPE_ADD_INGREDIENT : RECIPE_REMOVE_INGREDIENT(index)}
+            size='sm'
+            h='32px'
+            onClick={isLast ? onAdd : onRemove}
+        />
+    </Flex>
+);

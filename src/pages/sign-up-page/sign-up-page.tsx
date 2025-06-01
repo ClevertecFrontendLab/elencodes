@@ -6,7 +6,7 @@ import { useNavigate, useSearchParams } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths.ts';
 import { GlobalSpinner } from '~/components';
-import { AuthRegistrationForm } from '~/components/widgets/auth-registration-form/auth-regictration-form.tsx';
+import { AuthRegistrationForm } from '~/components/widgets/auth-registration-form/auth-registration-form';
 import { PersonalInfoForm } from '~/components/widgets/personal-info-form/personal-info-form.tsx';
 import { SignUpResultModal } from '~/components/wrappers/result-modal/sign-up-result-modal/sign-up-result-modal.tsx';
 import { VerificationFailedModal } from '~/components/wrappers/result-modal/verification-failed-modal/verification-failed-modal.tsx';
@@ -106,7 +106,7 @@ export const SignUpPage = () => {
         if (isEmailVerifiedFailed) {
             onFailedOpen();
         }
-    }, []);
+    }, [isEmailVerifiedFailed, onFailedOpen]);
 
     return (
         <>
