@@ -6,12 +6,11 @@ import {
 } from '@reduxjs/toolkit/query/react';
 
 import { ACCESS_TOKEN_HEADER } from '~/query/constants/auth-consts.ts';
-import { REQUEST_ERROR_MESSAGE, REQUEST_ERROR_TITLE } from '~/query/constants/base-consts.ts';
 import { ENDPOINTS } from '~/query/constants/endpoints.ts';
 import { METHODS } from '~/query/constants/methods.ts';
 import { StatusCodes } from '~/query/constants/status-codes.ts';
 import { ApplicationState } from '~/redux/configure-store.ts';
-import { setAppError, setAppLoader } from '~/redux/slices/app-slice.ts';
+import { setAppLoader } from '~/redux/slices/app-slice.ts';
 import { resetAuth, setAccessToken } from '~/redux/slices/auth-slice.ts';
 
 export const baseUrl = import.meta.env.VITE_API_BASE_URL;
@@ -33,23 +32,12 @@ export const baseQueryWithErrorAndLoader: BaseQueryFn<
     unknown,
     FetchBaseQueryError
 > = async (args, api, extraOptions) => {
-    const state = api.getState() as ApplicationState;
     const endpointName = api.endpoint;
-    const shouldShowLoader = !state.app.error;
     const skipLoader = endpointName === 'getRecipesWithFilters';
 
-    if (shouldShowLoader && !skipLoader) {
+    if (!skipLoader) {
         api.dispatch(setAppLoader(true));
     }
-
-    const handleError = () => {
-        api.dispatch(
-            setAppError({
-                title: REQUEST_ERROR_TITLE,
-                description: REQUEST_ERROR_MESSAGE,
-            }),
-        );
-    };
 
     try {
         let result = await rawBaseQuery(args, api, extraOptions);
@@ -78,16 +66,7 @@ export const baseQueryWithErrorAndLoader: BaseQueryFn<
             }
         }
 
-        if (result.error) {
-            handleError();
-        } else {
-            api.dispatch(setAppError(null));
-        }
-
         return result;
-    } catch (e) {
-        handleError();
-        throw e;
     } finally {
         if (!skipLoader) {
             api.dispatch(setAppLoader(false));

@@ -3,8 +3,8 @@ import { Button, HStack, Menu, MenuButton, MenuList, Tag, Text, VStack } from '@
 import { useState } from 'react';
 
 import { AllergenInputGroup, CheckboxItem } from '~/components';
-import { ALLERGEN, ALLERGENS_MENU, CHECKBOX } from '~/constants/data-test-ids';
-import { PLACEHOLDER_SELECT } from '~/constants/placeholders';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { Option } from '~/types/option-type';
 
 type MultiSelectProps = {
@@ -15,10 +15,13 @@ type MultiSelectProps = {
     isDisabled: boolean;
     isCustomInputEnabled: boolean;
     placeholder: string;
-    minWidth: { base: string; md: string } | string;
+    minWidth: { base: string; sm?: string; md: string } | string;
     dataTestId: string;
     isAllergens: boolean;
     tagDataTestId: string;
+    maxHeight: string;
+    maxVisibleTags: number;
+    isInvalid: boolean;
 }>;
 
 export const MultiSelect = ({
@@ -27,11 +30,14 @@ export const MultiSelect = ({
     options,
     isDisabled = false,
     isCustomInputEnabled = false,
-    placeholder = `${PLACEHOLDER_SELECT}`,
+    placeholder = `${PLACEHOLDERS.SELECT}`,
     minWidth = '269px',
     dataTestId = '',
     isAllergens = false,
     tagDataTestId = '',
+    maxHeight,
+    maxVisibleTags,
+    isInvalid,
 }: MultiSelectProps) => {
     const [newValue, setNewValue] = useState('');
 
@@ -66,7 +72,15 @@ export const MultiSelect = ({
                         textAlign='left'
                         variant='outline'
                         colorScheme='black'
-                        borderColor={isOpen || selected.length ? 'lime.300' : 'blackAlpha.200'}
+                        px={maxVisibleTags && 3}
+                        borderWidth={isInvalid ? '2px' : undefined}
+                        borderColor={
+                            isInvalid
+                                ? 'red.500'
+                                : isOpen || selected.length
+                                  ? 'lime.300'
+                                  : 'blackAlpha.200'
+                        }
                         isDisabled={isDisabled}
                     >
                         {selected.length === 0 || isDisabled ? (
@@ -80,8 +94,11 @@ export const MultiSelect = ({
                                 {placeholder}
                             </Text>
                         ) : (
-                            <HStack wrap='wrap' py={2} spacing={3}>
-                                {selected.map((item) => {
+                            <HStack wrap='wrap' py={2} spacing={!maxVisibleTags ? 3 : 1}>
+                                {(!maxVisibleTags
+                                    ? selected
+                                    : selected.slice(0, maxVisibleTags)
+                                ).map((item) => {
                                     const label =
                                         options.find((opt) => opt.value === item)?.label || item;
                                     return (
@@ -98,13 +115,28 @@ export const MultiSelect = ({
                                         </Tag>
                                     );
                                 })}
+                                {maxVisibleTags !== undefined &&
+                                    selected.length > maxVisibleTags && (
+                                        <Tag
+                                            variant='outline'
+                                            colorScheme='lime'
+                                            color='lime.600'
+                                            fontSize='xs'
+                                            size='sm'
+                                            data-test-id={`${tagDataTestId}-rest`}
+                                        >
+                                            +{selected.length - maxVisibleTags}
+                                        </Tag>
+                                    )}
                             </HStack>
                         )}
                     </MenuButton>
                     <MenuList
-                        data-test-id={ALLERGENS_MENU}
+                        data-test-id={DATA_TEST_ID.ALLERGENS_MENU}
                         borderTopRadius={0}
                         minWidth={minWidth}
+                        maxHeight={maxHeight}
+                        overflowY={maxHeight ? 'auto' : 'unset'}
                         zIndex={3}
                         p={0}
                     >
@@ -121,8 +153,8 @@ export const MultiSelect = ({
                                     py={1}
                                     dataTestId={
                                         isAllergens
-                                            ? `${ALLERGEN}${index}`
-                                            : `${CHECKBOX}${label.toLowerCase()}`
+                                            ? `${DATA_TEST_ID.ALLERGEN}${index}`
+                                            : `${DATA_TEST_ID.CHECKBOX}${label.toLowerCase()}`
                                     }
                                 />
                             ))}

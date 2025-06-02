@@ -1,7 +1,7 @@
 import { Text, VStack } from '@chakra-ui/react';
 
 import { CheckboxItem } from '~/components';
-import { CHECKBOX } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { Option } from '~/types/option-type';
 
 type FilterCheckboxListProps = {
@@ -30,7 +30,7 @@ export const FilterCheckboxList = ({
                 onCustomToggle={onToggle}
                 px={0}
                 py={1}
-                dataTestId={CHECKBOX + label.toLowerCase()}
+                dataTestId={DATA_TEST_ID.CHECKBOX + label.toLowerCase()}
             />
         ))}
     </VStack>

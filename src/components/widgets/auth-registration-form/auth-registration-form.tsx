@@ -3,12 +3,8 @@ import { Button, FormControl, FormErrorMessage, FormLabel, Input, VStack } from 
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 import { PasswordInput } from '~/components/ui/password-input/password-input.tsx';
-import {
-    FORM_LOGIN_INPUT,
-    FORM_PASSWORD_INPUT,
-    FORM_SUBMIT_BUTTON,
-    SIGN_UP_CONFIRM_PASSWORD,
-} from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { AuthInfoSchemaType, SignUpSchemaType } from '~/schemas/sign-up.schema.ts';
 
 type AuthRegistrationFormProps = {
@@ -32,9 +28,9 @@ export const AuthRegistrationForm = ({
                     size='lg'
                     variant='auth'
                     {...register('login')}
-                    placeholder='Логин'
+                    placeholder={PLACEHOLDERS.SIGN_UP_LOGIN}
                     onBlur={(e) => onBlur('login', e.target.value)}
-                    data-test-id={FORM_LOGIN_INPUT}
+                    data-test-id={DATA_TEST_ID.FORM_LOGIN_INPUT}
                 />
                 <FormHelperText fontSize='xs'>
                     Логин не менее 5 символов, только латиница
@@ -48,9 +44,9 @@ export const AuthRegistrationForm = ({
                     input={{
                         ...register('password'),
                         variant: 'auth',
-                        placeholder: 'Пароль для сайта',
+                        placeholder: PLACEHOLDERS.PASSWORD,
                     }}
-                    dataTestId={FORM_PASSWORD_INPUT}
+                    dataTestId={DATA_TEST_ID.FORM_PASSWORD_INPUT}
                 />
                 <FormHelperText fontSize='xs'>
                     Пароль не менее 8 символов, с заглавной буквой и цифрой
@@ -64,9 +60,9 @@ export const AuthRegistrationForm = ({
                     input={{
                         ...register('passwordConfirm'),
                         variant: 'auth',
-                        placeholder: 'Повторите пароль',
+                        placeholder: PLACEHOLDERS.REPEAT_PASSWORD,
                     }}
-                    dataTestId={SIGN_UP_CONFIRM_PASSWORD}
+                    dataTestId={DATA_TEST_ID.SIGN_UP_CONFIRM_PASSWORD}
                 />
                 <FormErrorMessage>{String(errors.passwordConfirm?.message)}</FormErrorMessage>
             </FormControl>
@@ -78,7 +74,7 @@ export const AuthRegistrationForm = ({
             variant='dark'
             size='lg'
             type='submit'
-            data-test-id={FORM_SUBMIT_BUTTON}
+            data-test-id={DATA_TEST_ID.FORM_SUBMIT_BUTTON}
         >
             Зарегистрироваться
         </Button>

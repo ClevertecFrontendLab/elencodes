@@ -1,12 +1,8 @@
 import { Button, FormControl, FormErrorMessage, FormLabel, Input, VStack } from '@chakra-ui/react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
-import {
-    FORM_SUBMIT_BUTTON,
-    SIGN_UP_EMAIL,
-    SIGN_UP_FIRST_NAME,
-    SIGN_UP_LAST_NAME,
-} from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { PersonalInfoSchemaType, SignUpSchemaType } from '~/schemas/sign-up.schema.ts';
 
 type PersonalInfoFormProps = {
@@ -31,8 +27,8 @@ export const PersonalInfoForm = ({
                     variant='auth'
                     {...register('firstName')}
                     onBlur={(e) => onBlur('firstName', e.target.value)}
-                    placeholder='Имя'
-                    data-test-id={SIGN_UP_FIRST_NAME}
+                    placeholder={PLACEHOLDERS.NAME}
+                    data-test-id={DATA_TEST_ID.SIGN_UP_FIRST_NAME}
                 />
                 <FormErrorMessage>{String(errors.firstName?.message)}</FormErrorMessage>
             </FormControl>
@@ -44,8 +40,8 @@ export const PersonalInfoForm = ({
                     variant='auth'
                     {...register('lastName')}
                     onBlur={(e) => onBlur('lastName', e.target.value)}
-                    placeholder='Фамилия'
-                    data-test-id={SIGN_UP_LAST_NAME}
+                    placeholder={PLACEHOLDERS.SURNAME}
+                    data-test-id={DATA_TEST_ID.SIGN_UP_LAST_NAME}
                 />
                 <FormErrorMessage>{String(errors.lastName?.message)}</FormErrorMessage>
             </FormControl>
@@ -57,8 +53,8 @@ export const PersonalInfoForm = ({
                     variant='auth'
                     {...register('email')}
                     onBlur={(e) => onBlur('email', e.target.value)}
-                    placeholder='e-mail'
-                    data-test-id={SIGN_UP_EMAIL}
+                    placeholder={PLACEHOLDERS.EMAIL}
+                    data-test-id={DATA_TEST_ID.SIGN_UP_EMAIL}
                 />
                 <FormErrorMessage>{String(errors.email?.message)}</FormErrorMessage>
             </FormControl>
@@ -70,7 +66,7 @@ export const PersonalInfoForm = ({
             variant='dark'
             size='lg'
             type='submit'
-            data-test-id={FORM_SUBMIT_BUTTON}
+            data-test-id={DATA_TEST_ID.FORM_SUBMIT_BUTTON}
         >
             Дальше
         </Button>

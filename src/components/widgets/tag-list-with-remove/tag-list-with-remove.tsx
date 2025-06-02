@@ -1,6 +1,6 @@
 import { HStack, Tag, TagCloseButton, TagLabel } from '@chakra-ui/react';
 
-import { FILTER_TAG } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { Option } from '~/types/option-type';
 
 type TagListWithRemoveProps = {
@@ -23,7 +23,7 @@ export const TagListWithRemove = ({ selected, options, onRemove }: TagListWithRe
                     color='lime.600'
                     fontSize='xs'
                     size='sm'
-                    data-test-id={FILTER_TAG}
+                    data-test-id={DATA_TEST_ID.FILTER_TAG}
                 >
                     <TagLabel>{label}</TagLabel>
                     <TagCloseButton onClick={() => onRemove(item)} />

@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths.ts';
 import SidebarSubItem from '~/components/layout/sidebar/sidebar-sub-item.tsx';
-import { VEGAN, VEGAN_CUISINE } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { Category } from '~/types/category-type';
 
 type SidebarItemProps = {
@@ -32,7 +32,7 @@ export const SidebarItem = ({ category }: SidebarItemProps) => {
         <AccordionItem border='none'>
             <AccordionButton _expanded={{ bg: 'lime.100', fontWeight: 'bold' }} px={2} py={2}>
                 <Flex
-                    data-test-id={`${category.category === VEGAN ? VEGAN_CUISINE : category.category}`}
+                    data-test-id={`${category.category === DATA_TEST_ID.VEGAN ? DATA_TEST_ID.VEGAN_CUISINE : category.category}`}
                     onClick={handleCategoryClick}
                     align='center'
                     flex='1'

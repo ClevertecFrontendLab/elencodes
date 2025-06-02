@@ -1,5 +1,14 @@
-export const PLACEHOLDER_SEARCH_INPUT = 'Название или ингредиент...';
-export const PLACEHOLDER_SELECT = 'Выберите из списка...';
-export const PLACEHOLDER_SELECT_DRAWER = 'Выберите из списка аллергенов...';
-export const BUTTON_ADD_OTHER_ALLERGEN = 'Другой аллерген';
-export const BUTTON_EXCLUDE_ALLERGENS = 'Исключить аллергены';
+export const PLACEHOLDERS = {
+    SEARCH_INPUT: 'Название или ингредиент...',
+    SELECT: 'Выберите из списка...',
+    SELECT_DRAWER: 'Выберите из списка аллергенов...',
+    BUTTON_ADD_OTHER_ALLERGEN: 'Другой аллерген',
+    BUTTON_EXCLUDE_ALLERGENS: 'Исключить аллергены',
+    SIGN_UP_LOGIN: 'Логин',
+    SIGN_IN_LOGIN: 'Введите логин',
+    PASSWORD: 'Пароль для сайта',
+    REPEAT_PASSWORD: 'Повторите пароль',
+    EMAIL: 'e-mail',
+    NAME: 'Имя',
+    SURNAME: 'Фамилия',
+};

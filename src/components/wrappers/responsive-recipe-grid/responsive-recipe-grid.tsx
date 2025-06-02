@@ -1,7 +1,7 @@
 import { Grid } from '@chakra-ui/react';
 
 import { RecipeCardHorizontal } from '~/components';
-import { FOOD_CARD } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { RecipesGrid } from '~/query/services/recipes/types.ts';
 
 export const ResponsiveRecipeGrid = ({ recipes }: RecipesGrid) => (
@@ -19,8 +19,8 @@ export const ResponsiveRecipeGrid = ({ recipes }: RecipesGrid) => (
     >
         {recipes.map((recipe, index) => (
             <RecipeCardHorizontal
-                dataTestId={`${FOOD_CARD}${index}`}
-                key={recipe._id + index}
+                dataTestId={`${DATA_TEST_ID.FOOD_CARD}${index}`}
+                key={recipe?._id + index}
                 recipe={recipe}
                 index={index}
             />

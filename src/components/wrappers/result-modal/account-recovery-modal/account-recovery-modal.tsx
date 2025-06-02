@@ -3,9 +3,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm, UseFormRegister } from 'react-hook-form';
 
 import { GlobalSpinner } from '~/components';
-import { AuthRegistrationForm } from '~/components/widgets/auth-registration-form/auth-regictration-form.tsx';
+import { AuthRegistrationForm } from '~/components/widgets/auth-registration-form/auth-registration-form';
 import { ResultModal, ResultModalProps } from '~/components/wrappers/result-modal/result-modal';
-import { MODAL_RESET_CREDS, SIGN_UP_FORM } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { TOAST_MESSAGES } from '~/constants/toast-messages';
 import { useCustomToast } from '~/hooks/use-custom-toast';
 import { StatusCodes, Statuses } from '~/query/constants/status-codes';
@@ -50,11 +50,14 @@ export const AccountRecoveryModal = ({ email, ...restProps }: AccountRecoveryMod
         <>
             <ResultModal
                 {...restProps}
-                dataTestId={MODAL_RESET_CREDS}
+                dataTestId={DATA_TEST_ID.MODAL_RESET_CREDS}
                 title='Восстановление аккаунта'
             >
                 <ModalBody alignSelf='center' mb={4}>
-                    <form data-test-id={SIGN_UP_FORM} onSubmit={handleSubmit(handleFormSubmit)}>
+                    <form
+                        data-test-id={DATA_TEST_ID.SIGN_UP_FORM}
+                        onSubmit={handleSubmit(handleFormSubmit)}
+                    >
                         <AuthRegistrationForm
                             register={register as unknown as UseFormRegister<SignUpSchemaType>}
                             errors={errors}

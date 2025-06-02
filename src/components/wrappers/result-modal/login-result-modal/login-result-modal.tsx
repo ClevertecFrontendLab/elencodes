@@ -1,7 +1,7 @@
 import { Button, ModalBody, ModalFooter, Text } from '@chakra-ui/react';
 import breakfast from '@public/images/auth/breakfast.png';
 
-import { MODAL_ERROR_SIGN_IN, MODAL_REPEAT_BUTTON } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 
 import { ResultModal } from '../result-modal';
 
@@ -13,7 +13,7 @@ type LoginResultModalProps = {
 
 export const LoginResultModal = ({ isOpen, onClose, onRetry }: LoginResultModalProps) => (
     <ResultModal
-        dataTestId={MODAL_ERROR_SIGN_IN}
+        dataTestId={DATA_TEST_ID.MODAL_ERROR_SIGN_IN}
         isOpen={isOpen}
         onClose={onClose}
         imageUrl={breakfast}
@@ -26,7 +26,7 @@ export const LoginResultModal = ({ isOpen, onClose, onRetry }: LoginResultModalP
         </ModalBody>
         <ModalFooter>
             <Button
-                data-test-id={MODAL_REPEAT_BUTTON}
+                data-test-id={DATA_TEST_ID.MODAL_REPEAT_BUTTON}
                 variant='dark'
                 mt={{ base: 0, md: 8 }}
                 size='lg'

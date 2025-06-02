@@ -1,11 +1,11 @@
 import { MotionGlobalConfig } from 'framer-motion';
 
-function cypressIsRunning(): boolean {
+export function isTestMode(): boolean {
     return !!(window as unknown as { Cypress: unknown }).Cypress;
 }
 
 export const configureTestMode = (): void => {
-    if (cypressIsRunning()) {
+    if (isTestMode()) {
         MotionGlobalConfig.skipAnimations = true;
     }
     return;

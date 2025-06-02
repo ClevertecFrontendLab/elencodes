@@ -3,12 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import { MultiSelect, SearchInputWithFilter } from '~/components';
 import { Loader } from '~/components/ui/loader/loader.tsx';
-import {
-    ALLERGENS_MENU_BUTTON,
-    ALLERGENS_SWITCHER,
-    LOADER_SEARCH_BLOCK,
-} from '~/constants/data-test-ids';
-import { BUTTON_EXCLUDE_ALLERGENS } from '~/constants/placeholders';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
 import { useAppSelector } from '~/redux/hooks.ts';
 import {
@@ -38,7 +34,7 @@ export const SearchGroup = () => {
     };
 
     if (isFiltering) {
-        return <Loader dataTestId={LOADER_SEARCH_BLOCK} isSmall />;
+        return <Loader dataTestId={DATA_TEST_ID.LOADER_SEARCH_BLOCK} isSmall />;
     }
 
     return (
@@ -48,10 +44,10 @@ export const SearchGroup = () => {
                 <HStack align='center' w='100%' maxW={{ base: '448px', md: '518px' }}>
                     <FormControl display='flex' alignItems='center'>
                         <FormLabel htmlFor='exclude-allergens' mb='0'>
-                            {BUTTON_EXCLUDE_ALLERGENS}
+                            {PLACEHOLDERS.BUTTON_EXCLUDE_ALLERGENS}
                         </FormLabel>
                         <Switch
-                            data-test-id={ALLERGENS_SWITCHER}
+                            data-test-id={DATA_TEST_ID.ALLERGENS_SWITCHER}
                             colorScheme='lime'
                             id='exclude-allergens'
                             isChecked={excludeAllergens}
@@ -65,7 +61,7 @@ export const SearchGroup = () => {
                         options={allergenOptions}
                         isCustomInputEnabled
                         isDisabled={!excludeAllergens}
-                        dataTestId={ALLERGENS_MENU_BUTTON}
+                        dataTestId={DATA_TEST_ID.ALLERGENS_MENU_BUTTON}
                     />
                 </HStack>
             )}

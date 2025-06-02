@@ -13,7 +13,7 @@ const initialState: SidesState = {
     selectedSides: [],
 };
 
-const garnishSlice = createSlice({
+export const garnishSlice = createSlice({
     name: 'garnish',
     initialState,
     reducers: {

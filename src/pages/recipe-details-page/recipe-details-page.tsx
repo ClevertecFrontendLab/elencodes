@@ -10,22 +10,32 @@ import {
     RecipeImageBlock,
     RecipeStepsSection,
 } from '~/components';
+import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
+import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
 import { useGetRecipeByIdQuery } from '~/query/services/recipes/recipes-api.ts';
+import { useAppSelector } from '~/redux/hooks.ts';
+import { selectUserId } from '~/redux/slices/auth-slice.ts';
+
+const { SearchErrorToast } = TOAST_MESSAGES;
 
 export const RecipeDetailsPage = () => {
     const { isTablet } = useScreenSize();
+    const { toast } = useCustomToast();
     const recipeId = useParams().id;
     const navigate = useNavigate();
     const { data: foundRecipe, isError } = useGetRecipeByIdQuery(recipeId || '', {
         skip: !recipeId,
     });
+    const userId = useAppSelector(selectUserId);
+    const isAuthor = foundRecipe?.authorId === userId;
 
     useEffect(() => {
         if (isError) {
             navigate(-1);
+            toast(SearchErrorToast);
         }
-    }, [isError, navigate]);
+    }, [isError, navigate, toast]);
 
     if (!foundRecipe) return null;
 
@@ -39,14 +49,14 @@ export const RecipeDetailsPage = () => {
             mb={4}
             centerContent
         >
-            <RecipeImageBlock recipe={foundRecipe} isTablet={isTablet} />
+            <RecipeImageBlock recipe={foundRecipe} isTablet={isTablet} isAuthor={isAuthor} />
             <NutritionStats nutritionValue={foundRecipe.nutritionValue} />
             <IngredientsTable
                 ingredients={foundRecipe.ingredients}
                 portions={foundRecipe.portions}
             />
             <RecipeStepsSection steps={foundRecipe.steps} />
-            <RecipeAuthorCard />
+            {!isAuthor && <RecipeAuthorCard />}
             <NewestRecipes />
         </Container>
     );

@@ -9,4 +9,9 @@ export enum ENDPOINTS {
     checkVerificationCode = '/auth/verify-otp',
     resetCredentials = '/auth/reset-password',
     checkAuth = '/auth/check-auth',
+    measureUnits = '/measure-units',
+    fileUpload = '/file/upload',
+    like = '/like',
+    bookmark = '/bookmark',
+    saveDraft = '/recipe/draft',
 }

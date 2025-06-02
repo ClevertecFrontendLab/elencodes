@@ -2,7 +2,7 @@ import { Link, ModalBody, ModalFooter, Text } from '@chakra-ui/react';
 import teaCeremony from '@public/images/auth/tea_ceremony.png';
 
 import { ResultModal } from '~/components/wrappers/result-modal/result-modal.tsx';
-import { MODAL_SIGN_UP_ERROR } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 
 type VerificationFailedModalProps = {
     isOpen: boolean;
@@ -14,7 +14,7 @@ export const VerificationFailedModal = ({ isOpen, onClose }: VerificationFailedM
         isOpen={isOpen}
         onClose={onClose}
         imageUrl={teaCeremony}
-        dataTestId={MODAL_SIGN_UP_ERROR}
+        dataTestId={DATA_TEST_ID.MODAL_SIGN_UP_ERROR}
         title='Упс! Что-то пошло не так'
     >
         <ModalBody maxW='300px' alignSelf='center'>

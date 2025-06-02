@@ -4,7 +4,7 @@ import notFoundTablet from '@public/images/not-found-page/not-found-tablet.png';
 import { NavLink } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths.ts';
-import { ERROR_PAGE_GO_HOME } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 
 export const NotFoundPage = () => (
     <Center
@@ -33,7 +33,7 @@ export const NotFoundPage = () => (
             <Text fontSize='md' mb={6} textColor='blackAlpha.700'>
                 Можете поискать другой рецепт&nbsp;
                 <Link
-                    data-test-id={ERROR_PAGE_GO_HOME}
+                    data-test-id={DATA_TEST_ID.ERROR_PAGE_GO_HOME}
                     as={NavLink}
                     to={PATHS.ROOT}
                     textUnderlineOffset='4px'

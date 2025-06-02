@@ -1,3 +1,5 @@
+import { CreateRecipeSchemaType } from '~/schemas/create-recipe.schema';
+
 export type RecipeIngredient = {
     title: string;
     count: string;
@@ -85,4 +87,20 @@ export type RecipeByCategoryQueryParams = {
     page?: number;
     searchString?: string;
     allergens?: string;
+};
+
+export type CreateRecipeBody = CreateRecipeSchemaType;
+export type CreateRecipeResponse = Recipe;
+
+export type SaveDraftBody = Partial<CreateRecipeSchemaType>;
+export type SaveDraftResponse = Recipe;
+
+export type LikeRecipeResponse = {
+    message: string;
+    likes: number;
+};
+
+export type BookmarkRecipeResponse = {
+    message: string;
+    bookmarks: number;
 };

@@ -1,4 +1,5 @@
 import { Button, Flex } from '@chakra-ui/react';
+import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths.ts';
@@ -8,13 +9,18 @@ import {
     CustomTabs,
     FilteredResultsSection,
 } from '~/components';
+import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
+import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import { FILTER_RECIPES_LIMIT } from '~/query/constants/recipe-consts.ts';
 import { useGetRecipeByCategoryIdInfiniteQuery } from '~/query/services/recipes/recipes-api.ts';
 import { useAppSelector } from '~/redux/hooks';
 import { selectCategories, selectSubCategories } from '~/redux/slices/category-slice.ts';
 import { selectFilteredRecipes } from '~/redux/slices/recipes-slice.ts';
 
+const { SearchErrorToast } = TOAST_MESSAGES;
+
 export const CategoryPage = () => {
+    const { toast } = useCustomToast();
     const { category: categorySlug, subcategory: subcategorySlug } = useParams();
     const categories = useAppSelector(selectCategories);
     const subCategories = useAppSelector(selectSubCategories);
@@ -28,7 +34,7 @@ export const CategoryPage = () => {
         navigate(PATHS.NOT_FOUND);
     }
 
-    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
         useGetRecipeByCategoryIdInfiniteQuery(
             {
                 id: subcategory?._id,
@@ -42,6 +48,12 @@ export const CategoryPage = () => {
     const allRecipes = data?.pages.flatMap((page) => page.data) ?? [];
 
     const shouldShowLoadMoreButton = hasNextPage && !isLoading;
+
+    useEffect(() => {
+        if (isError) {
+            toast(SearchErrorToast);
+        }
+    }, [isError, toast]);
 
     if (filteredRecipes.length) {
         return (

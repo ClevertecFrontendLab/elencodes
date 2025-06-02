@@ -2,7 +2,7 @@ import { Link, ModalBody, ModalFooter, Text } from '@chakra-ui/react';
 import party from '@public/images/auth/party.png';
 
 import { ResultModal } from '~/components/wrappers/result-modal/result-modal.tsx';
-import { MODAL_SIGN_UP_SUCCESS } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 
 type SignUpResultModalProps = {
     isOpen: boolean;
@@ -12,7 +12,7 @@ type SignUpResultModalProps = {
 
 export const SignUpResultModal = ({ isOpen, onClose, email }: SignUpResultModalProps) => (
     <ResultModal
-        dataTestId={MODAL_SIGN_UP_SUCCESS}
+        dataTestId={DATA_TEST_ID.MODAL_SIGN_UP_SUCCESS}
         isOpen={isOpen}
         onClose={onClose}
         imageUrl={party}

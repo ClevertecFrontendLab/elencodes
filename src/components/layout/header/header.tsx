@@ -2,7 +2,7 @@ import { Flex } from '@chakra-ui/icons';
 import { Box, Spacer, useDisclosure } from '@chakra-ui/react';
 
 import { AppBreadcrumb, BurgerMenu, Logo, Stats, UserInfo } from '~/components';
-import { BURGER_NAV } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
 
 export const Header = () => {
@@ -28,7 +28,7 @@ export const Header = () => {
                 {isTablet && !isOpen && <Stats />}
                 <Box
                     display={{ base: 'block', md: 'none' }}
-                    data-test-id={isTablet ? '' : BURGER_NAV}
+                    data-test-id={isTablet ? '' : DATA_TEST_ID.BURGER_NAV}
                 >
                     <BurgerMenu isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
                 </Box>

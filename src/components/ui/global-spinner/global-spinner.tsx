@@ -1,7 +1,7 @@
 import { Modal, ModalContent, ModalOverlay } from '@chakra-ui/icons';
 
 import { Loader } from '~/components/ui/loader/loader.tsx';
-import { APP_LOADER } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 
 type GlobalSpinnerProps = {
     isOpen: boolean;
@@ -15,7 +15,7 @@ export const GlobalSpinner = ({ isOpen }: GlobalSpinnerProps) => (
             pointerEvents='none'
         />
         <ModalContent bg='transparent' border='none' shadow='none' alignItems='center'>
-            <Loader dataTestId={APP_LOADER} />
+            <Loader dataTestId={DATA_TEST_ID.APP_LOADER} />
         </ModalContent>
     </Modal>
 );

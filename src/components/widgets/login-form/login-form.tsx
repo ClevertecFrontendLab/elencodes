@@ -13,13 +13,8 @@ import { NavLink } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths';
 import { PasswordInput } from '~/components/ui/password-input/password-input';
-import {
-    FORM_FORGOT_PASSWORD,
-    FORM_LOGIN_INPUT,
-    FORM_PASSWORD_INPUT,
-    FORM_SIGN_IN,
-    FORM_SUBMIT_BUTTON,
-} from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { LoginSchemaType } from '~/schemas/sign-in.schema.ts';
 
 type Props = {
@@ -39,16 +34,16 @@ export const LoginForm = ({ formMethods, onSubmit }: Props) => {
     };
 
     return (
-        <form onSubmit={onSubmit} data-test-id={FORM_SIGN_IN}>
+        <form onSubmit={onSubmit} data-test-id={DATA_TEST_ID.FORM_SIGN_IN}>
             <VStack spacing={4} align='stretch'>
                 <FormControl isInvalid={!!errors.login}>
                     <FormLabel>Логин входа на сайт</FormLabel>
                     <Input
-                        data-test-id={FORM_LOGIN_INPUT}
+                        data-test-id={DATA_TEST_ID.FORM_LOGIN_INPUT}
                         size='lg'
                         variant='auth'
                         {...register('login')}
-                        placeholder='Введите логин'
+                        placeholder={PLACEHOLDERS.SIGN_IN_LOGIN}
                         onBlur={(e) => handleBlur('login', e.target.value)}
                     />
                     <FormErrorMessage>{String(errors.login?.message)}</FormErrorMessage>
@@ -60,15 +55,15 @@ export const LoginForm = ({ formMethods, onSubmit }: Props) => {
                         input={{
                             ...register('password'),
                             variant: 'auth',
-                            placeholder: 'Пароль для сайта',
+                            placeholder: PLACEHOLDERS.PASSWORD,
                         }}
-                        dataTestId={FORM_PASSWORD_INPUT}
+                        dataTestId={DATA_TEST_ID.FORM_PASSWORD_INPUT}
                     />
                     <FormErrorMessage>{String(errors.password?.message)}</FormErrorMessage>
                 </FormControl>
 
                 <Button
-                    data-test-id={FORM_SUBMIT_BUTTON}
+                    data-test-id={DATA_TEST_ID.FORM_SUBMIT_BUTTON}
                     mt='80px'
                     variant='dark'
                     size='lg'
@@ -84,7 +79,7 @@ export const LoginForm = ({ formMethods, onSubmit }: Props) => {
                     fontWeight='semibold'
                     fontSize='md'
                     _hover={{ textDecoration: 'underline' }}
-                    data-test-id={FORM_FORGOT_PASSWORD}
+                    data-test-id={DATA_TEST_ID.FORM_FORGOT_PASSWORD}
                 >
                     <NavLink to={PATHS.RECOVERY}>Забыли логин или пароль?</NavLink>
                 </Box>

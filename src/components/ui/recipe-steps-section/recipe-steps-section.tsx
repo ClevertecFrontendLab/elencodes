@@ -2,6 +2,7 @@ import { Flex } from '@chakra-ui/icons';
 import { Box, Card, CardBody, Heading, Image, Tag, TagLabel, Text } from '@chakra-ui/react';
 
 import { RecipeStep } from '~/query/services/recipes/types.ts';
+import { buildImageUrl } from '~/utils/build-image-url';
 
 type RecipeStepsSectionProps = {
     steps: RecipeStep[];
@@ -23,7 +24,7 @@ export const RecipeStepsSection = ({ steps }: RecipeStepsSectionProps) => (
                 {step.image && (
                     <Box position='relative' w={{ base: '158px', md: '50%' }}>
                         <Image
-                            src={step.image}
+                            src={buildImageUrl(step.image)}
                             alt={step.description}
                             borderLeftRadius='lg'
                             w='100%'

@@ -6,11 +6,11 @@ import { useNavigate, useSearchParams } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths.ts';
 import { GlobalSpinner } from '~/components';
-import { AuthRegistrationForm } from '~/components/widgets/auth-registration-form/auth-regictration-form.tsx';
+import { AuthRegistrationForm } from '~/components/widgets/auth-registration-form/auth-registration-form';
 import { PersonalInfoForm } from '~/components/widgets/personal-info-form/personal-info-form.tsx';
 import { SignUpResultModal } from '~/components/wrappers/result-modal/sign-up-result-modal/sign-up-result-modal.tsx';
 import { VerificationFailedModal } from '~/components/wrappers/result-modal/verification-failed-modal/verification-failed-modal.tsx';
-import { SIGN_UP_FORM, SIGN_UP_PROGRESS } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
 import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import { StatusCodes } from '~/query/constants/status-codes';
@@ -106,7 +106,7 @@ export const SignUpPage = () => {
         if (isEmailVerifiedFailed) {
             onFailedOpen();
         }
-    }, []);
+    }, [isEmailVerifiedFailed, onFailedOpen]);
 
     return (
         <>
@@ -119,9 +119,12 @@ export const SignUpPage = () => {
                     size='sm'
                     colorScheme='lime'
                     bgColor='blackAlpha.100'
-                    data-test-id={SIGN_UP_PROGRESS}
+                    data-test-id={DATA_TEST_ID.SIGN_UP_PROGRESS}
                 />
-                <form data-test-id={SIGN_UP_FORM} onSubmit={handleSubmit(handleFormSubmit)}>
+                <form
+                    data-test-id={DATA_TEST_ID.SIGN_UP_FORM}
+                    onSubmit={handleSubmit(handleFormSubmit)}
+                >
                     {step === SignUpStep.PersonalInfo ? (
                         <PersonalInfoForm
                             register={register}

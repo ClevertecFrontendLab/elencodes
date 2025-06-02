@@ -59,7 +59,7 @@ export const CategoryPageLayout = ({ title, description, children }: CategoryPag
                 {description && !isFiltering && (
                     <Text
                         fontSize='sm'
-                        w={{ md: '690px' }}
+                        w={{ base: '350px', sm: '720px', md: '690px' }}
                         px={2}
                         pb={5}
                         color='blackAlpha.600'

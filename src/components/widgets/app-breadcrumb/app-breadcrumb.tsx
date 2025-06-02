@@ -2,7 +2,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
 import { Link, useLocation } from 'react-router';
 
 import { PATHS, staticRoutes } from '~/app/routes/paths';
-import { BREADCRUMBS } from '~/constants/data-test-ids';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { useCategoryParams } from '~/hooks/use-category-params';
 import { useScreenSize } from '~/hooks/use-screen-size';
 import { useGetRecipeByIdQuery } from '~/query/services/recipes/recipes-api';
@@ -13,7 +13,8 @@ import { getFirstSubcategoryPath } from '~/utils/get-first-subcategory-path';
 export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
     const { isTablet } = useScreenSize();
     const location = useLocation();
-    const pathParts = location.pathname.split(PATHS.ROOT).filter(Boolean);
+    const normalizedPath = location.pathname.replace(/^\/edit-recipe/, '');
+    const pathParts = normalizedPath.split(PATHS.ROOT).filter(Boolean);
 
     const categories = useAppSelector(selectCategories);
     const subCategories = useAppSelector(selectSubCategories);
@@ -103,7 +104,7 @@ export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
             fontSize='sm'
             separator='›'
             ml={isTablet ? '14px' : '128px'}
-            data-test-id={BREADCRUMBS}
+            data-test-id={DATA_TEST_ID.BREADCRUMBS}
         >
             <BreadcrumbItem>
                 <BreadcrumbLink as={Link} to={PATHS.ROOT} color='blackAlpha.700' onClick={onClose}>

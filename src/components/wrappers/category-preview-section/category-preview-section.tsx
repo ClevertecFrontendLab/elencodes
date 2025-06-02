@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 
 import { RecipeCardVertical, RecipeListItem } from '~/components';
+import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
+import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import {
     INITIAL_PAGE_NUM,
     RANDOM_CATEGORY_RECIPES_LIMIT,
@@ -11,6 +13,7 @@ import {
 import { useGetRecipeByCategoryQuery } from '~/query/services/recipes/recipes-api.ts';
 import { useAppSelector } from '~/redux/hooks.ts';
 import { selectCategories } from '~/redux/slices/category-slice.ts';
+import { isTestMode } from '~/utils/configure-test-mode.ts';
 import { getRandomCategory } from '~/utils/get-random-category.ts';
 
 const RANDOM_CATEGORY_BIG_CARD_START = 0;
@@ -18,10 +21,14 @@ const RANDOM_CATEGORY_BIG_CARD_END = 2;
 const RANDOM_CATEGORY_SMALL_CARD_START = 2;
 const RANDOM_CATEGORY_SMALL_CARD_END = 5;
 
+const { SearchErrorToast } = TOAST_MESSAGES;
+
 export const CategoryPreviewSection = () => {
     const categories = useAppSelector(selectCategories);
     const location = useLocation();
+    const { toast } = useCustomToast();
     const [selectedCategory, setSelectedCategory] = useState(() => getRandomCategory(categories));
+    const [hasShownError, setHasShownError] = useState(false);
 
     useEffect(() => {
         setSelectedCategory(getRandomCategory(categories));
@@ -29,7 +36,7 @@ export const CategoryPreviewSection = () => {
 
     const { title, description, firstSubCategoryId } = selectedCategory || {};
 
-    const { data } = useGetRecipeByCategoryQuery(
+    const { data, isError } = useGetRecipeByCategoryQuery(
         {
             id: firstSubCategoryId,
             limit: RANDOM_CATEGORY_RECIPES_LIMIT,
@@ -49,6 +56,16 @@ export const CategoryPreviewSection = () => {
         RANDOM_CATEGORY_SMALL_CARD_START,
         RANDOM_CATEGORY_SMALL_CARD_END,
     );
+
+    useEffect(() => {
+        if (isError && !hasShownError) {
+            const toastDelay = isTestMode() ? 5000 : 15000;
+            toast(SearchErrorToast, true, toastDelay);
+            setHasShownError(true);
+        } else if (!isError && hasShownError) {
+            setHasShownError(false);
+        }
+    }, [isError, toast, hasShownError]);
 
     return (
         <Box mt={8}>
