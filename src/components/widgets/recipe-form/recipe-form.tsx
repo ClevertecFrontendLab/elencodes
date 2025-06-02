@@ -9,15 +9,7 @@ import { RecipeIngredientsList } from '~/components/widgets/recipe-form/fields/r
 import { RecipeMainFields } from '~/components/widgets/recipe-form/fields/recipe-main-fields.tsx';
 import { RecipeStepsList } from '~/components/widgets/recipe-form/fields/recipe-steps-list.tsx';
 import { SaveChangesModal } from '~/components/wrappers/result-modal/save-changes-modal/save-changes-modal';
-import {
-    RECIPE_CATEGORIES,
-    RECIPE_FORM,
-    RECIPE_IMAGE_BLOCK,
-    RECIPE_IMAGE_BLOCK_INPUT,
-    RECIPE_PREVIEW_IMAGE,
-    RECIPE_PUBLISH,
-    RECIPE_SAVE_DRAFT,
-} from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
 import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
@@ -197,15 +189,15 @@ export const RecipeForm = ({ mode = 'create', initialData, recipeId }: RecipeFor
 
     return (
         <>
-            <form data-test-id={RECIPE_FORM}>
+            <form data-test-id={DATA_TEST_ID.RECIPE_FORM}>
                 <Flex gap={6} direction={{ base: 'column', sm: 'row' }}>
                     <FileImagePreview
                         value={watch('image')}
                         onChange={(url) => handleImageChange(url)}
                         isInvalid={!!errors.image}
-                        dataTestId={RECIPE_IMAGE_BLOCK}
-                        dataTestIdModal={RECIPE_IMAGE_BLOCK_INPUT}
-                        dataTestIdImage={RECIPE_PREVIEW_IMAGE}
+                        dataTestId={DATA_TEST_ID.RECIPE_IMAGE_BLOCK}
+                        dataTestIdModal={DATA_TEST_ID.RECIPE_IMAGE_BLOCK_INPUT}
+                        dataTestIdImage={DATA_TEST_ID.RECIPE_PREVIEW_IMAGE}
                     />
                     <VStack maxW={{ sm: '480px', md: '560px', xl: '668px' }} w='100%' gap={6}>
                         <FormControl
@@ -226,7 +218,7 @@ export const RecipeForm = ({ mode = 'create', initialData, recipeId }: RecipeFor
                                 options={subCategoriesOptions}
                                 maxVisibleTags={isTablet ? 1 : 2}
                                 isInvalid={!!errors.categoriesIds}
-                                dataTestId={RECIPE_CATEGORIES}
+                                dataTestId={DATA_TEST_ID.RECIPE_CATEGORIES}
                             />
                         </FormControl>
                         <RecipeMainFields control={control} register={register} errors={errors} />
@@ -262,7 +254,7 @@ export const RecipeForm = ({ mode = 'create', initialData, recipeId }: RecipeFor
                         variant='outline'
                         colorScheme='dark'
                         onClick={() => validateAndSubmit(draftRecipeSchema, onSubmitDraft)}
-                        data-test-id={RECIPE_SAVE_DRAFT}
+                        data-test-id={DATA_TEST_ID.RECIPE_SAVE_DRAFT}
                     >
                         Сохранить черновик
                     </Button>
@@ -273,7 +265,7 @@ export const RecipeForm = ({ mode = 'create', initialData, recipeId }: RecipeFor
                         variant='dark'
                         type='button'
                         onClick={() => validateAndSubmit(createRecipeSchema, onSubmitPublish)}
-                        data-test-id={RECIPE_PUBLISH}
+                        data-test-id={DATA_TEST_ID.RECIPE_PUBLISH}
                     >
                         Опубликовать рецепт
                     </Button>

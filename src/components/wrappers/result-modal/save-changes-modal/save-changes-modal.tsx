@@ -2,7 +2,7 @@ import { Button, ModalBody, ModalFooter, Text, VStack } from '@chakra-ui/react';
 import breakfast from '@public/images/auth/breakfast.png';
 
 import { ResultModal, ResultModalProps } from '~/components/wrappers/result-modal/result-modal.tsx';
-import { RECIPE_PREVENTIVE_MODAL } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { DraftIcon } from '~/icons/recipe-page-icons/draft-icon';
 
 type SaveChangesModalProps = Omit<ResultModalProps, 'children' | 'onClose'> & {
@@ -23,7 +23,7 @@ export const SaveChangesModal = ({
         onClose={onCancel}
         isClosable={true}
         {...modalProps}
-        dataTestId={RECIPE_PREVENTIVE_MODAL}
+        dataTestId={DATA_TEST_ID.RECIPE_PREVENTIVE_MODAL}
     >
         <ModalBody px={8} py={0}>
             <Text textAlign='center' color='gray.600'>

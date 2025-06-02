@@ -2,7 +2,7 @@ import { Button, HStack, IconButton } from '@chakra-ui/react';
 import { useNavigate, useParams } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths.ts';
-import { RECIPE_DELETE_BUTTON } from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
 import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import { BookmarkIcon } from '~/icons/counter-icons/bookmark-icon';
@@ -89,7 +89,7 @@ export const RecipeActionButtons = ({ isAuthor, recipeId }: RecipeActionButtonsP
                         size={{ base: 'xs', md: 'md' }}
                         icon={<TrashIcon />}
                         onClick={handleDelete}
-                        data-test-id={RECIPE_DELETE_BUTTON}
+                        data-test-id={DATA_TEST_ID.RECIPE_DELETE_BUTTON}
                     />
                     <Button
                         size={{ base: 'xs', md: 'md' }}

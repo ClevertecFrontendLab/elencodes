@@ -15,11 +15,7 @@ import {
 import { useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
-import {
-    RECIPE_IMAGE_MODAL,
-    RECIPE_IMAGE_MODAL_BLOCK,
-    RECIPE_IMAGE_MODAL_PREVIEW,
-} from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
 import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import { CloseIcon } from '~/icons/auth-icons/close-icon';
@@ -100,7 +96,7 @@ export const FileUploadModal = ({
             <ModalContent
                 maxW={{ base: '316px', md: '400px' }}
                 py={4}
-                data-test-id={RECIPE_IMAGE_MODAL}
+                data-test-id={DATA_TEST_ID.RECIPE_IMAGE_MODAL}
             >
                 <ModalHeader>
                     <IconButton
@@ -142,7 +138,7 @@ export const FileUploadModal = ({
                                 onClick={() => inputRef.current?.click()}
                                 _hover={{ bg: 'blackAlpha.300' }}
                                 position='relative'
-                                data-test-id={RECIPE_IMAGE_MODAL_BLOCK}
+                                data-test-id={DATA_TEST_ID.RECIPE_IMAGE_MODAL_BLOCK}
                             >
                                 <Input
                                     type='file'
@@ -163,7 +159,7 @@ export const FileUploadModal = ({
                                         w='100%'
                                         h='100%'
                                         rounded='md'
-                                        data-test-id={RECIPE_IMAGE_MODAL_PREVIEW}
+                                        data-test-id={DATA_TEST_ID.RECIPE_IMAGE_MODAL_PREVIEW}
                                     />
                                 ) : (
                                     <Box textAlign='center'>

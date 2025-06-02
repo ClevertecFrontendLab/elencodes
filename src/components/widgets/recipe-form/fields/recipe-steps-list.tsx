@@ -23,13 +23,7 @@ import {
 } from 'react-hook-form';
 
 import { FileImagePreview } from '~/components/widgets/file-image-preview/file-image-preview.tsx';
-import {
-    RECIPE_STEP_DESCRIPTION,
-    RECIPE_STEP_IMAGE,
-    RECIPE_STEP_IMAGE_BLOCK,
-    RECIPE_STEP_IMAGE_INPUT,
-    RECIPE_STEP_REMOVE,
-} from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { AddIconFilled } from '~/icons/recipe-page-icons/add-icon-filled';
 import { TrashIcon } from '~/icons/recipe-page-icons/trash-icon';
 import { CreateRecipeSchemaType } from '~/schemas/create-recipe.schema.ts';
@@ -112,9 +106,9 @@ export const RecipeStepsList = ({
                             value={currentSteps?.[index]?.image || ''}
                             onChange={(url) => handleAddStepImage(url, index)}
                             isCardPreview
-                            dataTestId={RECIPE_STEP_IMAGE(index)}
-                            dataTestIdModal={RECIPE_STEP_IMAGE_INPUT(index)}
-                            dataTestIdImage={RECIPE_STEP_IMAGE_BLOCK(index)}
+                            dataTestId={DATA_TEST_ID.RECIPE_STEP_IMAGE(index)}
+                            dataTestIdModal={DATA_TEST_ID.RECIPE_STEP_IMAGE_INPUT(index)}
+                            dataTestIdImage={DATA_TEST_ID.RECIPE_STEP_IMAGE_BLOCK(index)}
                         />
                     </Box>
                     <CardBody display='flex' gap={4} flexDirection='column'>
@@ -129,7 +123,7 @@ export const RecipeStepsList = ({
                                     onClick={() => handleRemoveStep(index)}
                                     variant='ghost'
                                     colorScheme='lime'
-                                    data-test-id={RECIPE_STEP_REMOVE(index)}
+                                    data-test-id={DATA_TEST_ID.RECIPE_STEP_REMOVE(index)}
                                 />
                             )}
                         </HStack>
@@ -138,7 +132,7 @@ export const RecipeStepsList = ({
                                 h={{ base: '84px', md: '100px' }}
                                 {...register(`steps.${index}.description`)}
                                 placeholder='Опишите шаг...'
-                                data-test-id={RECIPE_STEP_DESCRIPTION(index)}
+                                data-test-id={DATA_TEST_ID.RECIPE_STEP_DESCRIPTION(index)}
                             />
                         </FormControl>
                     </CardBody>

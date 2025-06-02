@@ -11,12 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { Control, Controller, FieldErrors, UseFormRegister } from 'react-hook-form';
 
-import {
-    RECIPE_DESCRIPTION,
-    RECIPE_PORTIONS,
-    RECIPE_TIME,
-    RECIPE_TITLE,
-} from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { CreateRecipeSchemaType } from '~/schemas/create-recipe.schema.ts';
 
 type RecipeMainFieldsProps = {
@@ -30,7 +25,7 @@ export const RecipeMainFields = ({ register, control, errors }: RecipeMainFields
         <FormControl isInvalid={!!errors.title}>
             <Input
                 placeholder='Название рецепта'
-                data-test-id={RECIPE_TITLE}
+                data-test-id={DATA_TEST_ID.RECIPE_TITLE}
                 borderColor='lime.150'
                 _focus={{ borderColor: 'lime.150', outline: 'none' }}
                 _focusVisible={{ borderColor: 'lime.150', boxShadow: 'none' }}
@@ -44,7 +39,7 @@ export const RecipeMainFields = ({ register, control, errors }: RecipeMainFields
                 {...register('description' as const)}
                 placeholder='Краткое описание рецепта'
                 _placeholder={{ color: 'blackAlpha.700', fontSize: 'sm' }}
-                data-test-id={RECIPE_DESCRIPTION}
+                data-test-id={DATA_TEST_ID.RECIPE_DESCRIPTION}
             />
         </FormControl>
         <FormControl
@@ -62,7 +57,7 @@ export const RecipeMainFields = ({ register, control, errors }: RecipeMainFields
                 name='portions'
                 render={({ field: { onChange, value } }) => (
                     <NumberInput size='md' maxW='90px' value={value} onChange={onChange}>
-                        <NumberInputField data-test-id={RECIPE_PORTIONS} />
+                        <NumberInputField data-test-id={DATA_TEST_ID.RECIPE_PORTIONS} />
                         <NumberInputStepper>
                             <NumberIncrementStepper />
                             <NumberDecrementStepper />
@@ -86,7 +81,7 @@ export const RecipeMainFields = ({ register, control, errors }: RecipeMainFields
                 name='time'
                 render={({ field: { onChange, value } }) => (
                     <NumberInput value={value} onChange={onChange} size='md' maxW='90px'>
-                        <NumberInputField data-test-id={RECIPE_TIME} />
+                        <NumberInputField data-test-id={DATA_TEST_ID.RECIPE_TIME} />
                         <NumberInputStepper>
                             <NumberIncrementStepper />
                             <NumberDecrementStepper />

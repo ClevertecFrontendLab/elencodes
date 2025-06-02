@@ -10,13 +10,7 @@ import {
 } from '@chakra-ui/react';
 import { Control, Controller, FieldErrors, UseFormRegister } from 'react-hook-form';
 
-import {
-    RECIPE_ADD_INGREDIENT,
-    RECIPE_INGREDIENTS_COUNT,
-    RECIPE_INGREDIENTS_MEASURE,
-    RECIPE_INGREDIENTS_TITLE,
-    RECIPE_REMOVE_INGREDIENT,
-} from '~/constants/data-test-ids.ts';
+import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { TrashIcon } from '~/icons/recipe-page-icons/trash-icon';
 import { MeasureUnitsResponse } from '~/query/services/user/types.ts';
 import { CreateRecipeSchemaType } from '~/schemas/create-recipe.schema.ts';
@@ -49,7 +43,7 @@ export const RecipeIngredientRow = ({
             isInvalid={!!errors.ingredients?.[index]?.title}
         >
             <Input
-                data-test-id={RECIPE_INGREDIENTS_TITLE(index)}
+                data-test-id={DATA_TEST_ID.RECIPE_INGREDIENTS_TITLE(index)}
                 placeholder='Ингредиент'
                 {...register(`ingredients.${index}.title` as const)}
             />
@@ -63,7 +57,7 @@ export const RecipeIngredientRow = ({
                     <NumberInput value={value} onChange={onChange}>
                         <NumberInputField
                             placeholder='100'
-                            data-test-id={RECIPE_INGREDIENTS_COUNT(index)}
+                            data-test-id={DATA_TEST_ID.RECIPE_INGREDIENTS_COUNT(index)}
                         />
                     </NumberInput>
                 )}
@@ -76,7 +70,7 @@ export const RecipeIngredientRow = ({
                 placeholder='Единица измерения'
                 _placeholder={{ color: 'blackAlpha.700' }}
                 isTruncated={true}
-                data-test-id={RECIPE_INGREDIENTS_MEASURE(index)}
+                data-test-id={DATA_TEST_ID.RECIPE_INGREDIENTS_MEASURE(index)}
             >
                 {measureUnits?.map((unit) => (
                     <option key={unit.name} value={unit.name}>
@@ -91,7 +85,11 @@ export const RecipeIngredientRow = ({
             variant={isLast ? 'dark' : 'ghost'}
             colorScheme={isLast ? undefined : 'lime'}
             icon={isLast ? <AddIcon /> : <TrashIcon />}
-            data-test-id={isLast ? RECIPE_ADD_INGREDIENT : RECIPE_REMOVE_INGREDIENT(index)}
+            data-test-id={
+                isLast
+                    ? DATA_TEST_ID.RECIPE_ADD_INGREDIENT
+                    : DATA_TEST_ID.RECIPE_REMOVE_INGREDIENT(index)
+            }
             size='sm'
             h='32px'
             onClick={isLast ? onAdd : onRemove}
