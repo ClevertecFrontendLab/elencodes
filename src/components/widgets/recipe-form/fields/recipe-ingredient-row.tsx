@@ -54,7 +54,7 @@ export const RecipeIngredientRow = ({
                 control={control}
                 name={`ingredients.${index}.count`}
                 render={({ field: { onChange, value } }) => (
-                    <NumberInput value={value} onChange={onChange}>
+                    <NumberInput value={value} onChange={onChange} precision={0}>
                         <NumberInputField
                             placeholder='100'
                             data-test-id={DATA_TEST_ID.RECIPE_INGREDIENTS_COUNT(index)}
