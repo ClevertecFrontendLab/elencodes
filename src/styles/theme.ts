@@ -6,7 +6,7 @@ const breakpoints = {
     base: '0em', // 0px
     sm: '47.5em', // 768px
     md: '89.94em', // 1440px
-    xl: '120em', // 1920px
+    xl: '115em', // 1920px
 };
 
 const fonts = {
