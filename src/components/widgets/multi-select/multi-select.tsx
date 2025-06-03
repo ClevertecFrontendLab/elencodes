@@ -40,6 +40,7 @@ export const MultiSelect = ({
     isInvalid,
 }: MultiSelectProps) => {
     const [newValue, setNewValue] = useState('');
+    const visibleTags = !maxVisibleTags ? selected : selected.slice(0, maxVisibleTags);
 
     const handleToggle = (value: string) => {
         onChange(
@@ -55,6 +56,20 @@ export const MultiSelect = ({
             onChange([...selected, trimmed]);
             setNewValue('');
         }
+    };
+
+    const getBorderColor = ({
+        isInvalid,
+        isOpen,
+        hasSelected,
+    }: {
+        isInvalid?: boolean;
+        isOpen?: boolean;
+        hasSelected?: boolean;
+    }) => {
+        if (isInvalid) return 'red.500';
+        if (isOpen || hasSelected) return 'lime.300';
+        return 'blackAlpha.200';
     };
 
     return (
@@ -74,16 +89,14 @@ export const MultiSelect = ({
                         colorScheme='black'
                         px={maxVisibleTags && 3}
                         borderWidth={isInvalid ? '2px' : undefined}
-                        borderColor={
-                            isInvalid
-                                ? 'red.500'
-                                : isOpen || selected.length
-                                  ? 'lime.300'
-                                  : 'blackAlpha.200'
-                        }
+                        borderColor={getBorderColor({
+                            isInvalid,
+                            isOpen,
+                            hasSelected: !!selected.length,
+                        })}
                         isDisabled={isDisabled}
                     >
-                        {selected.length === 0 || isDisabled ? (
+                        {!selected.length || isDisabled ? (
                             <Text
                                 fontWeight={400}
                                 size='md'
@@ -95,10 +108,7 @@ export const MultiSelect = ({
                             </Text>
                         ) : (
                             <HStack wrap='wrap' py={2} spacing={!maxVisibleTags ? 3 : 1}>
-                                {(!maxVisibleTags
-                                    ? selected
-                                    : selected.slice(0, maxVisibleTags)
-                                ).map((item) => {
+                                {visibleTags.map((item) => {
                                     const label =
                                         options.find((opt) => opt.value === item)?.label || item;
                                     return (
@@ -115,19 +125,18 @@ export const MultiSelect = ({
                                         </Tag>
                                     );
                                 })}
-                                {maxVisibleTags !== undefined &&
-                                    selected.length > maxVisibleTags && (
-                                        <Tag
-                                            variant='outline'
-                                            colorScheme='lime'
-                                            color='lime.600'
-                                            fontSize='xs'
-                                            size='sm'
-                                            data-test-id={`${tagDataTestId}-rest`}
-                                        >
-                                            +{selected.length - maxVisibleTags}
-                                        </Tag>
-                                    )}
+                                {maxVisibleTags && selected.length > maxVisibleTags && (
+                                    <Tag
+                                        variant='outline'
+                                        colorScheme='lime'
+                                        color='lime.600'
+                                        fontSize='xs'
+                                        size='sm'
+                                        data-test-id={`${tagDataTestId}-rest`}
+                                    >
+                                        +{selected.length - maxVisibleTags}
+                                    </Tag>
+                                )}
                             </HStack>
                         )}
                     </MenuButton>
