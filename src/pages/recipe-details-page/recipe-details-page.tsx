@@ -28,7 +28,8 @@ export const RecipeDetailsPage = () => {
         skip: !recipeId,
     });
     const userId = useAppSelector(selectUserId);
-    const isAuthor = foundRecipe?.authorId === userId;
+    const isOwnRecipe = foundRecipe?.authorId === userId;
+    const shouldShowAuthorCard = !isOwnRecipe;
 
     useEffect(() => {
         if (isError) {
@@ -49,14 +50,14 @@ export const RecipeDetailsPage = () => {
             mb={4}
             centerContent
         >
-            <RecipeImageBlock recipe={foundRecipe} isTablet={isTablet} isAuthor={isAuthor} />
+            <RecipeImageBlock recipe={foundRecipe} isTablet={isTablet} isAuthor={isOwnRecipe} />
             <NutritionStats nutritionValue={foundRecipe.nutritionValue} />
             <IngredientsTable
                 ingredients={foundRecipe.ingredients}
                 portions={foundRecipe.portions}
             />
             <RecipeStepsSection steps={foundRecipe.steps} />
-            {!isAuthor && <RecipeAuthorCard />}
+            {shouldShowAuthorCard && <RecipeAuthorCard />}
             <NewestRecipes />
         </Container>
     );
