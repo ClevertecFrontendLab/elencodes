@@ -1,7 +1,6 @@
 import { Button, HStack, IconButton } from '@chakra-ui/react';
 import { useNavigate, useParams } from 'react-router';
 
-import { PATHS } from '~/app/routes/paths.ts';
 import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
 import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
 import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
@@ -20,11 +19,12 @@ import { isRTKQueryError } from '~/utils/is-rtk-error.ts';
 type RecipeActionButtonsProps = {
     isAuthor: boolean;
     recipeId: string;
+    onDelete?: () => void;
 };
 
 const { ServerErrorToast } = TOAST_MESSAGES;
 
-export const RecipeActionButtons = ({ isAuthor, recipeId }: RecipeActionButtonsProps) => {
+export const RecipeActionButtons = ({ isAuthor, recipeId, onDelete }: RecipeActionButtonsProps) => {
     const { toast } = useCustomToast();
     const navigate = useNavigate();
     const [likeRecipe] = useLikeRecipeMutation();
@@ -62,7 +62,7 @@ export const RecipeActionButtons = ({ isAuthor, recipeId }: RecipeActionButtonsP
         try {
             await deleteRecipe(recipeId).unwrap();
             const message = TOAST_MESSAGES.DeleteRecipeToast[StatusCodes.OK];
-            navigate(PATHS.ROOT);
+            onDelete?.();
             toast({ ...message, status: Statuses.SUCCESS });
         } catch (error: unknown) {
             if (isRTKQueryError(error)) {

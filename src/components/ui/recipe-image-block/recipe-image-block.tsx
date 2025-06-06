@@ -10,9 +10,15 @@ type RecipeImageBlockProps = {
     recipe: Recipe;
     isTablet: boolean;
     isAuthor: boolean;
+    onDelete?: () => void;
 };
 
-export const RecipeImageBlock = ({ recipe, isTablet, isAuthor }: RecipeImageBlockProps) => {
+export const RecipeImageBlock = ({
+    recipe,
+    isTablet,
+    isAuthor,
+    onDelete,
+}: RecipeImageBlockProps) => {
     const tags = useMapCategoriesToTags(recipe.categoriesIds);
     return (
         <Flex w='100%' gap={6} flexDirection={{ base: 'column', sm: 'row' }}>
@@ -49,7 +55,11 @@ export const RecipeImageBlock = ({ recipe, isTablet, isAuthor }: RecipeImageBloc
                         icon={<ClockIcon />}
                     />
                     <Spacer />
-                    <RecipeActionButtons isAuthor={isAuthor} recipeId={recipe._id} />
+                    <RecipeActionButtons
+                        isAuthor={isAuthor}
+                        recipeId={recipe._id}
+                        onDelete={onDelete}
+                    />
                 </Flex>
             </Flex>
         </Flex>

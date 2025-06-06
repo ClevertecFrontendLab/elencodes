@@ -1,7 +1,8 @@
 import { Container } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router';
 
+import { PATHS } from '~/app/routes/paths';
 import {
     IngredientsTable,
     NewestRecipes,
@@ -30,9 +31,10 @@ export const RecipeDetailsPage = () => {
     const userId = useAppSelector(selectUserId);
     const isOwnRecipe = foundRecipe?.authorId === userId;
     const shouldShowAuthorCard = !isOwnRecipe;
+    const hasJustDeleted = useRef(false);
 
     useEffect(() => {
-        if (isError) {
+        if (isError && !hasJustDeleted.current) {
             navigate(-1);
             toast(SearchErrorToast);
         }
@@ -50,7 +52,15 @@ export const RecipeDetailsPage = () => {
             mb={4}
             centerContent
         >
-            <RecipeImageBlock recipe={foundRecipe} isTablet={isTablet} isAuthor={isOwnRecipe} />
+            <RecipeImageBlock
+                recipe={foundRecipe}
+                isTablet={isTablet}
+                isAuthor={isOwnRecipe}
+                onDelete={() => {
+                    hasJustDeleted.current = true;
+                    navigate(PATHS.ROOT);
+                }}
+            />
             <NutritionStats nutritionValue={foundRecipe.nutritionValue} />
             <IngredientsTable
                 ingredients={foundRecipe.ingredients}
