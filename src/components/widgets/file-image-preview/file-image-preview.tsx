@@ -52,7 +52,7 @@ export const FileImagePreview = ({
                 onClick={onOpen}
                 _hover={{ bg: 'blackAlpha.300' }}
                 position='relative'
-                borderWidth={isInvalid ? '2px' : undefined}
+                border={isInvalid ? '2px' : undefined}
                 borderColor={isInvalid ? 'red.500' : undefined}
                 data-test-id={dataTestId}
             >

@@ -106,6 +106,7 @@ export const RecipeStepsList = ({
                             value={currentSteps?.[index]?.image || ''}
                             onChange={(url) => handleAddStepImage(url, index)}
                             isCardPreview
+                            isInvalid={!!errors.image}
                             dataTestId={DATA_TEST_ID.RECIPE_STEP_IMAGE(index)}
                             dataTestIdModal={DATA_TEST_ID.RECIPE_STEP_IMAGE_INPUT(index)}
                             dataTestIdImage={DATA_TEST_ID.RECIPE_STEP_IMAGE_BLOCK(index)}

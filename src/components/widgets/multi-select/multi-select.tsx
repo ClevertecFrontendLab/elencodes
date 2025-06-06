@@ -88,7 +88,7 @@ export const MultiSelect = ({
                         variant='outline'
                         colorScheme='black'
                         px={maxVisibleTags && 3}
-                        borderWidth={isInvalid ? '2px' : undefined}
+                        border={isInvalid ? '2px' : undefined}
                         borderColor={getBorderColor({
                             isInvalid,
                             isOpen,
