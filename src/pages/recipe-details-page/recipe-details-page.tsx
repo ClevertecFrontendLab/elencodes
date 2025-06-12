@@ -1,8 +1,7 @@
 import { Container } from '@chakra-ui/react';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router';
 
-import { PATHS } from '~/app/routes/paths';
 import {
     IngredientsTable,
     NewestRecipes,
@@ -14,6 +13,7 @@ import {
 import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
 import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
+import { useGetBloggerByIdQuery } from '~/query/services/blogs/blogs-api.ts';
 import { useGetRecipeByIdQuery } from '~/query/services/recipes/recipes-api.ts';
 import { useAppSelector } from '~/redux/hooks.ts';
 import { selectUserId } from '~/redux/slices/auth-slice.ts';
@@ -31,10 +31,18 @@ export const RecipeDetailsPage = () => {
     const userId = useAppSelector(selectUserId);
     const isOwnRecipe = foundRecipe?.authorId === userId;
     const shouldShowAuthorCard = !isOwnRecipe;
-    const hasJustDeleted = useRef(false);
+    const { data: blogger } = useGetBloggerByIdQuery(
+        {
+            bloggerId: foundRecipe?.authorId ?? '',
+            currentUserId: userId,
+        },
+        {
+            skip: !userId,
+        },
+    );
 
     useEffect(() => {
-        if (isError && !hasJustDeleted.current) {
+        if (isError) {
             navigate(-1);
             toast(SearchErrorToast);
         }
@@ -52,22 +60,24 @@ export const RecipeDetailsPage = () => {
             mb={4}
             centerContent
         >
-            <RecipeImageBlock
-                recipe={foundRecipe}
-                isTablet={isTablet}
-                isAuthor={isOwnRecipe}
-                onDelete={() => {
-                    hasJustDeleted.current = true;
-                    navigate(PATHS.ROOT);
-                }}
-            />
+            <RecipeImageBlock recipe={foundRecipe} isTablet={isTablet} isAuthor={isOwnRecipe} />
             <NutritionStats nutritionValue={foundRecipe.nutritionValue} />
             <IngredientsTable
                 ingredients={foundRecipe.ingredients}
                 portions={foundRecipe.portions}
             />
             <RecipeStepsSection steps={foundRecipe.steps} />
-            {shouldShowAuthorCard && <RecipeAuthorCard />}
+            {shouldShowAuthorCard && blogger && (
+                <RecipeAuthorCard
+                    userId={blogger.bloggerInfo?._id}
+                    firstName={blogger.bloggerInfo?.firstName}
+                    lastName={blogger.bloggerInfo?.lastName}
+                    login={blogger.bloggerInfo?.login}
+                    isFavorite={blogger?.isFavorite}
+                    bookmarksCount={blogger?.totalBookmarks}
+                    subscribersCount={blogger?.totalSubscribers}
+                />
+            )}
             <NewestRecipes />
         </Container>
     );

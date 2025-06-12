@@ -14,4 +14,7 @@ export enum ENDPOINTS {
     like = '/like',
     bookmark = '/bookmark',
     saveDraft = '/recipe/draft',
+    blogs = '/bloggers',
+    subscription = '/users/toggle-subscription',
+    recipeByUser = '/recipe/user/',
 }

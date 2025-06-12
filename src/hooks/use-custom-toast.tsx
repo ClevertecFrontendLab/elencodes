@@ -35,8 +35,23 @@ export const useCustomToast = () => {
                                     {getToastIcon(status as Statuses)}
                                 </Box>
                                 <Box>
-                                    {title && <Text fontWeight='bold'>{title}</Text>}
-                                    {description && <Text>{description}</Text>}
+                                    {title && (
+                                        <Text
+                                            data-test-id={DATA_TEST_ID.ERROR_NOTIFICATION_TITLE}
+                                            fontWeight='bold'
+                                        >
+                                            {title}
+                                        </Text>
+                                    )}
+                                    {description && (
+                                        <Text
+                                            data-test-id={
+                                                DATA_TEST_ID.ERROR_NOTIFICATION_DESCRIPTION
+                                            }
+                                        >
+                                            {description}
+                                        </Text>
+                                    )}
                                 </Box>
                             </Flex>
                             <CloseButton

@@ -35,7 +35,7 @@ export const RecipeImageBlock = ({
                     <HStack align='start' spacing={3} wrap='wrap'>
                         {tags}
                     </HStack>
-                    <RecipeStats recipe={recipe} />
+                    <RecipeStats likes={recipe.likes} bookmarks={recipe.bookmarks} />
                 </Flex>
                 <VStack align='start'>
                     <Heading as='h1' maxW={437} fontSize={{ base: '2xl', md: '5xl' }}>

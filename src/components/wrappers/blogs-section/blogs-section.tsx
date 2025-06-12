@@ -1,27 +1,29 @@
 import { Flex } from '@chakra-ui/icons';
 
 import { BlogCard } from '~/components';
-import { Blog } from '~/types/blog-type';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
+import { BlogUser } from '~/query/services/blogs/types';
 
 type BlogsSectionProps = {
-    blogs: Blog[];
+    otherBlogs: BlogUser[];
 };
 
-export const BlogsSection = ({ blogs }: BlogsSectionProps) => (
+export const BlogsSection = ({ otherBlogs }: BlogsSectionProps) => (
     <Flex
         maxW='100%'
         gap={4}
+        pt={{ base: 2, md: 5 }}
         px={{ base: 3, md: 6 }}
-        justifyContent='space-between'
         flexDirection={{ base: 'column', sm: 'row' }}
+        data-test-id={DATA_TEST_ID.MAIN_PAGE_BLOGS_GRID}
     >
-        {blogs.map(({ name, username, image, description }) => (
+        {otherBlogs.map(({ _id, firstName, login, firstNoteText, lastName }) => (
             <BlogCard
-                key={name + username}
-                name={name}
-                username={username}
-                image={image}
-                description={description}
+                key={_id}
+                firstName={firstName}
+                login={login}
+                firstNoteText={firstNoteText}
+                lastName={lastName}
             />
         ))}
     </Flex>

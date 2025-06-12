@@ -3,11 +3,11 @@ import { useAppSelector } from '~/redux/hooks';
 import { selectCategories, selectSubCategories } from '~/redux/slices/category-slice';
 import { buildImageUrl } from '~/utils/build-image-url';
 
-export const useMapCategoriesToTags = (subCategoryIds: string[], bgColor = 'lime.50') => {
+export const useMapCategoriesToTags = (subCategoryIds: string[] = [], bgColor = 'lime.50') => {
     const categories = useAppSelector(selectCategories);
     const subCategories = useAppSelector(selectSubCategories);
 
-    if (!subCategoryIds) return;
+    if (!subCategoryIds || subCategoryIds.length === 0) return [];
 
     const uniqueCategoryMap = new Map<string, { title: string; icon: string | undefined }>();
 
