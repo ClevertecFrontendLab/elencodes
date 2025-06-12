@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Category, SubCategory } from '~/types/category-type';
+import { arrayHasItems } from '~/utils/array-has-items';
 import { getDataFromLocalStorage, LOCALSTORAGE_KEYS } from '~/utils/manage-local-storage';
 
 type CategoryState = {
@@ -16,14 +17,8 @@ const fallbackSubCategories = getDataFromLocalStorage(
 ) as SubCategory[];
 
 const initialState: CategoryState = {
-    categories:
-        Array.isArray(fallbackCategories) && fallbackCategories.length > 0
-            ? fallbackCategories
-            : [],
-    subCategories:
-        Array.isArray(fallbackSubCategories) && fallbackSubCategories.length > 0
-            ? fallbackSubCategories
-            : [],
+    categories: arrayHasItems(fallbackCategories) ? fallbackCategories : [],
+    subCategories: arrayHasItems(fallbackSubCategories) ? fallbackSubCategories : [],
     selectedSubCategoriesIds: [],
     selectedCategories: [],
 };
