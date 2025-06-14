@@ -103,7 +103,7 @@ export const TOAST_MESSAGES = {
     },
     ServerErrorToast: {
         title: 'Ошибка сервера',
-        description: 'Попробуйте немного позже',
+        description: 'Попробуйте немного позже.',
         id: 'server-error',
     },
 } as const;

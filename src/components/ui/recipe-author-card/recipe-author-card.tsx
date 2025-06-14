@@ -1,12 +1,30 @@
 import { Flex } from '@chakra-ui/icons';
-import { Box, Button, Card, CardBody, HStack, Image, Text } from '@chakra-ui/react';
-import author from '@public/images/avatars/recipe_author.svg';
+import { Avatar, Box, Card, CardBody, HStack, Text } from '@chakra-ui/react';
 
-import { StatItem } from '~/components';
-import { SubscribeIcon } from '~/icons/button-icons/subscribe-icon';
-import { FriendsIcon } from '~/icons/counter-icons/friends-icon';
+import { RecipeStats } from '~/components/widgets';
+import { SubscribeButton } from '~/components/widgets/subscribe-button/subscribe-button';
 
-export const RecipeAuthorCard = () => (
+type RecipeAuthorCardProps = {
+    userId: string;
+    isFavorite: boolean;
+    firstName: string;
+    lastName: string;
+    login: string;
+    subscribersCount: number;
+    bookmarksCount: number;
+    imageSrc?: string;
+};
+
+export const RecipeAuthorCard = ({
+    userId,
+    isFavorite,
+    firstName,
+    lastName,
+    login,
+    subscribersCount,
+    bookmarksCount,
+    imageSrc,
+}: RecipeAuthorCardProps) => (
     <Box w={{ base: '100%', sm: '604px', md: '680px' }}>
         <Card
             direction='row'
@@ -15,15 +33,7 @@ export const RecipeAuthorCard = () => (
             bgColor='lime.300'
             p={{ base: 3, sm: 6 }}
         >
-            <Box position='relative' maxW={{ base: '158px', md: '50%' }}>
-                <Image
-                    src={author}
-                    alt='Автор рецепта Сергей Разумов'
-                    rounded='full'
-                    w='100%'
-                    h='auto'
-                />
-            </Box>
+            <Avatar src={imageSrc} name={`${firstName} ${lastName}`} size='xl' />
             <CardBody
                 w='100%'
                 display='flex'
@@ -37,26 +47,18 @@ export const RecipeAuthorCard = () => (
                     justifyContent='space-between'
                 >
                     <Text fontSize={{ base: 'lg', sm: '2xl' }} fontWeight='600'>
-                        Сергей Разумов
+                        {firstName} {lastName}
                     </Text>
                     <Text fontSize={{ base: 'xs', sm: 'sm' }} align='right'>
                         Автор рецепта
                     </Text>
                 </Flex>
                 <Text fontSize='sm' color='blackAlpha.700'>
-                    @serge25
+                    @{login}
                 </Text>
                 <HStack mt='16px' justify='space-between'>
-                    <Button
-                        size='xs'
-                        variant='solid'
-                        bg='black'
-                        color='white'
-                        leftIcon={<SubscribeIcon />}
-                    >
-                        Подписаться
-                    </Button>
-                    <StatItem icon={<FriendsIcon w='14px' h='14px' />} value={125} fontSize='sm' />
+                    <SubscribeButton userId={userId} isFavorite={isFavorite} />
+                    <RecipeStats bookmarks={bookmarksCount} subscribers={subscribersCount} />
                 </HStack>
             </CardBody>
         </Card>

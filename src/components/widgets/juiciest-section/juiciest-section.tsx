@@ -8,6 +8,7 @@ import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
 import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import { JUICIEST_PARAMS } from '~/query/constants/recipe-consts.ts';
 import { useGetRecipesQuery } from '~/query/services/recipes/recipes-api.ts';
+import { arrayHasItems } from '~/utils/array-has-items';
 
 const { SearchErrorToast } = TOAST_MESSAGES;
 
@@ -15,7 +16,7 @@ export const JuiciestSection = () => {
     const navigate = useNavigate();
     const { toast } = useCustomToast();
     const { data, isError } = useGetRecipesQuery(JUICIEST_PARAMS);
-    const juiciestItems = data?.data ?? [];
+    const juiciestItems = data?.data;
 
     const handleNavigate = () => {
         navigate(PATHS.JUICIEST);
@@ -27,13 +28,14 @@ export const JuiciestSection = () => {
         }
     }, [isError, toast]);
 
-    return juiciestItems.length > 0 ? (
+    return arrayHasItems(juiciestItems) ? (
         <SectionWrapper
             title='Самое сочное'
             buttonLabel='Вся подборка'
             onButtonClick={handleNavigate}
             dataTestId={DATA_TEST_ID.JUICIEST_LINK}
             dataTestIdMob={DATA_TEST_ID.JUICIEST_LINK_MOB}
+            isJuiciest
         >
             <ResponsiveRecipeGrid recipes={juiciestItems} />
         </SectionWrapper>

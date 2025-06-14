@@ -7,7 +7,7 @@ import { DATA_TEST_ID } from '~/constants/data-test-ids';
 
 const Layout = () => {
     const location = useLocation();
-    const shouldHideAside = HIDE_ASIDE_PATHS.some((path) => location.pathname.startsWith(path));
+    const isAsideVisible = HIDE_ASIDE_PATHS.some((path) => location.pathname.startsWith(path));
 
     return (
         <ChakraGrid
@@ -75,7 +75,7 @@ const Layout = () => {
                 <Outlet />
             </GridItem>
 
-            {!shouldHideAside && (
+            {!isAsideVisible && (
                 <GridItem
                     area='aside'
                     display={{ base: 'none', md: 'block' }}

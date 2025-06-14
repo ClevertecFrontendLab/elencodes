@@ -32,7 +32,8 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
     const navigate = useNavigate();
     const searchQuery = useAppSelector(selectSearchValue);
     const path = useGetRecipePath(recipe);
-    const tags = useMapCategoriesToTags(recipe.categoriesIds);
+    const tags = useMapCategoriesToTags(recipe?.categoriesIds ?? []);
+    if (!recipe) return null;
 
     const handleNavigate = () => {
         navigate(path);
@@ -110,7 +111,7 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
                         </VStack>
                     )}
                     {!isTablet && <Spacer />}
-                    <RecipeStats recipe={recipe} />
+                    <RecipeStats likes={recipe?.likes} bookmarks={recipe?.bookmarks} />
                 </HStack>
                 <VStack align='start' justify='start' gap={isTablet ? 2 : 5}>
                     <Heading

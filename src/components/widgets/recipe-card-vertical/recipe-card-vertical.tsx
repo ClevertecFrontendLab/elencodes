@@ -107,7 +107,7 @@ export const RecipeCardVertical = memo(
                                 {tags}
                             </VStack>
                         )}
-                        <RecipeStats recipe={recipe} />
+                        <RecipeStats likes={recipe.likes} bookmarks={recipe.bookmarks} />
                     </Flex>
                 </CardBody>
             </Card>

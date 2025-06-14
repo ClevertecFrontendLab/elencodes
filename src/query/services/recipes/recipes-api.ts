@@ -25,32 +25,41 @@ export const recipesApi = baseApi.injectEndpoints({
                 method: METHODS.get,
                 params,
             }),
-            providesTags: (result) =>
-                result?.data
-                    ? [
-                          ...result.data.map(({ _id }) => ({
-                              type: TAGS.RECIPE as const,
-                              id: _id,
-                          })),
-                          { type: TAGS.RECIPE as const, id: 'LIST' },
-                      ]
-                    : [{ type: TAGS.RECIPE as const, id: 'LIST' }],
+            providesTags: (result) => {
+                const items = result?.data;
+                console.log(items);
+                if (!Array.isArray(items)) {
+                    return [{ type: TAGS.RECIPE as const, id: 'LIST' }];
+                }
+
+                return [
+                    ...items.map(({ _id }) => ({
+                        type: TAGS.RECIPE as const,
+                        id: _id,
+                    })),
+                    { type: TAGS.RECIPE as const, id: 'LIST' },
+                ];
+            },
         }),
         getRecipeByCategory: builder.query<RecipeResponse, RecipeByCategoryQueryParams>({
             query: ({ id, ...params }) => ({
                 url: `${ENDPOINTS.recipesByCategory}/${id}`,
                 params: params,
             }),
-            providesTags: (result) =>
-                result?.data
-                    ? [
-                          ...result.data.map(({ _id }) => ({
-                              type: TAGS.RECIPE as const,
-                              id: _id,
-                          })),
-                          { type: TAGS.RECIPE as const, id: 'LIST' },
-                      ]
-                    : [{ type: TAGS.RECIPE as const, id: 'LIST' }],
+            providesTags: (result) => {
+                const items = result?.data;
+                if (!Array.isArray(items)) {
+                    return [{ type: TAGS.RECIPE as const, id: 'LIST' }];
+                }
+
+                return [
+                    ...items.map(({ _id }) => ({
+                        type: TAGS.RECIPE as const,
+                        id: _id,
+                    })),
+                    { type: TAGS.RECIPE as const, id: 'LIST' },
+                ];
+            },
         }),
         getRecipeById: builder.query<Recipe, string>({
             query: (id) => ({ url: `${ENDPOINTS.recipes}/${id}` }),
@@ -80,18 +89,20 @@ export const recipesApi = baseApi.injectEndpoints({
                     params: { ...restParams, page },
                 };
             },
-            providesTags: (result) =>
-                result?.pages
-                    ? [
-                          ...result.pages.flatMap((page) =>
-                              page.data.map(({ _id }) => ({
-                                  type: TAGS.RECIPE as const,
-                                  id: _id,
-                              })),
-                          ),
-                          { type: TAGS.RECIPE as const, id: 'LIST' },
-                      ]
-                    : [{ type: TAGS.RECIPE as const, id: 'LIST' }],
+            providesTags: (result) => {
+                if (!result?.pages) {
+                    return [{ type: TAGS.RECIPE as const, id: 'LIST' }];
+                }
+
+                const allItems = result.pages.flatMap((page) => page?.data || []);
+                return [
+                    ...allItems.map(({ _id }) => ({
+                        type: TAGS.RECIPE as const,
+                        id: _id,
+                    })),
+                    { type: TAGS.RECIPE as const, id: 'LIST' },
+                ];
+            },
         }),
         getRecipesInfinite: builder.infiniteQuery<
             RecipeResponse,
@@ -113,18 +124,20 @@ export const recipesApi = baseApi.injectEndpoints({
                     params: { ...queryArg, page },
                 };
             },
-            providesTags: (result) =>
-                result?.pages
-                    ? [
-                          ...result.pages.flatMap((page) =>
-                              page.data.map(({ _id }) => ({
-                                  type: TAGS.RECIPE as const,
-                                  id: _id,
-                              })),
-                          ),
-                          { type: TAGS.RECIPE as const, id: 'LIST' },
-                      ]
-                    : [{ type: TAGS.RECIPE as const, id: 'LIST' }],
+            providesTags: (result) => {
+                if (!result?.pages) {
+                    return [{ type: TAGS.RECIPE as const, id: 'LIST' }];
+                }
+
+                const allItems = result.pages.flatMap((page) => page?.data || []);
+                return [
+                    ...allItems.map(({ _id }) => ({
+                        type: TAGS.RECIPE as const,
+                        id: _id,
+                    })),
+                    { type: TAGS.RECIPE as const, id: 'LIST' },
+                ];
+            },
         }),
         getRecipesWithFilters: builder.query<RecipeResponse, RecipeQueryParams>({
             query: (params) => ({
@@ -132,16 +145,20 @@ export const recipesApi = baseApi.injectEndpoints({
                 method: METHODS.get,
                 params,
             }),
-            providesTags: (result) =>
-                result?.data
-                    ? [
-                          ...result.data.map(({ _id }) => ({
-                              type: TAGS.RECIPE as const,
-                              id: _id,
-                          })),
-                          { type: TAGS.RECIPE as const, id: 'LIST' },
-                      ]
-                    : [{ type: TAGS.RECIPE as const, id: 'LIST' }],
+            providesTags: (result) => {
+                const items = result?.data;
+                if (!Array.isArray(items)) {
+                    return [{ type: TAGS.RECIPE as const, id: 'LIST' }];
+                }
+
+                return [
+                    ...items.map(({ _id }) => ({
+                        type: TAGS.RECIPE as const,
+                        id: _id,
+                    })),
+                    { type: TAGS.RECIPE as const, id: 'LIST' },
+                ];
+            },
         }),
         createRecipe: builder.mutation<CreateRecipeResponse, CreateRecipeBody>({
             query: (body) => ({

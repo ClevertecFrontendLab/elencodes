@@ -43,6 +43,7 @@ export type Recipes = Recipe[];
 
 export type RecipesGrid = {
     recipes: Recipes;
+    dataTestId?: string;
 };
 
 export type RecipeMeta = {

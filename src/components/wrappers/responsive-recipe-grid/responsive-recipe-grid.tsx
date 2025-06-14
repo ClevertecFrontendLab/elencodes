@@ -4,7 +4,7 @@ import { RecipeCardHorizontal } from '~/components';
 import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { RecipesGrid } from '~/query/services/recipes/types.ts';
 
-export const ResponsiveRecipeGrid = ({ recipes }: RecipesGrid) => (
+export const ResponsiveRecipeGrid = ({ recipes, dataTestId }: RecipesGrid) => (
     <Grid
         templateColumns={{
             base: '1fr',
@@ -16,6 +16,7 @@ export const ResponsiveRecipeGrid = ({ recipes }: RecipesGrid) => (
         width='100%'
         maxW='100%'
         autoRows='1fr'
+        data-test-id={dataTestId}
     >
         {recipes.map((recipe, index) => (
             <RecipeCardHorizontal
