@@ -13,6 +13,7 @@ import {
 import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
 import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
+import { useGetBloggerByIdQuery } from '~/query/services/blogs/blogs-api.ts';
 import { useGetRecipeByIdQuery } from '~/query/services/recipes/recipes-api.ts';
 import { useAppSelector } from '~/redux/hooks.ts';
 import { selectUserId } from '~/redux/slices/auth-slice.ts';
@@ -28,7 +29,17 @@ export const RecipeDetailsPage = () => {
         skip: !recipeId,
     });
     const userId = useAppSelector(selectUserId);
-    const isAuthor = foundRecipe?.authorId === userId;
+    const isOwnRecipe = foundRecipe?.authorId === userId;
+    const shouldShowAuthorCard = !isOwnRecipe;
+    const { data: blogger } = useGetBloggerByIdQuery(
+        {
+            bloggerId: foundRecipe?.authorId ?? '',
+            currentUserId: userId,
+        },
+        {
+            skip: !userId,
+        },
+    );
 
     useEffect(() => {
         if (isError) {
@@ -49,14 +60,24 @@ export const RecipeDetailsPage = () => {
             mb={4}
             centerContent
         >
-            <RecipeImageBlock recipe={foundRecipe} isTablet={isTablet} isAuthor={isAuthor} />
+            <RecipeImageBlock recipe={foundRecipe} isTablet={isTablet} isAuthor={isOwnRecipe} />
             <NutritionStats nutritionValue={foundRecipe.nutritionValue} />
             <IngredientsTable
                 ingredients={foundRecipe.ingredients}
                 portions={foundRecipe.portions}
             />
             <RecipeStepsSection steps={foundRecipe.steps} />
-            {!isAuthor && <RecipeAuthorCard />}
+            {shouldShowAuthorCard && blogger && (
+                <RecipeAuthorCard
+                    userId={blogger.bloggerInfo?._id}
+                    firstName={blogger.bloggerInfo?.firstName}
+                    lastName={blogger.bloggerInfo?.lastName}
+                    login={blogger.bloggerInfo?.login}
+                    isFavorite={blogger?.isFavorite}
+                    bookmarksCount={blogger?.totalBookmarks}
+                    subscribersCount={blogger?.totalSubscribers}
+                />
+            )}
             <NewestRecipes />
         </Container>
     );

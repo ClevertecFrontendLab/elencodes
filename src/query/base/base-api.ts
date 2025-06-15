@@ -33,7 +33,12 @@ export const baseQueryWithErrorAndLoader: BaseQueryFn<
     FetchBaseQueryError
 > = async (args, api, extraOptions) => {
     const endpointName = api.endpoint;
-    const skipLoader = endpointName === 'getRecipesWithFilters';
+    const isRefetchAfterInvalidation = api.type === 'query' && api.forced;
+
+    const skipLoader =
+        endpointName === 'getRecipesWithFilters' ||
+        endpointName === 'toggleSubscription' ||
+        isRefetchAfterInvalidation;
 
     if (!skipLoader) {
         api.dispatch(setAppLoader(true));

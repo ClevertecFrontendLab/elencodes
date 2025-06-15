@@ -1,12 +1,14 @@
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react';
-import { Link, useLocation } from 'react-router';
+import { Link, useLocation, useParams } from 'react-router';
 
 import { PATHS, staticRoutes } from '~/app/routes/paths';
 import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { useCategoryParams } from '~/hooks/use-category-params';
 import { useScreenSize } from '~/hooks/use-screen-size';
+import { useGetBloggerByIdQuery } from '~/query/services/blogs/blogs-api';
 import { useGetRecipeByIdQuery } from '~/query/services/recipes/recipes-api';
 import { useAppSelector } from '~/redux/hooks';
+import { selectUserId } from '~/redux/slices/auth-slice';
 import { selectCategories, selectSubCategories } from '~/redux/slices/category-slice';
 import { getFirstSubcategoryPath } from '~/utils/get-first-subcategory-path';
 
@@ -18,7 +20,9 @@ export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
 
     const categories = useAppSelector(selectCategories);
     const subCategories = useAppSelector(selectSubCategories);
+    const currentUserId = useAppSelector(selectUserId);
     const { recipeId } = useCategoryParams();
+    const { userId } = useParams();
 
     const hiddenPaths = [PATHS.NOT_FOUND, PATHS.ERROR];
 
@@ -26,9 +30,21 @@ export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
         skip: !recipeId,
     });
 
+    const { data: blogger } = useGetBloggerByIdQuery(
+        {
+            bloggerId: userId ?? '',
+            currentUserId,
+        },
+        {
+            skip: !userId,
+        },
+    );
+
     if (hiddenPaths.includes(location.pathname)) {
         return null;
     }
+
+    const isBloggerPage = location.pathname.startsWith(PATHS.BLOGS) && userId;
 
     const breadcrumbs = pathParts.map((_, index) => {
         const isLast = index === pathParts.length - 1;
@@ -42,6 +58,11 @@ export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
                         to={path}
                         color={isLast ? 'black' : 'blackAlpha.700'}
                         onClick={!isLast ? onClose : undefined}
+                        data-test-id={
+                            staticRoutes[path] === staticRoutes[PATHS.BLOGS]
+                                ? DATA_TEST_ID.BLOGGER_USER_BREADCRUMB_NAME
+                                : ''
+                        }
                     >
                         {staticRoutes[path]}
                     </BreadcrumbLink>
@@ -91,6 +112,19 @@ export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
             return (
                 <BreadcrumbItem key={path} isCurrentPage>
                     <BreadcrumbLink color='black'>{recipe.title}</BreadcrumbLink>
+                </BreadcrumbItem>
+            );
+        }
+
+        if (isBloggerPage && blogger) {
+            return (
+                <BreadcrumbItem key={path} isCurrentPage>
+                    <BreadcrumbLink
+                        color='black'
+                        data-test-id={DATA_TEST_ID.BLOGGER_USER_BREADCRUMB_SECTION}
+                    >
+                        {`${blogger.bloggerInfo.firstName} ${blogger.bloggerInfo.lastName} (@${blogger.bloggerInfo.login})`}
+                    </BreadcrumbLink>
                 </BreadcrumbItem>
             );
         }

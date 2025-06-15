@@ -8,6 +8,7 @@ type StatItemProps = {
     fontSize: string;
     lineHeight: number | string;
     color: string;
+    dataTestId: string;
 }>;
 
 export const StatItem = ({
@@ -16,8 +17,9 @@ export const StatItem = ({
     fontSize = 'md',
     lineHeight = 6,
     color = 'lime.600',
+    dataTestId,
 }: StatItemProps) => (
-    <HStack pr={2}>
+    <HStack pr={2} data-test-id={dataTestId}>
         {icon}
         <Text
             fontWeight='600'

@@ -20,6 +20,8 @@ const RANDOM_CATEGORY_BIG_CARD_START = 0;
 const RANDOM_CATEGORY_BIG_CARD_END = 2;
 const RANDOM_CATEGORY_SMALL_CARD_START = 2;
 const RANDOM_CATEGORY_SMALL_CARD_END = 5;
+const TOAST_DELAY_TEST_MODE = 100;
+const TOAST_DELAY = 15000;
 
 const { SearchErrorToast } = TOAST_MESSAGES;
 
@@ -59,7 +61,7 @@ export const CategoryPreviewSection = () => {
 
     useEffect(() => {
         if (isError && !hasShownError) {
-            const toastDelay = isTestMode() ? 5000 : 15000;
+            const toastDelay = isTestMode() ? TOAST_DELAY_TEST_MODE : TOAST_DELAY;
             toast(SearchErrorToast, true, toastDelay);
             setHasShownError(true);
         } else if (!isError && hasShownError) {

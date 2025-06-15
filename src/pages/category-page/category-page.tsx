@@ -8,6 +8,7 @@ import {
     CategoryPreviewSection,
     CustomTabs,
     FilteredResultsSection,
+    GlobalSpinner,
 } from '~/components';
 import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
 import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
@@ -34,7 +35,7 @@ export const CategoryPage = () => {
         navigate(PATHS.NOT_FOUND);
     }
 
-    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError } =
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isFetching, isError } =
         useGetRecipeByCategoryIdInfiniteQuery(
             {
                 id: subcategory?._id,
@@ -46,7 +47,6 @@ export const CategoryPage = () => {
         );
 
     const allRecipes = data?.pages.flatMap((page) => page.data) ?? [];
-
     const shouldShowLoadMoreButton = hasNextPage && !isLoading;
 
     useEffect(() => {
@@ -64,32 +64,35 @@ export const CategoryPage = () => {
     }
 
     return (
-        <CategoryPageLayout
-            title={category?.title}
-            description={category?.description ?? `Раздел: ${subcategory?.title}`}
-        >
-            <Flex flexDirection='column' gap={0} justifyContent='center' alignItems='center'>
-                <CustomTabs
-                    tabs={tabs.map((tab) => ({
-                        label: tab.title,
-                        slug: tab.category,
-                    }))}
-                    recipes={allRecipes}
-                />
+        <>
+            {isFetching && <GlobalSpinner isOpen={true} />}
+            <CategoryPageLayout
+                title={category?.title}
+                description={category?.description ?? `Раздел: ${subcategory?.title}`}
+            >
+                <Flex flexDirection='column' gap={0} justifyContent='center' alignItems='center'>
+                    <CustomTabs
+                        tabs={tabs.map((tab) => ({
+                            label: tab.title,
+                            slug: tab.category,
+                        }))}
+                        recipes={allRecipes}
+                    />
 
-                {shouldShowLoadMoreButton && (
-                    <Button
-                        bg='lime.400'
-                        color='black'
-                        mt={6}
-                        onClick={() => fetchNextPage()}
-                        isLoading={isFetchingNextPage}
-                    >
-                        Загрузить еще
-                    </Button>
-                )}
-                <CategoryPreviewSection />
-            </Flex>
-        </CategoryPageLayout>
+                    {shouldShowLoadMoreButton && (
+                        <Button
+                            bg='lime.400'
+                            color='black'
+                            mt={6}
+                            onClick={() => fetchNextPage()}
+                            isLoading={isFetchingNextPage}
+                        >
+                            Загрузить еще
+                        </Button>
+                    )}
+                    <CategoryPreviewSection />
+                </Flex>
+            </CategoryPageLayout>
+        </>
     );
 };

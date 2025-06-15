@@ -22,6 +22,7 @@ import {
     SignUpSchemaType,
 } from '~/schemas/sign-up.schema';
 import { SignUpEmailVerifiedParam, SignUpLabels, SignUpStep } from '~/types/sign-up-types';
+import { getValidFieldsCount } from '~/utils/get-valid-fields-count';
 import { isRTKQueryError } from '~/utils/is-rtk-error';
 
 const { ServerErrorToast, SignUpToast } = TOAST_MESSAGES;
@@ -59,9 +60,7 @@ export const SignUpPage = () => {
 
     const watchFields = watch();
 
-    const validFieldsCount = Object.entries(watchFields).filter(
-        ([key, value]) => value && !errors[key as keyof typeof errors],
-    ).length;
+    const validFieldsCount = getValidFieldsCount<SignUpSchemaType>(watchFields, errors);
 
     const handleFormSubmit = async ({ passwordConfirm, ...registrationData }: SignUpSchemaType) => {
         if (step === SignUpStep.PersonalInfo) {

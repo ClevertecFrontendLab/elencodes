@@ -5,6 +5,8 @@ import { AuthLayout } from '~/layouts/auth-layout/auth-layout.tsx';
 import { MainLayout } from '~/layouts/main-layout/main-layout.tsx';
 import { ProtectedLayout } from '~/layouts/protected-layout/protected-layout.tsx';
 import { JuiciestPage, MainPage, NotFoundPage, RecipeDetailsPage } from '~/pages';
+import { BloggerPage } from '~/pages/blogger-page/blogger-page';
+import { BlogsPage } from '~/pages/blogs-page/blogs-page';
 import { CategoryPage } from '~/pages/category-page/category-page.tsx';
 import { EditRecipePage } from '~/pages/edit-recipe-page/edit-recipe-page.tsx';
 import { NewRecipePage } from '~/pages/new-recipe-page/new-recipe-page.tsx';
@@ -34,6 +36,8 @@ const router = createBrowserRouter(
                     <Route path={PATHS.RECIPE_DETAILS} element={<RecipeDetailsPage />} />
                     <Route path={PATHS.NEW_RECIPE} element={<NewRecipePage />} />
                     <Route path={PATHS.EDIT_RECIPE} element={<EditRecipePage />} />
+                    <Route path={PATHS.BLOGS} element={<BlogsPage />} />
+                    <Route path={PATHS.BLOGGER} element={<BloggerPage />} />
                     <Route path={PATHS.NOT_FOUND} element={<NotFoundPage />} />
                     <Route path={PATHS.ERROR} element={<Navigate to={PATHS.NOT_FOUND} replace />} />
                 </Route>
