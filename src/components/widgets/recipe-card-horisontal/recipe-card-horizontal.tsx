@@ -62,9 +62,18 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
 
     return (
         <Card
-            direction='row'
+            display='flex'
+            flexDirection='row'
             overflow='hidden'
             variant='outline'
+            flex={{
+                base: '0 0 100%',
+                md: '0 0 calc(50% - 8px)',
+                xl: '0 0 100%',
+                '2xl': '0 0 calc(50% - 12px)',
+            }}
+            minH={{ xl: '244px' }}
+            maxH={{ xl: '310px' }}
             transition='box-shadow 0.2s ease'
             border='1px solid rgba(0, 0, 0, 0.08)'
             borderRadius='8px'
@@ -74,10 +83,15 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
                     '0 2px 4px -1px rgba(32, 126, 0, 0.06), 0 4px 6px -1px rgba(32, 126, 0, 0.1)',
                 cursor: 'pointer',
             }}
-            minH='128px'
             data-test-id={dataTestId}
         >
-            <Box position='relative' maxW='48%' width='346px'>
+            <Box
+                flexShrink={0}
+                position='relative'
+                w={{ base: '165px', lg: '346px' }}
+                h={{ base: '128px', lg: '310px' }}
+                minH={{ xl: '244px' }}
+            >
                 <Image
                     src={buildImageUrl(recipe?.image)}
                     alt={recipe?.title}
@@ -99,6 +113,7 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
                 display='flex'
                 gap={{ base: 1, sm: 2, md: 5 }}
                 flexDirection='column'
+                flex='1'
                 position='relative'
                 px={isTablet ? 2 : 4}
                 pt={isTablet ? 2 : 5}
