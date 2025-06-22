@@ -25,7 +25,6 @@ const Layout = () => {
             `,
             }}
             minH='100vh'
-            maxW='1920px'
             m='0 auto'
             overflowY={{ base: 'hidden', md: 'auto' }}
             overflowX='hidden'
@@ -43,7 +42,7 @@ const Layout = () => {
                 w='100%'
                 textAlign='center'
             >
-                <Box maxW='1920px' m='0 auto'>
+                <Box m='0 auto'>
                     <Header />
                 </Box>
             </GridItem>
