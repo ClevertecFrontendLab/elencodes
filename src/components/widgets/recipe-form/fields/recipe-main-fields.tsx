@@ -12,6 +12,7 @@ import {
 import { Control, Controller, FieldErrors, UseFormRegister } from 'react-hook-form';
 
 import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { CreateRecipeSchemaType } from '~/schemas/create-recipe.schema.ts';
 
 type RecipeMainFieldsProps = {
@@ -24,7 +25,7 @@ export const RecipeMainFields = ({ register, control, errors }: RecipeMainFields
     <>
         <FormControl isInvalid={!!errors.title}>
             <Input
-                placeholder='Название рецепта'
+                placeholder={PLACEHOLDERS.RECIPE_NAME}
                 data-test-id={DATA_TEST_ID.RECIPE_TITLE}
                 borderColor='lime.150'
                 _focus={{ borderColor: 'lime.150', outline: 'none' }}
@@ -37,7 +38,7 @@ export const RecipeMainFields = ({ register, control, errors }: RecipeMainFields
         <FormControl isInvalid={!!errors.description}>
             <Textarea
                 {...register('description' as const)}
-                placeholder='Краткое описание рецепта'
+                placeholder={PLACEHOLDERS.LITTLE_RECIPE_DESCRIPTION}
                 _placeholder={{ color: 'blackAlpha.700', fontSize: 'sm' }}
                 data-test-id={DATA_TEST_ID.RECIPE_DESCRIPTION}
             />

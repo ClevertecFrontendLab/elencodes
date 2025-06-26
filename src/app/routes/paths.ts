@@ -5,6 +5,7 @@ export const PATHS = {
     CATEGORY_SUBCATEGORY: ':category/:subcategory',
     RECIPE_DETAILS: ':category/:subcategory/:id',
     EDIT_RECIPE: '/edit-recipe/:category/:subcategory/:id',
+    EDIT_DRAFT: '/edit-draft/:draftId',
     NOT_FOUND: '/not-found',
     ERROR: '*',
     SIGN_IN: '/sign-in',
@@ -14,6 +15,8 @@ export const PATHS = {
     NEW_RECIPE: '/new-recipe',
     BLOGS: '/blogs',
     BLOGGER: '/blogs/:userId',
+    PROFILE: '/profile',
+    SETTINGS: '/profile/settings',
 };
 
 export const staticRoutes = {
@@ -21,6 +24,8 @@ export const staticRoutes = {
     [PATHS.JUICIEST]: 'Самое сочное',
     [PATHS.NEW_RECIPE]: 'Новый рецепт',
     [PATHS.BLOGS]: 'Блоги',
+    [PATHS.PROFILE]: 'Мой профиль',
+    [PATHS.SETTINGS]: 'Настройки',
 };
 
 export const HIDE_ASIDE_PATHS = ['/new-recipe', '/edit-recipe'];

@@ -18,6 +18,7 @@ import { DraftIcon } from '~/icons/recipe-page-icons/draft-icon';
 import { StatusCodes, Statuses } from '~/query/constants/status-codes.ts';
 import {
     useCreateRecipeMutation,
+    useEditDraftMutation,
     useEditRecipeMutation,
     useSaveDraftMutation,
 } from '~/query/services/recipes/recipes-api.ts';
@@ -29,6 +30,7 @@ import {
     createRecipeSchema,
     CreateRecipeSchemaType,
     draftRecipeSchema,
+    DraftRecipeSchemaType,
 } from '~/schemas/create-recipe.schema.ts';
 import { cleanEmptyStrings } from '~/utils/clean-empty-strings';
 import { getPathFromRecipe } from '~/utils/get-path-from-recipe.ts';
@@ -38,8 +40,8 @@ import { FileImagePreview } from '../file-image-preview/file-image-preview';
 import { MultiSelect } from '../multi-select/multi-select';
 
 type RecipeFormProps = Partial<{
-    mode: 'create' | 'edit';
-    initialData: CreateRecipeSchemaType;
+    mode: 'create' | 'edit' | 'editDraft';
+    initialData: CreateRecipeSchemaType | DraftRecipeSchemaType;
     recipeId: string;
 }>;
 
@@ -53,6 +55,7 @@ export const RecipeForm = ({ mode = 'create', initialData, recipeId }: RecipeFor
     const [createRecipe] = useCreateRecipeMutation();
     const [saveDraft] = useSaveDraftMutation();
     const [editRecipe] = useEditRecipeMutation();
+    const [editDraft] = useEditDraftMutation();
     const navigate = useNavigate();
 
     const {
@@ -120,7 +123,11 @@ export const RecipeForm = ({ mode = 'create', initialData, recipeId }: RecipeFor
     const onSubmitDraft = async (formData: CreateRecipeSchemaType) => {
         const cleanedData = cleanEmptyStrings(formData);
         try {
-            await saveDraft(cleanedData).unwrap();
+            if (mode === 'editDraft' && recipeId) {
+                await editDraft({ draftId: recipeId, body: cleanedData }).unwrap();
+            } else {
+                await saveDraft(cleanedData).unwrap();
+            }
             const message = TOAST_MESSAGES.CreateDraftToast[StatusCodes.CREATED];
             toast({ ...message, status: Statuses.SUCCESS });
             confirmLeave();

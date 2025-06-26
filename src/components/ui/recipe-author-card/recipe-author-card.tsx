@@ -3,6 +3,7 @@ import { Avatar, Box, Card, CardBody, HStack, Text } from '@chakra-ui/react';
 
 import { RecipeStats } from '~/components/widgets';
 import { SubscribeButton } from '~/components/widgets/subscribe-button/subscribe-button';
+import { buildImageUrl } from '~/utils/build-image-url';
 
 type RecipeAuthorCardProps = {
     userId: string;
@@ -11,7 +12,6 @@ type RecipeAuthorCardProps = {
     lastName: string;
     login: string;
     subscribersCount: number;
-    bookmarksCount: number;
     imageSrc?: string;
 };
 
@@ -22,7 +22,6 @@ export const RecipeAuthorCard = ({
     lastName,
     login,
     subscribersCount,
-    bookmarksCount,
     imageSrc,
 }: RecipeAuthorCardProps) => (
     <Box w={{ base: '100%', sm: '604px', md: '680px' }}>
@@ -33,7 +32,7 @@ export const RecipeAuthorCard = ({
             bgColor='lime.300'
             p={{ base: 3, sm: 6 }}
         >
-            <Avatar src={imageSrc} name={`${firstName} ${lastName}`} size='xl' />
+            <Avatar src={buildImageUrl(imageSrc)} name={`${firstName} ${lastName}`} size='xl' />
             <CardBody
                 w='100%'
                 display='flex'
@@ -58,7 +57,7 @@ export const RecipeAuthorCard = ({
                 </Text>
                 <HStack mt='16px' justify='space-between'>
                     <SubscribeButton userId={userId} isFavorite={isFavorite} />
-                    <RecipeStats bookmarks={bookmarksCount} subscribers={subscribersCount} />
+                    <RecipeStats subscribers={subscribersCount} />
                 </HStack>
             </CardBody>
         </Card>

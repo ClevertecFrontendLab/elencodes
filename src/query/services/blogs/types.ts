@@ -8,6 +8,7 @@ export type BlogsBody = {
 export type Note = {
     date: string;
     text: string;
+    _id: string;
 };
 
 export type BlogUser = {
@@ -21,6 +22,7 @@ export type BlogUser = {
     notes: Note[];
     newRecipesCount: number;
     firstNoteText?: string;
+    photoLink?: string;
 };
 
 export type BloggerInfo = {
@@ -33,6 +35,7 @@ export type BloggerInfo = {
         recipesIds: string[];
         drafts: never[];
         subscribers: string[];
+        photoLink?: string;
     };
     totalSubscribers: number;
     totalBookmarks: number;
@@ -49,4 +52,5 @@ export type RecipesByUserIdResponse = {
     notes: Note[];
     totalBookmarks: number;
     totalSubscribers: number;
+    myBookmarks?: Recipe[];
 };

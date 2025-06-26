@@ -12,6 +12,7 @@ import { meatReducer, meatSlice } from './slices/meat-slice.ts';
 import { recipesReducer, recipesSlice } from './slices/recipes-slice.ts';
 import { searchReducer, searchSlice } from './slices/search-slice.ts';
 import { subscriptionsReducer, subscriptionsSlice } from './slices/subscriptions-slice.ts';
+import { userRecipesReducer, userRecipesSlice } from './slices/user-recipes-slice.ts';
 
 const isProduction = false;
 
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
     [searchSlice.name]: searchReducer,
     [authSlice.name]: authReducer,
     [subscriptionsSlice.name]: subscriptionsReducer,
+    [userRecipesSlice.name]: userRecipesReducer,
 });
 
 export type ApplicationState = ReturnType<typeof rootReducer>;

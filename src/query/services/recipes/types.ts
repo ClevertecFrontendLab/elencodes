@@ -37,6 +37,7 @@ export type Recipe = {
     ingredients: RecipeIngredient[];
     meat?: string;
     garnish?: string;
+    recommendedByUserId?: string[];
 };
 
 export type Recipes = Recipe[];

@@ -5,7 +5,7 @@ import { JUICIEST_PARAMS, NEWEST_PARAMS } from '~/query/constants/recipe-consts.
 import { useGetBlogsQuery } from '~/query/services/blogs/blogs-api';
 import { useGetCategoriesQuery } from '~/query/services/categories/categories-api.ts';
 import { useGetRecipesQuery } from '~/query/services/recipes/recipes-api.ts';
-import { useGetMeasureUnitsQuery } from '~/query/services/user/user-api.ts';
+import { useGetMeasureUnitsQuery, useGetUserInfoQuery } from '~/query/services/user/user-api.ts';
 import { useAppSelector } from '~/redux/hooks.ts';
 import { selectAppLoading } from '~/redux/slices/app-slice.ts';
 import { selectUserId } from '~/redux/slices/auth-slice';
@@ -27,13 +27,16 @@ export const MainLayout = () => {
         { refetchOnMountOrArgChange: true },
     );
 
+    const { isLoading: loadingUser } = useGetUserInfoQuery();
+
     const showLoader =
         isLoading ||
         loadingCategory ||
         loadingNewest ||
         loadingJuiciest ||
         loadingMeasure ||
-        loadingBloggers;
+        loadingBloggers ||
+        loadingUser;
 
     return (
         <>

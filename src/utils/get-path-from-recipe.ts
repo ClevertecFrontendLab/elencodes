@@ -5,7 +5,7 @@ import { Category, SubCategory } from '~/types/category-type';
 export const getPathFromRecipe = (
     categories: Category[],
     subCategories: SubCategory[],
-    recipe: Recipe,
+    recipe: Partial<Recipe>,
 ): string => {
     const { _id, categoriesIds } = recipe;
 

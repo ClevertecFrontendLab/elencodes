@@ -12,11 +12,12 @@ import {
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 
-import { RecipeStats, SaveButton } from '~/components';
+import { RecipeStats, RecipeTag, SaveButton } from '~/components';
 import { useGetRecipePath } from '~/hooks/use-get-recipe-path.tsx';
 import { useMapCategoriesToTags } from '~/hooks/use-map-categories-to-tags.tsx';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
 import { Recipe } from '~/query/services/recipes/types.ts';
+import { useGetUserAllQuery } from '~/query/services/user/user-api.ts';
 import { useAppSelector } from '~/redux/hooks.ts';
 import { selectSearchValue } from '~/redux/slices/search-slice.ts';
 import { buildImageUrl } from '~/utils/build-image-url';
@@ -33,6 +34,9 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
     const searchQuery = useAppSelector(selectSearchValue);
     const path = useGetRecipePath(recipe);
     const tags = useMapCategoriesToTags(recipe?.categoriesIds ?? []);
+    const { data: allUsers } = useGetUserAllQuery();
+    const firstRecommenderId = recipe?.recommendedByUserId?.[0];
+    const recommender = allUsers?.find((user) => user.id === firstRecommenderId);
     if (!recipe) return null;
 
     const handleNavigate = () => {
@@ -101,6 +105,15 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
                     h='100%'
                     objectFit='cover'
                 />
+                {!isTablet && recommender && (
+                    <Box position='absolute' bottom='20px' left='20px'>
+                        <RecipeTag
+                            iconSrc={buildImageUrl(recommender?.photo)}
+                            isIconRound
+                            category={`${recommender?.firstName} ${recommender?.lastName} рекомендует`}
+                        />
+                    </Box>
+                )}
                 {isTablet && (
                     <Box position='absolute' top='8px' left='8px'>
                         <VStack align='start' spacing={1}>
@@ -144,7 +157,7 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
                     )}
                 </VStack>
                 <HStack justifyContent='end' mt='auto'>
-                    <SaveButton recipeId={recipe?._id} />
+                    <SaveButton recipe={recipe} />
                     <Button
                         size={isTablet ? 'xs' : 'sm'}
                         variant='solid'

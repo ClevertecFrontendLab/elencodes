@@ -21,6 +21,7 @@ import { Loader, RecipeStats } from '~/components';
 import { Float } from '~/components/ui/float/float';
 import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { BlogUser } from '~/query/services/blogs/types';
+import { buildImageUrl } from '~/utils/build-image-url';
 import { getNewRecipesText } from '~/utils/get-new-recipes-text';
 
 import { SubscribeButton } from '../subscribe-button/subscribe-button';
@@ -43,6 +44,7 @@ export const BlogCard = ({
     bookmarksCount,
     newRecipesCount,
     isFavorite,
+    photoLink,
     isBlogPage = false,
     isBloggerPage = false,
     onSubscribed,
@@ -73,7 +75,7 @@ export const BlogCard = ({
                     <Flex gap='3' alignItems='center' wrap='nowrap'>
                         <Avatar
                             name={`${firstName} ${lastName}`}
-                            src={undefined}
+                            src={buildImageUrl(photoLink)}
                             size={{ base: 'sm', md: 'md' }}
                         />
                         <Box>
