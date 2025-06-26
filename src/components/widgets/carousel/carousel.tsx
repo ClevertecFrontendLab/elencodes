@@ -19,7 +19,7 @@ export const Carousel = ({ children }: CarouselProps) => {
     const cardWidth = useBreakpointValue({
         base: '158px',
         md: '277px',
-        xl: '318px',
+        xl: '322px',
     });
 
     const scrollLeft = () => {
@@ -48,12 +48,12 @@ export const Carousel = ({ children }: CarouselProps) => {
                         spaceBetween: 12,
                         slidesPerView: 'auto',
                     },
-                    1560: {
+                    1340: {
                         spaceBetween: 24,
                         slidesPerView: 'auto',
                     },
-                    1915: {
-                        spaceBetween: 15,
+                    1918: {
+                        spaceBetween: 24,
                         slidesPerView: 4,
                     },
                 }}
