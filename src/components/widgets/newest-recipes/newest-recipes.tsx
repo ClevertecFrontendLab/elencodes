@@ -14,10 +14,6 @@ export const NewestRecipes = () => {
     const { toast } = useCustomToast();
     const carouselItems = data?.data ?? [];
 
-    const carouselRecipes = carouselItems
-        ?.slice()
-        .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-
     useEffect(() => {
         if (isError) {
             toast(SearchErrorToast);
@@ -28,7 +24,7 @@ export const NewestRecipes = () => {
         <SectionWrapper title='Новые рецепты'>
             <Box maxW='100%' minH={{ base: '220px', sm: 'unset' }}>
                 <Carousel>
-                    {carouselRecipes.map((recipe) => (
+                    {carouselItems.map((recipe) => (
                         <RecipeCardVertical key={recipe._id} recipe={recipe} />
                     ))}
                 </Carousel>

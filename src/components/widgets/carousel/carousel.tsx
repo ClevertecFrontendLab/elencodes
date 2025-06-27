@@ -1,7 +1,7 @@
 import 'swiper/swiper-bundle.css';
 
 import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 
@@ -15,6 +15,7 @@ type CarouselProps = {
 
 export const Carousel = ({ children }: CarouselProps) => {
     const swiperRef = useRef<SwiperRef>(null);
+    const [isReady, setIsReady] = useState(false);
 
     const cardWidth = useBreakpointValue({
         base: '158px',
@@ -22,12 +23,28 @@ export const Carousel = ({ children }: CarouselProps) => {
         xl: '318px',
     });
 
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            if (swiperRef.current?.swiper) {
+                swiperRef.current.swiper.update();
+                swiperRef.current.swiper.slideToLoop(0);
+                setIsReady(true);
+            }
+        }, 100);
+
+        return () => clearTimeout(timeout);
+    }, [children]);
+
     const scrollLeft = () => {
-        swiperRef.current?.swiper.slidePrev();
+        if (isReady) {
+            swiperRef.current?.swiper.slidePrev();
+        }
     };
 
     const scrollRight = () => {
-        swiperRef.current?.swiper.slideNext();
+        if (isReady) {
+            swiperRef.current?.swiper.slideNext();
+        }
     };
 
     return (
