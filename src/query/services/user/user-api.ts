@@ -1,6 +1,7 @@
 import { baseApi } from '~/query/base-api.ts';
 import { ENDPOINTS } from '~/query/constants/endpoints.ts';
 import { METHODS } from '~/query/constants/methods';
+import { TAGS } from '~/query/constants/tags';
 import { Note } from '~/query/services/blogs/types.ts';
 import {
     CreateNoteRequest,
@@ -36,7 +37,7 @@ export const userApi = baseApi.injectEndpoints({
                 const totalSubscribers = data.subscribers?.length || 0;
                 dispatch(setUserSubscribers(totalSubscribers));
             },
-            providesTags: ['UserInfo'],
+            providesTags: () => [{ type: TAGS.USERINFO, id: 'USER' }],
         }),
         getUserAll: builder.query<UserAllResponse[], void>({
             query: () => ({
@@ -66,7 +67,7 @@ export const userApi = baseApi.injectEndpoints({
                     data.bookmarks?.reduce((acc, item) => acc + item.count, 0) || 0;
                 dispatch(setUserBookmarks(totalBookmarks));
             },
-            providesTags: ['UserInfo'],
+            providesTags: () => [{ type: TAGS.USERINFO, id: 'USER' }],
         }),
         createNote: builder.mutation<Note, CreateNoteRequest>({
             query: (body) => ({
@@ -74,7 +75,7 @@ export const userApi = baseApi.injectEndpoints({
                 method: METHODS.post,
                 body,
             }),
-            invalidatesTags: ['UserInfo'],
+            invalidatesTags: () => [{ type: TAGS.USERINFO, id: 'USER' }],
         }),
         deleteNote: builder.mutation<DeleteNoteResponse, string>({
             query: (noteId) => ({
@@ -88,7 +89,7 @@ export const userApi = baseApi.injectEndpoints({
                 method: METHODS.post,
                 body: formData,
             }),
-            invalidatesTags: ['UserInfo'],
+            invalidatesTags: () => [{ type: TAGS.USERINFO, id: 'USER' }],
         }),
         updateUserInfo: builder.mutation<void, UpdateUserName>({
             query: (body) => ({
@@ -96,7 +97,7 @@ export const userApi = baseApi.injectEndpoints({
                 method: METHODS.patch,
                 body,
             }),
-            invalidatesTags: ['UserInfo'],
+            invalidatesTags: () => [{ type: TAGS.USERINFO, id: 'USER' }],
         }),
         updateUserPassword: builder.mutation<void, UpdatePasswordRequest>({
             query: (body) => ({

@@ -1,6 +1,7 @@
 import { baseApi } from '~/query/base-api';
 import { ENDPOINTS } from '~/query/constants/endpoints';
 import { METHODS } from '~/query/constants/methods';
+import { TAGS } from '~/query/constants/tags';
 import { setUserRecipes } from '~/redux/slices/user-recipes-slice';
 import { transformBlogsResponse } from '~/utils/transform-blogs-response';
 
@@ -15,7 +16,7 @@ export const blogsApi = baseApi.injectEndpoints({
                 params,
             }),
             transformResponse: transformBlogsResponse,
-            providesTags: ['Blogs'],
+            providesTags: [TAGS.BLOGS],
         }),
         toggleSubscription: builder.mutation<void, { fromUserId: string; toUserId: string }>({
             query: (body) => ({
@@ -23,7 +24,7 @@ export const blogsApi = baseApi.injectEndpoints({
                 method: METHODS.patch,
                 body,
             }),
-            invalidatesTags: ['Blogs'],
+            invalidatesTags: [TAGS.BLOGS],
         }),
         getBloggerById: builder.query<BloggerInfo, { bloggerId: string; currentUserId: string }>({
             query: ({ bloggerId, currentUserId }) => ({
@@ -31,7 +32,7 @@ export const blogsApi = baseApi.injectEndpoints({
                 method: METHODS.get,
                 params: { currentUserId },
             }),
-            providesTags: ['Blogs'],
+            providesTags: [TAGS.BLOGS],
         }),
         getRecipeByUserId: builder.query<RecipesByUserIdResponse, string>({
             query: (id) => ({ url: `${ENDPOINTS.recipeByUser}${id}` }),

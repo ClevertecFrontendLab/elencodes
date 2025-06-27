@@ -19,7 +19,7 @@ export const Carousel = ({ children }: CarouselProps) => {
     const cardWidth = useBreakpointValue({
         base: '158px',
         md: '277px',
-        xl: '322px',
+        xl: '318px',
     });
 
     const scrollLeft = () => {
@@ -48,29 +48,30 @@ export const Carousel = ({ children }: CarouselProps) => {
                         spaceBetween: 12,
                         slidesPerView: 'auto',
                     },
-                    1340: {
+                    1560: {
                         spaceBetween: 24,
                         slidesPerView: 'auto',
                     },
-                    1918: {
-                        spaceBetween: 24,
+                    1915: {
+                        spaceBetween: 12,
                         slidesPerView: 4,
                     },
                 }}
             >
-                {children.map((child, idx) => (
-                    <SwiperSlide
-                        style={{
-                            maxWidth: cardWidth,
-                            height: 'auto',
-                            paddingBottom: '5px',
-                        }}
-                        key={idx}
-                        data-test-id={`${DATA_TEST_ID.CAROUSEL_CARD}${idx}`}
-                    >
-                        {child}
-                    </SwiperSlide>
-                ))}
+                {children.length > 0 &&
+                    children.map((child, idx) => (
+                        <SwiperSlide
+                            style={{
+                                maxWidth: cardWidth,
+                                height: 'auto',
+                                paddingBottom: '5px',
+                            }}
+                            key={idx}
+                            data-test-id={`${DATA_TEST_ID.CAROUSEL_CARD}${idx}`}
+                        >
+                            {child}
+                        </SwiperSlide>
+                    ))}
             </Swiper>
             <>
                 <IconButton
