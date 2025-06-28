@@ -4,6 +4,7 @@ import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper/types';
 
 import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { ArrowLeftIcon } from '~/icons/swipe-section-icons/arrow-left-icon';
@@ -12,6 +13,8 @@ import { ArrowRightIcon } from '~/icons/swipe-section-icons/arrow-right-icon';
 type CarouselProps = {
     children: ReactNode[];
 };
+
+type SwiperWithInit = SwiperType & { initialized: boolean };
 
 export const Carousel = ({ children }: CarouselProps) => {
     const swiperRef = useRef<SwiperRef>(null);
@@ -24,15 +27,19 @@ export const Carousel = ({ children }: CarouselProps) => {
     });
 
     useEffect(() => {
-        const timeout = setTimeout(() => {
-            if (swiperRef.current?.swiper) {
-                swiperRef.current.swiper.update();
-                swiperRef.current.swiper.slideToLoop(0);
-                setIsReady(true);
-            }
-        }, 100);
+        const swiper = swiperRef.current?.swiper as SwiperWithInit;
+        if (!swiper) return;
 
-        return () => clearTimeout(timeout);
+        const interval = setInterval(() => {
+            if (swiper.initialized && swiper.slides.length > 0) {
+                swiper.update();
+                swiper.slideToLoop(0, 0);
+                setIsReady(true);
+                clearInterval(interval);
+            }
+        }, 50);
+
+        return () => clearInterval(interval);
     }, [children]);
 
     const scrollLeft = () => {
@@ -63,14 +70,14 @@ export const Carousel = ({ children }: CarouselProps) => {
                 breakpoints={{
                     350: {
                         spaceBetween: 12,
-                        slidesPerView: 'auto',
+                        slidesPerView: 2,
                     },
                     1560: {
                         spaceBetween: 24,
-                        slidesPerView: 'auto',
+                        slidesPerView: 5,
                     },
                     1915: {
-                        spaceBetween: 12,
+                        spaceBetween: 24,
                         slidesPerView: 4,
                     },
                 }}
