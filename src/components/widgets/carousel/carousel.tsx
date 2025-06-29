@@ -30,7 +30,7 @@ export const Carousel = ({ children }: CarouselProps) => {
 
         const timeout = setTimeout(() => {
             swiper.update();
-            swiper.slideToLoop(0); // очень важно, если loop: true
+            swiper.slideToLoop(0);
             setIsReady(true);
         }, 100);
 
