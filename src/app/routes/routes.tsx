@@ -8,9 +8,12 @@ import { JuiciestPage, MainPage, NotFoundPage, RecipeDetailsPage } from '~/pages
 import { BloggerPage } from '~/pages/blogger-page/blogger-page';
 import { BlogsPage } from '~/pages/blogs-page/blogs-page';
 import { CategoryPage } from '~/pages/category-page/category-page.tsx';
+import { EditDraftPage } from '~/pages/edit-draft-page/edit-draft-page.tsx';
 import { EditRecipePage } from '~/pages/edit-recipe-page/edit-recipe-page.tsx';
 import { NewRecipePage } from '~/pages/new-recipe-page/new-recipe-page.tsx';
+import { ProfilePage } from '~/pages/profile-page/profile-page.tsx';
 import { RecoveryPage } from '~/pages/recovery-page/recovery-page.tsx';
+import { SettingsPage } from '~/pages/settings-page/settings-page.tsx';
 import { SignInPage } from '~/pages/sign-in-page/sign-in-page.tsx';
 import { SignUpPage } from '~/pages/sign-up-page/sign-up-page.tsx';
 import { VerifyEmailPage } from '~/pages/verify-email-page/verify-email-page.tsx';
@@ -36,8 +39,11 @@ const router = createBrowserRouter(
                     <Route path={PATHS.RECIPE_DETAILS} element={<RecipeDetailsPage />} />
                     <Route path={PATHS.NEW_RECIPE} element={<NewRecipePage />} />
                     <Route path={PATHS.EDIT_RECIPE} element={<EditRecipePage />} />
+                    <Route path={PATHS.EDIT_DRAFT} element={<EditDraftPage />} />
                     <Route path={PATHS.BLOGS} element={<BlogsPage />} />
                     <Route path={PATHS.BLOGGER} element={<BloggerPage />} />
+                    <Route path={PATHS.PROFILE} element={<ProfilePage />} />
+                    <Route path={PATHS.SETTINGS} element={<SettingsPage />} />
                     <Route path={PATHS.NOT_FOUND} element={<NotFoundPage />} />
                     <Route path={PATHS.ERROR} element={<Navigate to={PATHS.NOT_FOUND} replace />} />
                 </Route>

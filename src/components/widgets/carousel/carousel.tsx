@@ -1,7 +1,8 @@
-import 'swiper/swiper-bundle.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 
@@ -15,6 +16,7 @@ type CarouselProps = {
 
 export const Carousel = ({ children }: CarouselProps) => {
     const swiperRef = useRef<SwiperRef>(null);
+    const [isReady, setIsReady] = useState(false);
 
     const cardWidth = useBreakpointValue({
         base: '158px',
@@ -22,92 +24,106 @@ export const Carousel = ({ children }: CarouselProps) => {
         xl: '318px',
     });
 
-    const scrollLeft = () => {
-        swiperRef.current?.swiper.slidePrev();
-    };
+    useEffect(() => {
+        const swiper = swiperRef.current?.swiper;
+        if (!swiper) return;
 
-    const scrollRight = () => {
-        swiperRef.current?.swiper.slideNext();
-    };
+        const timeout = setTimeout(() => {
+            swiper.update();
+            swiper.slideToLoop(0);
+            setIsReady(true);
+        }, 100);
+
+        return () => clearTimeout(timeout);
+    }, [children]);
 
     return (
-        <Box
-            width={{ base: '95%', sm: '100%' }}
-            px={{ base: 0, xl: '10px' }}
-            position={{ base: 'absolute', sm: 'relative' }}
-        >
+        <Box position='relative'>
+            <IconButton
+                className='custom-prev'
+                display={{ base: 'none', md: 'block' }}
+                aria-label='Previous slide'
+                data-test-id={DATA_TEST_ID.CAROUSEL_BACK}
+                icon={<ArrowLeftIcon boxSize={{ base: '20px', xxl: '24px' }} color='white' />}
+                position='absolute'
+                fontSize='20px'
+                left='0'
+                top='40%'
+                transform='translateY(-50%)'
+                zIndex='999'
+                bg='black'
+                boxShadow='md'
+                borderRadius={{ base: 0, md: '6px' }}
+                _hover={{ bg: 'gray.700' }}
+                isDisabled={!isReady}
+            />
+            <IconButton
+                className='custom-next'
+                display={{ base: 'none', md: 'block' }}
+                aria-label='Next slide'
+                data-test-id={DATA_TEST_ID.CAROUSEL_FORWARD}
+                icon={<ArrowRightIcon boxSize={{ base: '20px', xxl: '24px' }} color='white' />}
+                position='absolute'
+                fontSize='20px'
+                right='0'
+                top='40%'
+                transform='translateY(-50%)'
+                zIndex='999'
+                bg='black'
+                boxShadow='md'
+                borderRadius={{ base: 0, md: '6px' }}
+                _hover={{ bg: 'gray.700' }}
+                isDisabled={!isReady}
+            />
             <Swiper
                 data-test-id={DATA_TEST_ID.CAROUSEL}
                 ref={swiperRef}
                 modules={[Navigation]}
+                watchSlidesProgress={true}
+                navigation={{
+                    nextEl: '.custom-next',
+                    prevEl: '.custom-prev',
+                }}
+                observer={true}
+                observeParents={true}
+                initialSlide={0}
                 loop={true}
-                navigation={false}
-                speed={0}
+                speed={100}
+                slidesPerGroup={1}
+                slidesPerView={4}
                 breakpoints={{
-                    350: {
-                        spaceBetween: 12,
-                        slidesPerView: 'auto',
+                    0: {
+                        spaceBetween: 8,
+                        slidesPerView: 2,
                     },
-                    1560: {
+                    766: {
+                        spaceBetween: 12,
+                        slidesPerView: 4,
+                    },
+                    1430: {
                         spaceBetween: 24,
-                        slidesPerView: 'auto',
+                        slidesPerView: 3,
                     },
                     1915: {
-                        spaceBetween: 15,
+                        spaceBetween: 31,
                         slidesPerView: 4,
                     },
                 }}
             >
-                {children.map((child, idx) => (
-                    <SwiperSlide
-                        style={{
-                            maxWidth: cardWidth,
-                            height: 'auto',
-                            paddingBottom: '5px',
-                        }}
-                        key={idx}
-                        data-test-id={`${DATA_TEST_ID.CAROUSEL_CARD}${idx}`}
-                    >
-                        {child}
-                    </SwiperSlide>
-                ))}
+                {children.length > 0 &&
+                    children.map((child, idx) => (
+                        <SwiperSlide
+                            style={{
+                                maxWidth: cardWidth,
+                                height: 'auto',
+                            }}
+                            key={idx}
+                            data-test-id={`${DATA_TEST_ID.CAROUSEL_CARD}${idx}`}
+                        >
+                            {child}
+                        </SwiperSlide>
+                    ))}
             </Swiper>
-            <>
-                <IconButton
-                    display={{ base: 'none', md: 'block' }}
-                    aria-label='Scroll left'
-                    data-test-id={DATA_TEST_ID.CAROUSEL_BACK}
-                    icon={<ArrowLeftIcon boxSize={{ base: '20px', xxl: '24px' }} color='white' />}
-                    onClick={scrollLeft}
-                    position='absolute'
-                    fontSize='20px'
-                    left='0'
-                    top='40%'
-                    transform='translateY(-50%)'
-                    zIndex='1'
-                    bg='black'
-                    boxShadow='md'
-                    borderRadius={{ base: 0, md: '6px' }}
-                    _hover={{ bg: 'gray.700' }}
-                />
-                <IconButton
-                    display={{ base: 'none', md: 'block' }}
-                    aria-label='Scroll right'
-                    data-test-id={DATA_TEST_ID.CAROUSEL_FORWARD}
-                    icon={<ArrowRightIcon boxSize={{ base: '20px', xxl: '24px' }} color='white' />}
-                    onClick={scrollRight}
-                    position='absolute'
-                    fontSize='20px'
-                    right='0'
-                    top='40%'
-                    transform='translateY(-50%)'
-                    zIndex='1'
-                    bg='black'
-                    boxShadow='md'
-                    borderRadius={{ base: 0, md: '6px' }}
-                    _hover={{ bg: 'gray.700' }}
-                />
-            </>
         </Box>
     );
 };

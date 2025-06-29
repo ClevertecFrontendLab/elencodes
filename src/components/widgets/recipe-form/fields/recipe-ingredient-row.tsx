@@ -11,9 +11,11 @@ import {
 import { Control, Controller, FieldErrors, UseFormRegister } from 'react-hook-form';
 
 import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { TrashIcon } from '~/icons/recipe-page-icons/trash-icon';
 import { MeasureUnitsResponse } from '~/query/services/user/types.ts';
 import { CreateRecipeSchemaType } from '~/schemas/create-recipe.schema.ts';
+import { arrayHasItems } from '~/utils/array-has-items.ts';
 
 type RecipeIngredientRowProps = {
     index: number;
@@ -34,7 +36,7 @@ export const RecipeIngredientRow = ({
     onRemove,
     onAdd,
     isLast,
-    measureUnits,
+    measureUnits = [],
 }: RecipeIngredientRowProps) => (
     <Flex w='100%' gap={4} mb={2} flexWrap='wrap'>
         <FormControl
@@ -44,7 +46,7 @@ export const RecipeIngredientRow = ({
         >
             <Input
                 data-test-id={DATA_TEST_ID.RECIPE_INGREDIENTS_TITLE(index)}
-                placeholder='Ингредиент'
+                placeholder={PLACEHOLDERS.INGREDIENT}
                 {...register(`ingredients.${index}.title` as const)}
             />
         </FormControl>
@@ -56,7 +58,7 @@ export const RecipeIngredientRow = ({
                 render={({ field: { onChange, value } }) => (
                     <NumberInput value={value} onChange={onChange} precision={0}>
                         <NumberInputField
-                            placeholder='100'
+                            placeholder={PLACEHOLDERS.INGREDIENTS_COUNT}
                             data-test-id={DATA_TEST_ID.RECIPE_INGREDIENTS_COUNT(index)}
                         />
                     </NumberInput>
@@ -67,16 +69,17 @@ export const RecipeIngredientRow = ({
         <FormControl flex='2' isInvalid={!!errors.ingredients?.[index]?.measureUnit}>
             <Select
                 {...register(`ingredients.${index}.measureUnit` as const)}
-                placeholder='Единица измерения'
+                placeholder={PLACEHOLDERS.INGREDIENTS_MEASURE_UNIT}
                 _placeholder={{ color: 'blackAlpha.700' }}
                 isTruncated={true}
                 data-test-id={DATA_TEST_ID.RECIPE_INGREDIENTS_MEASURE(index)}
             >
-                {measureUnits?.map((unit) => (
-                    <option key={unit.name} value={unit.name}>
-                        {unit.name}
-                    </option>
-                ))}
+                {arrayHasItems(measureUnits) &&
+                    measureUnits.map((unit) => (
+                        <option key={unit.name} value={unit.name}>
+                            {unit.name}
+                        </option>
+                    ))}
             </Select>
         </FormControl>
         <IconButton

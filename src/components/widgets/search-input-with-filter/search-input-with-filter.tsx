@@ -129,7 +129,6 @@ export const SearchInputWithFilter = () => {
                             aria-label='Поиск'
                             size='sm'
                             icon={<SearchIcon boxSize={{ base: '14px', xl: '18px' }} />}
-                            isDisabled={!isSearchEnabled}
                             onClick={handleSearch}
                             pointerEvents={!isSearchEnabled ? 'none' : 'auto'}
                         />

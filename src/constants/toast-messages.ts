@@ -101,6 +101,43 @@ export const TOAST_MESSAGES = {
             id: 'delete-recipe-server-error',
         },
     },
+    CreateNoteToast: {
+        [StatusCodes.OK]: {
+            title: 'Заметка удалена',
+            id: 'delete-note-success',
+        },
+        [StatusCodes.CREATED]: {
+            title: 'Заметка опубликована',
+            id: 'create-note-success',
+        },
+        [StatusCodes.INTERNAL_SERVER_ERROR]: {
+            title: 'Ошибка сервера',
+            description: 'Попробуйте позже.',
+            id: 'create-note-error',
+        },
+    },
+    UpdateUserInfoToast: {
+        [StatusCodes.OK]: {
+            title: 'Изменения сохранены',
+            id: 'update-user-info-success',
+        },
+    },
+    UpdatePasswordToast: {
+        [StatusCodes.OK]: {
+            title: 'Пароль успешно изменен',
+            id: 'update-password-success',
+        },
+        [StatusCodes.BAD_REQUEST]: {
+            title: 'Неверный старый пароль',
+            id: 'update-password-bad-request',
+        },
+    },
+    DeleteAccountToast: {
+        [StatusCodes.OK]: {
+            title: 'Аккаунт успешно удален.',
+            id: 'delete-account-success',
+        },
+    },
     ServerErrorToast: {
         title: 'Ошибка сервера',
         description: 'Попробуйте немного позже.',

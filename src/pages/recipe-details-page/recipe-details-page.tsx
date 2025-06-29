@@ -1,5 +1,5 @@
-import { Container } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { Button, Container } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 
 import {
@@ -11,10 +11,16 @@ import {
     RecipeStepsSection,
 } from '~/components';
 import { TOAST_MESSAGES } from '~/constants/toast-messages.ts';
+import { useCanRecommendRecipe } from '~/hooks/use-can-recommend-recipe';
 import { useCustomToast } from '~/hooks/use-custom-toast.tsx';
 import { useScreenSize } from '~/hooks/use-screen-size.tsx';
+import { Recommend } from '~/icons/profile-icons/recommend';
 import { useGetBloggerByIdQuery } from '~/query/services/blogs/blogs-api.ts';
-import { useGetRecipeByIdQuery } from '~/query/services/recipes/recipes-api.ts';
+import {
+    useGetRecipeByIdQuery,
+    useRecommendRecipeMutation,
+} from '~/query/services/recipes/recipes-api.ts';
+import { useGetUserInfoQuery } from '~/query/services/user/user-api';
 import { useAppSelector } from '~/redux/hooks.ts';
 import { selectUserId } from '~/redux/slices/auth-slice.ts';
 
@@ -22,6 +28,8 @@ const { SearchErrorToast } = TOAST_MESSAGES;
 
 export const RecipeDetailsPage = () => {
     const { isTablet } = useScreenSize();
+    const canRecommend = useCanRecommendRecipe();
+    const [recommendRecipe] = useRecommendRecipeMutation();
     const { toast } = useCustomToast();
     const recipeId = useParams().id;
     const navigate = useNavigate();
@@ -40,6 +48,23 @@ export const RecipeDetailsPage = () => {
             skip: !userId,
         },
     );
+
+    const { data: userInfo } = useGetUserInfoQuery();
+
+    const [hasRecommended, setHasRecommended] = useState(
+        userInfo?._id ? foundRecipe?.recommendedByUserId?.includes(userInfo?._id) : false,
+    );
+
+    console.log('hasRecommended -> ', hasRecommended);
+
+    const handleRecommend = async () => {
+        try {
+            await recommendRecipe(recipeId || '').unwrap();
+            setHasRecommended((prev) => !prev);
+        } catch {
+            toast({ title: 'Не удалось рекомендовать рецепт', status: 'error' });
+        }
+    };
 
     useEffect(() => {
         if (isError) {
@@ -74,9 +99,20 @@ export const RecipeDetailsPage = () => {
                     lastName={blogger.bloggerInfo?.lastName}
                     login={blogger.bloggerInfo?.login}
                     isFavorite={blogger?.isFavorite}
-                    bookmarksCount={blogger?.totalBookmarks}
                     subscribersCount={blogger?.totalSubscribers}
+                    imageSrc={blogger.bloggerInfo?.photoLink}
                 />
+            )}
+            {canRecommend && (
+                <Button
+                    variant={hasRecommended ? 'outline' : 'dark'}
+                    size='lg'
+                    leftIcon={<Recommend />}
+                    w={{ base: '100%', sm: '604px', md: '680px' }}
+                    onClick={handleRecommend}
+                >
+                    {hasRecommended ? 'Вы порекомендовали' : 'Рекомендовать рецепт'}
+                </Button>
             )}
             <NewestRecipes />
         </Container>

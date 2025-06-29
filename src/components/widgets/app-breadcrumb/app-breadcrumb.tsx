@@ -22,6 +22,8 @@ export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
     const subCategories = useAppSelector(selectSubCategories);
     const currentUserId = useAppSelector(selectUserId);
     const { recipeId } = useCategoryParams();
+    const { draftId } = useParams();
+    const draftState = location.state as { draft?: { title?: string } };
     const { userId } = useParams();
 
     const hiddenPaths = [PATHS.NOT_FOUND, PATHS.ERROR];
@@ -131,6 +133,14 @@ export const AppBreadcrumb = ({ onClose }: { onClose?: () => void }) => {
 
         return null;
     });
+
+    if (location.pathname.startsWith('/edit-draft') && draftId && draftState?.draft?.title) {
+        breadcrumbs.push(
+            <BreadcrumbItem key='draft-title' isCurrentPage>
+                <BreadcrumbLink color='black'>{draftState.draft.title}</BreadcrumbLink>
+            </BreadcrumbItem>,
+        );
+    }
 
     return (
         <Breadcrumb

@@ -15,7 +15,7 @@ import {
     useGetRecipeByUserIdQuery,
 } from '~/query/services/blogs/blogs-api.ts';
 import { useAppDispatch, useAppSelector } from '~/redux/hooks.ts';
-import { selectIsSubscribedToUser } from '~/redux/selectors.ts';
+import { selectIsSubscribedToUser, selectSubscriptionsForUsers } from '~/redux/selectors.ts';
 import { selectUserId } from '~/redux/slices/auth-slice.ts';
 import { setSubscription, toggleSubscription } from '~/redux/slices/subscriptions-slice.ts';
 
@@ -48,13 +48,8 @@ export const BloggerPage = () => {
         dispatch(toggleSubscription(userId));
     };
 
-    const subscriptions = useAppSelector((state) => {
-        const result: Record<string, boolean> = {};
-        blogsPreview?.others?.forEach((user) => {
-            result[user._id] = selectIsSubscribedToUser(user._id)(state);
-        });
-        return result;
-    });
+    const userIds = blogsPreview?.others?.map((user) => user._id) ?? [];
+    const subscriptions = useAppSelector(selectSubscriptionsForUsers(userIds));
 
     useEffect(() => {
         if (location.hash) {
@@ -102,6 +97,7 @@ export const BloggerPage = () => {
                     bookmarksCount={blogger?.totalBookmarks}
                     isFavorite={isSubscribed}
                     onToggleFavorite={handleToggleFavorite}
+                    imgSrc={blogger?.bloggerInfo?.photoLink}
                 />
             )}
             <BloggerRecipes bloggerRecipes={bloggerRecipes?.recipes} />
