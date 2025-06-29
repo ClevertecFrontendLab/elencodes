@@ -1,10 +1,10 @@
-import 'swiper/swiper-bundle.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperType } from 'swiper/types';
 
 import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { ArrowLeftIcon } from '~/icons/swipe-section-icons/arrow-left-icon';
@@ -13,8 +13,6 @@ import { ArrowRightIcon } from '~/icons/swipe-section-icons/arrow-right-icon';
 type CarouselProps = {
     children: ReactNode[];
 };
-
-type SwiperWithInit = SwiperType & { initialized: boolean };
 
 export const Carousel = ({ children }: CarouselProps) => {
     const swiperRef = useRef<SwiperRef>(null);
@@ -26,31 +24,47 @@ export const Carousel = ({ children }: CarouselProps) => {
         xl: '318px',
     });
 
+    const slidesPerView =
+        useBreakpointValue({
+            base: 2,
+            md: 4,
+            xl: 4,
+        }) ?? 4;
+
     useEffect(() => {
-        const swiper = swiperRef.current?.swiper as SwiperWithInit;
-        if (!swiper) return;
-
-        const interval = setInterval(() => {
-            if (swiper.initialized && swiper.slides.length > 0) {
-                swiper.update();
-                swiper.slideToLoop(0, 0);
+        const timeout = setTimeout(() => {
+            if (swiperRef.current?.swiper) {
+                swiperRef.current.swiper.update();
+                swiperRef.current.swiper.slideToLoop(0);
                 setIsReady(true);
-                clearInterval(interval);
             }
-        }, 50);
+        }, 100);
 
-        return () => clearInterval(interval);
+        return () => clearTimeout(timeout);
     }, [children]);
 
     const scrollLeft = () => {
-        if (isReady) {
-            swiperRef.current?.swiper.slidePrev();
+        const swiper = swiperRef.current?.swiper;
+        if (!swiper || !isReady) return;
+
+        if (swiper.realIndex === 0) {
+            // Переход на последний слайд
+            const lastIndex = Math.max(children.length - slidesPerView, 0);
+            swiper.slideTo(lastIndex);
+        } else {
+            swiper.slidePrev();
         }
     };
 
     const scrollRight = () => {
-        if (isReady) {
-            swiperRef.current?.swiper.slideNext();
+        const swiper = swiperRef.current?.swiper;
+        if (!swiper || !isReady) return;
+
+        const lastIndex = Math.max(children.length - slidesPerView, 0);
+        if (swiper.realIndex >= lastIndex) {
+            swiper.slideTo(0);
+        } else {
+            swiper.slideNext();
         }
     };
 
@@ -64,20 +78,24 @@ export const Carousel = ({ children }: CarouselProps) => {
                 data-test-id={DATA_TEST_ID.CAROUSEL}
                 ref={swiperRef}
                 modules={[Navigation]}
-                loop={true}
                 navigation={false}
                 speed={0}
+                loop={false}
                 breakpoints={{
                     350: {
-                        spaceBetween: 12,
+                        spaceBetween: 8,
                         slidesPerView: 2,
                     },
-                    1560: {
-                        spaceBetween: 24,
-                        slidesPerView: 5,
+                    766: {
+                        spaceBetween: 12,
+                        slidesPerView: 4,
+                    },
+                    1430: {
+                        spaceBetween: 42,
+                        slidesPerView: 3,
                     },
                     1915: {
-                        spaceBetween: 24,
+                        spaceBetween: 31,
                         slidesPerView: 4,
                     },
                 }}
