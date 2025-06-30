@@ -55,7 +55,7 @@ export type RecipeMeta = {
 };
 
 export type RecipeResponse = {
-    data: Recipes[];
+    data: Recipe[];
     meta: RecipeMeta;
 };
 
