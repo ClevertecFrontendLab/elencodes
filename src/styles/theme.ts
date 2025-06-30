@@ -165,6 +165,7 @@ const mainTheme: ThemeApp = extendTheme({
             variants: {
                 dark: {
                     bgColor: 'blackAlpha.900',
+                    fontWeight: 500,
                     color: 'white',
                     _hover: {
                         bgColor: 'blackAlpha.800',

@@ -28,6 +28,7 @@ export const useCustomToast = () => {
                         bg={getToastBackgroundColor(status as Statuses)}
                         color='white'
                         p={3}
+                        role='alert'
                     >
                         <Flex justify='space-between' gap={2}>
                             <Flex align='start' gap={4}>

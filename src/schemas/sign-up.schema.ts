@@ -1,17 +1,17 @@
 import * as yup from 'yup';
 
-const NAME_REQUIRED = 'Введите имя';
-const SURNAME_REQUIRED = 'Введите фамилию';
-const EMAIL_REQUIRED = 'Введите e-mail';
-const LOGIN_REQUIRED = 'Введите логин';
-const PASSWORD_REQUIRED = 'Введите пароль';
-const CONFIRM_PASSWORD_REQUIRED = 'Повторите пароль';
-const STARTS_WITH_CYRILLIC = 'Должно начинаться с кириллицы А-Я';
-const SHOULD_CONTAIN_CYRILLIC = 'Только кириллица А-Я, и "-"';
-const DOESNT_MEET_FORMAT = 'Не соответствует формату';
-const CONFIRM_PASSWORD_INVALID = 'Пароли должны совпадать';
-const MAX_LENGTH_REQUIRED = 'Максимальная длина 50 символов';
-const EMAIL_INCORRECT = 'Введите корректный e-mail';
+export const NAME_REQUIRED = 'Введите имя';
+export const SURNAME_REQUIRED = 'Введите фамилию';
+export const EMAIL_REQUIRED = 'Введите e-mail';
+export const LOGIN_REQUIRED = 'Введите логин';
+export const PASSWORD_REQUIRED = 'Введите пароль';
+export const CONFIRM_PASSWORD_REQUIRED = 'Повторите пароль';
+export const STARTS_WITH_CYRILLIC = 'Должно начинаться с кириллицы А-Я';
+export const SHOULD_CONTAIN_CYRILLIC = 'Только кириллица А-Я, и "-"';
+export const DOESNT_MEET_FORMAT = 'Не соответствует формату';
+export const CONFIRM_PASSWORD_INVALID = 'Пароли должны совпадать';
+export const MAX_LENGTH_REQUIRED = 'Максимальная длина 50 символов';
+export const EMAIL_INCORRECT = 'Введите корректный e-mail';
 
 export const personalInfoSchema = yup.object().shape({
     firstName: yup

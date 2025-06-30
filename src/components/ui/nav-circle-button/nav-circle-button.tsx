@@ -7,6 +7,7 @@ type NavCircleButtonProps = {
 } & Partial<{
     isPrimary: boolean;
     onClick: () => void;
+    dataTestId: string;
 }>;
 
 export const NavCircleButton = ({
@@ -14,8 +15,15 @@ export const NavCircleButton = ({
     label,
     isPrimary = false,
     onClick,
+    dataTestId,
 }: NavCircleButtonProps) => (
-    <VStack spacing={1} textAlign='center' onClick={onClick} cursor='pointer'>
+    <VStack
+        spacing={1}
+        textAlign='center'
+        onClick={onClick}
+        cursor='pointer'
+        data-test-id={dataTestId}
+    >
         <IconButton
             aria-label={label}
             icon={icon}

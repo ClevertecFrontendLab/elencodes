@@ -53,3 +53,4 @@ export const draftRecipeSchema = yup.object().shape({
 });
 
 export type CreateRecipeSchemaType = yup.InferType<typeof createRecipeSchema>;
+export type DraftRecipeSchemaType = yup.InferType<typeof draftRecipeSchema>;

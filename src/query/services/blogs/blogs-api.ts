@@ -1,7 +1,7 @@
 import { baseApi } from '~/query/base-api';
 import { ENDPOINTS } from '~/query/constants/endpoints';
 import { METHODS } from '~/query/constants/methods';
-import { TAGS } from '~/query/constants/tags';
+import { setUserRecipes } from '~/redux/slices/user-recipes-slice';
 import { transformBlogsResponse } from '~/utils/transform-blogs-response';
 
 import { BloggerInfo, BlogsBody, BlogsResponse, RecipesByUserIdResponse } from './types';
@@ -15,7 +15,7 @@ export const blogsApi = baseApi.injectEndpoints({
                 params,
             }),
             transformResponse: transformBlogsResponse,
-            providesTags: [TAGS.BLOGS],
+            providesTags: ['Blogs'],
         }),
         toggleSubscription: builder.mutation<void, { fromUserId: string; toUserId: string }>({
             query: (body) => ({
@@ -23,7 +23,7 @@ export const blogsApi = baseApi.injectEndpoints({
                 method: METHODS.patch,
                 body,
             }),
-            invalidatesTags: [TAGS.BLOGS],
+            invalidatesTags: ['Blogs'],
         }),
         getBloggerById: builder.query<BloggerInfo, { bloggerId: string; currentUserId: string }>({
             query: ({ bloggerId, currentUserId }) => ({
@@ -31,10 +31,23 @@ export const blogsApi = baseApi.injectEndpoints({
                 method: METHODS.get,
                 params: { currentUserId },
             }),
-            providesTags: [TAGS.BLOGS],
+            providesTags: ['Blogs'],
         }),
         getRecipeByUserId: builder.query<RecipesByUserIdResponse, string>({
             query: (id) => ({ url: `${ENDPOINTS.recipeByUser}${id}` }),
+            onQueryStarted: async (_, { dispatch, queryFulfilled }) => {
+                try {
+                    const { data } = await queryFulfilled;
+                    dispatch(
+                        setUserRecipes({
+                            bookmarks: data.myBookmarks || [],
+                            notes: data.notes || [],
+                        }),
+                    );
+                } catch (error) {
+                    console.error('Failed to save recipes to store:', error);
+                }
+            },
         }),
     }),
 });

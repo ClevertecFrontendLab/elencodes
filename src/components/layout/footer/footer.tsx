@@ -1,15 +1,20 @@
 import { Flex, SearchIcon } from '@chakra-ui/icons';
-import { Box, Image } from '@chakra-ui/react';
-import avatar from '@public/images/avatars/avatar_header.svg';
+import { Avatar, Box } from '@chakra-ui/react';
 import { useNavigate } from 'react-router';
 
 import { PATHS } from '~/app/routes/paths.ts';
 import { NavCircleButton } from '~/components/ui';
+import { DATA_TEST_ID } from '~/constants/data-test-ids';
 import { AddRecipeFooterIcon } from '~/icons/footer-icons/add-recipe-footer-icon';
 import { HomeIcon } from '~/icons/footer-icons/home-icon';
+import { useGetUserInfoQuery } from '~/query/services/user/user-api';
+import { buildImageUrl } from '~/utils/build-image-url';
 
 export const Footer = () => {
     const navigate = useNavigate();
+    const { data: userInfo } = useGetUserInfoQuery();
+
+    if (!userInfo) return null;
 
     const handleGoHomeButtonClick = () => {
         navigate(PATHS.ROOT);
@@ -17,6 +22,10 @@ export const Footer = () => {
 
     const handleWriteRecipeButtonClick = () => {
         navigate(PATHS.NEW_RECIPE);
+    };
+
+    const handleProfileButtonClick = () => {
+        navigate(PATHS.PROFILE);
     };
 
     return (
@@ -35,8 +44,17 @@ export const Footer = () => {
                     onClick={handleWriteRecipeButtonClick}
                 />
                 <NavCircleButton
-                    icon={<Image src={avatar} boxSize='40px' borderRadius='full' />}
+                    icon={
+                        <Avatar
+                            name={`${userInfo.firstName} ${userInfo.lastName}`}
+                            src={buildImageUrl(userInfo?.photoLink)}
+                            boxSize='40px'
+                            borderRadius='full'
+                        />
+                    }
                     label='Мой профиль'
+                    onClick={handleProfileButtonClick}
+                    dataTestId={DATA_TEST_ID.FOOTER_PROFILE}
                 />
             </Flex>
         </Box>

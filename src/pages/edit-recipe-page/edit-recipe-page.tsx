@@ -1,13 +1,22 @@
 import { Container } from '@chakra-ui/react';
-import { useParams } from 'react-router';
+import { useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router';
 
+import { PATHS } from '~/app/routes/paths';
 import { RecipeForm } from '~/components/widgets/recipe-form/recipe-form.tsx';
 import { useGetRecipeByIdQuery } from '~/query/services/recipes/recipes-api.ts';
 import { transformRecipeToFormData } from '~/utils/transform-recipe-to-form-data.ts';
 
 export const EditRecipePage = () => {
     const { id } = useParams();
-    const { data: recipe, isLoading } = useGetRecipeByIdQuery(id!);
+    const { data: recipe, isLoading, isError } = useGetRecipeByIdQuery(id!);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isError) {
+            navigate(PATHS.NOT_FOUND, { replace: true });
+        }
+    }, [isError, navigate]);
 
     if (isLoading || !recipe) return null;
 

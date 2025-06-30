@@ -25,11 +25,10 @@ type RecipeCardVerticalProps = {
     isWithoutImage?: boolean;
 };
 
-const CARD_PADDING = { base: '10px', md: '18px' };
-
 export const RecipeCardVertical = memo(
     ({ recipe, isWithoutImage = false }: RecipeCardVerticalProps) => {
         const { isTablet } = useScreenSize();
+        const padding = { base: '10px', md: '18px' };
         const navigate = useNavigate();
         const path = useGetRecipePath(recipe);
         const tags = useMapCategoriesToTags(
@@ -47,18 +46,14 @@ export const RecipeCardVertical = memo(
                     base: isWithoutImage ? '100%' : '158px',
                     sm: isWithoutImage ? '232px' : '158px',
                     md: isWithoutImage ? '282px' : '277px',
-                    xl: '318px',
+                    xl: '322px',
                 }}
                 height='100%'
                 minH={isWithoutImage ? 'unset' : '220px'}
                 transition='box-shadow 0.2s ease'
-                border='1px solid rgba(0, 0, 0, 0.08)'
-                borderRadius='8px'
-                boxShadow='none'
                 _hover={{
                     boxShadow:
                         '0 2px 4px -1px rgba(32, 126, 0, 0.06), 0 4px 6px -1px rgba(32, 126, 0, 0.1)',
-                    cursor: 'pointer',
                 }}
                 onClick={handleNavigate}
             >
@@ -73,12 +68,12 @@ export const RecipeCardVertical = memo(
                         <Image
                             src={buildImageUrl(recipe.image)}
                             alt={recipe.title}
-                            h={{ base: '128px', lg: '230px', xxl: '244px' }}
+                            h={{ base: '128px', md: '230px' }}
                             borderBottomRadius='none'
                             borderTopRadius='lg'
                         />
                     )}
-                    <Stack p={CARD_PADDING} spacing='3'>
+                    <Stack p={padding} spacing='3'>
                         <Heading
                             noOfLines={{ base: isWithoutImage ? 1 : 2, md: 1 }}
                             wordBreak={{ base: isWithoutImage ? 'break-all' : 'break-word' }}
@@ -94,7 +89,7 @@ export const RecipeCardVertical = memo(
                         )}
                     </Stack>
                     <Spacer />
-                    <Flex p={CARD_PADDING} justifyContent='space-between' alignItems='flex-end'>
+                    <Flex p={padding} justifyContent='space-between' alignItems='flex-end'>
                         {!isWithoutImage && isTablet && (
                             <Box position='absolute' top='5px' left='5px'>
                                 <VStack align='start' spacing={1}>

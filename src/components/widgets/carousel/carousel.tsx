@@ -1,25 +1,22 @@
-import 'swiper/swiper-bundle.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
+import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import { Box, IconButton, useBreakpointValue } from '@chakra-ui/react';
-import { ReactNode, useRef } from 'react';
+import { useRef } from 'react';
+import { PropsWithChildren } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 
 import { DATA_TEST_ID } from '~/constants/data-test-ids';
-import { ArrowLeftIcon } from '~/icons/swipe-section-icons/arrow-left-icon';
-import { ArrowRightIcon } from '~/icons/swipe-section-icons/arrow-right-icon';
 
-type CarouselProps = {
-    children: ReactNode[];
-};
-
-export const Carousel = ({ children }: CarouselProps) => {
+export const Carousel = ({ children }: PropsWithChildren) => {
     const swiperRef = useRef<SwiperRef>(null);
 
     const cardWidth = useBreakpointValue({
         base: '158px',
         md: '277px',
-        xl: '318px',
+        xl: '322px',
     });
 
     const scrollLeft = () => {
@@ -42,7 +39,7 @@ export const Carousel = ({ children }: CarouselProps) => {
                 modules={[Navigation]}
                 loop={true}
                 navigation={false}
-                speed={0}
+                speed={100}
                 breakpoints={{
                     350: {
                         spaceBetween: 12,
@@ -52,8 +49,8 @@ export const Carousel = ({ children }: CarouselProps) => {
                         spaceBetween: 24,
                         slidesPerView: 'auto',
                     },
-                    1915: {
-                        spaceBetween: 15,
+                    1920: {
+                        spaceBetween: 24,
                         slidesPerView: 4,
                     },
                 }}
@@ -63,7 +60,6 @@ export const Carousel = ({ children }: CarouselProps) => {
                         style={{
                             maxWidth: cardWidth,
                             height: 'auto',
-                            paddingBottom: '5px',
                         }}
                         key={idx}
                         data-test-id={`${DATA_TEST_ID.CAROUSEL_CARD}${idx}`}
@@ -77,7 +73,7 @@ export const Carousel = ({ children }: CarouselProps) => {
                     display={{ base: 'none', md: 'block' }}
                     aria-label='Scroll left'
                     data-test-id={DATA_TEST_ID.CAROUSEL_BACK}
-                    icon={<ArrowLeftIcon boxSize={{ base: '20px', xxl: '24px' }} color='white' />}
+                    icon={<ArrowBackIcon color='white' />}
                     onClick={scrollLeft}
                     position='absolute'
                     fontSize='20px'
@@ -87,14 +83,15 @@ export const Carousel = ({ children }: CarouselProps) => {
                     zIndex='1'
                     bg='black'
                     boxShadow='md'
-                    borderRadius={{ base: 0, md: '6px' }}
+                    borderLeftRadius={{ base: 0, '2xl': '6px' }}
+                    borderRightRadius='0'
                     _hover={{ bg: 'gray.700' }}
                 />
                 <IconButton
                     display={{ base: 'none', md: 'block' }}
                     aria-label='Scroll right'
                     data-test-id={DATA_TEST_ID.CAROUSEL_FORWARD}
-                    icon={<ArrowRightIcon boxSize={{ base: '20px', xxl: '24px' }} color='white' />}
+                    icon={<ArrowForwardIcon color='white' />}
                     onClick={scrollRight}
                     position='absolute'
                     fontSize='20px'
@@ -104,7 +101,8 @@ export const Carousel = ({ children }: CarouselProps) => {
                     zIndex='1'
                     bg='black'
                     boxShadow='md'
-                    borderRadius={{ base: 0, md: '6px' }}
+                    borderRightRadius={{ base: 0, '2xl': '6px' }}
+                    borderLeftRadius='0'
                     _hover={{ bg: 'gray.700' }}
                 />
             </>

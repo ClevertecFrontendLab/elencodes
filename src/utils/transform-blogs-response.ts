@@ -9,7 +9,8 @@ export type RawBlogsResponse = {
 
 export function transformBlogsResponse(response: RawBlogsResponse): BlogsResponse {
     const cleanUser = (user: RawBlogUser): BlogUser => {
-        const cleanedNotes: Note[] = user.notes?.map(({ text, date }) => ({ text, date })) ?? [];
+        const cleanedNotes: Note[] =
+            user.notes?.map(({ text, date, _id }) => ({ text, date, _id })) ?? [];
 
         return {
             ...user,

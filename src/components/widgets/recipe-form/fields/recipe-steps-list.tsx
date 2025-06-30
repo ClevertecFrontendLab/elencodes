@@ -24,6 +24,7 @@ import {
 
 import { FileImagePreview } from '~/components/widgets/file-image-preview/file-image-preview.tsx';
 import { DATA_TEST_ID } from '~/constants/data-test-ids.ts';
+import { PLACEHOLDERS } from '~/constants/placeholders';
 import { AddIconFilled } from '~/icons/recipe-page-icons/add-icon-filled';
 import { TrashIcon } from '~/icons/recipe-page-icons/trash-icon';
 import { CreateRecipeSchemaType } from '~/schemas/create-recipe.schema.ts';
@@ -131,7 +132,7 @@ export const RecipeStepsList = ({
                             <Textarea
                                 h={{ base: '84px', md: '100px' }}
                                 {...register(`steps.${index}.description`)}
-                                placeholder='Опишите шаг...'
+                                placeholder={PLACEHOLDERS.STEP}
                                 data-test-id={DATA_TEST_ID.RECIPE_STEP_DESCRIPTION(index)}
                             />
                         </FormControl>

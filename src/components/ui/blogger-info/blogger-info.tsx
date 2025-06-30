@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Loader, RecipeStats } from '~/components';
 import { SubscribeButton } from '~/components/widgets/subscribe-button/subscribe-button';
 import { DATA_TEST_ID } from '~/constants/data-test-ids';
+import { buildImageUrl } from '~/utils/build-image-url';
 
 type BloggerInfoProps = {
     _id: string;
@@ -40,7 +41,7 @@ export const BloggerInfo = ({
             <Flex alignItems='center' flexDirection={{ base: 'column', sm: 'row' }} gap={6}>
                 <Avatar
                     size={{ base: 'xl', md: '2xl' }}
-                    src={imgSrc}
+                    src={buildImageUrl(imgSrc)}
                     name={`${firstName} ${lastName}`}
                 />
                 <Stack gap={3} w={{ base: '100%', sm: 'auto' }}>
