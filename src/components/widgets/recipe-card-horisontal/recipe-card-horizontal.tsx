@@ -146,7 +146,6 @@ export const RecipeCardHorizontal = ({ recipe, index, dataTestId }: RecipeCardHo
                         noOfLines={{ base: 2, md: 1 }}
                         size={{ base: 'sm', md: 'md' }}
                         fontWeight='500'
-                        wordBreak={{ base: 'normal', xl: 'break-all' }}
                     >
                         {getHighlightedTitle(recipe?.title)}
                     </Heading>
